@@ -1,0 +1,13 @@
+import * as z from 'zod';
+import type { Prisma } from '../../../../../src/generated/prisma/client';
+import { FriendshipStatusSchema } from '../enums/FriendshipStatus.schema'
+
+const makeSchema = () => z.object({
+  id: z.number().int().optional(),
+  status: FriendshipStatusSchema,
+  createdAt: z.coerce.date().optional(),
+  updatedAt: z.coerce.date().optional(),
+  requesterId: z.number().int()
+}).strict();
+export const FriendshipCreateManyAddresseeInputObjectSchema: z.ZodType<Prisma.FriendshipCreateManyAddresseeInput> = makeSchema() as unknown as z.ZodType<Prisma.FriendshipCreateManyAddresseeInput>;
+export const FriendshipCreateManyAddresseeInputObjectZodSchema = makeSchema();
