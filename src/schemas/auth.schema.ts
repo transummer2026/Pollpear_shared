@@ -7,7 +7,7 @@ export const RegisterSchema = z.object({
     .min(5, 'Min 5 characters')
 		.max(32, 'Max 32 characters')
 		.regex(/^[\w.]+$/, ''),
-	email: UserProfileSchema.shape.email.email('Invalid e-mail'),
+	email: z.email('Invalid e-mail'),
 	password: z.string()
 		.min(12, 'Min 12 characters')
 		.regex(/[A-Z]/, 'Min one capital letter')
@@ -50,7 +50,7 @@ export const RegisterSchema = z.object({
 
 export const LoginSchema = z.object({
 	...UserLoginSchema.shape,
-	email: UserLoginSchema.shape.email.email('Invalid e-mail'),
+	email: z.email('Invalid e-mail'),
 	password: z.string()
 		.min(12, 'Min 12 characters')
 		.regex(/[A-Z]/, 'Min one capital letter')
