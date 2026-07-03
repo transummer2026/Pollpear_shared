@@ -1,0 +1,19 @@
+name: CI Ship
+
+on:
+  push:
+    branches: ["dev"]
+
+concurrency:
+  group: ci-ship-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  ship:
+    uses: transummer2026/.github/.github/workflows/ci-shared-push.yml@main
+    secrets:
+      OTEL_ENDPOINT: ${{ secrets.OTEL_ENDPOINT }}
+      TAILSCALE_AUTHKEY: ${{ secrets.TAILSCALE_AUTHKEY }}
+      DISCORD_WEBHOOK_REPO: ${{ secrets.DISCORD_WEBHOOK_SHARED }}
+      DISPATCH_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
+      SEMANTIC_TOKEN: ${{ secrets.SEMANTIC_TOKEN }}
