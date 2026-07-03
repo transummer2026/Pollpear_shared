@@ -13,12 +13,15 @@ export const RegisterSchema = z.object({
 		.regex(/[A-Z]/, 'Min one capital letter')
 		.regex(/[0-9]/, 'Min one digit'),
 	confirmPassword: z.string(),
-	birthdate: UserProfileSchema.shape.birthdate
+	birthdate: z.date({ error: "Enter your birthdate" })
     .min(new Date("1900-01-01"), { error: "Too old!"}),
   nationality: UserProfileSchema.shape.nationality
     .min(3, 'Min 3 characters')
     .max(20, 'Max 20 characters')
-    .regex(/[A-Z]/, 'Only letters'),
+    .regex(/^[a-zA-Z]{2,15}(\-?\s?[a-zA-Z]{1,10})?$/, 'Only letters'),
+  gender: z.enum(UserProfileSchema.shape.gender.options, {
+    error: 'Select a gender',
+  }),
   name: UserProfileSchema.shape.name
     .unwrap().unwrap()
     .max(255, 'Max 255 characters')
