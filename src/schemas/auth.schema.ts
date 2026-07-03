@@ -2,19 +2,19 @@ import { z } from 'zod'
 import { UserProfileSchema, UserLoginSchema } from './users.schema'
 
 export const RegisterSchema = z.object({
-	...UserProfileSchema.shape,
-	username: UserProfileSchema.shape.username
+  ...UserProfileSchema.shape,
+  username: UserProfileSchema.shape.username
     .min(5, 'Min 5 characters')
-		.max(32, 'Max 32 characters')
-		.regex(/^[\w.]+$/, ''),
-	email: z.email('Invalid e-mail'),
-	password: z.string()
-		.min(12, 'Min 12 characters')
-		.regex(/[A-Z]/, 'Min one capital letter')
-		.regex(/[0-9]/, 'Min one digit'),
-	confirmPassword: z.string(),
-	birthdate: z.date({ error: "Enter your birthdate" })
-    .min(new Date("1900-01-01"), { error: "Too old!"}),
+    .max(32, 'Max 32 characters')
+    .regex(/^[\w.]+$/, ''),
+  email: z.email('Invalid e-mail'),
+  password: z.string()
+    .min(12, 'Min 12 characters')
+    .regex(/[A-Z]/, 'Min one capital letter')
+    .regex(/[0-9]/, 'Min one digit'),
+  confirmPassword: z.string(),
+  birthdate: z.coerce.date({ error: "Enter your birthdate" })
+    .min(new Date("1900-01-01"), { error: "Too old!" }),
   nationality: UserProfileSchema.shape.nationality
     .min(3, 'Min 3 characters')
     .max(20, 'Max 20 characters')
@@ -46,18 +46,18 @@ export const RegisterSchema = z.object({
     .unwrap().unwrap()
     .max(255, 'Max 255 characters')
     .optional(),
-  }).refine(data => data.password === data.confirmPassword, { // the password is doubke checked here
-	message: 'Passwords do not match',
-	path: ['confirmPassword'],
+}).refine(data => data.password === data.confirmPassword, { // the password is doubke checked here
+  message: 'Passwords do not match',
+  path: ['confirmPassword'],
 })
 
 export const LoginSchema = z.object({
-	...UserLoginSchema.shape,
-	email: z.email('Invalid e-mail'),
-	password: z.string()
-		.min(12, 'Min 12 characters')
-		.regex(/[A-Z]/, 'Min one capital letter')
-		.regex(/[0-9]/, 'Min one digit'),
+  ...UserLoginSchema.shape,
+  email: z.email('Invalid e-mail'),
+  password: z.string()
+    .min(12, 'Min 12 characters')
+    .regex(/[A-Z]/, 'Min one capital letter')
+    .regex(/[0-9]/, 'Min one digit'),
 })
 
 export type LoginDTO = z.infer<typeof LoginSchema>
