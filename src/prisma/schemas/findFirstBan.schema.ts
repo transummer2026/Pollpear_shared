@@ -1,14 +1,15 @@
-import type { Prisma } from '../../../../src/generated/prisma/client';
-import * as z from 'zod';
-import { BanOrderByWithRelationInputObjectSchema as BanOrderByWithRelationInputObjectSchema } from './objects/BanOrderByWithRelationInput.schema';
-import { BanWhereInputObjectSchema as BanWhereInputObjectSchema } from './objects/BanWhereInput.schema';
-import { BanWhereUniqueInputObjectSchema as BanWhereUniqueInputObjectSchema } from './objects/BanWhereUniqueInput.schema';
-import { BanScalarFieldEnumSchema } from './enums/BanScalarFieldEnum.schema';
+import type { Prisma } from "../../../../src/generated/prisma/client";
+import * as z from "zod";
+import { BanOrderByWithRelationInputObjectSchema as BanOrderByWithRelationInputObjectSchema } from "./objects/BanOrderByWithRelationInput.schema";
+import { BanWhereInputObjectSchema as BanWhereInputObjectSchema } from "./objects/BanWhereInput.schema";
+import { BanWhereUniqueInputObjectSchema as BanWhereUniqueInputObjectSchema } from "./objects/BanWhereUniqueInput.schema";
+import { BanScalarFieldEnumSchema } from "./enums/BanScalarFieldEnum.schema";
 
 // Select schema needs to be in file to prevent circular imports
 //------------------------------------------------------
 
-export const BanFindFirstSelectSchema: z.ZodType<Prisma.BanSelect> = z.object({
+export const BanFindFirstSelectSchema: z.ZodType<Prisma.BanSelect> = z
+  .object({
     id: z.boolean().optional(),
     banReason: z.boolean().optional(),
     bannedAt: z.boolean().optional(),
@@ -23,10 +24,12 @@ export const BanFindFirstSelectSchema: z.ZodType<Prisma.BanSelect> = z.object({
     bannedBy: z.boolean().optional(),
     unbannedBy: z.boolean().optional(),
     attachments: z.boolean().optional(),
-    _count: z.boolean().optional()
-  }).strict() as unknown as z.ZodType<Prisma.BanSelect>;
+    _count: z.boolean().optional(),
+  })
+  .strict() as unknown as z.ZodType<Prisma.BanSelect>;
 
-export const BanFindFirstSelectZodSchema = z.object({
+export const BanFindFirstSelectZodSchema = z
+  .object({
     id: z.boolean().optional(),
     banReason: z.boolean().optional(),
     bannedAt: z.boolean().optional(),
@@ -41,9 +44,44 @@ export const BanFindFirstSelectZodSchema = z.object({
     bannedBy: z.boolean().optional(),
     unbannedBy: z.boolean().optional(),
     attachments: z.boolean().optional(),
-    _count: z.boolean().optional()
-  }).strict();
+    _count: z.boolean().optional(),
+  })
+  .strict();
 
-export const BanFindFirstSchema: z.ZodType<Prisma.BanFindFirstArgs> = z.object({ select: BanFindFirstSelectSchema.optional(),  orderBy: z.union([BanOrderByWithRelationInputObjectSchema, BanOrderByWithRelationInputObjectSchema.array()]).optional(), where: BanWhereInputObjectSchema.optional(), cursor: BanWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), distinct: z.union([BanScalarFieldEnumSchema, BanScalarFieldEnumSchema.array()]).optional() }).strict() as unknown as z.ZodType<Prisma.BanFindFirstArgs>;
+export const BanFindFirstSchema: z.ZodType<Prisma.BanFindFirstArgs> = z
+  .object({
+    select: BanFindFirstSelectSchema.optional(),
+    orderBy: z
+      .union([
+        BanOrderByWithRelationInputObjectSchema,
+        BanOrderByWithRelationInputObjectSchema.array(),
+      ])
+      .optional(),
+    where: BanWhereInputObjectSchema.optional(),
+    cursor: BanWhereUniqueInputObjectSchema.optional(),
+    take: z.number().optional(),
+    skip: z.number().optional(),
+    distinct: z
+      .union([BanScalarFieldEnumSchema, BanScalarFieldEnumSchema.array()])
+      .optional(),
+  })
+  .strict() as unknown as z.ZodType<Prisma.BanFindFirstArgs>;
 
-export const BanFindFirstZodSchema = z.object({ select: BanFindFirstSelectSchema.optional(),  orderBy: z.union([BanOrderByWithRelationInputObjectSchema, BanOrderByWithRelationInputObjectSchema.array()]).optional(), where: BanWhereInputObjectSchema.optional(), cursor: BanWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), distinct: z.union([BanScalarFieldEnumSchema, BanScalarFieldEnumSchema.array()]).optional() }).strict();
+export const BanFindFirstZodSchema = z
+  .object({
+    select: BanFindFirstSelectSchema.optional(),
+    orderBy: z
+      .union([
+        BanOrderByWithRelationInputObjectSchema,
+        BanOrderByWithRelationInputObjectSchema.array(),
+      ])
+      .optional(),
+    where: BanWhereInputObjectSchema.optional(),
+    cursor: BanWhereUniqueInputObjectSchema.optional(),
+    take: z.number().optional(),
+    skip: z.number().optional(),
+    distinct: z
+      .union([BanScalarFieldEnumSchema, BanScalarFieldEnumSchema.array()])
+      .optional(),
+  })
+  .strict();

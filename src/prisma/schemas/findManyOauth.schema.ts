@@ -1,14 +1,15 @@
-import type { Prisma } from '../../../../src/generated/prisma/client';
-import * as z from 'zod';
-import { OauthOrderByWithRelationInputObjectSchema as OauthOrderByWithRelationInputObjectSchema } from './objects/OauthOrderByWithRelationInput.schema';
-import { OauthWhereInputObjectSchema as OauthWhereInputObjectSchema } from './objects/OauthWhereInput.schema';
-import { OauthWhereUniqueInputObjectSchema as OauthWhereUniqueInputObjectSchema } from './objects/OauthWhereUniqueInput.schema';
-import { OauthScalarFieldEnumSchema } from './enums/OauthScalarFieldEnum.schema';
+import type { Prisma } from "../../../../src/generated/prisma/client";
+import * as z from "zod";
+import { OauthOrderByWithRelationInputObjectSchema as OauthOrderByWithRelationInputObjectSchema } from "./objects/OauthOrderByWithRelationInput.schema";
+import { OauthWhereInputObjectSchema as OauthWhereInputObjectSchema } from "./objects/OauthWhereInput.schema";
+import { OauthWhereUniqueInputObjectSchema as OauthWhereUniqueInputObjectSchema } from "./objects/OauthWhereUniqueInput.schema";
+import { OauthScalarFieldEnumSchema } from "./enums/OauthScalarFieldEnum.schema";
 
 // Select schema needs to be in file to prevent circular imports
 //------------------------------------------------------
 
-export const OauthFindManySelectSchema: z.ZodType<Prisma.OauthSelect> = z.object({
+export const OauthFindManySelectSchema: z.ZodType<Prisma.OauthSelect> = z
+  .object({
     id: z.boolean().optional(),
     provider: z.boolean().optional(),
     providerUserId: z.boolean().optional(),
@@ -22,10 +23,12 @@ export const OauthFindManySelectSchema: z.ZodType<Prisma.OauthSelect> = z.object
     createdAt: z.boolean().optional(),
     updatedAt: z.boolean().optional(),
     userId: z.boolean().optional(),
-    user: z.boolean().optional()
-  }).strict() as unknown as z.ZodType<Prisma.OauthSelect>;
+    user: z.boolean().optional(),
+  })
+  .strict() as unknown as z.ZodType<Prisma.OauthSelect>;
 
-export const OauthFindManySelectZodSchema = z.object({
+export const OauthFindManySelectZodSchema = z
+  .object({
     id: z.boolean().optional(),
     provider: z.boolean().optional(),
     providerUserId: z.boolean().optional(),
@@ -39,9 +42,44 @@ export const OauthFindManySelectZodSchema = z.object({
     createdAt: z.boolean().optional(),
     updatedAt: z.boolean().optional(),
     userId: z.boolean().optional(),
-    user: z.boolean().optional()
-  }).strict();
+    user: z.boolean().optional(),
+  })
+  .strict();
 
-export const OauthFindManySchema: z.ZodType<Prisma.OauthFindManyArgs> = z.object({ select: OauthFindManySelectSchema.optional(),  orderBy: z.union([OauthOrderByWithRelationInputObjectSchema, OauthOrderByWithRelationInputObjectSchema.array()]).optional(), where: OauthWhereInputObjectSchema.optional(), cursor: OauthWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), distinct: z.union([OauthScalarFieldEnumSchema, OauthScalarFieldEnumSchema.array()]).optional() }).strict() as unknown as z.ZodType<Prisma.OauthFindManyArgs>;
+export const OauthFindManySchema: z.ZodType<Prisma.OauthFindManyArgs> = z
+  .object({
+    select: OauthFindManySelectSchema.optional(),
+    orderBy: z
+      .union([
+        OauthOrderByWithRelationInputObjectSchema,
+        OauthOrderByWithRelationInputObjectSchema.array(),
+      ])
+      .optional(),
+    where: OauthWhereInputObjectSchema.optional(),
+    cursor: OauthWhereUniqueInputObjectSchema.optional(),
+    take: z.number().optional(),
+    skip: z.number().optional(),
+    distinct: z
+      .union([OauthScalarFieldEnumSchema, OauthScalarFieldEnumSchema.array()])
+      .optional(),
+  })
+  .strict() as unknown as z.ZodType<Prisma.OauthFindManyArgs>;
 
-export const OauthFindManyZodSchema = z.object({ select: OauthFindManySelectSchema.optional(),  orderBy: z.union([OauthOrderByWithRelationInputObjectSchema, OauthOrderByWithRelationInputObjectSchema.array()]).optional(), where: OauthWhereInputObjectSchema.optional(), cursor: OauthWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), distinct: z.union([OauthScalarFieldEnumSchema, OauthScalarFieldEnumSchema.array()]).optional() }).strict();
+export const OauthFindManyZodSchema = z
+  .object({
+    select: OauthFindManySelectSchema.optional(),
+    orderBy: z
+      .union([
+        OauthOrderByWithRelationInputObjectSchema,
+        OauthOrderByWithRelationInputObjectSchema.array(),
+      ])
+      .optional(),
+    where: OauthWhereInputObjectSchema.optional(),
+    cursor: OauthWhereUniqueInputObjectSchema.optional(),
+    take: z.number().optional(),
+    skip: z.number().optional(),
+    distinct: z
+      .union([OauthScalarFieldEnumSchema, OauthScalarFieldEnumSchema.array()])
+      .optional(),
+  })
+  .strict();

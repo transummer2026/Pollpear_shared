@@ -1,28 +1,28 @@
-import { type z } from 'zod'
-import { UserSchema } from "../prisma/schemas/models/User.schema"
+import { type z } from "zod";
+import { UserSchema } from "../prisma/schemas/models/User.schema";
 
 export const UserDTOSchema = UserSchema.omit({
-	passwordHash: true,
-	updatedAt: true
+  passwordHash: true,
+  updatedAt: true,
 });
 
 export const UserProfileSchema = UserDTOSchema.omit({
-	id: true,
-	role: true,
-	score: true,
-	isOnline: true,
-	isDeleted: true,
-	visibility: true,
-	deletedAt: true,
-	lastSeenAt: true,
-	avatarUrl: true,
-	bannerUrl: true,
-	createdAt: true,
-	userTheme: true
+  id: true,
+  role: true,
+  score: true,
+  isOnline: true,
+  isDeleted: true,
+  visibility: true,
+  deletedAt: true,
+  lastSeenAt: true,
+  avatarUrl: true,
+  bannerUrl: true,
+  createdAt: true,
+  userTheme: true,
 });
 
 export const UserLoginSchema = UserDTOSchema.pick({
-	email: true,
+  email: true,
 });
 
 export type UserDTO = z.infer<typeof UserDTOSchema>;

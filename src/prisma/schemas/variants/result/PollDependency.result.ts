@@ -1,4 +1,4 @@
-import * as z from 'zod';
+import * as z from "zod";
 // prettier-ignore
 export const PollDependencyResultSchema = z.object({
     id: z.number().int(),
@@ -8,4 +8,6 @@ export const PollDependencyResultSchema = z.object({
     option: z.unknown()
 }).strict();
 
-export type PollDependencyResultType = z.infer<typeof PollDependencyResultSchema>;
+export type PollDependencyResultType = z.infer<
+  typeof PollDependencyResultSchema
+>;

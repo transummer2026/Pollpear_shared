@@ -1,4 +1,4 @@
-import * as z from 'zod';
+import * as z from "zod";
 // prettier-ignore
 export const BanModelSchema = z.object({
     id: z.number().int(),

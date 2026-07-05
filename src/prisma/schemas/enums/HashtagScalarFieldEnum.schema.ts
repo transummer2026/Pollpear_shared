@@ -1,5 +1,7 @@
-import * as z from 'zod';
+import * as z from "zod";
 
-export const HashtagScalarFieldEnumSchema = z.enum(['id', 'name', 'isVisible'])
+export const HashtagScalarFieldEnumSchema = z.enum(["id", "name", "isVisible"]);
 
-export type HashtagScalarFieldEnum = z.infer<typeof HashtagScalarFieldEnumSchema>;
+export type HashtagScalarFieldEnum = z.infer<
+  typeof HashtagScalarFieldEnumSchema
+>;

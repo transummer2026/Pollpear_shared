@@ -1,5 +1,7 @@
-import * as z from 'zod';
+import * as z from "zod";
 
-export const PollTemplateScalarFieldEnumSchema = z.enum(['userId', 'pollId'])
+export const PollTemplateScalarFieldEnumSchema = z.enum(["userId", "pollId"]);
 
-export type PollTemplateScalarFieldEnum = z.infer<typeof PollTemplateScalarFieldEnumSchema>;
+export type PollTemplateScalarFieldEnum = z.infer<
+  typeof PollTemplateScalarFieldEnumSchema
+>;

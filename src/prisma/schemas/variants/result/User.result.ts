@@ -1,8 +1,8 @@
-import * as z from 'zod';
-import { UserRoleSchema } from '../../enums/UserRole.schema';
-import { GenderSchema } from '../../enums/Gender.schema';
-import { VisibilitySchema } from '../../enums/Visibility.schema';
-import { UserThemeSchema } from '../../enums/UserTheme.schema';
+import * as z from "zod";
+import { UserRoleSchema } from "../../enums/UserRole.schema";
+import { GenderSchema } from "../../enums/Gender.schema";
+import { VisibilitySchema } from "../../enums/Visibility.schema";
+import { UserThemeSchema } from "../../enums/UserTheme.schema";
 // prettier-ignore
 export const UserResultSchema = z.object({
     id: z.number().int(),

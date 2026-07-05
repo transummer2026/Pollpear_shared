@@ -1,14 +1,15 @@
-import type { Prisma } from '../../../../src/generated/prisma/client';
-import * as z from 'zod';
-import { ReportOrderByWithRelationInputObjectSchema as ReportOrderByWithRelationInputObjectSchema } from './objects/ReportOrderByWithRelationInput.schema';
-import { ReportWhereInputObjectSchema as ReportWhereInputObjectSchema } from './objects/ReportWhereInput.schema';
-import { ReportWhereUniqueInputObjectSchema as ReportWhereUniqueInputObjectSchema } from './objects/ReportWhereUniqueInput.schema';
-import { ReportScalarFieldEnumSchema } from './enums/ReportScalarFieldEnum.schema';
+import type { Prisma } from "../../../../src/generated/prisma/client";
+import * as z from "zod";
+import { ReportOrderByWithRelationInputObjectSchema as ReportOrderByWithRelationInputObjectSchema } from "./objects/ReportOrderByWithRelationInput.schema";
+import { ReportWhereInputObjectSchema as ReportWhereInputObjectSchema } from "./objects/ReportWhereInput.schema";
+import { ReportWhereUniqueInputObjectSchema as ReportWhereUniqueInputObjectSchema } from "./objects/ReportWhereUniqueInput.schema";
+import { ReportScalarFieldEnumSchema } from "./enums/ReportScalarFieldEnum.schema";
 
 // Select schema needs to be in file to prevent circular imports
 //------------------------------------------------------
 
-export const ReportFindManySelectSchema: z.ZodType<Prisma.ReportSelect> = z.object({
+export const ReportFindManySelectSchema: z.ZodType<Prisma.ReportSelect> = z
+  .object({
     id: z.boolean().optional(),
     reason: z.boolean().optional(),
     content: z.boolean().optional(),
@@ -27,10 +28,12 @@ export const ReportFindManySelectSchema: z.ZodType<Prisma.ReportSelect> = z.obje
     message: z.boolean().optional(),
     poll: z.boolean().optional(),
     option: z.boolean().optional(),
-    hashtag: z.boolean().optional()
-  }).strict() as unknown as z.ZodType<Prisma.ReportSelect>;
+    hashtag: z.boolean().optional(),
+  })
+  .strict() as unknown as z.ZodType<Prisma.ReportSelect>;
 
-export const ReportFindManySelectZodSchema = z.object({
+export const ReportFindManySelectZodSchema = z
+  .object({
     id: z.boolean().optional(),
     reason: z.boolean().optional(),
     content: z.boolean().optional(),
@@ -49,9 +52,44 @@ export const ReportFindManySelectZodSchema = z.object({
     message: z.boolean().optional(),
     poll: z.boolean().optional(),
     option: z.boolean().optional(),
-    hashtag: z.boolean().optional()
-  }).strict();
+    hashtag: z.boolean().optional(),
+  })
+  .strict();
 
-export const ReportFindManySchema: z.ZodType<Prisma.ReportFindManyArgs> = z.object({ select: ReportFindManySelectSchema.optional(),  orderBy: z.union([ReportOrderByWithRelationInputObjectSchema, ReportOrderByWithRelationInputObjectSchema.array()]).optional(), where: ReportWhereInputObjectSchema.optional(), cursor: ReportWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), distinct: z.union([ReportScalarFieldEnumSchema, ReportScalarFieldEnumSchema.array()]).optional() }).strict() as unknown as z.ZodType<Prisma.ReportFindManyArgs>;
+export const ReportFindManySchema: z.ZodType<Prisma.ReportFindManyArgs> = z
+  .object({
+    select: ReportFindManySelectSchema.optional(),
+    orderBy: z
+      .union([
+        ReportOrderByWithRelationInputObjectSchema,
+        ReportOrderByWithRelationInputObjectSchema.array(),
+      ])
+      .optional(),
+    where: ReportWhereInputObjectSchema.optional(),
+    cursor: ReportWhereUniqueInputObjectSchema.optional(),
+    take: z.number().optional(),
+    skip: z.number().optional(),
+    distinct: z
+      .union([ReportScalarFieldEnumSchema, ReportScalarFieldEnumSchema.array()])
+      .optional(),
+  })
+  .strict() as unknown as z.ZodType<Prisma.ReportFindManyArgs>;
 
-export const ReportFindManyZodSchema = z.object({ select: ReportFindManySelectSchema.optional(),  orderBy: z.union([ReportOrderByWithRelationInputObjectSchema, ReportOrderByWithRelationInputObjectSchema.array()]).optional(), where: ReportWhereInputObjectSchema.optional(), cursor: ReportWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), distinct: z.union([ReportScalarFieldEnumSchema, ReportScalarFieldEnumSchema.array()]).optional() }).strict();
+export const ReportFindManyZodSchema = z
+  .object({
+    select: ReportFindManySelectSchema.optional(),
+    orderBy: z
+      .union([
+        ReportOrderByWithRelationInputObjectSchema,
+        ReportOrderByWithRelationInputObjectSchema.array(),
+      ])
+      .optional(),
+    where: ReportWhereInputObjectSchema.optional(),
+    cursor: ReportWhereUniqueInputObjectSchema.optional(),
+    take: z.number().optional(),
+    skip: z.number().optional(),
+    distinct: z
+      .union([ReportScalarFieldEnumSchema, ReportScalarFieldEnumSchema.array()])
+      .optional(),
+  })
+  .strict();

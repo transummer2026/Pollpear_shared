@@ -1,8 +1,8 @@
-import * as z from 'zod';
-import { GenderSchema } from '../enums/Gender.schema';
-import { UserRoleSchema } from '../enums/UserRole.schema';
-import { UserThemeSchema } from '../enums/UserTheme.schema';
-import { VisibilitySchema } from '../enums/Visibility.schema';
+import * as z from "zod";
+import { GenderSchema } from "../enums/Gender.schema";
+import { UserRoleSchema } from "../enums/UserRole.schema";
+import { UserThemeSchema } from "../enums/UserTheme.schema";
+import { VisibilitySchema } from "../enums/Visibility.schema";
 
 export const UserSchema = z.object({
   id: z.number().int(),

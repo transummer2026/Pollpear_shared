@@ -1,5 +1,5 @@
-import * as z from 'zod';
-import { ReportReasonSchema } from '../../enums/ReportReason.schema';
+import * as z from "zod";
+import { ReportReasonSchema } from "../../enums/ReportReason.schema";
 // prettier-ignore
 export const ReportInputSchema = z.object({
     reason: ReportReasonSchema,

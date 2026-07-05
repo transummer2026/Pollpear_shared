@@ -1,14 +1,15 @@
-import type { Prisma } from '../../../../src/generated/prisma/client';
-import * as z from 'zod';
-import { UserOrderByWithRelationInputObjectSchema as UserOrderByWithRelationInputObjectSchema } from './objects/UserOrderByWithRelationInput.schema';
-import { UserWhereInputObjectSchema as UserWhereInputObjectSchema } from './objects/UserWhereInput.schema';
-import { UserWhereUniqueInputObjectSchema as UserWhereUniqueInputObjectSchema } from './objects/UserWhereUniqueInput.schema';
-import { UserScalarFieldEnumSchema } from './enums/UserScalarFieldEnum.schema';
+import type { Prisma } from "../../../../src/generated/prisma/client";
+import * as z from "zod";
+import { UserOrderByWithRelationInputObjectSchema as UserOrderByWithRelationInputObjectSchema } from "./objects/UserOrderByWithRelationInput.schema";
+import { UserWhereInputObjectSchema as UserWhereInputObjectSchema } from "./objects/UserWhereInput.schema";
+import { UserWhereUniqueInputObjectSchema as UserWhereUniqueInputObjectSchema } from "./objects/UserWhereUniqueInput.schema";
+import { UserScalarFieldEnumSchema } from "./enums/UserScalarFieldEnum.schema";
 
 // Select schema needs to be in file to prevent circular imports
 //------------------------------------------------------
 
-export const UserFindFirstSelectSchema: z.ZodType<Prisma.UserSelect> = z.object({
+export const UserFindFirstSelectSchema: z.ZodType<Prisma.UserSelect> = z
+  .object({
     id: z.boolean().optional(),
     username: z.boolean().optional(),
     name: z.boolean().optional(),
@@ -55,10 +56,12 @@ export const UserFindFirstSelectSchema: z.ZodType<Prisma.UserSelect> = z.object(
     reportsGiven: z.boolean().optional(),
     reportsReceived: z.boolean().optional(),
     apiKeys: z.boolean().optional(),
-    _count: z.boolean().optional()
-  }).strict() as unknown as z.ZodType<Prisma.UserSelect>;
+    _count: z.boolean().optional(),
+  })
+  .strict() as unknown as z.ZodType<Prisma.UserSelect>;
 
-export const UserFindFirstSelectZodSchema = z.object({
+export const UserFindFirstSelectZodSchema = z
+  .object({
     id: z.boolean().optional(),
     username: z.boolean().optional(),
     name: z.boolean().optional(),
@@ -105,9 +108,44 @@ export const UserFindFirstSelectZodSchema = z.object({
     reportsGiven: z.boolean().optional(),
     reportsReceived: z.boolean().optional(),
     apiKeys: z.boolean().optional(),
-    _count: z.boolean().optional()
-  }).strict();
+    _count: z.boolean().optional(),
+  })
+  .strict();
 
-export const UserFindFirstSchema: z.ZodType<Prisma.UserFindFirstArgs> = z.object({ select: UserFindFirstSelectSchema.optional(),  orderBy: z.union([UserOrderByWithRelationInputObjectSchema, UserOrderByWithRelationInputObjectSchema.array()]).optional(), where: UserWhereInputObjectSchema.optional(), cursor: UserWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), distinct: z.union([UserScalarFieldEnumSchema, UserScalarFieldEnumSchema.array()]).optional() }).strict() as unknown as z.ZodType<Prisma.UserFindFirstArgs>;
+export const UserFindFirstSchema: z.ZodType<Prisma.UserFindFirstArgs> = z
+  .object({
+    select: UserFindFirstSelectSchema.optional(),
+    orderBy: z
+      .union([
+        UserOrderByWithRelationInputObjectSchema,
+        UserOrderByWithRelationInputObjectSchema.array(),
+      ])
+      .optional(),
+    where: UserWhereInputObjectSchema.optional(),
+    cursor: UserWhereUniqueInputObjectSchema.optional(),
+    take: z.number().optional(),
+    skip: z.number().optional(),
+    distinct: z
+      .union([UserScalarFieldEnumSchema, UserScalarFieldEnumSchema.array()])
+      .optional(),
+  })
+  .strict() as unknown as z.ZodType<Prisma.UserFindFirstArgs>;
 
-export const UserFindFirstZodSchema = z.object({ select: UserFindFirstSelectSchema.optional(),  orderBy: z.union([UserOrderByWithRelationInputObjectSchema, UserOrderByWithRelationInputObjectSchema.array()]).optional(), where: UserWhereInputObjectSchema.optional(), cursor: UserWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), distinct: z.union([UserScalarFieldEnumSchema, UserScalarFieldEnumSchema.array()]).optional() }).strict();
+export const UserFindFirstZodSchema = z
+  .object({
+    select: UserFindFirstSelectSchema.optional(),
+    orderBy: z
+      .union([
+        UserOrderByWithRelationInputObjectSchema,
+        UserOrderByWithRelationInputObjectSchema.array(),
+      ])
+      .optional(),
+    where: UserWhereInputObjectSchema.optional(),
+    cursor: UserWhereUniqueInputObjectSchema.optional(),
+    take: z.number().optional(),
+    skip: z.number().optional(),
+    distinct: z
+      .union([UserScalarFieldEnumSchema, UserScalarFieldEnumSchema.array()])
+      .optional(),
+  })
+  .strict();

@@ -1,6 +1,6 @@
-import * as z from 'zod';
-import { OauthProviderSchema } from '../../enums/OauthProvider.schema';
-import { GrantTypeSchema } from '../../enums/GrantType.schema';
+import * as z from "zod";
+import { OauthProviderSchema } from "../../enums/OauthProvider.schema";
+import { GrantTypeSchema } from "../../enums/GrantType.schema";
 // prettier-ignore
 export const OauthInputSchema = z.object({
     provider: OauthProviderSchema,

@@ -1,7 +1,7 @@
-import * as z from 'zod';
-import { PollTypeSchema } from '../../enums/PollType.schema';
-import { VisibilitySchema } from '../../enums/Visibility.schema';
-import { PollStatusSchema } from '../../enums/PollStatus.schema';
+import * as z from "zod";
+import { PollTypeSchema } from "../../enums/PollType.schema";
+import { VisibilitySchema } from "../../enums/Visibility.schema";
+import { PollStatusSchema } from "../../enums/PollStatus.schema";
 // prettier-ignore
 export const PollResultSchema = z.object({
     id: z.number().int(),

@@ -1,5 +1,7 @@
-import * as z from 'zod';
+import * as z from "zod";
 
-export const VoteOptionScalarFieldEnumSchema = z.enum(['voteId', 'optionId'])
+export const VoteOptionScalarFieldEnumSchema = z.enum(["voteId", "optionId"]);
 
-export type VoteOptionScalarFieldEnum = z.infer<typeof VoteOptionScalarFieldEnumSchema>;
+export type VoteOptionScalarFieldEnum = z.infer<
+  typeof VoteOptionScalarFieldEnumSchema
+>;

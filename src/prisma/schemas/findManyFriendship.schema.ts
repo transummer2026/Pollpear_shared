@@ -1,14 +1,29 @@
-import type { Prisma } from '../../../../src/generated/prisma/client';
-import * as z from 'zod';
-import { FriendshipOrderByWithRelationInputObjectSchema as FriendshipOrderByWithRelationInputObjectSchema } from './objects/FriendshipOrderByWithRelationInput.schema';
-import { FriendshipWhereInputObjectSchema as FriendshipWhereInputObjectSchema } from './objects/FriendshipWhereInput.schema';
-import { FriendshipWhereUniqueInputObjectSchema as FriendshipWhereUniqueInputObjectSchema } from './objects/FriendshipWhereUniqueInput.schema';
-import { FriendshipScalarFieldEnumSchema } from './enums/FriendshipScalarFieldEnum.schema';
+import type { Prisma } from "../../../../src/generated/prisma/client";
+import * as z from "zod";
+import { FriendshipOrderByWithRelationInputObjectSchema as FriendshipOrderByWithRelationInputObjectSchema } from "./objects/FriendshipOrderByWithRelationInput.schema";
+import { FriendshipWhereInputObjectSchema as FriendshipWhereInputObjectSchema } from "./objects/FriendshipWhereInput.schema";
+import { FriendshipWhereUniqueInputObjectSchema as FriendshipWhereUniqueInputObjectSchema } from "./objects/FriendshipWhereUniqueInput.schema";
+import { FriendshipScalarFieldEnumSchema } from "./enums/FriendshipScalarFieldEnum.schema";
 
 // Select schema needs to be in file to prevent circular imports
 //------------------------------------------------------
 
-export const FriendshipFindManySelectSchema: z.ZodType<Prisma.FriendshipSelect> = z.object({
+export const FriendshipFindManySelectSchema: z.ZodType<Prisma.FriendshipSelect> =
+  z
+    .object({
+      id: z.boolean().optional(),
+      status: z.boolean().optional(),
+      createdAt: z.boolean().optional(),
+      updatedAt: z.boolean().optional(),
+      requesterId: z.boolean().optional(),
+      addresseeId: z.boolean().optional(),
+      requester: z.boolean().optional(),
+      addressee: z.boolean().optional(),
+    })
+    .strict() as unknown as z.ZodType<Prisma.FriendshipSelect>;
+
+export const FriendshipFindManySelectZodSchema = z
+  .object({
     id: z.boolean().optional(),
     status: z.boolean().optional(),
     createdAt: z.boolean().optional(),
@@ -16,20 +31,51 @@ export const FriendshipFindManySelectSchema: z.ZodType<Prisma.FriendshipSelect> 
     requesterId: z.boolean().optional(),
     addresseeId: z.boolean().optional(),
     requester: z.boolean().optional(),
-    addressee: z.boolean().optional()
-  }).strict() as unknown as z.ZodType<Prisma.FriendshipSelect>;
+    addressee: z.boolean().optional(),
+  })
+  .strict();
 
-export const FriendshipFindManySelectZodSchema = z.object({
-    id: z.boolean().optional(),
-    status: z.boolean().optional(),
-    createdAt: z.boolean().optional(),
-    updatedAt: z.boolean().optional(),
-    requesterId: z.boolean().optional(),
-    addresseeId: z.boolean().optional(),
-    requester: z.boolean().optional(),
-    addressee: z.boolean().optional()
-  }).strict();
+export const FriendshipFindManySchema: z.ZodType<Prisma.FriendshipFindManyArgs> =
+  z
+    .object({
+      select: FriendshipFindManySelectSchema.optional(),
+      orderBy: z
+        .union([
+          FriendshipOrderByWithRelationInputObjectSchema,
+          FriendshipOrderByWithRelationInputObjectSchema.array(),
+        ])
+        .optional(),
+      where: FriendshipWhereInputObjectSchema.optional(),
+      cursor: FriendshipWhereUniqueInputObjectSchema.optional(),
+      take: z.number().optional(),
+      skip: z.number().optional(),
+      distinct: z
+        .union([
+          FriendshipScalarFieldEnumSchema,
+          FriendshipScalarFieldEnumSchema.array(),
+        ])
+        .optional(),
+    })
+    .strict() as unknown as z.ZodType<Prisma.FriendshipFindManyArgs>;
 
-export const FriendshipFindManySchema: z.ZodType<Prisma.FriendshipFindManyArgs> = z.object({ select: FriendshipFindManySelectSchema.optional(),  orderBy: z.union([FriendshipOrderByWithRelationInputObjectSchema, FriendshipOrderByWithRelationInputObjectSchema.array()]).optional(), where: FriendshipWhereInputObjectSchema.optional(), cursor: FriendshipWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), distinct: z.union([FriendshipScalarFieldEnumSchema, FriendshipScalarFieldEnumSchema.array()]).optional() }).strict() as unknown as z.ZodType<Prisma.FriendshipFindManyArgs>;
-
-export const FriendshipFindManyZodSchema = z.object({ select: FriendshipFindManySelectSchema.optional(),  orderBy: z.union([FriendshipOrderByWithRelationInputObjectSchema, FriendshipOrderByWithRelationInputObjectSchema.array()]).optional(), where: FriendshipWhereInputObjectSchema.optional(), cursor: FriendshipWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), distinct: z.union([FriendshipScalarFieldEnumSchema, FriendshipScalarFieldEnumSchema.array()]).optional() }).strict();
+export const FriendshipFindManyZodSchema = z
+  .object({
+    select: FriendshipFindManySelectSchema.optional(),
+    orderBy: z
+      .union([
+        FriendshipOrderByWithRelationInputObjectSchema,
+        FriendshipOrderByWithRelationInputObjectSchema.array(),
+      ])
+      .optional(),
+    where: FriendshipWhereInputObjectSchema.optional(),
+    cursor: FriendshipWhereUniqueInputObjectSchema.optional(),
+    take: z.number().optional(),
+    skip: z.number().optional(),
+    distinct: z
+      .union([
+        FriendshipScalarFieldEnumSchema,
+        FriendshipScalarFieldEnumSchema.array(),
+      ])
+      .optional(),
+  })
+  .strict();

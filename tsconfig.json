@@ -8,8 +8,5 @@
     "isolatedModules": true,
     "skipLibCheck": true
   },
-  "include": [
-    "src",
-    "Pollpear_shared"
-  ]
+  "include": ["src", "Pollpear_shared"]
 }
