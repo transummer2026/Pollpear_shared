@@ -1,0 +1,151 @@
+import type { Prisma } from "../../../../src/generated/prisma/client";
+import * as z from "zod";
+import { UserOrderByWithRelationInputObjectSchema as UserOrderByWithRelationInputObjectSchema } from "./objects/UserOrderByWithRelationInput.schema";
+import { UserWhereInputObjectSchema as UserWhereInputObjectSchema } from "./objects/UserWhereInput.schema";
+import { UserWhereUniqueInputObjectSchema as UserWhereUniqueInputObjectSchema } from "./objects/UserWhereUniqueInput.schema";
+import { UserScalarFieldEnumSchema } from "./enums/UserScalarFieldEnum.schema";
+
+// Select schema needs to be in file to prevent circular imports
+//------------------------------------------------------
+
+export const UserFindFirstSelectSchema: z.ZodType<Prisma.UserSelect> = z
+  .object({
+    id: z.boolean().optional(),
+    username: z.boolean().optional(),
+    name: z.boolean().optional(),
+    surname: z.boolean().optional(),
+    email: z.boolean().optional(),
+    birthdate: z.boolean().optional(),
+    passwordHash: z.boolean().optional(),
+    role: z.boolean().optional(),
+    gender: z.boolean().optional(),
+    nationality: z.boolean().optional(),
+    city: z.boolean().optional(),
+    state: z.boolean().optional(),
+    country: z.boolean().optional(),
+    company: z.boolean().optional(),
+    bio: z.boolean().optional(),
+    score: z.boolean().optional(),
+    isOnline: z.boolean().optional(),
+    isDeleted: z.boolean().optional(),
+    visibility: z.boolean().optional(),
+    deletedAt: z.boolean().optional(),
+    lastSeenAt: z.boolean().optional(),
+    avatarUrl: z.boolean().optional(),
+    bannerUrl: z.boolean().optional(),
+    createdAt: z.boolean().optional(),
+    updatedAt: z.boolean().optional(),
+    userTheme: z.boolean().optional(),
+    oauths: z.boolean().optional(),
+    bansReceived: z.boolean().optional(),
+    bansDone: z.boolean().optional(),
+    bansLifted: z.boolean().optional(),
+    pollsCreated: z.boolean().optional(),
+    roomsCreated: z.boolean().optional(),
+    votes: z.boolean().optional(),
+    messages: z.boolean().optional(),
+    notifications: z.boolean().optional(),
+    pollTemplates: z.boolean().optional(),
+    roomMembers: z.boolean().optional(),
+    invitationsSent: z.boolean().optional(),
+    invitationsReceived: z.boolean().optional(),
+    friendshipsRequested: z.boolean().optional(),
+    friendshipsReceived: z.boolean().optional(),
+    blocksGiven: z.boolean().optional(),
+    blocksReceived: z.boolean().optional(),
+    reportsGiven: z.boolean().optional(),
+    reportsReceived: z.boolean().optional(),
+    apiKeys: z.boolean().optional(),
+    _count: z.boolean().optional(),
+  })
+  .strict() as unknown as z.ZodType<Prisma.UserSelect>;
+
+export const UserFindFirstSelectZodSchema = z
+  .object({
+    id: z.boolean().optional(),
+    username: z.boolean().optional(),
+    name: z.boolean().optional(),
+    surname: z.boolean().optional(),
+    email: z.boolean().optional(),
+    birthdate: z.boolean().optional(),
+    passwordHash: z.boolean().optional(),
+    role: z.boolean().optional(),
+    gender: z.boolean().optional(),
+    nationality: z.boolean().optional(),
+    city: z.boolean().optional(),
+    state: z.boolean().optional(),
+    country: z.boolean().optional(),
+    company: z.boolean().optional(),
+    bio: z.boolean().optional(),
+    score: z.boolean().optional(),
+    isOnline: z.boolean().optional(),
+    isDeleted: z.boolean().optional(),
+    visibility: z.boolean().optional(),
+    deletedAt: z.boolean().optional(),
+    lastSeenAt: z.boolean().optional(),
+    avatarUrl: z.boolean().optional(),
+    bannerUrl: z.boolean().optional(),
+    createdAt: z.boolean().optional(),
+    updatedAt: z.boolean().optional(),
+    userTheme: z.boolean().optional(),
+    oauths: z.boolean().optional(),
+    bansReceived: z.boolean().optional(),
+    bansDone: z.boolean().optional(),
+    bansLifted: z.boolean().optional(),
+    pollsCreated: z.boolean().optional(),
+    roomsCreated: z.boolean().optional(),
+    votes: z.boolean().optional(),
+    messages: z.boolean().optional(),
+    notifications: z.boolean().optional(),
+    pollTemplates: z.boolean().optional(),
+    roomMembers: z.boolean().optional(),
+    invitationsSent: z.boolean().optional(),
+    invitationsReceived: z.boolean().optional(),
+    friendshipsRequested: z.boolean().optional(),
+    friendshipsReceived: z.boolean().optional(),
+    blocksGiven: z.boolean().optional(),
+    blocksReceived: z.boolean().optional(),
+    reportsGiven: z.boolean().optional(),
+    reportsReceived: z.boolean().optional(),
+    apiKeys: z.boolean().optional(),
+    _count: z.boolean().optional(),
+  })
+  .strict();
+
+export const UserFindFirstSchema: z.ZodType<Prisma.UserFindFirstArgs> = z
+  .object({
+    select: UserFindFirstSelectSchema.optional(),
+    orderBy: z
+      .union([
+        UserOrderByWithRelationInputObjectSchema,
+        UserOrderByWithRelationInputObjectSchema.array(),
+      ])
+      .optional(),
+    where: UserWhereInputObjectSchema.optional(),
+    cursor: UserWhereUniqueInputObjectSchema.optional(),
+    take: z.number().optional(),
+    skip: z.number().optional(),
+    distinct: z
+      .union([UserScalarFieldEnumSchema, UserScalarFieldEnumSchema.array()])
+      .optional(),
+  })
+  .strict() as unknown as z.ZodType<Prisma.UserFindFirstArgs>;
+
+export const UserFindFirstZodSchema = z
+  .object({
+    select: UserFindFirstSelectSchema.optional(),
+    orderBy: z
+      .union([
+        UserOrderByWithRelationInputObjectSchema,
+        UserOrderByWithRelationInputObjectSchema.array(),
+      ])
+      .optional(),
+    where: UserWhereInputObjectSchema.optional(),
+    cursor: UserWhereUniqueInputObjectSchema.optional(),
+    take: z.number().optional(),
+    skip: z.number().optional(),
+    distinct: z
+      .union([UserScalarFieldEnumSchema, UserScalarFieldEnumSchema.array()])
+      .optional(),
+  })
+  .strict();
