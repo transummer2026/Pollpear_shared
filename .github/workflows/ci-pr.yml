@@ -1,0 +1,36 @@
+name: CI PR
+
+on:
+  pull_request:
+    branches: [dev, main, staging]
+  repository_dispatch:
+    types: [ci-trigger]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-pr-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    permissions:
+      contents: read
+      pull-requests: read
+    uses: transummer2026/.github/.github/workflows/ci-service.yml@main
+    with:
+      service_name: shared
+      install_cmd: npm ci
+      lint_cmd: npx tsc --noEmit
+      test_cmd: echo "no tests"
+      build_cmd: echo "no build"
+      audit_cmd: npm audit --audit-level=high
+      skip_build: true
+      coverage_threshold: 0
+    secrets:
+      OTEL_ENDPOINT: ${{ secrets.OTEL_ENDPOINT }}
+      TAILSCALE_AUTHKEY: ${{ secrets.TAILSCALE_AUTHKEY }}
+      DISCORD_WEBHOOK_REPO: ${{ secrets.DISCORD_WEBHOOK_SHARED }}
+      GHCR_TOKEN: ${{ secrets.GHCR_TOKEN }}
+      APP_CLIENT_ID: ${{ secrets.APP_CLIENT_ID }}
+      APP_PRIVATE_KEY: ${{ secrets.APP_PRIVATE_KEY }}
+      SEMANTIC_TOKEN: ${{ secrets.SEMANTIC_TOKEN }}

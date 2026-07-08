@@ -1,0 +1,23 @@
+name: CI Branch
+
+on:
+  push:
+    branches-ignore: [dev, main, staging]
+
+concurrency:
+  group: ci-branch-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    uses: transummer2026/.github/.github/workflows/ci-service-branch.yml@main
+    with:
+      service_name: shared
+      install_cmd: npm ci
+      lint_cmd: npx tsc --noEmit
+    secrets:
+      OTEL_ENDPOINT: ${{ secrets.OTEL_ENDPOINT }}
+      TAILSCALE_AUTHKEY: ${{ secrets.TAILSCALE_AUTHKEY }}
+      DISCORD_WEBHOOK_REPO: ${{ secrets.DISCORD_WEBHOOK_SHARED }}
+      APP_CLIENT_ID: ${{ secrets.APP_CLIENT_ID }}
+      APP_PRIVATE_KEY: ${{ secrets.APP_PRIVATE_KEY }}
