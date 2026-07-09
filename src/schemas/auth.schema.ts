@@ -67,9 +67,7 @@ export const LoginSchema = z.object({
   email: z.email("Invalid e-mail"),
   password: z
     .string()
-    .min(12, "Min 12 characters")
-    .regex(/[A-Z]/, "Min one capital letter")
-    .regex(/[0-9]/, "Min one digit"),
+    .min(1, "Password required")
 });
 
 export type LoginDTO = z.infer<typeof LoginSchema>;
