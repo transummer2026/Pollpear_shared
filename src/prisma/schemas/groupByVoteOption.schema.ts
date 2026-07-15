@@ -1,0 +1,15 @@
+import type { Prisma } from '../../../../src/generated/prisma/client';
+import * as z from 'zod';
+import { VoteOptionWhereInputObjectSchema as VoteOptionWhereInputObjectSchema } from './objects/VoteOptionWhereInput.schema';
+import { VoteOptionOrderByWithAggregationInputObjectSchema as VoteOptionOrderByWithAggregationInputObjectSchema } from './objects/VoteOptionOrderByWithAggregationInput.schema';
+import { VoteOptionScalarWhereWithAggregatesInputObjectSchema as VoteOptionScalarWhereWithAggregatesInputObjectSchema } from './objects/VoteOptionScalarWhereWithAggregatesInput.schema';
+import { VoteOptionScalarFieldEnumSchema } from './enums/VoteOptionScalarFieldEnum.schema';
+import { VoteOptionCountAggregateInputObjectSchema as VoteOptionCountAggregateInputObjectSchema } from './objects/VoteOptionCountAggregateInput.schema';
+import { VoteOptionMinAggregateInputObjectSchema as VoteOptionMinAggregateInputObjectSchema } from './objects/VoteOptionMinAggregateInput.schema';
+import { VoteOptionMaxAggregateInputObjectSchema as VoteOptionMaxAggregateInputObjectSchema } from './objects/VoteOptionMaxAggregateInput.schema';
+import { VoteOptionAvgAggregateInputObjectSchema as VoteOptionAvgAggregateInputObjectSchema } from './objects/VoteOptionAvgAggregateInput.schema';
+import { VoteOptionSumAggregateInputObjectSchema as VoteOptionSumAggregateInputObjectSchema } from './objects/VoteOptionSumAggregateInput.schema';
+
+export const VoteOptionGroupBySchema: z.ZodType<Prisma.VoteOptionGroupByArgs> = z.object({ where: VoteOptionWhereInputObjectSchema.optional(), orderBy: z.union([VoteOptionOrderByWithAggregationInputObjectSchema, VoteOptionOrderByWithAggregationInputObjectSchema.array()]).optional(), having: VoteOptionScalarWhereWithAggregatesInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), by: z.array(VoteOptionScalarFieldEnumSchema), _count: z.union([ z.literal(true), VoteOptionCountAggregateInputObjectSchema ]).optional(), _min: VoteOptionMinAggregateInputObjectSchema.optional(), _max: VoteOptionMaxAggregateInputObjectSchema.optional(), _avg: VoteOptionAvgAggregateInputObjectSchema.optional(), _sum: VoteOptionSumAggregateInputObjectSchema.optional() }).strict() as unknown as z.ZodType<Prisma.VoteOptionGroupByArgs>;
+
+export const VoteOptionGroupByZodSchema = z.object({ where: VoteOptionWhereInputObjectSchema.optional(), orderBy: z.union([VoteOptionOrderByWithAggregationInputObjectSchema, VoteOptionOrderByWithAggregationInputObjectSchema.array()]).optional(), having: VoteOptionScalarWhereWithAggregatesInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), by: z.array(VoteOptionScalarFieldEnumSchema), _count: z.union([ z.literal(true), VoteOptionCountAggregateInputObjectSchema ]).optional(), _min: VoteOptionMinAggregateInputObjectSchema.optional(), _max: VoteOptionMaxAggregateInputObjectSchema.optional(), _avg: VoteOptionAvgAggregateInputObjectSchema.optional(), _sum: VoteOptionSumAggregateInputObjectSchema.optional() }).strict();

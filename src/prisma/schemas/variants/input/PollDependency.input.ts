@@ -1,6 +1,7 @@
-import * as z from "zod";
+import * as z from 'zod';
 // prettier-ignore
 export const PollDependencyInputSchema = z.object({
+    id: z.number().int(),
     childPollId: z.number().int(),
     optionId: z.number().int(),
     childPoll: z.unknown(),

@@ -1,0 +1,10 @@
+import * as z from 'zod';
+import type { Prisma } from '../../../../../src/generated/prisma/client';
+import { SortOrderSchema } from '../enums/SortOrder.schema'
+
+const makeSchema = () => z.object({
+  pollId: SortOrderSchema.optional(),
+  hashtagId: SortOrderSchema.optional()
+}).strict();
+export const PollHashtagAvgOrderByAggregateInputObjectSchema: z.ZodType<Prisma.PollHashtagAvgOrderByAggregateInput> = makeSchema() as unknown as z.ZodType<Prisma.PollHashtagAvgOrderByAggregateInput>;
+export const PollHashtagAvgOrderByAggregateInputObjectZodSchema = makeSchema();

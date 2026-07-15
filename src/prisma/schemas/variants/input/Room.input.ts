@@ -1,10 +1,13 @@
-import * as z from "zod";
-import { VisibilitySchema } from "../../enums/Visibility.schema";
-import { RoomStatusSchema } from "../../enums/RoomStatus.schema";
+import * as z from 'zod';
+import { VisibilitySchema } from '../../enums/Visibility.schema';
+import { RoomStatusSchema } from '../../enums/RoomStatus.schema';
 // prettier-ignore
 export const RoomInputSchema = z.object({
+    id: z.number().int(),
     name: z.string(),
     description: z.string().optional().nullable(),
+    createdAt: z.date(),
+    updatedAt: z.date(),
     publishedAt: z.date().optional().nullable(),
     bannerUrl: z.string(),
     visibility: VisibilitySchema,

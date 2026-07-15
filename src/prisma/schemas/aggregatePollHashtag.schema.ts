@@ -1,0 +1,14 @@
+import type { Prisma } from '../../../../src/generated/prisma/client';
+import * as z from 'zod';
+import { PollHashtagOrderByWithRelationInputObjectSchema as PollHashtagOrderByWithRelationInputObjectSchema } from './objects/PollHashtagOrderByWithRelationInput.schema';
+import { PollHashtagWhereInputObjectSchema as PollHashtagWhereInputObjectSchema } from './objects/PollHashtagWhereInput.schema';
+import { PollHashtagWhereUniqueInputObjectSchema as PollHashtagWhereUniqueInputObjectSchema } from './objects/PollHashtagWhereUniqueInput.schema';
+import { PollHashtagCountAggregateInputObjectSchema as PollHashtagCountAggregateInputObjectSchema } from './objects/PollHashtagCountAggregateInput.schema';
+import { PollHashtagMinAggregateInputObjectSchema as PollHashtagMinAggregateInputObjectSchema } from './objects/PollHashtagMinAggregateInput.schema';
+import { PollHashtagMaxAggregateInputObjectSchema as PollHashtagMaxAggregateInputObjectSchema } from './objects/PollHashtagMaxAggregateInput.schema';
+import { PollHashtagAvgAggregateInputObjectSchema as PollHashtagAvgAggregateInputObjectSchema } from './objects/PollHashtagAvgAggregateInput.schema';
+import { PollHashtagSumAggregateInputObjectSchema as PollHashtagSumAggregateInputObjectSchema } from './objects/PollHashtagSumAggregateInput.schema';
+
+export const PollHashtagAggregateSchema: z.ZodType<Prisma.PollHashtagAggregateArgs> = z.object({ orderBy: z.union([PollHashtagOrderByWithRelationInputObjectSchema, PollHashtagOrderByWithRelationInputObjectSchema.array()]).optional(), where: PollHashtagWhereInputObjectSchema.optional(), cursor: PollHashtagWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), _count: z.union([ z.literal(true), PollHashtagCountAggregateInputObjectSchema ]).optional(), _min: PollHashtagMinAggregateInputObjectSchema.optional(), _max: PollHashtagMaxAggregateInputObjectSchema.optional(), _avg: PollHashtagAvgAggregateInputObjectSchema.optional(), _sum: PollHashtagSumAggregateInputObjectSchema.optional() }).strict() as unknown as z.ZodType<Prisma.PollHashtagAggregateArgs>;
+
+export const PollHashtagAggregateZodSchema = z.object({ orderBy: z.union([PollHashtagOrderByWithRelationInputObjectSchema, PollHashtagOrderByWithRelationInputObjectSchema.array()]).optional(), where: PollHashtagWhereInputObjectSchema.optional(), cursor: PollHashtagWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), _count: z.union([ z.literal(true), PollHashtagCountAggregateInputObjectSchema ]).optional(), _min: PollHashtagMinAggregateInputObjectSchema.optional(), _max: PollHashtagMaxAggregateInputObjectSchema.optional(), _avg: PollHashtagAvgAggregateInputObjectSchema.optional(), _sum: PollHashtagSumAggregateInputObjectSchema.optional() }).strict();

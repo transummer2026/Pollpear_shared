@@ -1,5 +1,5 @@
-import * as z from "zod";
-import { FriendshipStatusSchema } from "../../enums/FriendshipStatus.schema";
+import * as z from 'zod';
+import { FriendshipStatusSchema } from '../../enums/FriendshipStatus.schema';
 // prettier-ignore
 export const FriendshipResultSchema = z.object({
     id: z.number().int(),

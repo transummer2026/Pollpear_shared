@@ -1,0 +1,14 @@
+import type { Prisma } from '../../../../src/generated/prisma/client';
+import * as z from 'zod';
+import { FriendshipOrderByWithRelationInputObjectSchema as FriendshipOrderByWithRelationInputObjectSchema } from './objects/FriendshipOrderByWithRelationInput.schema';
+import { FriendshipWhereInputObjectSchema as FriendshipWhereInputObjectSchema } from './objects/FriendshipWhereInput.schema';
+import { FriendshipWhereUniqueInputObjectSchema as FriendshipWhereUniqueInputObjectSchema } from './objects/FriendshipWhereUniqueInput.schema';
+import { FriendshipCountAggregateInputObjectSchema as FriendshipCountAggregateInputObjectSchema } from './objects/FriendshipCountAggregateInput.schema';
+import { FriendshipMinAggregateInputObjectSchema as FriendshipMinAggregateInputObjectSchema } from './objects/FriendshipMinAggregateInput.schema';
+import { FriendshipMaxAggregateInputObjectSchema as FriendshipMaxAggregateInputObjectSchema } from './objects/FriendshipMaxAggregateInput.schema';
+import { FriendshipAvgAggregateInputObjectSchema as FriendshipAvgAggregateInputObjectSchema } from './objects/FriendshipAvgAggregateInput.schema';
+import { FriendshipSumAggregateInputObjectSchema as FriendshipSumAggregateInputObjectSchema } from './objects/FriendshipSumAggregateInput.schema';
+
+export const FriendshipAggregateSchema: z.ZodType<Prisma.FriendshipAggregateArgs> = z.object({ orderBy: z.union([FriendshipOrderByWithRelationInputObjectSchema, FriendshipOrderByWithRelationInputObjectSchema.array()]).optional(), where: FriendshipWhereInputObjectSchema.optional(), cursor: FriendshipWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), _count: z.union([ z.literal(true), FriendshipCountAggregateInputObjectSchema ]).optional(), _min: FriendshipMinAggregateInputObjectSchema.optional(), _max: FriendshipMaxAggregateInputObjectSchema.optional(), _avg: FriendshipAvgAggregateInputObjectSchema.optional(), _sum: FriendshipSumAggregateInputObjectSchema.optional() }).strict() as unknown as z.ZodType<Prisma.FriendshipAggregateArgs>;
+
+export const FriendshipAggregateZodSchema = z.object({ orderBy: z.union([FriendshipOrderByWithRelationInputObjectSchema, FriendshipOrderByWithRelationInputObjectSchema.array()]).optional(), where: FriendshipWhereInputObjectSchema.optional(), cursor: FriendshipWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), _count: z.union([ z.literal(true), FriendshipCountAggregateInputObjectSchema ]).optional(), _min: FriendshipMinAggregateInputObjectSchema.optional(), _max: FriendshipMaxAggregateInputObjectSchema.optional(), _avg: FriendshipAvgAggregateInputObjectSchema.optional(), _sum: FriendshipSumAggregateInputObjectSchema.optional() }).strict();

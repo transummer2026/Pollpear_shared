@@ -1,0 +1,18 @@
+import * as z from 'zod';
+import type { Prisma } from '../../../../../src/generated/prisma/client';
+
+
+const makeSchema = () => z.object({
+  id: z.literal(true).optional(),
+  banReason: z.literal(true).optional(),
+  bannedAt: z.literal(true).optional(),
+  unbannedAt: z.literal(true).optional(),
+  unbanReason: z.literal(true).optional(),
+  createdAt: z.literal(true).optional(),
+  updatedAt: z.literal(true).optional(),
+  userId: z.literal(true).optional(),
+  bannedById: z.literal(true).optional(),
+  unbannedById: z.literal(true).optional()
+}).strict();
+export const BanMaxAggregateInputObjectSchema: z.ZodType<Prisma.BanMaxAggregateInputType> = makeSchema() as unknown as z.ZodType<Prisma.BanMaxAggregateInputType>;
+export const BanMaxAggregateInputObjectZodSchema = makeSchema();

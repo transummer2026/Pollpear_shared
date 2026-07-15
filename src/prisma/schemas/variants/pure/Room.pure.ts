@@ -1,6 +1,6 @@
-import * as z from "zod";
-import { VisibilitySchema } from "../../enums/Visibility.schema";
-import { RoomStatusSchema } from "../../enums/RoomStatus.schema";
+import * as z from 'zod';
+import { VisibilitySchema } from '../../enums/Visibility.schema';
+import { RoomStatusSchema } from '../../enums/RoomStatus.schema';
 // prettier-ignore
 export const RoomModelSchema = z.object({
     id: z.number().int(),

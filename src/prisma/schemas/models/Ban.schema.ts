@@ -1,4 +1,4 @@
-import * as z from "zod";
+import * as z from 'zod';
 
 export const BanSchema = z.object({
   id: z.number().int(),

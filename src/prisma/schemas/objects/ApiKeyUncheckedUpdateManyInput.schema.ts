@@ -1,57 +1,18 @@
-import * as z from "zod";
-import type { Prisma } from "../../../../../src/generated/prisma/client";
-import { IntFieldUpdateOperationsInputObjectSchema as IntFieldUpdateOperationsInputObjectSchema } from "./IntFieldUpdateOperationsInput.schema";
-import { StringFieldUpdateOperationsInputObjectSchema as StringFieldUpdateOperationsInputObjectSchema } from "./StringFieldUpdateOperationsInput.schema";
-import { BoolFieldUpdateOperationsInputObjectSchema as BoolFieldUpdateOperationsInputObjectSchema } from "./BoolFieldUpdateOperationsInput.schema";
-import { DateTimeFieldUpdateOperationsInputObjectSchema as DateTimeFieldUpdateOperationsInputObjectSchema } from "./DateTimeFieldUpdateOperationsInput.schema";
+import * as z from 'zod';
+import type { Prisma } from '../../../../../src/generated/prisma/client';
+import { IntFieldUpdateOperationsInputObjectSchema as IntFieldUpdateOperationsInputObjectSchema } from './IntFieldUpdateOperationsInput.schema';
+import { StringFieldUpdateOperationsInputObjectSchema as StringFieldUpdateOperationsInputObjectSchema } from './StringFieldUpdateOperationsInput.schema';
+import { BoolFieldUpdateOperationsInputObjectSchema as BoolFieldUpdateOperationsInputObjectSchema } from './BoolFieldUpdateOperationsInput.schema';
+import { DateTimeFieldUpdateOperationsInputObjectSchema as DateTimeFieldUpdateOperationsInputObjectSchema } from './DateTimeFieldUpdateOperationsInput.schema'
 
-const makeSchema = () =>
-  z
-    .object({
-      id: z
-        .union([
-          z.number().int(),
-          z.lazy(() => IntFieldUpdateOperationsInputObjectSchema),
-        ])
-        .optional(),
-      keyHash: z
-        .union([
-          z.string().max(255),
-          z.lazy(() => StringFieldUpdateOperationsInputObjectSchema),
-        ])
-        .optional(),
-      appName: z
-        .union([
-          z.string().max(255),
-          z.lazy(() => StringFieldUpdateOperationsInputObjectSchema),
-        ])
-        .optional(),
-      revoked: z
-        .union([
-          z.boolean(),
-          z.lazy(() => BoolFieldUpdateOperationsInputObjectSchema),
-        ])
-        .optional(),
-      createdAt: z
-        .union([
-          z.coerce.date(),
-          z.lazy(() => DateTimeFieldUpdateOperationsInputObjectSchema),
-        ])
-        .optional(),
-      updatedAt: z
-        .union([
-          z.coerce.date(),
-          z.lazy(() => DateTimeFieldUpdateOperationsInputObjectSchema),
-        ])
-        .optional(),
-      ownerId: z
-        .union([
-          z.number().int(),
-          z.lazy(() => IntFieldUpdateOperationsInputObjectSchema),
-        ])
-        .optional(),
-    })
-    .strict();
-export const ApiKeyUncheckedUpdateManyInputObjectSchema: z.ZodType<Prisma.ApiKeyUncheckedUpdateManyInput> =
-  makeSchema() as unknown as z.ZodType<Prisma.ApiKeyUncheckedUpdateManyInput>;
+const makeSchema = () => z.object({
+  id: z.union([z.number().int(), z.lazy(() => IntFieldUpdateOperationsInputObjectSchema)]).optional(),
+  keyHash: z.union([z.string().max(255), z.lazy(() => StringFieldUpdateOperationsInputObjectSchema)]).optional(),
+  appName: z.union([z.string().max(255), z.lazy(() => StringFieldUpdateOperationsInputObjectSchema)]).optional(),
+  revoked: z.union([z.boolean(), z.lazy(() => BoolFieldUpdateOperationsInputObjectSchema)]).optional(),
+  createdAt: z.union([z.coerce.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputObjectSchema)]).optional(),
+  updatedAt: z.union([z.coerce.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputObjectSchema)]).optional(),
+  ownerId: z.union([z.number().int(), z.lazy(() => IntFieldUpdateOperationsInputObjectSchema)]).optional()
+}).strict();
+export const ApiKeyUncheckedUpdateManyInputObjectSchema: z.ZodType<Prisma.ApiKeyUncheckedUpdateManyInput> = makeSchema() as unknown as z.ZodType<Prisma.ApiKeyUncheckedUpdateManyInput>;
 export const ApiKeyUncheckedUpdateManyInputObjectZodSchema = makeSchema();

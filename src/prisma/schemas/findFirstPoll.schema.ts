@@ -1,15 +1,15 @@
-import type { Prisma } from "../../../../src/generated/prisma/client";
-import * as z from "zod";
-import { PollOrderByWithRelationInputObjectSchema as PollOrderByWithRelationInputObjectSchema } from "./objects/PollOrderByWithRelationInput.schema";
-import { PollWhereInputObjectSchema as PollWhereInputObjectSchema } from "./objects/PollWhereInput.schema";
-import { PollWhereUniqueInputObjectSchema as PollWhereUniqueInputObjectSchema } from "./objects/PollWhereUniqueInput.schema";
-import { PollScalarFieldEnumSchema } from "./enums/PollScalarFieldEnum.schema";
+import type { Prisma } from '../../../../src/generated/prisma/client';
+import * as z from 'zod';
+import { PollIncludeObjectSchema as PollIncludeObjectSchema } from './objects/PollInclude.schema';
+import { PollOrderByWithRelationInputObjectSchema as PollOrderByWithRelationInputObjectSchema } from './objects/PollOrderByWithRelationInput.schema';
+import { PollWhereInputObjectSchema as PollWhereInputObjectSchema } from './objects/PollWhereInput.schema';
+import { PollWhereUniqueInputObjectSchema as PollWhereUniqueInputObjectSchema } from './objects/PollWhereUniqueInput.schema';
+import { PollScalarFieldEnumSchema } from './enums/PollScalarFieldEnum.schema';
 
 // Select schema needs to be in file to prevent circular imports
 //------------------------------------------------------
 
-export const PollFindFirstSelectSchema: z.ZodType<Prisma.PollSelect> = z
-  .object({
+export const PollFindFirstSelectSchema: z.ZodType<Prisma.PollSelect> = z.object({
     id: z.boolean().optional(),
     title: z.boolean().optional(),
     description: z.boolean().optional(),
@@ -31,12 +31,10 @@ export const PollFindFirstSelectSchema: z.ZodType<Prisma.PollSelect> = z
     pollTemplates: z.boolean().optional(),
     reports: z.boolean().optional(),
     childDependencies: z.boolean().optional(),
-    _count: z.boolean().optional(),
-  })
-  .strict() as unknown as z.ZodType<Prisma.PollSelect>;
+    _count: z.boolean().optional()
+  }).strict() as unknown as z.ZodType<Prisma.PollSelect>;
 
-export const PollFindFirstSelectZodSchema = z
-  .object({
+export const PollFindFirstSelectZodSchema = z.object({
     id: z.boolean().optional(),
     title: z.boolean().optional(),
     description: z.boolean().optional(),
@@ -58,44 +56,9 @@ export const PollFindFirstSelectZodSchema = z
     pollTemplates: z.boolean().optional(),
     reports: z.boolean().optional(),
     childDependencies: z.boolean().optional(),
-    _count: z.boolean().optional(),
-  })
-  .strict();
+    _count: z.boolean().optional()
+  }).strict();
 
-export const PollFindFirstSchema: z.ZodType<Prisma.PollFindFirstArgs> = z
-  .object({
-    select: PollFindFirstSelectSchema.optional(),
-    orderBy: z
-      .union([
-        PollOrderByWithRelationInputObjectSchema,
-        PollOrderByWithRelationInputObjectSchema.array(),
-      ])
-      .optional(),
-    where: PollWhereInputObjectSchema.optional(),
-    cursor: PollWhereUniqueInputObjectSchema.optional(),
-    take: z.number().optional(),
-    skip: z.number().optional(),
-    distinct: z
-      .union([PollScalarFieldEnumSchema, PollScalarFieldEnumSchema.array()])
-      .optional(),
-  })
-  .strict() as unknown as z.ZodType<Prisma.PollFindFirstArgs>;
+export const PollFindFirstSchema: z.ZodType<Prisma.PollFindFirstArgs> = z.object({ select: PollFindFirstSelectSchema.optional(), include: z.lazy(() => PollIncludeObjectSchema.optional()), orderBy: z.union([PollOrderByWithRelationInputObjectSchema, PollOrderByWithRelationInputObjectSchema.array()]).optional(), where: PollWhereInputObjectSchema.optional(), cursor: PollWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), distinct: z.union([PollScalarFieldEnumSchema, PollScalarFieldEnumSchema.array()]).optional() }).strict() as unknown as z.ZodType<Prisma.PollFindFirstArgs>;
 
-export const PollFindFirstZodSchema = z
-  .object({
-    select: PollFindFirstSelectSchema.optional(),
-    orderBy: z
-      .union([
-        PollOrderByWithRelationInputObjectSchema,
-        PollOrderByWithRelationInputObjectSchema.array(),
-      ])
-      .optional(),
-    where: PollWhereInputObjectSchema.optional(),
-    cursor: PollWhereUniqueInputObjectSchema.optional(),
-    take: z.number().optional(),
-    skip: z.number().optional(),
-    distinct: z
-      .union([PollScalarFieldEnumSchema, PollScalarFieldEnumSchema.array()])
-      .optional(),
-  })
-  .strict();
+export const PollFindFirstZodSchema = z.object({ select: PollFindFirstSelectSchema.optional(), include: z.lazy(() => PollIncludeObjectSchema.optional()), orderBy: z.union([PollOrderByWithRelationInputObjectSchema, PollOrderByWithRelationInputObjectSchema.array()]).optional(), where: PollWhereInputObjectSchema.optional(), cursor: PollWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), distinct: z.union([PollScalarFieldEnumSchema, PollScalarFieldEnumSchema.array()]).optional() }).strict();
