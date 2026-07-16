@@ -1,0 +1,14 @@
+import type { Prisma } from '../../../../src/generated/prisma/client';
+import * as z from 'zod';
+import { HashtagOrderByWithRelationInputObjectSchema as HashtagOrderByWithRelationInputObjectSchema } from './objects/HashtagOrderByWithRelationInput.schema';
+import { HashtagWhereInputObjectSchema as HashtagWhereInputObjectSchema } from './objects/HashtagWhereInput.schema';
+import { HashtagWhereUniqueInputObjectSchema as HashtagWhereUniqueInputObjectSchema } from './objects/HashtagWhereUniqueInput.schema';
+import { HashtagCountAggregateInputObjectSchema as HashtagCountAggregateInputObjectSchema } from './objects/HashtagCountAggregateInput.schema';
+import { HashtagMinAggregateInputObjectSchema as HashtagMinAggregateInputObjectSchema } from './objects/HashtagMinAggregateInput.schema';
+import { HashtagMaxAggregateInputObjectSchema as HashtagMaxAggregateInputObjectSchema } from './objects/HashtagMaxAggregateInput.schema';
+import { HashtagAvgAggregateInputObjectSchema as HashtagAvgAggregateInputObjectSchema } from './objects/HashtagAvgAggregateInput.schema';
+import { HashtagSumAggregateInputObjectSchema as HashtagSumAggregateInputObjectSchema } from './objects/HashtagSumAggregateInput.schema';
+
+export const HashtagAggregateSchema: z.ZodType<Prisma.HashtagAggregateArgs> = z.object({ orderBy: z.union([HashtagOrderByWithRelationInputObjectSchema, HashtagOrderByWithRelationInputObjectSchema.array()]).optional(), where: HashtagWhereInputObjectSchema.optional(), cursor: HashtagWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), _count: z.union([ z.literal(true), HashtagCountAggregateInputObjectSchema ]).optional(), _min: HashtagMinAggregateInputObjectSchema.optional(), _max: HashtagMaxAggregateInputObjectSchema.optional(), _avg: HashtagAvgAggregateInputObjectSchema.optional(), _sum: HashtagSumAggregateInputObjectSchema.optional() }).strict() as unknown as z.ZodType<Prisma.HashtagAggregateArgs>;
+
+export const HashtagAggregateZodSchema = z.object({ orderBy: z.union([HashtagOrderByWithRelationInputObjectSchema, HashtagOrderByWithRelationInputObjectSchema.array()]).optional(), where: HashtagWhereInputObjectSchema.optional(), cursor: HashtagWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), _count: z.union([ z.literal(true), HashtagCountAggregateInputObjectSchema ]).optional(), _min: HashtagMinAggregateInputObjectSchema.optional(), _max: HashtagMaxAggregateInputObjectSchema.optional(), _avg: HashtagAvgAggregateInputObjectSchema.optional(), _sum: HashtagSumAggregateInputObjectSchema.optional() }).strict();

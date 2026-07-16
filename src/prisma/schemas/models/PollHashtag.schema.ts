@@ -1,4 +1,4 @@
-import * as z from "zod";
+import * as z from 'zod';
 
 export const PollHashtagSchema = z.object({
   pollId: z.number().int(),

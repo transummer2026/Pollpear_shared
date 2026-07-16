@@ -1,5 +1,5 @@
-import * as z from "zod";
-import { NotificationTypeSchema } from "../enums/NotificationType.schema";
+import * as z from 'zod';
+import { NotificationTypeSchema } from '../enums/NotificationType.schema';
 
 export const NotificationSchema = z.object({
   id: z.number().int(),

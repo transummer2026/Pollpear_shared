@@ -1,0 +1,12 @@
+import * as z from 'zod';
+import type { Prisma } from '../../../../../src/generated/prisma/client';
+
+
+const makeSchema = () => z.object({
+  id: z.literal(true).optional(),
+  childPollId: z.literal(true).optional(),
+  optionId: z.literal(true).optional(),
+  _all: z.literal(true).optional()
+}).strict();
+export const PollDependencyCountAggregateInputObjectSchema: z.ZodType<Prisma.PollDependencyCountAggregateInputType> = makeSchema() as unknown as z.ZodType<Prisma.PollDependencyCountAggregateInputType>;
+export const PollDependencyCountAggregateInputObjectZodSchema = makeSchema();

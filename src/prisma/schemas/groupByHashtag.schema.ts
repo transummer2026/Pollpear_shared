@@ -1,0 +1,15 @@
+import type { Prisma } from '../../../../src/generated/prisma/client';
+import * as z from 'zod';
+import { HashtagWhereInputObjectSchema as HashtagWhereInputObjectSchema } from './objects/HashtagWhereInput.schema';
+import { HashtagOrderByWithAggregationInputObjectSchema as HashtagOrderByWithAggregationInputObjectSchema } from './objects/HashtagOrderByWithAggregationInput.schema';
+import { HashtagScalarWhereWithAggregatesInputObjectSchema as HashtagScalarWhereWithAggregatesInputObjectSchema } from './objects/HashtagScalarWhereWithAggregatesInput.schema';
+import { HashtagScalarFieldEnumSchema } from './enums/HashtagScalarFieldEnum.schema';
+import { HashtagCountAggregateInputObjectSchema as HashtagCountAggregateInputObjectSchema } from './objects/HashtagCountAggregateInput.schema';
+import { HashtagMinAggregateInputObjectSchema as HashtagMinAggregateInputObjectSchema } from './objects/HashtagMinAggregateInput.schema';
+import { HashtagMaxAggregateInputObjectSchema as HashtagMaxAggregateInputObjectSchema } from './objects/HashtagMaxAggregateInput.schema';
+import { HashtagAvgAggregateInputObjectSchema as HashtagAvgAggregateInputObjectSchema } from './objects/HashtagAvgAggregateInput.schema';
+import { HashtagSumAggregateInputObjectSchema as HashtagSumAggregateInputObjectSchema } from './objects/HashtagSumAggregateInput.schema';
+
+export const HashtagGroupBySchema: z.ZodType<Prisma.HashtagGroupByArgs> = z.object({ where: HashtagWhereInputObjectSchema.optional(), orderBy: z.union([HashtagOrderByWithAggregationInputObjectSchema, HashtagOrderByWithAggregationInputObjectSchema.array()]).optional(), having: HashtagScalarWhereWithAggregatesInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), by: z.array(HashtagScalarFieldEnumSchema), _count: z.union([ z.literal(true), HashtagCountAggregateInputObjectSchema ]).optional(), _min: HashtagMinAggregateInputObjectSchema.optional(), _max: HashtagMaxAggregateInputObjectSchema.optional(), _avg: HashtagAvgAggregateInputObjectSchema.optional(), _sum: HashtagSumAggregateInputObjectSchema.optional() }).strict() as unknown as z.ZodType<Prisma.HashtagGroupByArgs>;
+
+export const HashtagGroupByZodSchema = z.object({ where: HashtagWhereInputObjectSchema.optional(), orderBy: z.union([HashtagOrderByWithAggregationInputObjectSchema, HashtagOrderByWithAggregationInputObjectSchema.array()]).optional(), having: HashtagScalarWhereWithAggregatesInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), by: z.array(HashtagScalarFieldEnumSchema), _count: z.union([ z.literal(true), HashtagCountAggregateInputObjectSchema ]).optional(), _min: HashtagMinAggregateInputObjectSchema.optional(), _max: HashtagMaxAggregateInputObjectSchema.optional(), _avg: HashtagAvgAggregateInputObjectSchema.optional(), _sum: HashtagSumAggregateInputObjectSchema.optional() }).strict();

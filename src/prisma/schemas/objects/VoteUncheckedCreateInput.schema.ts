@@ -1,15 +1,13 @@
-import * as z from "zod";
-import type { Prisma } from "../../../../../src/generated/prisma/client";
+import * as z from 'zod';
+import type { Prisma } from '../../../../../src/generated/prisma/client';
+import { VoteOptionUncheckedCreateNestedManyWithoutVoteInputObjectSchema as VoteOptionUncheckedCreateNestedManyWithoutVoteInputObjectSchema } from './VoteOptionUncheckedCreateNestedManyWithoutVoteInput.schema'
 
-const makeSchema = () =>
-  z
-    .object({
-      id: z.number().int().optional(),
-      createdAt: z.coerce.date().optional(),
-      label: z.string().max(255).optional().nullable(),
-      createdById: z.number().int(),
-    })
-    .strict();
-export const VoteUncheckedCreateInputObjectSchema: z.ZodType<Prisma.VoteUncheckedCreateInput> =
-  makeSchema() as unknown as z.ZodType<Prisma.VoteUncheckedCreateInput>;
+const makeSchema = () => z.object({
+  id: z.number().int().optional(),
+  createdAt: z.coerce.date().optional(),
+  label: z.string().max(255).optional().nullable(),
+  createdById: z.number().int(),
+  voteOptions: z.lazy(() => VoteOptionUncheckedCreateNestedManyWithoutVoteInputObjectSchema).optional()
+}).strict();
+export const VoteUncheckedCreateInputObjectSchema: z.ZodType<Prisma.VoteUncheckedCreateInput> = makeSchema() as unknown as z.ZodType<Prisma.VoteUncheckedCreateInput>;
 export const VoteUncheckedCreateInputObjectZodSchema = makeSchema();

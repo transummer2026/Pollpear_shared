@@ -1,6 +1,6 @@
-import * as z from "zod";
-import { GrantTypeSchema } from "../enums/GrantType.schema";
-import { OauthProviderSchema } from "../enums/OauthProvider.schema";
+import * as z from 'zod';
+import { GrantTypeSchema } from '../enums/GrantType.schema';
+import { OauthProviderSchema } from '../enums/OauthProvider.schema';
 
 export const OauthSchema = z.object({
   id: z.number().int(),

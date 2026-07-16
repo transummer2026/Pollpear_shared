@@ -1,0 +1,24 @@
+import * as z from 'zod';
+export const PollUpdateResultSchema = z.nullable(z.object({
+  id: z.number().int(),
+  title: z.string(),
+  description: z.string().optional(),
+  type: z.unknown(),
+  createdAt: z.date(),
+  publishedAt: z.date().optional(),
+  updatedAt: z.date(),
+  endsAt: z.date(),
+  visibility: z.unknown(),
+  allowChangeVote: z.boolean(),
+  isAnonymous: z.boolean(),
+  status: z.unknown(),
+  createdById: z.number().int(),
+  roomId: z.number().int().optional(),
+  createdBy: z.unknown(),
+  room: z.unknown().optional(),
+  options: z.array(z.unknown()),
+  pollHashtags: z.array(z.unknown()),
+  pollTemplates: z.array(z.unknown()),
+  reports: z.array(z.unknown()),
+  childDependencies: z.array(z.unknown())
+}));

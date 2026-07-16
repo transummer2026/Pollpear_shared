@@ -1,0 +1,15 @@
+import type { Prisma } from '../../../../src/generated/prisma/client';
+import * as z from 'zod';
+import { OptionWhereInputObjectSchema as OptionWhereInputObjectSchema } from './objects/OptionWhereInput.schema';
+import { OptionOrderByWithAggregationInputObjectSchema as OptionOrderByWithAggregationInputObjectSchema } from './objects/OptionOrderByWithAggregationInput.schema';
+import { OptionScalarWhereWithAggregatesInputObjectSchema as OptionScalarWhereWithAggregatesInputObjectSchema } from './objects/OptionScalarWhereWithAggregatesInput.schema';
+import { OptionScalarFieldEnumSchema } from './enums/OptionScalarFieldEnum.schema';
+import { OptionCountAggregateInputObjectSchema as OptionCountAggregateInputObjectSchema } from './objects/OptionCountAggregateInput.schema';
+import { OptionMinAggregateInputObjectSchema as OptionMinAggregateInputObjectSchema } from './objects/OptionMinAggregateInput.schema';
+import { OptionMaxAggregateInputObjectSchema as OptionMaxAggregateInputObjectSchema } from './objects/OptionMaxAggregateInput.schema';
+import { OptionAvgAggregateInputObjectSchema as OptionAvgAggregateInputObjectSchema } from './objects/OptionAvgAggregateInput.schema';
+import { OptionSumAggregateInputObjectSchema as OptionSumAggregateInputObjectSchema } from './objects/OptionSumAggregateInput.schema';
+
+export const OptionGroupBySchema: z.ZodType<Prisma.OptionGroupByArgs> = z.object({ where: OptionWhereInputObjectSchema.optional(), orderBy: z.union([OptionOrderByWithAggregationInputObjectSchema, OptionOrderByWithAggregationInputObjectSchema.array()]).optional(), having: OptionScalarWhereWithAggregatesInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), by: z.array(OptionScalarFieldEnumSchema), _count: z.union([ z.literal(true), OptionCountAggregateInputObjectSchema ]).optional(), _min: OptionMinAggregateInputObjectSchema.optional(), _max: OptionMaxAggregateInputObjectSchema.optional(), _avg: OptionAvgAggregateInputObjectSchema.optional(), _sum: OptionSumAggregateInputObjectSchema.optional() }).strict() as unknown as z.ZodType<Prisma.OptionGroupByArgs>;
+
+export const OptionGroupByZodSchema = z.object({ where: OptionWhereInputObjectSchema.optional(), orderBy: z.union([OptionOrderByWithAggregationInputObjectSchema, OptionOrderByWithAggregationInputObjectSchema.array()]).optional(), having: OptionScalarWhereWithAggregatesInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), by: z.array(OptionScalarFieldEnumSchema), _count: z.union([ z.literal(true), OptionCountAggregateInputObjectSchema ]).optional(), _min: OptionMinAggregateInputObjectSchema.optional(), _max: OptionMaxAggregateInputObjectSchema.optional(), _avg: OptionAvgAggregateInputObjectSchema.optional(), _sum: OptionSumAggregateInputObjectSchema.optional() }).strict();

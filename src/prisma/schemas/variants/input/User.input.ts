@@ -1,10 +1,11 @@
-import * as z from "zod";
-import { UserRoleSchema } from "../../enums/UserRole.schema";
-import { GenderSchema } from "../../enums/Gender.schema";
-import { VisibilitySchema } from "../../enums/Visibility.schema";
-import { UserThemeSchema } from "../../enums/UserTheme.schema";
+import * as z from 'zod';
+import { UserRoleSchema } from '../../enums/UserRole.schema';
+import { GenderSchema } from '../../enums/Gender.schema';
+import { VisibilitySchema } from '../../enums/Visibility.schema';
+import { UserThemeSchema } from '../../enums/UserTheme.schema';
 // prettier-ignore
 export const UserInputSchema = z.object({
+    id: z.number().int(),
     username: z.string(),
     name: z.string().optional().nullable(),
     surname: z.string().optional().nullable(),
@@ -27,6 +28,8 @@ export const UserInputSchema = z.object({
     lastSeenAt: z.date().optional().nullable(),
     avatarUrl: z.string(),
     bannerUrl: z.string(),
+    createdAt: z.date(),
+    updatedAt: z.date(),
     userTheme: UserThemeSchema,
     oauths: z.array(z.unknown()),
     bansReceived: z.array(z.unknown()),

@@ -1,6 +1,9 @@
-import * as z from "zod";
+import * as z from 'zod';
 // prettier-ignore
 export const VoteInputSchema = z.object({
+    id: z.number().int(),
+    createdAt: z.date(),
+    updatedAt: z.date(),
     label: z.string().optional().nullable(),
     createdById: z.number().int(),
     createdBy: z.unknown(),

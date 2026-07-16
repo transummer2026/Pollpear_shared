@@ -1,8 +1,11 @@
-import * as z from "zod";
-import { InvitationStatusSchema } from "../../enums/InvitationStatus.schema";
+import * as z from 'zod';
+import { InvitationStatusSchema } from '../../enums/InvitationStatus.schema';
 // prettier-ignore
 export const InvitationInputSchema = z.object({
+    id: z.number().int(),
     status: InvitationStatusSchema,
+    createdAt: z.date(),
+    updatedAt: z.date(),
     label: z.string().optional().nullable(),
     roomId: z.number().int(),
     inviterId: z.number().int(),

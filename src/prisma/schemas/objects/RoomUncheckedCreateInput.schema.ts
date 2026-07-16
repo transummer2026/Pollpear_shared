@@ -1,22 +1,28 @@
-import * as z from "zod";
-import type { Prisma } from "../../../../../src/generated/prisma/client";
-import { VisibilitySchema } from "../enums/Visibility.schema";
-import { RoomStatusSchema } from "../enums/RoomStatus.schema";
+import * as z from 'zod';
+import type { Prisma } from '../../../../../src/generated/prisma/client';
+import { VisibilitySchema } from '../enums/Visibility.schema';
+import { RoomStatusSchema } from '../enums/RoomStatus.schema';
+import { PollUncheckedCreateNestedManyWithoutRoomInputObjectSchema as PollUncheckedCreateNestedManyWithoutRoomInputObjectSchema } from './PollUncheckedCreateNestedManyWithoutRoomInput.schema';
+import { MessageUncheckedCreateNestedManyWithoutRoomInputObjectSchema as MessageUncheckedCreateNestedManyWithoutRoomInputObjectSchema } from './MessageUncheckedCreateNestedManyWithoutRoomInput.schema';
+import { InvitationUncheckedCreateNestedManyWithoutRoomInputObjectSchema as InvitationUncheckedCreateNestedManyWithoutRoomInputObjectSchema } from './InvitationUncheckedCreateNestedManyWithoutRoomInput.schema';
+import { RoomMemberUncheckedCreateNestedManyWithoutRoomInputObjectSchema as RoomMemberUncheckedCreateNestedManyWithoutRoomInputObjectSchema } from './RoomMemberUncheckedCreateNestedManyWithoutRoomInput.schema';
+import { ReportUncheckedCreateNestedManyWithoutRoomInputObjectSchema as ReportUncheckedCreateNestedManyWithoutRoomInputObjectSchema } from './ReportUncheckedCreateNestedManyWithoutRoomInput.schema'
 
-const makeSchema = () =>
-  z
-    .object({
-      id: z.number().int().optional(),
-      name: z.string().max(255),
-      description: z.string().optional().nullable(),
-      createdAt: z.coerce.date().optional(),
-      publishedAt: z.coerce.date().optional().nullable(),
-      bannerUrl: z.string().max(255),
-      visibility: VisibilitySchema,
-      status: RoomStatusSchema,
-      createdById: z.number().int(),
-    })
-    .strict();
-export const RoomUncheckedCreateInputObjectSchema: z.ZodType<Prisma.RoomUncheckedCreateInput> =
-  makeSchema() as unknown as z.ZodType<Prisma.RoomUncheckedCreateInput>;
+const makeSchema = () => z.object({
+  id: z.number().int().optional(),
+  name: z.string().max(255),
+  description: z.string().optional().nullable(),
+  createdAt: z.coerce.date().optional(),
+  publishedAt: z.coerce.date().optional().nullable(),
+  bannerUrl: z.string().max(255),
+  visibility: VisibilitySchema,
+  status: RoomStatusSchema,
+  createdById: z.number().int(),
+  polls: z.lazy(() => PollUncheckedCreateNestedManyWithoutRoomInputObjectSchema).optional(),
+  messages: z.lazy(() => MessageUncheckedCreateNestedManyWithoutRoomInputObjectSchema).optional(),
+  invitations: z.lazy(() => InvitationUncheckedCreateNestedManyWithoutRoomInputObjectSchema).optional(),
+  roomMembers: z.lazy(() => RoomMemberUncheckedCreateNestedManyWithoutRoomInputObjectSchema).optional(),
+  reports: z.lazy(() => ReportUncheckedCreateNestedManyWithoutRoomInputObjectSchema).optional()
+}).strict();
+export const RoomUncheckedCreateInputObjectSchema: z.ZodType<Prisma.RoomUncheckedCreateInput> = makeSchema() as unknown as z.ZodType<Prisma.RoomUncheckedCreateInput>;
 export const RoomUncheckedCreateInputObjectZodSchema = makeSchema();

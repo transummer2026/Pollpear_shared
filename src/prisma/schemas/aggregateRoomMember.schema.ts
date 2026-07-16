@@ -1,0 +1,14 @@
+import type { Prisma } from '../../../../src/generated/prisma/client';
+import * as z from 'zod';
+import { RoomMemberOrderByWithRelationInputObjectSchema as RoomMemberOrderByWithRelationInputObjectSchema } from './objects/RoomMemberOrderByWithRelationInput.schema';
+import { RoomMemberWhereInputObjectSchema as RoomMemberWhereInputObjectSchema } from './objects/RoomMemberWhereInput.schema';
+import { RoomMemberWhereUniqueInputObjectSchema as RoomMemberWhereUniqueInputObjectSchema } from './objects/RoomMemberWhereUniqueInput.schema';
+import { RoomMemberCountAggregateInputObjectSchema as RoomMemberCountAggregateInputObjectSchema } from './objects/RoomMemberCountAggregateInput.schema';
+import { RoomMemberMinAggregateInputObjectSchema as RoomMemberMinAggregateInputObjectSchema } from './objects/RoomMemberMinAggregateInput.schema';
+import { RoomMemberMaxAggregateInputObjectSchema as RoomMemberMaxAggregateInputObjectSchema } from './objects/RoomMemberMaxAggregateInput.schema';
+import { RoomMemberAvgAggregateInputObjectSchema as RoomMemberAvgAggregateInputObjectSchema } from './objects/RoomMemberAvgAggregateInput.schema';
+import { RoomMemberSumAggregateInputObjectSchema as RoomMemberSumAggregateInputObjectSchema } from './objects/RoomMemberSumAggregateInput.schema';
+
+export const RoomMemberAggregateSchema: z.ZodType<Prisma.RoomMemberAggregateArgs> = z.object({ orderBy: z.union([RoomMemberOrderByWithRelationInputObjectSchema, RoomMemberOrderByWithRelationInputObjectSchema.array()]).optional(), where: RoomMemberWhereInputObjectSchema.optional(), cursor: RoomMemberWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), _count: z.union([ z.literal(true), RoomMemberCountAggregateInputObjectSchema ]).optional(), _min: RoomMemberMinAggregateInputObjectSchema.optional(), _max: RoomMemberMaxAggregateInputObjectSchema.optional(), _avg: RoomMemberAvgAggregateInputObjectSchema.optional(), _sum: RoomMemberSumAggregateInputObjectSchema.optional() }).strict() as unknown as z.ZodType<Prisma.RoomMemberAggregateArgs>;
+
+export const RoomMemberAggregateZodSchema = z.object({ orderBy: z.union([RoomMemberOrderByWithRelationInputObjectSchema, RoomMemberOrderByWithRelationInputObjectSchema.array()]).optional(), where: RoomMemberWhereInputObjectSchema.optional(), cursor: RoomMemberWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), _count: z.union([ z.literal(true), RoomMemberCountAggregateInputObjectSchema ]).optional(), _min: RoomMemberMinAggregateInputObjectSchema.optional(), _max: RoomMemberMaxAggregateInputObjectSchema.optional(), _avg: RoomMemberAvgAggregateInputObjectSchema.optional(), _sum: RoomMemberSumAggregateInputObjectSchema.optional() }).strict();

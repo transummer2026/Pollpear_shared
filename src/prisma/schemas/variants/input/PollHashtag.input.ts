@@ -1,4 +1,4 @@
-import * as z from "zod";
+import * as z from 'zod';
 // prettier-ignore
 export const PollHashtagInputSchema = z.object({
     pollId: z.number().int(),

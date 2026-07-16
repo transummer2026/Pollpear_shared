@@ -1,11 +1,9 @@
-import type { Prisma } from "../../../../src/generated/prisma/client";
-import * as z from "zod";
-import { RoomWhereUniqueInputObjectSchema as RoomWhereUniqueInputObjectSchema } from "./objects/RoomWhereUniqueInput.schema";
+import type { Prisma } from '../../../../src/generated/prisma/client';
+import * as z from 'zod';
+import { RoomSelectObjectSchema as RoomSelectObjectSchema } from './objects/RoomSelect.schema';
+import { RoomIncludeObjectSchema as RoomIncludeObjectSchema } from './objects/RoomInclude.schema';
+import { RoomWhereUniqueInputObjectSchema as RoomWhereUniqueInputObjectSchema } from './objects/RoomWhereUniqueInput.schema';
 
-export const RoomDeleteOneSchema: z.ZodType<Prisma.RoomDeleteArgs> = z
-  .object({ where: RoomWhereUniqueInputObjectSchema })
-  .strict() as unknown as z.ZodType<Prisma.RoomDeleteArgs>;
+export const RoomDeleteOneSchema: z.ZodType<Prisma.RoomDeleteArgs> = z.object({ select: RoomSelectObjectSchema.optional(), include: RoomIncludeObjectSchema.optional(), where: RoomWhereUniqueInputObjectSchema }).strict() as unknown as z.ZodType<Prisma.RoomDeleteArgs>;
 
-export const RoomDeleteOneZodSchema = z
-  .object({ where: RoomWhereUniqueInputObjectSchema })
-  .strict();
+export const RoomDeleteOneZodSchema = z.object({ select: RoomSelectObjectSchema.optional(), include: RoomIncludeObjectSchema.optional(), where: RoomWhereUniqueInputObjectSchema }).strict();

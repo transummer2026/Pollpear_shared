@@ -1,6 +1,7 @@
-import * as z from "zod";
+import * as z from 'zod';
 // prettier-ignore
 export const OptionInputSchema = z.object({
+    id: z.number().int(),
     label: z.string(),
     sliderLeftLabel: z.string().optional().nullable(),
     sliderRightLabel: z.string().optional().nullable(),

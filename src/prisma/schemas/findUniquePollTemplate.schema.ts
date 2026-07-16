@@ -1,12 +1,9 @@
-import type { Prisma } from "../../../../src/generated/prisma/client";
-import * as z from "zod";
-import { PollTemplateWhereUniqueInputObjectSchema as PollTemplateWhereUniqueInputObjectSchema } from "./objects/PollTemplateWhereUniqueInput.schema";
+import type { Prisma } from '../../../../src/generated/prisma/client';
+import * as z from 'zod';
+import { PollTemplateSelectObjectSchema as PollTemplateSelectObjectSchema } from './objects/PollTemplateSelect.schema';
+import { PollTemplateIncludeObjectSchema as PollTemplateIncludeObjectSchema } from './objects/PollTemplateInclude.schema';
+import { PollTemplateWhereUniqueInputObjectSchema as PollTemplateWhereUniqueInputObjectSchema } from './objects/PollTemplateWhereUniqueInput.schema';
 
-export const PollTemplateFindUniqueSchema: z.ZodType<Prisma.PollTemplateFindUniqueArgs> =
-  z
-    .object({ where: PollTemplateWhereUniqueInputObjectSchema })
-    .strict() as unknown as z.ZodType<Prisma.PollTemplateFindUniqueArgs>;
+export const PollTemplateFindUniqueSchema: z.ZodType<Prisma.PollTemplateFindUniqueArgs> = z.object({ select: PollTemplateSelectObjectSchema.optional(), include: PollTemplateIncludeObjectSchema.optional(), where: PollTemplateWhereUniqueInputObjectSchema }).strict() as unknown as z.ZodType<Prisma.PollTemplateFindUniqueArgs>;
 
-export const PollTemplateFindUniqueZodSchema = z
-  .object({ where: PollTemplateWhereUniqueInputObjectSchema })
-  .strict();
+export const PollTemplateFindUniqueZodSchema = z.object({ select: PollTemplateSelectObjectSchema.optional(), include: PollTemplateIncludeObjectSchema.optional(), where: PollTemplateWhereUniqueInputObjectSchema }).strict();
