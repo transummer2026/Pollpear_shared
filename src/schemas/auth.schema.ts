@@ -1,6 +1,12 @@
 import { z } from "zod";
 import { UserProfileSchema, UserLoginSchema } from "./users.schema";
 
+export const PasswordFormat = z
+      .string()
+      .min(12, "Min 12 characters")
+      .regex(/[A-Z]/, "Min one capital letter")
+      .regex(/[0-9]/, "Min one digit");
+
 export const RegisterSchema = z
   .object({
     ...UserProfileSchema.shape,
@@ -9,11 +15,7 @@ export const RegisterSchema = z
       .max(32, "Max 32 characters")
       .regex(/^[\w.]+$/, ""),
     email: z.email("Invalid e-mail"),
-    password: z
-      .string()
-      .min(12, "Min 12 characters")
-      .regex(/[A-Z]/, "Min one capital letter")
-      .regex(/[0-9]/, "Min one digit"),
+    password: PasswordFormat,
     confirmPassword: z.string(),
     birthdate: z.coerce
       .date({ error: "Enter your birthdate" })
@@ -76,11 +78,7 @@ export const PasswordForgotSchema = z.object({
 });
 
 export const PasswordResetSchema = z.object({
-  password: z
-      .string()
-      .min(12, "Min 12 characters")
-      .regex(/[A-Z]/, "Min one capital letter")
-      .regex(/[0-9]/, "Min one digit"),
+  password: PasswordFormat,
   confirmPassword: z.string(),
   })
 .refine((data) => data.password === data.confirmPassword, {
