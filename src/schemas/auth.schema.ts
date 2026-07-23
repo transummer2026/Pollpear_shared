@@ -70,6 +70,26 @@ export const LoginSchema = z.object({
     .min(1, "Password required")
 });
 
+export const PasswordForgotSchema = z.object({
+  ...UserLoginSchema.shape,
+  email: z.email("Invalid e-mail"),
+});
+
+export const PasswordResetSchema = z.object({
+  password: z
+      .string()
+      .min(12, "Min 12 characters")
+      .regex(/[A-Z]/, "Min one capital letter")
+      .regex(/[0-9]/, "Min one digit"),
+  confirmPassword: z.string(),
+  })
+.refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords do not match",
+    path: ["confirmPassword"],
+});
+
 export type LoginDTO = z.infer<typeof LoginSchema>;
 export type RegisterInput = z.input<typeof RegisterSchema>;
 export type RegisterDTO = z.output<typeof RegisterSchema>;
+export type PasswordForgotDTO = z.infer<typeof PasswordForgotSchema>;
+export type PasswordResetDTO = z.infer<typeof PasswordResetSchema>;
