@@ -8,10 +8,6 @@
     "isolatedModules": true,
     "skipLibCheck": true
   },
-  "include": [
-    "src"
-  ],
-  "exclude": [
-    "src/prisma/*"
-  ]
+  "include": ["src"],
+  "exclude": ["src/prisma/*"]
 }

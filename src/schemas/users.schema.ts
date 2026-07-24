@@ -21,13 +21,19 @@ export const UserProfileSchema = UserDTOSchema.omit({
   userTheme: true,
 });
 
-export const UserProfileUpdateSchema = UserProfileSchema.partial();
+export const UserProfileUpdateSchema = UserProfileSchema.extend({
+  userTheme: UserDTOSchema.shape.userTheme.optional(),
+}).partial();
 
 export const UserLoginSchema = UserDTOSchema.pick({
   email: true,
 });
 
+export const GenderSchema = UserDTOSchema.shape.gender;
+
+
 export type UserDTO = z.infer<typeof UserDTOSchema>;
 export type UserProfileDTO = z.infer<typeof UserProfileSchema>;
 export type UserLoginDTO = z.infer<typeof UserLoginSchema>;
 export type UserProfileUpdateDTO = z.infer<typeof UserProfileUpdateSchema>;
+export type GenderDTO = z.infer<typeof GenderSchema>;
