@@ -1,8 +1,8 @@
 {
   "version": "1.0",
   "generatorVersion": "0.0.1",
-  "generatedAt": "2026-07-15T20:57:41.141Z",
-  "outputPath": "/Users/id/Documents/Pollpear/Pollpear_backend/Pollpear_shared/src/prisma",
+  "generatedAt": "2026-07-26T21:41:29.912Z",
+  "outputPath": "/Users/blucken/Documents/transcandance/Pollpear/Pollpear_backend/Pollpear_shared/src/prisma",
   "files": [
     "schemas/enums/TransactionIsolationLevel.schema.ts",
     "schemas/enums/UserScalarFieldEnum.schema.ts",
