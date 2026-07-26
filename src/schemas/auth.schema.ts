@@ -84,7 +84,15 @@ export const PasswordResetSchema = z.object({
     path: ["confirmPassword"],
 });
 
+export const UserChangePasswordSchema = z.object({
+  ...PasswordResetSchema.shape,
+  oldPassword: z
+    .string()
+    .min(1, "Password required")
+});
+
 export type LoginDTO = z.infer<typeof LoginSchema>;
+export type UserChangePasswordDTO = z.infer<typeof UserChangePasswordSchema>;
 export type RegisterInput = z.input<typeof RegisterSchema>;
 export type RegisterDTO = z.output<typeof RegisterSchema>;
 export type PasswordForgotDTO = z.infer<typeof PasswordForgotSchema>;
