@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { UserProfileSchema, UserLoginSchema } from "./users.schema";
+import { GenderSchema, UserProfileSchema, UserLoginSchema } from "./users.schema";
 
 export const PasswordFormat = z
       .string()
@@ -24,9 +24,7 @@ export const RegisterSchema = z
       .min(3, "Min 3 characters")
       .max(20, "Max 20 characters")
       .regex(/^[a-zA-Z]{2,15}(\-?\s?[a-zA-Z]{1,10})?$/, "Only letters"),
-    gender: z.enum(UserProfileSchema.shape.gender.options, {
-      error: "Select a gender",
-    }),
+    gender: z.enum(GenderSchema.options, { error: "Select a gender" }),
     name: UserProfileSchema.shape.name
       .unwrap()
       .unwrap()
