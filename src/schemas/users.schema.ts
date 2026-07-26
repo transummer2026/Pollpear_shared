@@ -25,6 +25,7 @@ export const UserProfileSchema = UserDTOSchema.omit({
 });
 
 export const UserProfileUpdateSchema = UserProfileSchema.extend({
+  username: emptyToUndefined(UserProfileSchema.shape.username),
   email: emptyToUndefined(UserProfileSchema.shape.email),
   birthdate: emptyToUndefined(
     z.coerce
@@ -38,6 +39,7 @@ export const UserProfileUpdateSchema = UserProfileSchema.extend({
   state: emptyToUndefined(UserProfileSchema.shape.state),
   country: emptyToUndefined(UserProfileSchema.shape.country),
   company: emptyToUndefined(UserProfileSchema.shape.company),
+  bio: emptyToUndefined(UserProfileSchema.shape.bio),
   userTheme: UserDTOSchema.shape.userTheme.optional(),
 }).partial();
 
