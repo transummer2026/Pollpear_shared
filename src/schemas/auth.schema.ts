@@ -75,20 +75,29 @@ export const PasswordForgotSchema = z.object({
   email: z.email("Invalid e-mail"),
 });
 
-export const PasswordResetSchema = z.object({
+export const PasswordFieldsSchema = z.object({
   password: PasswordFormat,
   confirmPassword: z.string(),
-  })
+});
+
+export const PasswordResetSchema = z.object({
+  ...PasswordFieldsSchema.shape,
+  token: z.uuid("Invalid or missing reset token"),
+})
 .refine((data) => data.password === data.confirmPassword, {
     message: "Passwords do not match",
     path: ["confirmPassword"],
 });
 
 export const UserChangePasswordSchema = z.object({
-  ...PasswordResetSchema.shape,
+  ...PasswordFieldsSchema.shape,
   oldPassword: z
     .string()
-    .min(1, "Password required")
+    .min(1, "Password required"),
+})
+.refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords do not match",
+    path: ["confirmPassword"],
 });
 
 export type LoginDTO = z.infer<typeof LoginSchema>;
