@@ -36,6 +36,7 @@ export const MultipleChoiceOptionInputSchema = OptionBaseSchema.extend({
 });
 
 export const SliderOptionInputSchema = OptionBaseSchema.extend({
+  label: requiredLabel,
   sliderLeftLabel: sliderLabel,
   sliderRightLabel: sliderLabel,
 });
@@ -82,7 +83,6 @@ const pollCreationBase = {
   isAnonymous: z.boolean(),
   hashtags: z.array(HashtagInputSchema),
 };
-
 
 //Default PollCreationSchema with a différent Option Schema depending on the user's poll format choice
 export const PollCreationSchema = z.discriminatedUnion("type", [
