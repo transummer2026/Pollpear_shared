@@ -98,6 +98,7 @@ export const PollCreationSchema = z.discriminatedUnion("type", [
     type: z.literal("single_choice"),
     options: z
       .array(MultipleChoiceOptionInputSchema)
+      
       .min(2, "Min 2 options"),
   }),
   z.object({

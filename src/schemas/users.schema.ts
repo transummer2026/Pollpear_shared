@@ -25,22 +25,10 @@ export const UserProfileSchema = UserDTOSchema.omit({
 });
 
 export const UserProfileUpdateSchema = UserProfileSchema.extend({
-  username: emptyToUndefined(UserProfileSchema.shape.username),
-  email: emptyToUndefined(UserProfileSchema.shape.email),
-  birthdate: emptyToUndefined(
+  birthdate: 
     z.coerce
       .date({ error: "Enter your birthdate" })
-      .min(new Date("1900-01-01"), { error: "Too old!" })
-  ),
-  nationality: emptyToUndefined(UserProfileSchema.shape.nationality),
-  name: emptyToUndefined(UserProfileSchema.shape.name),
-  surname: emptyToUndefined(UserProfileSchema.shape.surname),
-  city: emptyToUndefined(UserProfileSchema.shape.city),
-  state: emptyToUndefined(UserProfileSchema.shape.state),
-  country: emptyToUndefined(UserProfileSchema.shape.country),
-  company: emptyToUndefined(UserProfileSchema.shape.company),
-  bio: emptyToUndefined(UserProfileSchema.shape.bio),
-  userTheme: UserDTOSchema.shape.userTheme.optional(),
+      .min(new Date("1900-01-01"), { error: "Too old!" }),
 }).partial();
 
 export const UserLoginSchema = UserDTOSchema.pick({
