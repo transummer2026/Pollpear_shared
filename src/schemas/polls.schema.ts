@@ -51,12 +51,11 @@ const pollCreationBase = {
   endsAt: z.coerce.date().refine(
   (val) => val >= new Date(),
   { message: "Date cannot be in the past" }),
-  visibility: VisibilitySchema,
+  visibility: VisibilitySchema.default("private"),
   allowChangeVote: z.boolean(),
   isAnonymous: z.boolean(),
-  status: PollStatusSchema,
+  status: PollStatusSchema.default("pending"),
   roomId: z.number().optional(),
-  createdById: z.number(),
   pollHashtags: z.array(PollHashtagSchema.pick( { hashtagId: true })).optional(), // pollId is implicit and not here
   pollTemplates: z.array(PollTemplateSchema.pick( { userId: true })).optional(),
   childDependencies: z.array(PollDependencySchema.pick({ optionId: true })).optional(),
