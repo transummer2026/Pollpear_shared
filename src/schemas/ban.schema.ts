@@ -1,19 +1,29 @@
 import { z } from "zod";
-import type { BanUncheckedCreateInputObjectSchema } from "../prisma/schemas/objects/BanUncheckedCreateInput.schema";
-import type { BanUpdateInputObjectSchema } from "../prisma/schemas/objects/BanUpdateInput.schema";
+import { BanSchema } from "../prisma/schemas/models/Ban.schema";
 
-export const BanCreationDTOSchema = z.object({
+export const BanCreationDTOSchema = BanSchema.pick({
+  banReason: true,
+  bannedAt: true,
+  bannedById: true,
+  unbannedAt: true,
+  userId: true,
+}).extend({
   banReason: z.string().min(3),
   bannedAt: z.iso.date(),
   bannedById: z.coerce.number(),
   unbannedAt: z.coerce.date(),
   userId: z.coerce.number(),
-}) satisfies z.ZodType<z.infer<typeof BanUncheckedCreateInputObjectSchema>>;
+});
 
-export const BanUpdateDTOSchema = z.object({
+export const BanUpdateDTOSchema = BanSchema.pick({
+  banReason: true,
+  bannedAt: true,
+  unbannedAt: true,
+  unbanReason: true,
+}).extend({
   banReason: z.string().min(3).optional(),
   bannedAt: z.iso.date().optional(),
   unbannedAt: z.iso.date().optional(),
   unbanReason: z.string().optional(),
-}) satisfies z.ZodType<z.infer<typeof BanUpdateInputObjectSchema>>;
+});
 
