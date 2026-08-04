@@ -106,10 +106,7 @@ export const PollUpdateDTOSchema = z.object({
   options: z.array(z.union([MultipleChoiceOptionInputSchema, SliderOptionInputSchema, FreeFieldOptionInputSchema])),
   pollHashtags: z.array(PollHashtagSchema.pick( { hashtagId: true })),
   childDependencies: z.array(PollDependencySchema.pick({ optionId: true })),
-}).partial().refine(
-  (data) => Object.keys(data).length > 0,
-  { message: "At least one field must be provided for update" }
-);
+}).partial();
 
 /**
  * These are the search query options to find a poll.
