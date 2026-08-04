@@ -57,7 +57,6 @@ const pollCreationBase = {
   status: PollStatusSchema.default("pending"),
   roomId: z.number().optional(),
   pollHashtags: z.array(PollHashtagSchema.pick( { hashtagId: true })).optional(), // pollId is implicit and not here
-  pollTemplates: z.boolean().optional(),
   childDependencies: z.array(PollDependencySchema.pick({ optionId: true })).optional(),
 };
 
@@ -85,11 +84,6 @@ export const PollCreationDTOSchema = z.discriminatedUnion("type", [
     type: z.literal("slider"),
     options: z.array(SliderOptionInputSchema).length(2, "A slider poll needs exactly 2 options"),
   }),
-  z.object({
-    ...pollCreationBase,
-    type: z.literal("free_field"),
-    options: z.array(FreeFieldOptionInputSchema).optional(),
-  }),
 ]);
 
 /**
@@ -98,22 +92,21 @@ export const PollCreationDTOSchema = z.discriminatedUnion("type", [
  * on type, the "parse according to the option type" will live in poll.service.ts (TODO).
  */
 export const PollUpdateDTOSchema = z.object({
-  title: z.string().max(255).optional(),
-  description: z.string().max(3000).optional().nullable(),
+  title: z.string().max(255),
+  description: z.string().max(3000).nullable(),
   endsAt: z.coerce.date().refine(
     (val) => val >= new Date(),
     { message: "Date cannot be in the past" }
-  ).optional(),
-  visibility: VisibilitySchema.optional(),
-  allowChangeVote: z.boolean().optional(),
-  isAnonymous: z.boolean().optional(),
-  status: PollStatusSchema.optional(),
-  roomId: z.number().optional(),
-  options: z.array(z.union([MultipleChoiceOptionInputSchema, SliderOptionInputSchema, FreeFieldOptionInputSchema])).optional(),
-  pollHashtags: z.array(PollHashtagSchema.pick( { hashtagId: true })).optional(),
-  pollTemplates: z.boolean().optional(),
-  childDependencies: z.array(PollDependencySchema.pick({ optionId: true })).optional(),
-}).refine(
+  ),
+  visibility: VisibilitySchema,
+  allowChangeVote: z.boolean(),
+  isAnonymous: z.boolean(),
+  status: PollStatusSchema,
+  roomId: z.number(),
+  options: z.array(z.union([MultipleChoiceOptionInputSchema, SliderOptionInputSchema, FreeFieldOptionInputSchema])),
+  pollHashtags: z.array(PollHashtagSchema.pick( { hashtagId: true })),
+  childDependencies: z.array(PollDependencySchema.pick({ optionId: true })),
+}).partial().refine(
   (data) => Object.keys(data).length > 0,
   { message: "At least one field must be provided for update" }
 );
