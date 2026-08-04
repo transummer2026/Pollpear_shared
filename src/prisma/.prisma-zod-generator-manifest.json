@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "generatorVersion": "0.0.1",
-  "generatedAt": "2026-07-29T12:38:49.915Z",
+  "generatedAt": "2026-08-04T14:36:55.880Z",
   "outputPath": "/Users/josephinerandet/42/Pollpear/Pollpear_backend/Pollpear_shared/src/prisma",
   "files": [
     "schemas/enums/TransactionIsolationLevel.schema.ts",
