@@ -1,8 +1,16 @@
 import { z } from "zod";
 import { UserSchema } from "../prisma/schemas/models/User.schema";
+import { UserThemeSchema } from "../prisma/schemas/enums/UserTheme.schema";
 
-const emptyToUndefined = <T extends z.ZodTypeAny>(schema: T) =>
-  z.preprocess((val) => (val === "" ? undefined : val), schema.optional());
+export const BirthdateFormat = z.coerce
+  .date({ error: "Enter your birthdate" })
+  .min(new Date("1900-01-01"), { error: "Too old!" })
+  .refine((date) => {
+    const today = new Date();
+    const minDate = new Date(today.getFullYear() - 13, today.getMonth(), today.getDate());
+    return date <= minDate;
+  }, "User must be at least 13 years old");
+
 
 export const UserDTOSchema = UserSchema.omit({
   passwordHash: true,
@@ -24,31 +32,37 @@ export const UserProfileSchema = UserDTOSchema.omit({
   userTheme: true,
 });
 
+export const GenderSchema = UserDTOSchema.shape.gender;
+
+export const UserRegistrationSchema = z.object({
+  username: z.string()
+    .min(5, "Min 5 characters")
+    .max(32, "Max 32 characters")
+    .regex(/^[\w.]+$/, ""),
+  email: z.email("Invalid e-mail"),
+  birthdate: BirthdateFormat,
+  nationality: z.string()
+    .min(3, "Min 3 characters")
+    .max(20, "Max 20 characters")
+    .regex(/^[a-zA-Z]{2,15}(\-?\s?[a-zA-Z]{1,10})?$/, "Only letters"),
+  gender: z.enum(GenderSchema.options, { error: "Select a gender" }),
+  name: z.string().max(255, "Max 255 characters").optional(),
+  surname: z.string().max(255, "Max 255 characters").optional(),
+  city: z.string().max(255, "Max 255 characters").optional(),
+  state: z.string().max(255, "Max 255 characters").optional(),
+  country: z.string().max(255, "Max 255 characters").optional(),
+  company: z.string().max(255, "Max 255 characters").optional(),
+  userTheme: UserThemeSchema.default("light"),
+});
+
 export const UserProfileUpdateSchema = UserProfileSchema.extend({
-  username: emptyToUndefined(UserProfileSchema.shape.username),
-  email: emptyToUndefined(UserProfileSchema.shape.email),
-  birthdate: emptyToUndefined(
-    z.coerce
-      .date({ error: "Enter your birthdate" })
-      .min(new Date("1900-01-01"), { error: "Too old!" })
-  ),
-  nationality: emptyToUndefined(UserProfileSchema.shape.nationality),
-  name: emptyToUndefined(UserProfileSchema.shape.name),
-  surname: emptyToUndefined(UserProfileSchema.shape.surname),
-  city: emptyToUndefined(UserProfileSchema.shape.city),
-  state: emptyToUndefined(UserProfileSchema.shape.state),
-  country: emptyToUndefined(UserProfileSchema.shape.country),
-  company: emptyToUndefined(UserProfileSchema.shape.company),
-  bio: emptyToUndefined(UserProfileSchema.shape.bio),
-  userTheme: UserDTOSchema.shape.userTheme.optional(),
+  birthdate: BirthdateFormat,
+  userTheme: UserDTOSchema.shape.userTheme,
 }).partial();
 
 export const UserLoginSchema = UserDTOSchema.pick({
   email: true,
 });
-
-export const GenderSchema = UserDTOSchema.shape.gender;
-
 
 export type UserDTO = z.infer<typeof UserDTOSchema>;
 export type UserProfileDTO = z.infer<typeof UserProfileSchema>;
@@ -56,3 +70,4 @@ export type UserLoginDTO = z.infer<typeof UserLoginSchema>;
 export type UserProfileUpdateInput = z.input<typeof UserProfileUpdateSchema>;
 export type UserProfileUpdateDTO = z.output<typeof UserProfileUpdateSchema>;
 export type GenderDTO = z.infer<typeof GenderSchema>;
+export type UserRegistrationDTO = z.infer<typeof UserRegistrationSchema>;
