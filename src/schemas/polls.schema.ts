@@ -2,47 +2,24 @@ import { z } from "zod";
 import { VisibilitySchema } from "../prisma/schemas/enums/Visibility.schema";
 import { PollTypeSchema } from "../prisma/schemas/enums/PollType.schema";
 import { PollStatusSchema } from "../prisma/schemas/enums/PollStatus.schema";
-import { PollHashtagSchema } from "../prisma/schemas/models/PollHashtag.schema";
-import { OptionSchema } from "../prisma/schemas/models/Option.schema";
-import { PollTemplateSchema } from "../prisma/schemas/models/PollTemplate.schema";
+import { HashtagSchema } from "../prisma/schemas/models/Hashtag.schema";
 import { PollDependencySchema } from "../prisma/schemas/models/PollDependency.schema";
+import {
+  MultipleChoiceOptionInputSchema,
+  SliderOptionInputSchema,
+  FreeFieldOptionInputSchema,
+} from "./option.schema";
 
-const OptionBaseSchema = OptionSchema.omit({
-  id: true,
-  isDeleted: true,
-  pollId: true,
-  label: true,
-  sliderLeftLabel: true,
-  sliderRightLabel: true,
-});
-
-const requiredLabel = OptionSchema.shape.label
-  .min(1, "Label required")
-  .max(255, "Max 255 characters");
-
-const emptyToUndefined = <T extends z.ZodTypeAny>(schema: T) =>
-  z.preprocess((val) => (val === "" ? undefined : val), schema.optional());
-
-const sliderLabel = emptyToUndefined(z.string().max(255, "Max 255 characters"));
-
-export const MultipleChoiceOptionInputSchema = OptionBaseSchema.extend({
-  label: requiredLabel,
-});
-
-export const SliderOptionInputSchema = OptionBaseSchema.extend({
-  label: requiredLabel,
-  sliderLeftLabel: sliderLabel,
-  sliderRightLabel: sliderLabel,
-});
-
-export const FreeFieldOptionInputSchema = OptionBaseSchema;
+export {
+  MultipleChoiceOptionInputSchema,
+  SliderOptionInputSchema,
+  FreeFieldOptionInputSchema,
+} from "./option.schema";
 
 /**
- * PollHashtag produces a new object which only includes the hashtagId and not the PollId
- * because the PollId is implicit. 
- * 
- * Pollhashtag (if present) must be an array and each element of that array must be an object
- * that contains hashtagId
+ * hashtags (if present) must be an array of objects each containing a hashtag name.
+ * The service resolves each name to an existing Hashtag row or creates a new one
+ * (connectOrCreate) - the client never sends a hashtagId directly.
  */
 const pollCreationBase = {
   title: z.string().min(1).max(255),
@@ -56,7 +33,7 @@ const pollCreationBase = {
   isAnonymous: z.boolean(),
   status: PollStatusSchema.default("pending"),
   roomId: z.number().optional(),
-  pollHashtags: z.array(PollHashtagSchema.pick( { hashtagId: true })).optional(), // pollId is implicit and not here
+  hashtags: z.array(HashtagSchema.pick({ name: true })).optional(),
   childDependencies: z.array(PollDependencySchema.pick({ optionId: true })).optional(),
 };
 
@@ -104,7 +81,7 @@ export const PollUpdateDTOSchema = z.object({
   status: PollStatusSchema,
   roomId: z.number(),
   options: z.array(z.union([MultipleChoiceOptionInputSchema, SliderOptionInputSchema, FreeFieldOptionInputSchema])),
-  pollHashtags: z.array(PollHashtagSchema.pick( { hashtagId: true })),
+  hashtags: z.array(HashtagSchema.pick({ name: true })),
   childDependencies: z.array(PollDependencySchema.pick({ optionId: true })),
 }).partial();
 
