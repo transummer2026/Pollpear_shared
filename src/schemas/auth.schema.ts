@@ -20,6 +20,23 @@ export const RegisterSchema = z.object({
     path: ["confirmPassword"],
   });
 
+
+export const OauthRegisterSchema = UserRegistrationSchema.omit({
+  email: true,
+});
+
+export const OauthCompleteSchema = OauthRegisterSchema.extend({
+  token: z.uuid("Invalid or missing signup token"),
+});
+
+export const OauthPendingSchema = z.object({
+  email: z.email(),
+  username: z.string(),
+  name: z.string().nullable(),
+  surname: z.string().nullable(),
+  avatarUrl: z.string().nullable(),
+});
+
 export const LoginSchema = z.object({
   ...UserLoginSchema.shape,
   email: z.email("Invalid e-mail"),
@@ -59,3 +76,8 @@ export type RegisterInput = z.input<typeof RegisterSchema>;
 export type RegisterDTO = z.output<typeof RegisterSchema>;
 export type PasswordForgotDTO = z.infer<typeof PasswordForgotSchema>;
 export type PasswordResetDTO = z.infer<typeof PasswordResetSchema>;
+export type OauthRegisterInput = z.input<typeof OauthRegisterSchema>;
+export type OauthRegisterDTO = z.output<typeof OauthRegisterSchema>;
+export type OauthCompleteInput = z.input<typeof OauthCompleteSchema>;
+export type OauthCompleteDTO = z.output<typeof OauthCompleteSchema>;
+export type OauthPendingDTO = z.infer<typeof OauthPendingSchema>;
