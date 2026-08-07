@@ -8,7 +8,7 @@ export const BanCreationSchema = BanSchema.pick({
   unbannedAt: true,
   userId: true,
 }).extend({
-  banReason: z.string().min(3),
+  banReason: z.string().min(3, "Min 3 characters"),
   bannedAt: z.iso.date(),
   bannedById: z.coerce.number(),
   unbannedAt: z.coerce.date(),
@@ -21,7 +21,7 @@ export const BanUpdateSchema = BanSchema.pick({
   unbannedAt: true,
   unbanReason: true,
 }).extend({
-  banReason: z.string().min(3).optional(),
+  banReason: z.string().min(3, "Min 3 characters").optional(),
   bannedAt: z.iso.date().optional(),
   unbannedAt: z.iso.date().optional(),
   unbanReason: z.string().optional(),

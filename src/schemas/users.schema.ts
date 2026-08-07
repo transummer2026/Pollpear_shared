@@ -38,7 +38,7 @@ export const UserRegistrationSchema = z.object({
   username: z.string()
     .min(5, "Min 5 characters")
     .max(32, "Max 32 characters")
-    .regex(/^[\w.]+$/, ""),
+    .regex(/^[\w.]+$/, "Only letters, numbers, underscores and dots"),
   email: z.email("Invalid e-mail"),
   birthdate: BirthdateFormat,
   nationality: z.string()

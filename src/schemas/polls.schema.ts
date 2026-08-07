@@ -22,8 +22,8 @@ export {
  * (connectOrCreate) - the client never sends a hashtagId directly.
  */
 const pollCreationBase = {
-  title: z.string().min(1).max(255),
-  description: z.string().max(3000).optional().nullable(),
+  title: z.string().min(1, "Title required").max(255, "Max 255 characters"),
+  description: z.string().max(3000, "Max 3000 characters").optional().nullable(),
   endsAt: z.coerce.date().refine(
     (val) => val >= new Date(),
     { message: "Date cannot be in the past" }
@@ -69,8 +69,8 @@ export const PollCreationSchema = z.discriminatedUnion("type", [
  * on type, the "parse according to the option type" will live in poll.service.ts (TODO).
  */
 export const PollUpdateSchema = z.object({
-  title: z.string().max(255),
-  description: z.string().max(3000).nullable(),
+  title: z.string().max(255, "Max 255 characters"),
+  description: z.string().max(3000, "Max 3000 characters").nullable(),
   endsAt: z.coerce.date().refine(
     (val) => val >= new Date(),
     { message: "Date cannot be in the past" }
@@ -89,7 +89,7 @@ export const PollUpdateSchema = z.object({
  * These are the search query options to find a poll.
  */
 export const PollQuerySchema = z.object({
-  title: z.string().max(255).optional(),
+  title: z.string().max(255, "Max 255 characters").optional(),
   type: PollTypeSchema.optional(),
   visibility: VisibilitySchema.optional(),
   status: PollStatusSchema.optional(),
