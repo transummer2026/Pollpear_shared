@@ -45,7 +45,7 @@ const pollCreationBase = {
  * ...PollCreationBase means that it takes the schema above as base and then it adds
  * the option as per the type as seen below.
  */
-export const PollCreationDTOSchema = z.discriminatedUnion("type", [
+export const PollCreationSchema = z.discriminatedUnion("type", [
   z.object({
     ...pollCreationBase,
     type: z.literal("multiple_choice"),
@@ -68,7 +68,7 @@ export const PollCreationDTOSchema = z.discriminatedUnion("type", [
  * it stays that way else it would be complicated). Since the discriminated union is based
  * on type, the "parse according to the option type" will live in poll.service.ts (TODO).
  */
-export const PollUpdateDTOSchema = z.object({
+export const PollUpdateSchema = z.object({
   title: z.string().max(255),
   description: z.string().max(3000).nullable(),
   endsAt: z.coerce.date().refine(
@@ -88,7 +88,7 @@ export const PollUpdateDTOSchema = z.object({
 /**
  * These are the search query options to find a poll.
  */
-export const PollQueryDTOSchema = z.object({
+export const PollQuerySchema = z.object({
   title: z.string().max(255).optional(),
   type: PollTypeSchema.optional(),
   visibility: VisibilitySchema.optional(),
@@ -98,6 +98,6 @@ export const PollQueryDTOSchema = z.object({
   hashtagIds: z.array(z.number()).optional(),
 });
 
-export type PollCreationDTO = z.infer<typeof PollCreationDTOSchema>;
-export type PollUpdateDTO = z.infer<typeof PollUpdateDTOSchema>;
-export type PollQueryDTO = z.infer<typeof PollQueryDTOSchema>;
+export type PollCreationDTO = z.infer<typeof PollCreationSchema>;
+export type PollUpdateDTO = z.infer<typeof PollUpdateSchema>;
+export type PollQueryDTO = z.infer<typeof PollQuerySchema>;

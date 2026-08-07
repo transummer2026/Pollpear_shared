@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { UserSchema } from "../prisma/schemas/models/User.schema";
+import { UserSchema as UserModelSchema } from "../prisma/schemas/models/User.schema";
 import { UserThemeSchema } from "../prisma/schemas/enums/UserTheme.schema";
 
 export const BirthdateFormat = z.coerce
@@ -12,12 +12,12 @@ export const BirthdateFormat = z.coerce
   }, "User must be at least 13 years old");
 
 
-export const UserDTOSchema = UserSchema.omit({
+export const UserSchema = UserModelSchema.omit({
   passwordHash: true,
   updatedAt: true,
 });
 
-export const UserProfileSchema = UserDTOSchema.omit({
+export const UserProfileSchema = UserSchema.omit({
   id: true,
   role: true,
   score: true,
@@ -32,7 +32,7 @@ export const UserProfileSchema = UserDTOSchema.omit({
   userTheme: true,
 });
 
-export const GenderSchema = UserDTOSchema.shape.gender;
+export const GenderSchema = UserSchema.shape.gender;
 
 export const UserRegistrationSchema = z.object({
   username: z.string()
@@ -57,14 +57,14 @@ export const UserRegistrationSchema = z.object({
 
 export const UserProfileUpdateSchema = UserProfileSchema.extend({
   birthdate: BirthdateFormat,
-  userTheme: UserDTOSchema.shape.userTheme,
+  userTheme: UserSchema.shape.userTheme,
 }).partial();
 
-export const UserLoginSchema = UserDTOSchema.pick({
+export const UserLoginSchema = UserSchema.pick({
   email: true,
 });
 
-export type UserDTO = z.infer<typeof UserDTOSchema>;
+export type UserDTO = z.infer<typeof UserSchema>;
 export type UserProfileDTO = z.infer<typeof UserProfileSchema>;
 export type UserLoginDTO = z.infer<typeof UserLoginSchema>;
 export type UserProfileUpdateInput = z.input<typeof UserProfileUpdateSchema>;

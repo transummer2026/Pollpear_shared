@@ -9,7 +9,7 @@ const requiredVoteLabel = z.string().min(1, "Answer required").max(255, "Max 255
  * it's on what the user "choses" or picks. So for multiple choice at least one 
  * option has to be selected, free_field corresponds to the above requiredVoteLabel above.
  */
-export const VoteCreationDTO = z.discriminatedUnion("type", [
+export const VoteCreationSchema = z.discriminatedUnion("type", [
   z.object({
     type: z.literal("multiple_choice"),
     optionVoted: z.array(VoteOptionSchema.pick({ optionId: true })).min(1, "Select at least one option"),
@@ -26,10 +26,10 @@ export const VoteCreationDTO = z.discriminatedUnion("type", [
 ]);
 
 /**
- * Same shape as VoteCreationDTO but every field beyond the discriminant is optional,
+ * Same shape as VoteCreationSchema but every field beyond the discriminant is optional,
  * so a caller can resubmit only what changed about their vote.
  */
-export const VoteUpdateDTO = z.discriminatedUnion("type", [
+export const VoteUpdateSchema = z.discriminatedUnion("type", [
   z.object({
     type: z.literal("multiple_choice"),
     optionVoted: z.array(VoteOptionSchema.pick({ optionId: true })).min(1, "Select at least one option").optional(),

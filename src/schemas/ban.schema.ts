@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { BanSchema } from "../prisma/schemas/models/Ban.schema";
 
-export const BanCreationDTOSchema = BanSchema.pick({
+export const BanCreationSchema = BanSchema.pick({
   banReason: true,
   bannedAt: true,
   bannedById: true,
@@ -15,7 +15,7 @@ export const BanCreationDTOSchema = BanSchema.pick({
   userId: z.coerce.number(),
 });
 
-export const BanUpdateDTOSchema = BanSchema.pick({
+export const BanUpdateSchema = BanSchema.pick({
   banReason: true,
   bannedAt: true,
   unbannedAt: true,
