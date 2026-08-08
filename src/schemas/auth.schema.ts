@@ -30,7 +30,7 @@ export const OauthCompleteSchema = OauthRegisterSchema.extend({
 });
 
 export const OauthPendingSchema = z.object({
-  email: z.email(),
+  email: z.email("Invalid e-mail"),
   username: z.string(),
   name: z.string().nullable(),
   surname: z.string().nullable(),
