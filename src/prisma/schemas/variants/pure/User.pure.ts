@@ -23,6 +23,7 @@ export const UserModelSchema = z.object({
     score: z.number().int(),
     isOnline: z.boolean(),
     isDeleted: z.boolean(),
+    isEmailVerified: z.boolean(),
     visibility: VisibilitySchema.nullable(),
     deletedAt: z.date().nullable(),
     lastSeenAt: z.date().nullable(),

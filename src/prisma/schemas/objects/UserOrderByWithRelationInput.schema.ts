@@ -36,6 +36,7 @@ const makeSchema = () => z.object({
   score: SortOrderSchema.optional(),
   isOnline: SortOrderSchema.optional(),
   isDeleted: SortOrderSchema.optional(),
+  isEmailVerified: SortOrderSchema.optional(),
   visibility: z.union([SortOrderSchema, z.lazy(() => SortOrderInputObjectSchema)]).optional(),
   deletedAt: z.union([SortOrderSchema, z.lazy(() => SortOrderInputObjectSchema)]).optional(),
   lastSeenAt: z.union([SortOrderSchema, z.lazy(() => SortOrderInputObjectSchema)]).optional(),

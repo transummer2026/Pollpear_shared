@@ -21,6 +21,7 @@ const makeSchema = () => z.object({
   score: SortOrderSchema.optional(),
   isOnline: SortOrderSchema.optional(),
   isDeleted: SortOrderSchema.optional(),
+  isEmailVerified: SortOrderSchema.optional(),
   visibility: SortOrderSchema.optional(),
   deletedAt: SortOrderSchema.optional(),
   lastSeenAt: SortOrderSchema.optional(),

@@ -18,6 +18,7 @@ export const UserAggregateResultSchema = z.object({  _count: z.object({
     score: z.number(),
     isOnline: z.number(),
     isDeleted: z.number(),
+    isEmailVerified: z.number(),
     visibility: z.number(),
     deletedAt: z.number(),
     lastSeenAt: z.number(),

@@ -19,6 +19,7 @@ export const UserFindManyResultSchema = z.object({
   score: z.number().int(),
   isOnline: z.boolean(),
   isDeleted: z.boolean(),
+  isEmailVerified: z.boolean(),
   visibility: z.unknown().optional(),
   deletedAt: z.date().optional(),
   lastSeenAt: z.date().optional(),
