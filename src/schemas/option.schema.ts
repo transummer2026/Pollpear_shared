@@ -1,5 +1,5 @@
-import { z } from "zod";
-import { OptionSchema } from "../prisma/schemas/models/Option.schema";
+import { z } from 'zod';
+import { OptionSchema } from '../prisma/schemas/models/Option.schema';
 
 const OptionBaseSchema = OptionSchema.omit({
   id: true,
@@ -11,13 +11,13 @@ const OptionBaseSchema = OptionSchema.omit({
 });
 
 const requiredLabel = OptionSchema.shape.label
-  .min(1, "Label required")
-  .max(255, "Max 255 characters");
+  .min(1, 'Label required')
+  .max(255, 'Max 255 characters');
 
 const emptyToUndefined = <T extends z.ZodTypeAny>(schema: T) =>
-  z.preprocess((val) => (val === "" ? undefined : val), schema.optional());
+  z.preprocess((val) => (val === '' ? undefined : val), schema.optional());
 
-const sliderLabel = emptyToUndefined(z.string().max(255, "Max 255 characters"));
+const sliderLabel = emptyToUndefined(z.string().max(255, 'Max 255 characters'));
 
 export const MultipleChoiceOptionInputSchema = OptionBaseSchema.extend({
   label: requiredLabel,
@@ -29,12 +29,21 @@ export const SliderOptionInputSchema = OptionBaseSchema.extend({
   sliderRightLabel: sliderLabel,
 });
 
-export const FreeFieldOptionInputSchema = OptionBaseSchema;
-
-export type MultipleChoiceOptionInput = z.infer<typeof MultipleChoiceOptionInputSchema>;
+export type MultipleChoiceOptionInput = z.infer<
+  typeof MultipleChoiceOptionInputSchema
+>;
 export type SliderOptionInput = z.infer<typeof SliderOptionInputSchema>;
-export type FreeFieldOptionInput = z.infer<typeof FreeFieldOptionInputSchema>;
-export type PollOptionInput = MultipleChoiceOptionInput | SliderOptionInput | FreeFieldOptionInput;
+export type PollOptionInput = MultipleChoiceOptionInput | SliderOptionInput;
 
-export const isSliderOption = (option: PollOptionInput): option is SliderOptionInput =>
-  "sliderLeftLabel" in option;
+const optionalId = OptionSchema.shape.id.optional();
+
+export const OptionUpdateSchema = z.array(
+  z.union([
+    MultipleChoiceOptionInputSchema.extend({ id: optionalId }),
+    SliderOptionInputSchema.extend({ id: optionalId }),
+  ]),
+);
+
+export const isSliderOption = (
+  option: PollOptionInput,
+): option is SliderOptionInput => 'sliderLeftLabel' in option;
