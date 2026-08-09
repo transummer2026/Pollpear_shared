@@ -5,6 +5,7 @@ import { PollStatusSchema } from '../prisma/schemas/enums/PollStatus.schema';
 import { HashtagSchema } from '../prisma/schemas/models/Hashtag.schema';
 import {
   MultipleChoiceOptionInputSchema,
+  OptionUpdateSchema,
   SliderOptionInputSchema,
 } from './option.schema';
 
@@ -82,9 +83,7 @@ export const PollUpdateSchema = z
     isAnonymous: z.boolean(),
     status: PollStatusSchema,
     roomId: z.number(),
-    options: z.array(
-      z.union([MultipleChoiceOptionInputSchema, SliderOptionInputSchema]),
-    ),
+    options: OptionUpdateSchema,
     hashtags: z.array(HashtagSchema.pick({ name: true })),
   })
   .partial();

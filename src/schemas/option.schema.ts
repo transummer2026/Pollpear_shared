@@ -2,6 +2,7 @@ import { z } from 'zod';
 import { OptionSchema } from '../prisma/schemas/models/Option.schema';
 
 const OptionBaseSchema = OptionSchema.omit({
+  id: true,
   isDeleted: true,
   pollId: true,
   label: true,
@@ -33,6 +34,15 @@ export type MultipleChoiceOptionInput = z.infer<
 >;
 export type SliderOptionInput = z.infer<typeof SliderOptionInputSchema>;
 export type PollOptionInput = MultipleChoiceOptionInput | SliderOptionInput;
+
+const optionalId = OptionSchema.shape.id.optional();
+
+export const OptionUpdateSchema = z.array(
+  z.union([
+    MultipleChoiceOptionInputSchema.extend({ id: optionalId }),
+    SliderOptionInputSchema.extend({ id: optionalId }),
+  ]),
+);
 
 export const isSliderOption = (
   option: PollOptionInput,
