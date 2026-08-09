@@ -23,6 +23,7 @@ export const UserInputSchema = z.object({
     score: z.number().int(),
     isOnline: z.boolean(),
     isDeleted: z.boolean(),
+    isEmailVerified: z.boolean(),
     visibility: VisibilitySchema.optional().nullable(),
     deletedAt: z.date().optional().nullable(),
     lastSeenAt: z.date().optional().nullable(),

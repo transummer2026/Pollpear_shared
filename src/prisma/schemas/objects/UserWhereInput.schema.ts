@@ -51,6 +51,7 @@ const userwhereinputSchema = z.object({
   score: z.union([z.lazy(() => IntFilterObjectSchema), z.number().int()]).optional(),
   isOnline: z.union([z.lazy(() => BoolFilterObjectSchema), z.boolean()]).optional(),
   isDeleted: z.union([z.lazy(() => BoolFilterObjectSchema), z.boolean()]).optional(),
+  isEmailVerified: z.union([z.lazy(() => BoolFilterObjectSchema), z.boolean()]).optional(),
   visibility: z.union([z.lazy(() => EnumVisibilityNullableFilterObjectSchema), VisibilitySchema]).optional().nullable(),
   deletedAt: z.union([z.lazy(() => DateTimeNullableFilterObjectSchema), z.coerce.date()]).optional().nullable(),
   lastSeenAt: z.union([z.lazy(() => DateTimeNullableFilterObjectSchema), z.coerce.date()]).optional().nullable(),

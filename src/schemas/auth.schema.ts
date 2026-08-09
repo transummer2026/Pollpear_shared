@@ -59,6 +59,15 @@ export const PasswordResetSchema = z.object({
     path: ["confirmPassword"],
 });
 
+export const VerifyEmailSchema = z.object({
+  token: z.uuid("Invalid or missing verification token"),
+});
+
+export const ResendVerificationSchema = z.object({
+  ...UserLoginSchema.shape,
+  email: z.email("Invalid e-mail"),
+});
+
 export const UserChangePasswordSchema = z.object({
   ...PasswordFieldsSchema.shape,
   oldPassword: z
@@ -76,6 +85,8 @@ export type RegisterInput = z.input<typeof RegisterSchema>;
 export type RegisterDTO = z.output<typeof RegisterSchema>;
 export type PasswordForgotDTO = z.infer<typeof PasswordForgotSchema>;
 export type PasswordResetDTO = z.infer<typeof PasswordResetSchema>;
+export type VerifyEmailDTO = z.infer<typeof VerifyEmailSchema>;
+export type ResendVerificationDTO = z.infer<typeof ResendVerificationSchema>;
 export type OauthRegisterInput = z.input<typeof OauthRegisterSchema>;
 export type OauthRegisterDTO = z.output<typeof OauthRegisterSchema>;
 export type OauthCompleteInput = z.input<typeof OauthCompleteSchema>;

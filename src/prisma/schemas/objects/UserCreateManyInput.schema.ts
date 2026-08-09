@@ -24,6 +24,7 @@ const makeSchema = () => z.object({
   score: z.number().int().optional(),
   isOnline: z.boolean().optional(),
   isDeleted: z.boolean().optional(),
+  isEmailVerified: z.boolean().optional(),
   visibility: VisibilitySchema.optional().nullable(),
   deletedAt: z.coerce.date().optional().nullable(),
   lastSeenAt: z.coerce.date().optional().nullable(),
