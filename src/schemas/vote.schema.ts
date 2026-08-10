@@ -62,3 +62,7 @@ export const VoteUpdateSchema = z.discriminatedUnion('type', [
     label: requiredVoteLabel.optional(),
   }),
 ]);
+
+export type VoteCreationDTO = z.infer<typeof VoteCreationSchema>;
+export type VoteUpdateDTO = z.infer<typeof VoteUpdateSchema>;
+
