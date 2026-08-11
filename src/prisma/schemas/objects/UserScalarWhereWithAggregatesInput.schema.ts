@@ -9,7 +9,7 @@ import { UserRoleSchema } from '../enums/UserRole.schema';
 import { EnumGenderWithAggregatesFilterObjectSchema as EnumGenderWithAggregatesFilterObjectSchema } from './EnumGenderWithAggregatesFilter.schema';
 import { GenderSchema } from '../enums/Gender.schema';
 import { BoolWithAggregatesFilterObjectSchema as BoolWithAggregatesFilterObjectSchema } from './BoolWithAggregatesFilter.schema';
-import { EnumVisibilityNullableWithAggregatesFilterObjectSchema as EnumVisibilityNullableWithAggregatesFilterObjectSchema } from './EnumVisibilityNullableWithAggregatesFilter.schema';
+import { EnumVisibilityWithAggregatesFilterObjectSchema as EnumVisibilityWithAggregatesFilterObjectSchema } from './EnumVisibilityWithAggregatesFilter.schema';
 import { VisibilitySchema } from '../enums/Visibility.schema';
 import { DateTimeNullableWithAggregatesFilterObjectSchema as DateTimeNullableWithAggregatesFilterObjectSchema } from './DateTimeNullableWithAggregatesFilter.schema';
 import { EnumUserThemeWithAggregatesFilterObjectSchema as EnumUserThemeWithAggregatesFilterObjectSchema } from './EnumUserThemeWithAggregatesFilter.schema';
@@ -38,7 +38,7 @@ const userscalarwherewithaggregatesinputSchema = z.object({
   isOnline: z.union([z.lazy(() => BoolWithAggregatesFilterObjectSchema), z.boolean()]).optional(),
   isDeleted: z.union([z.lazy(() => BoolWithAggregatesFilterObjectSchema), z.boolean()]).optional(),
   isEmailVerified: z.union([z.lazy(() => BoolWithAggregatesFilterObjectSchema), z.boolean()]).optional(),
-  visibility: z.union([z.lazy(() => EnumVisibilityNullableWithAggregatesFilterObjectSchema), VisibilitySchema]).optional().nullable(),
+  visibility: z.union([z.lazy(() => EnumVisibilityWithAggregatesFilterObjectSchema), VisibilitySchema]).optional(),
   deletedAt: z.union([z.lazy(() => DateTimeNullableWithAggregatesFilterObjectSchema), z.coerce.date()]).optional().nullable(),
   lastSeenAt: z.union([z.lazy(() => DateTimeNullableWithAggregatesFilterObjectSchema), z.coerce.date()]).optional().nullable(),
   avatarUrl: z.union([z.lazy(() => StringWithAggregatesFilterObjectSchema), z.string().max(255)]).optional(),

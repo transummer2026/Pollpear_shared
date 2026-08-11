@@ -24,7 +24,7 @@ export const UserInputSchema = z.object({
     isOnline: z.boolean(),
     isDeleted: z.boolean(),
     isEmailVerified: z.boolean(),
-    visibility: VisibilitySchema.optional().nullable(),
+    visibility: VisibilitySchema,
     deletedAt: z.date().optional().nullable(),
     lastSeenAt: z.date().optional().nullable(),
     avatarUrl: z.string(),
