@@ -4,6 +4,7 @@ export const ApiKeyGroupByResultSchema = z.array(z.object({
   keyHash: z.string(),
   appName: z.string(),
   revoked: z.boolean(),
+  expiresAt: z.date(),
   createdAt: z.date(),
   updatedAt: z.date(),
   ownerId: z.number().int(),
@@ -12,6 +13,7 @@ export const ApiKeyGroupByResultSchema = z.array(z.object({
     keyHash: z.number(),
     appName: z.number(),
     revoked: z.number(),
+    expiresAt: z.number(),
     createdAt: z.number(),
     updatedAt: z.number(),
     ownerId: z.number(),
@@ -29,6 +31,7 @@ export const ApiKeyGroupByResultSchema = z.array(z.object({
     id: z.number().int().nullable(),
     keyHash: z.string().nullable(),
     appName: z.string().nullable(),
+    expiresAt: z.date().nullable(),
     createdAt: z.date().nullable(),
     updatedAt: z.date().nullable(),
     ownerId: z.number().int().nullable()
@@ -37,6 +40,7 @@ export const ApiKeyGroupByResultSchema = z.array(z.object({
     id: z.number().int().nullable(),
     keyHash: z.string().nullable(),
     appName: z.string().nullable(),
+    expiresAt: z.date().nullable(),
     createdAt: z.date().nullable(),
     updatedAt: z.date().nullable(),
     ownerId: z.number().int().nullable()
