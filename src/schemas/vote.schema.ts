@@ -15,19 +15,19 @@ const requiredVoteLabel = z
 export const VoteCreationSchema = z.discriminatedUnion('type', [
   z.object({
     type: z.literal('multiple_choice'),
-    optionVoted: z
+    optionsVoted: z
       .array(VoteOptionSchema.pick({ optionId: true }))
       .min(1, 'Select at least one option'),
   }),
   z.object({
     type: z.literal('single_choice'),
-    optionVoted: z
+    optionsVoted: z
       .array(VoteOptionSchema.pick({ optionId: true }))
       .length(1, 'Select exactly one option'),
   }),
   z.object({
     type: z.literal('slider'),
-    optionVoted: z
+    optionsVoted: z
       .array(VoteOptionSchema.pick({ optionId: true }))
       .length(1, 'A slider vote targets exactly 1 option'),
     label: requiredVoteLabel,
