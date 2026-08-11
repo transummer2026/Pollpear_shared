@@ -37,12 +37,14 @@ export type PollOptionInput = MultipleChoiceOptionInput | SliderOptionInput;
 
 const optionalId = OptionSchema.shape.id.optional();
 
-export const OptionUpdateSchema = z.array(
-  z.union([
-    MultipleChoiceOptionInputSchema.extend({ id: optionalId }),
-    SliderOptionInputSchema.extend({ id: optionalId }),
-  ]),
-);
+export const OptionUpdateSchema = z
+  .array(
+    z.union([
+      MultipleChoiceOptionInputSchema.extend({ id: optionalId }),
+      SliderOptionInputSchema.extend({ id: optionalId }),
+    ]),
+  )
+  .min(2, 'Min 2 options');
 
 export const isSliderOption = (
   option: PollOptionInput,

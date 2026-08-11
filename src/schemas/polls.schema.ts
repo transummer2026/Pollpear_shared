@@ -81,7 +81,6 @@ export const PollUpdateSchema = z
     visibility: VisibilitySchema,
     allowChangeVote: z.boolean(),
     isAnonymous: z.boolean(),
-    status: PollStatusSchema,
     roomId: z.number(),
     options: OptionUpdateSchema,
     hashtags: z.array(HashtagSchema.pick({ name: true })),
