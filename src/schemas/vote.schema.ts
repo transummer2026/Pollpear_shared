@@ -38,31 +38,7 @@ export const VoteCreationSchema = z.discriminatedUnion('type', [
  * Same shape as VoteCreationSchema but every field beyond the discriminant is optional,
  * so a caller can resubmit only what changed about their vote.
  */
-export const VoteUpdateSchema = z.discriminatedUnion('type', [
-  z.object({
-    type: z.literal('multiple_choice'),
-    optionVoted: z
-      .array(VoteOptionSchema.pick({ optionId: true }))
-      .min(1, 'Select at least one option')
-      .optional(),
-  }),
-  z.object({
-    type: z.literal('single_choice'),
-    optionVoted: z
-      .array(VoteOptionSchema.pick({ optionId: true }))
-      .length(1, 'Select exactly one option')
-      .optional(),
-  }),
-  z.object({
-    type: z.literal('slider'),
-    optionVoted: z
-      .array(VoteOptionSchema.pick({ optionId: true }))
-      .length(1, 'A slider vote targets exactly 1 option')
-      .optional(),
-    label: requiredVoteLabel.optional(),
-  }),
-]);
+export const VoteUpdateSchema = VoteCreationSchema;
 
 export type VoteCreationDTO = z.infer<typeof VoteCreationSchema>;
 export type VoteUpdateDTO = z.infer<typeof VoteUpdateSchema>;
-
