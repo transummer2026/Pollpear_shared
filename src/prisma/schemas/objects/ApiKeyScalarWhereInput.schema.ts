@@ -13,6 +13,7 @@ const apikeyscalarwhereinputSchema = z.object({
   keyHash: z.union([z.lazy(() => StringFilterObjectSchema), z.string()]).optional(),
   appName: z.union([z.lazy(() => StringFilterObjectSchema), z.string()]).optional(),
   revoked: z.union([z.lazy(() => BoolFilterObjectSchema), z.boolean()]).optional(),
+  expiresAt: z.union([z.lazy(() => DateTimeFilterObjectSchema), z.coerce.date()]).optional(),
   createdAt: z.union([z.lazy(() => DateTimeFilterObjectSchema), z.coerce.date()]).optional(),
   updatedAt: z.union([z.lazy(() => DateTimeFilterObjectSchema), z.coerce.date()]).optional(),
   ownerId: z.union([z.lazy(() => IntFilterObjectSchema), z.number().int()]).optional()
