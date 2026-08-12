@@ -28,7 +28,7 @@ const makeSchema = () => z.object({
   isOnline: SortOrderSchema.optional(),
   isDeleted: SortOrderSchema.optional(),
   isEmailVerified: SortOrderSchema.optional(),
-  visibility: z.union([SortOrderSchema, z.lazy(() => SortOrderInputObjectSchema)]).optional(),
+  visibility: SortOrderSchema.optional(),
   deletedAt: z.union([SortOrderSchema, z.lazy(() => SortOrderInputObjectSchema)]).optional(),
   lastSeenAt: z.union([SortOrderSchema, z.lazy(() => SortOrderInputObjectSchema)]).optional(),
   avatarUrl: SortOrderSchema.optional(),

@@ -9,7 +9,7 @@ import { UserRoleSchema } from '../enums/UserRole.schema';
 import { EnumGenderFilterObjectSchema as EnumGenderFilterObjectSchema } from './EnumGenderFilter.schema';
 import { GenderSchema } from '../enums/Gender.schema';
 import { BoolFilterObjectSchema as BoolFilterObjectSchema } from './BoolFilter.schema';
-import { EnumVisibilityNullableFilterObjectSchema as EnumVisibilityNullableFilterObjectSchema } from './EnumVisibilityNullableFilter.schema';
+import { EnumVisibilityFilterObjectSchema as EnumVisibilityFilterObjectSchema } from './EnumVisibilityFilter.schema';
 import { VisibilitySchema } from '../enums/Visibility.schema';
 import { DateTimeNullableFilterObjectSchema as DateTimeNullableFilterObjectSchema } from './DateTimeNullableFilter.schema';
 import { EnumUserThemeFilterObjectSchema as EnumUserThemeFilterObjectSchema } from './EnumUserThemeFilter.schema';
@@ -52,7 +52,7 @@ const userwhereinputSchema = z.object({
   isOnline: z.union([z.lazy(() => BoolFilterObjectSchema), z.boolean()]).optional(),
   isDeleted: z.union([z.lazy(() => BoolFilterObjectSchema), z.boolean()]).optional(),
   isEmailVerified: z.union([z.lazy(() => BoolFilterObjectSchema), z.boolean()]).optional(),
-  visibility: z.union([z.lazy(() => EnumVisibilityNullableFilterObjectSchema), VisibilitySchema]).optional().nullable(),
+  visibility: z.union([z.lazy(() => EnumVisibilityFilterObjectSchema), VisibilitySchema]).optional(),
   deletedAt: z.union([z.lazy(() => DateTimeNullableFilterObjectSchema), z.coerce.date()]).optional().nullable(),
   lastSeenAt: z.union([z.lazy(() => DateTimeNullableFilterObjectSchema), z.coerce.date()]).optional().nullable(),
   avatarUrl: z.union([z.lazy(() => StringFilterObjectSchema), z.string().max(255)]).optional(),

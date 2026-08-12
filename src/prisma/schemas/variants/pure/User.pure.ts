@@ -24,7 +24,7 @@ export const UserModelSchema = z.object({
     isOnline: z.boolean(),
     isDeleted: z.boolean(),
     isEmailVerified: z.boolean(),
-    visibility: VisibilitySchema.nullable(),
+    visibility: VisibilitySchema,
     deletedAt: z.date().nullable(),
     lastSeenAt: z.date().nullable(),
     avatarUrl: z.string(),
