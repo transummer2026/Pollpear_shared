@@ -6,6 +6,7 @@ export const VoteSchema = z.object({
   updatedAt: z.date(),
   label: z.string().nullish(),
   createdById: z.number().int(),
+  pollId: z.number().int(),
 });
 
 export type VoteType = z.infer<typeof VoteSchema>;

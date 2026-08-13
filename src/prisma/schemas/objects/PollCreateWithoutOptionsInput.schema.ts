@@ -5,6 +5,7 @@ import { VisibilitySchema } from '../enums/Visibility.schema';
 import { PollStatusSchema } from '../enums/PollStatus.schema';
 import { UserCreateNestedOneWithoutPollsCreatedInputObjectSchema as UserCreateNestedOneWithoutPollsCreatedInputObjectSchema } from './UserCreateNestedOneWithoutPollsCreatedInput.schema';
 import { RoomCreateNestedOneWithoutPollsInputObjectSchema as RoomCreateNestedOneWithoutPollsInputObjectSchema } from './RoomCreateNestedOneWithoutPollsInput.schema';
+import { VoteCreateNestedManyWithoutPollInputObjectSchema as VoteCreateNestedManyWithoutPollInputObjectSchema } from './VoteCreateNestedManyWithoutPollInput.schema';
 import { PollHashtagCreateNestedManyWithoutPollInputObjectSchema as PollHashtagCreateNestedManyWithoutPollInputObjectSchema } from './PollHashtagCreateNestedManyWithoutPollInput.schema';
 import { PollTemplateCreateNestedManyWithoutPollInputObjectSchema as PollTemplateCreateNestedManyWithoutPollInputObjectSchema } from './PollTemplateCreateNestedManyWithoutPollInput.schema';
 import { ReportCreateNestedManyWithoutPollInputObjectSchema as ReportCreateNestedManyWithoutPollInputObjectSchema } from './ReportCreateNestedManyWithoutPollInput.schema';
@@ -24,6 +25,7 @@ const makeSchema = () => z.object({
   status: PollStatusSchema,
   createdBy: z.lazy(() => UserCreateNestedOneWithoutPollsCreatedInputObjectSchema),
   room: z.lazy(() => RoomCreateNestedOneWithoutPollsInputObjectSchema).optional(),
+  votes: z.lazy(() => VoteCreateNestedManyWithoutPollInputObjectSchema).optional(),
   pollHashtags: z.lazy(() => PollHashtagCreateNestedManyWithoutPollInputObjectSchema).optional(),
   pollTemplates: z.lazy(() => PollTemplateCreateNestedManyWithoutPollInputObjectSchema).optional(),
   reports: z.lazy(() => ReportCreateNestedManyWithoutPollInputObjectSchema).optional(),

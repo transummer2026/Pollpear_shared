@@ -2,6 +2,7 @@ import * as z from 'zod';
 import type { Prisma } from '../../../../../src/generated/prisma/client';
 import { UserArgsObjectSchema as UserArgsObjectSchema } from './UserArgs.schema';
 import { RoomArgsObjectSchema as RoomArgsObjectSchema } from './RoomArgs.schema';
+import { VoteFindManySchema as VoteFindManySchema } from '../findManyVote.schema';
 import { OptionFindManySchema as OptionFindManySchema } from '../findManyOption.schema';
 import { PollHashtagFindManySchema as PollHashtagFindManySchema } from '../findManyPollHashtag.schema';
 import { PollTemplateFindManySchema as PollTemplateFindManySchema } from '../findManyPollTemplate.schema';
@@ -26,6 +27,7 @@ const makeSchema = () => z.object({
   roomId: z.boolean().optional(),
   createdBy: z.union([z.boolean(), z.lazy(() => UserArgsObjectSchema)]).optional(),
   room: z.union([z.boolean(), z.lazy(() => RoomArgsObjectSchema)]).optional(),
+  votes: z.union([z.boolean(), z.lazy(() => VoteFindManySchema)]).optional(),
   options: z.union([z.boolean(), z.lazy(() => OptionFindManySchema)]).optional(),
   pollHashtags: z.union([z.boolean(), z.lazy(() => PollHashtagFindManySchema)]).optional(),
   pollTemplates: z.union([z.boolean(), z.lazy(() => PollTemplateFindManySchema)]).optional(),

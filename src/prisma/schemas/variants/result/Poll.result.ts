@@ -20,6 +20,7 @@ export const PollResultSchema = z.object({
     roomId: z.number().int().nullable(),
     createdBy: z.unknown(),
     room: z.unknown().nullable(),
+    votes: z.array(z.unknown()),
     options: z.array(z.unknown()),
     pollHashtags: z.array(z.unknown()),
     pollTemplates: z.array(z.unknown()),

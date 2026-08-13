@@ -12,6 +12,7 @@ import { BoolFieldUpdateOperationsInputObjectSchema as BoolFieldUpdateOperations
 import { PollStatusSchema } from '../enums/PollStatus.schema';
 import { EnumPollStatusFieldUpdateOperationsInputObjectSchema as EnumPollStatusFieldUpdateOperationsInputObjectSchema } from './EnumPollStatusFieldUpdateOperationsInput.schema';
 import { RoomUpdateOneWithoutPollsNestedInputObjectSchema as RoomUpdateOneWithoutPollsNestedInputObjectSchema } from './RoomUpdateOneWithoutPollsNestedInput.schema';
+import { VoteUpdateManyWithoutPollNestedInputObjectSchema as VoteUpdateManyWithoutPollNestedInputObjectSchema } from './VoteUpdateManyWithoutPollNestedInput.schema';
 import { OptionUpdateManyWithoutPollNestedInputObjectSchema as OptionUpdateManyWithoutPollNestedInputObjectSchema } from './OptionUpdateManyWithoutPollNestedInput.schema';
 import { PollHashtagUpdateManyWithoutPollNestedInputObjectSchema as PollHashtagUpdateManyWithoutPollNestedInputObjectSchema } from './PollHashtagUpdateManyWithoutPollNestedInput.schema';
 import { PollTemplateUpdateManyWithoutPollNestedInputObjectSchema as PollTemplateUpdateManyWithoutPollNestedInputObjectSchema } from './PollTemplateUpdateManyWithoutPollNestedInput.schema';
@@ -31,6 +32,7 @@ const makeSchema = () => z.object({
   isAnonymous: z.union([z.boolean(), z.lazy(() => BoolFieldUpdateOperationsInputObjectSchema)]).optional(),
   status: z.union([PollStatusSchema, z.lazy(() => EnumPollStatusFieldUpdateOperationsInputObjectSchema)]).optional(),
   room: z.lazy(() => RoomUpdateOneWithoutPollsNestedInputObjectSchema).optional(),
+  votes: z.lazy(() => VoteUpdateManyWithoutPollNestedInputObjectSchema).optional(),
   options: z.lazy(() => OptionUpdateManyWithoutPollNestedInputObjectSchema).optional(),
   pollHashtags: z.lazy(() => PollHashtagUpdateManyWithoutPollNestedInputObjectSchema).optional(),
   pollTemplates: z.lazy(() => PollTemplateUpdateManyWithoutPollNestedInputObjectSchema).optional(),

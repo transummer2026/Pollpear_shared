@@ -6,8 +6,10 @@ export const VoteInputSchema = z.object({
     updatedAt: z.date(),
     label: z.string().optional().nullable(),
     createdById: z.number().int(),
-    createdBy: z.unknown(),
-    voteOptions: z.array(z.unknown())
+    pollId: z.number().int(),
+    poll: z.unknown(),
+    voteOptions: z.array(z.unknown()),
+    createdBy: z.unknown()
 }).strict();
 
 export type VoteInputType = z.infer<typeof VoteInputSchema>;

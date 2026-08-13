@@ -10,6 +10,7 @@ const makeSchema = () => z.object({
   createdAt: z.union([z.coerce.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputObjectSchema)]).optional(),
   updatedAt: z.union([z.coerce.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputObjectSchema)]).optional(),
   label: z.union([z.string(), z.lazy(() => NullableStringFieldUpdateOperationsInputObjectSchema)]).optional().nullable(),
+  pollId: z.union([z.number().int(), z.lazy(() => IntFieldUpdateOperationsInputObjectSchema)]).optional(),
   voteOptions: z.lazy(() => VoteOptionUncheckedUpdateManyWithoutVoteNestedInputObjectSchema).optional()
 }).strict();
 export const VoteUncheckedUpdateWithoutCreatedByInputObjectSchema: z.ZodType<Prisma.VoteUncheckedUpdateWithoutCreatedByInput> = makeSchema() as unknown as z.ZodType<Prisma.VoteUncheckedUpdateWithoutCreatedByInput>;

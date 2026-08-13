@@ -13,6 +13,7 @@ import { BoolFieldUpdateOperationsInputObjectSchema as BoolFieldUpdateOperations
 import { PollStatusSchema } from '../enums/PollStatus.schema';
 import { EnumPollStatusFieldUpdateOperationsInputObjectSchema as EnumPollStatusFieldUpdateOperationsInputObjectSchema } from './EnumPollStatusFieldUpdateOperationsInput.schema';
 import { NullableIntFieldUpdateOperationsInputObjectSchema as NullableIntFieldUpdateOperationsInputObjectSchema } from './NullableIntFieldUpdateOperationsInput.schema';
+import { VoteUncheckedUpdateManyWithoutPollNestedInputObjectSchema as VoteUncheckedUpdateManyWithoutPollNestedInputObjectSchema } from './VoteUncheckedUpdateManyWithoutPollNestedInput.schema';
 import { OptionUncheckedUpdateManyWithoutPollNestedInputObjectSchema as OptionUncheckedUpdateManyWithoutPollNestedInputObjectSchema } from './OptionUncheckedUpdateManyWithoutPollNestedInput.schema';
 import { PollHashtagUncheckedUpdateManyWithoutPollNestedInputObjectSchema as PollHashtagUncheckedUpdateManyWithoutPollNestedInputObjectSchema } from './PollHashtagUncheckedUpdateManyWithoutPollNestedInput.schema';
 import { ReportUncheckedUpdateManyWithoutPollNestedInputObjectSchema as ReportUncheckedUpdateManyWithoutPollNestedInputObjectSchema } from './ReportUncheckedUpdateManyWithoutPollNestedInput.schema';
@@ -33,6 +34,7 @@ const makeSchema = () => z.object({
   status: z.union([PollStatusSchema, z.lazy(() => EnumPollStatusFieldUpdateOperationsInputObjectSchema)]).optional(),
   createdById: z.union([z.number().int(), z.lazy(() => IntFieldUpdateOperationsInputObjectSchema)]).optional(),
   roomId: z.union([z.number().int(), z.lazy(() => NullableIntFieldUpdateOperationsInputObjectSchema)]).optional().nullable(),
+  votes: z.lazy(() => VoteUncheckedUpdateManyWithoutPollNestedInputObjectSchema).optional(),
   options: z.lazy(() => OptionUncheckedUpdateManyWithoutPollNestedInputObjectSchema).optional(),
   pollHashtags: z.lazy(() => PollHashtagUncheckedUpdateManyWithoutPollNestedInputObjectSchema).optional(),
   reports: z.lazy(() => ReportUncheckedUpdateManyWithoutPollNestedInputObjectSchema).optional(),

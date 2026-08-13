@@ -7,7 +7,8 @@ const makeSchema = () => z.object({
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional(),
   label: z.string().optional().nullable(),
-  createdById: z.number().int()
+  createdById: z.number().int(),
+  pollId: z.number().int()
 }).strict();
 export const VoteUncheckedCreateWithoutVoteOptionsInputObjectSchema: z.ZodType<Prisma.VoteUncheckedCreateWithoutVoteOptionsInput> = makeSchema() as unknown as z.ZodType<Prisma.VoteUncheckedCreateWithoutVoteOptionsInput>;
 export const VoteUncheckedCreateWithoutVoteOptionsInputObjectZodSchema = makeSchema();

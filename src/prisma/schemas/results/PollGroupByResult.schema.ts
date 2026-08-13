@@ -28,6 +28,7 @@ export const PollGroupByResultSchema = z.array(z.object({
     roomId: z.number(),
     createdBy: z.number(),
     room: z.number(),
+    votes: z.number(),
     options: z.number(),
     pollHashtags: z.number(),
     pollTemplates: z.number(),

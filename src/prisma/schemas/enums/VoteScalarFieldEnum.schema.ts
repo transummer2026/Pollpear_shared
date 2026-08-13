@@ -1,5 +1,5 @@
 import * as z from 'zod';
 
-export const VoteScalarFieldEnumSchema = z.enum(['id', 'createdAt', 'updatedAt', 'label', 'createdById'])
+export const VoteScalarFieldEnumSchema = z.enum(['id', 'createdAt', 'updatedAt', 'label', 'createdById', 'pollId'])
 
 export type VoteScalarFieldEnum = z.infer<typeof VoteScalarFieldEnumSchema>;

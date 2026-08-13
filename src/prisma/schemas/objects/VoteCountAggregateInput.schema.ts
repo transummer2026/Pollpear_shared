@@ -8,6 +8,7 @@ const makeSchema = () => z.object({
   updatedAt: z.literal(true).optional(),
   label: z.literal(true).optional(),
   createdById: z.literal(true).optional(),
+  pollId: z.literal(true).optional(),
   _all: z.literal(true).optional()
 }).strict();
 export const VoteCountAggregateInputObjectSchema: z.ZodType<Prisma.VoteCountAggregateInputType> = makeSchema() as unknown as z.ZodType<Prisma.VoteCountAggregateInputType>;
