@@ -16,6 +16,7 @@ export const PollAggregateResultSchema = z.object({  _count: z.object({
     roomId: z.number(),
     createdBy: z.number(),
     room: z.number(),
+    votes: z.number(),
     options: z.number(),
     pollHashtags: z.number(),
     pollTemplates: z.number(),

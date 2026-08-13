@@ -6,7 +6,8 @@ const makeSchema = () => z.object({
   id: z.number().int().optional(),
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional(),
-  label: z.string().max(255).optional().nullable()
+  label: z.string().max(255).optional().nullable(),
+  pollId: z.number().int()
 }).strict();
 export const VoteCreateManyCreatedByInputObjectSchema: z.ZodType<Prisma.VoteCreateManyCreatedByInput> = makeSchema() as unknown as z.ZodType<Prisma.VoteCreateManyCreatedByInput>;
 export const VoteCreateManyCreatedByInputObjectZodSchema = makeSchema();

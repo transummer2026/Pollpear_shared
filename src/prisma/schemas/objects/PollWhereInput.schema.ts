@@ -17,6 +17,7 @@ import { UserScalarRelationFilterObjectSchema as UserScalarRelationFilterObjectS
 import { UserWhereInputObjectSchema as UserWhereInputObjectSchema } from './UserWhereInput.schema';
 import { RoomNullableScalarRelationFilterObjectSchema as RoomNullableScalarRelationFilterObjectSchema } from './RoomNullableScalarRelationFilter.schema';
 import { RoomWhereInputObjectSchema as RoomWhereInputObjectSchema } from './RoomWhereInput.schema';
+import { VoteListRelationFilterObjectSchema as VoteListRelationFilterObjectSchema } from './VoteListRelationFilter.schema';
 import { OptionListRelationFilterObjectSchema as OptionListRelationFilterObjectSchema } from './OptionListRelationFilter.schema';
 import { PollHashtagListRelationFilterObjectSchema as PollHashtagListRelationFilterObjectSchema } from './PollHashtagListRelationFilter.schema';
 import { PollTemplateListRelationFilterObjectSchema as PollTemplateListRelationFilterObjectSchema } from './PollTemplateListRelationFilter.schema';
@@ -43,6 +44,7 @@ const pollwhereinputSchema = z.object({
   roomId: z.union([z.lazy(() => IntNullableFilterObjectSchema), z.number().int()]).optional().nullable(),
   createdBy: z.union([z.lazy(() => UserScalarRelationFilterObjectSchema), z.lazy(() => UserWhereInputObjectSchema)]).optional(),
   room: z.union([z.lazy(() => RoomNullableScalarRelationFilterObjectSchema), z.lazy(() => RoomWhereInputObjectSchema)]).optional(),
+  votes: z.lazy(() => VoteListRelationFilterObjectSchema).optional(),
   options: z.lazy(() => OptionListRelationFilterObjectSchema).optional(),
   pollHashtags: z.lazy(() => PollHashtagListRelationFilterObjectSchema).optional(),
   pollTemplates: z.lazy(() => PollTemplateListRelationFilterObjectSchema).optional(),

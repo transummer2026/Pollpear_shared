@@ -13,6 +13,7 @@ import { PollStatusSchema } from '../enums/PollStatus.schema';
 import { EnumPollStatusFieldUpdateOperationsInputObjectSchema as EnumPollStatusFieldUpdateOperationsInputObjectSchema } from './EnumPollStatusFieldUpdateOperationsInput.schema';
 import { UserUpdateOneRequiredWithoutPollsCreatedNestedInputObjectSchema as UserUpdateOneRequiredWithoutPollsCreatedNestedInputObjectSchema } from './UserUpdateOneRequiredWithoutPollsCreatedNestedInput.schema';
 import { RoomUpdateOneWithoutPollsNestedInputObjectSchema as RoomUpdateOneWithoutPollsNestedInputObjectSchema } from './RoomUpdateOneWithoutPollsNestedInput.schema';
+import { VoteUpdateManyWithoutPollNestedInputObjectSchema as VoteUpdateManyWithoutPollNestedInputObjectSchema } from './VoteUpdateManyWithoutPollNestedInput.schema';
 import { PollHashtagUpdateManyWithoutPollNestedInputObjectSchema as PollHashtagUpdateManyWithoutPollNestedInputObjectSchema } from './PollHashtagUpdateManyWithoutPollNestedInput.schema';
 import { PollTemplateUpdateManyWithoutPollNestedInputObjectSchema as PollTemplateUpdateManyWithoutPollNestedInputObjectSchema } from './PollTemplateUpdateManyWithoutPollNestedInput.schema';
 import { ReportUpdateManyWithoutPollNestedInputObjectSchema as ReportUpdateManyWithoutPollNestedInputObjectSchema } from './ReportUpdateManyWithoutPollNestedInput.schema';
@@ -32,6 +33,7 @@ const makeSchema = () => z.object({
   status: z.union([PollStatusSchema, z.lazy(() => EnumPollStatusFieldUpdateOperationsInputObjectSchema)]).optional(),
   createdBy: z.lazy(() => UserUpdateOneRequiredWithoutPollsCreatedNestedInputObjectSchema).optional(),
   room: z.lazy(() => RoomUpdateOneWithoutPollsNestedInputObjectSchema).optional(),
+  votes: z.lazy(() => VoteUpdateManyWithoutPollNestedInputObjectSchema).optional(),
   pollHashtags: z.lazy(() => PollHashtagUpdateManyWithoutPollNestedInputObjectSchema).optional(),
   pollTemplates: z.lazy(() => PollTemplateUpdateManyWithoutPollNestedInputObjectSchema).optional(),
   reports: z.lazy(() => ReportUpdateManyWithoutPollNestedInputObjectSchema).optional(),

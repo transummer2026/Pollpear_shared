@@ -12,7 +12,8 @@ const votescalarwherewithaggregatesinputSchema = z.object({
   createdAt: z.union([z.lazy(() => DateTimeWithAggregatesFilterObjectSchema), z.coerce.date()]).optional(),
   updatedAt: z.union([z.lazy(() => DateTimeWithAggregatesFilterObjectSchema), z.coerce.date()]).optional(),
   label: z.union([z.lazy(() => StringNullableWithAggregatesFilterObjectSchema), z.string().max(255)]).optional().nullable(),
-  createdById: z.union([z.lazy(() => IntWithAggregatesFilterObjectSchema), z.number().int()]).optional()
+  createdById: z.union([z.lazy(() => IntWithAggregatesFilterObjectSchema), z.number().int()]).optional(),
+  pollId: z.union([z.lazy(() => IntWithAggregatesFilterObjectSchema), z.number().int()]).optional()
 }).strict();
 export const VoteScalarWhereWithAggregatesInputObjectSchema: z.ZodType<Prisma.VoteScalarWhereWithAggregatesInput> = votescalarwherewithaggregatesinputSchema as unknown as z.ZodType<Prisma.VoteScalarWhereWithAggregatesInput>;
 export const VoteScalarWhereWithAggregatesInputObjectZodSchema = votescalarwherewithaggregatesinputSchema;

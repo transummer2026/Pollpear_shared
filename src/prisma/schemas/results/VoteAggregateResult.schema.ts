@@ -5,28 +5,34 @@ export const VoteAggregateResultSchema = z.object({  _count: z.object({
     updatedAt: z.number(),
     label: z.number(),
     createdById: z.number(),
-    createdBy: z.number(),
-    voteOptions: z.number()
+    pollId: z.number(),
+    poll: z.number(),
+    voteOptions: z.number(),
+    createdBy: z.number()
   }).optional(),
   _sum: z.object({
     id: z.number().nullable(),
-    createdById: z.number().nullable()
+    createdById: z.number().nullable(),
+    pollId: z.number().nullable()
   }).nullable().optional(),
   _avg: z.object({
     id: z.number().nullable(),
-    createdById: z.number().nullable()
+    createdById: z.number().nullable(),
+    pollId: z.number().nullable()
   }).nullable().optional(),
   _min: z.object({
     id: z.number().int().nullable(),
     createdAt: z.date().nullable(),
     updatedAt: z.date().nullable(),
     label: z.string().nullable(),
-    createdById: z.number().int().nullable()
+    createdById: z.number().int().nullable(),
+    pollId: z.number().int().nullable()
   }).nullable().optional(),
   _max: z.object({
     id: z.number().int().nullable(),
     createdAt: z.date().nullable(),
     updatedAt: z.date().nullable(),
     label: z.string().nullable(),
-    createdById: z.number().int().nullable()
+    createdById: z.number().int().nullable(),
+    pollId: z.number().int().nullable()
   }).nullable().optional()});

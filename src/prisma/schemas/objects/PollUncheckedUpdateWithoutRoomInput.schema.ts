@@ -12,6 +12,7 @@ import { EnumVisibilityFieldUpdateOperationsInputObjectSchema as EnumVisibilityF
 import { BoolFieldUpdateOperationsInputObjectSchema as BoolFieldUpdateOperationsInputObjectSchema } from './BoolFieldUpdateOperationsInput.schema';
 import { PollStatusSchema } from '../enums/PollStatus.schema';
 import { EnumPollStatusFieldUpdateOperationsInputObjectSchema as EnumPollStatusFieldUpdateOperationsInputObjectSchema } from './EnumPollStatusFieldUpdateOperationsInput.schema';
+import { VoteUncheckedUpdateManyWithoutPollNestedInputObjectSchema as VoteUncheckedUpdateManyWithoutPollNestedInputObjectSchema } from './VoteUncheckedUpdateManyWithoutPollNestedInput.schema';
 import { OptionUncheckedUpdateManyWithoutPollNestedInputObjectSchema as OptionUncheckedUpdateManyWithoutPollNestedInputObjectSchema } from './OptionUncheckedUpdateManyWithoutPollNestedInput.schema';
 import { PollHashtagUncheckedUpdateManyWithoutPollNestedInputObjectSchema as PollHashtagUncheckedUpdateManyWithoutPollNestedInputObjectSchema } from './PollHashtagUncheckedUpdateManyWithoutPollNestedInput.schema';
 import { PollTemplateUncheckedUpdateManyWithoutPollNestedInputObjectSchema as PollTemplateUncheckedUpdateManyWithoutPollNestedInputObjectSchema } from './PollTemplateUncheckedUpdateManyWithoutPollNestedInput.schema';
@@ -32,6 +33,7 @@ const makeSchema = () => z.object({
   isAnonymous: z.union([z.boolean(), z.lazy(() => BoolFieldUpdateOperationsInputObjectSchema)]).optional(),
   status: z.union([PollStatusSchema, z.lazy(() => EnumPollStatusFieldUpdateOperationsInputObjectSchema)]).optional(),
   createdById: z.union([z.number().int(), z.lazy(() => IntFieldUpdateOperationsInputObjectSchema)]).optional(),
+  votes: z.lazy(() => VoteUncheckedUpdateManyWithoutPollNestedInputObjectSchema).optional(),
   options: z.lazy(() => OptionUncheckedUpdateManyWithoutPollNestedInputObjectSchema).optional(),
   pollHashtags: z.lazy(() => PollHashtagUncheckedUpdateManyWithoutPollNestedInputObjectSchema).optional(),
   pollTemplates: z.lazy(() => PollTemplateUncheckedUpdateManyWithoutPollNestedInputObjectSchema).optional(),

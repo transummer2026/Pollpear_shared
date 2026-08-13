@@ -15,8 +15,10 @@ export const VoteFindFirstOrThrowSelectSchema: z.ZodType<Prisma.VoteSelect> = z.
     updatedAt: z.boolean().optional(),
     label: z.boolean().optional(),
     createdById: z.boolean().optional(),
-    createdBy: z.boolean().optional(),
+    pollId: z.boolean().optional(),
+    poll: z.boolean().optional(),
     voteOptions: z.boolean().optional(),
+    createdBy: z.boolean().optional(),
     _count: z.boolean().optional()
   }).strict() as unknown as z.ZodType<Prisma.VoteSelect>;
 
@@ -26,8 +28,10 @@ export const VoteFindFirstOrThrowSelectZodSchema = z.object({
     updatedAt: z.boolean().optional(),
     label: z.boolean().optional(),
     createdById: z.boolean().optional(),
-    createdBy: z.boolean().optional(),
+    pollId: z.boolean().optional(),
+    poll: z.boolean().optional(),
     voteOptions: z.boolean().optional(),
+    createdBy: z.boolean().optional(),
     _count: z.boolean().optional()
   }).strict();
 

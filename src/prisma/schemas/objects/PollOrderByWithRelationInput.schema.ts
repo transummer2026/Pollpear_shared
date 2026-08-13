@@ -4,6 +4,7 @@ import { SortOrderSchema } from '../enums/SortOrder.schema';
 import { SortOrderInputObjectSchema as SortOrderInputObjectSchema } from './SortOrderInput.schema';
 import { UserOrderByWithRelationInputObjectSchema as UserOrderByWithRelationInputObjectSchema } from './UserOrderByWithRelationInput.schema';
 import { RoomOrderByWithRelationInputObjectSchema as RoomOrderByWithRelationInputObjectSchema } from './RoomOrderByWithRelationInput.schema';
+import { VoteOrderByRelationAggregateInputObjectSchema as VoteOrderByRelationAggregateInputObjectSchema } from './VoteOrderByRelationAggregateInput.schema';
 import { OptionOrderByRelationAggregateInputObjectSchema as OptionOrderByRelationAggregateInputObjectSchema } from './OptionOrderByRelationAggregateInput.schema';
 import { PollHashtagOrderByRelationAggregateInputObjectSchema as PollHashtagOrderByRelationAggregateInputObjectSchema } from './PollHashtagOrderByRelationAggregateInput.schema';
 import { PollTemplateOrderByRelationAggregateInputObjectSchema as PollTemplateOrderByRelationAggregateInputObjectSchema } from './PollTemplateOrderByRelationAggregateInput.schema';
@@ -27,6 +28,7 @@ const makeSchema = () => z.object({
   roomId: z.union([SortOrderSchema, z.lazy(() => SortOrderInputObjectSchema)]).optional(),
   createdBy: z.lazy(() => UserOrderByWithRelationInputObjectSchema).optional(),
   room: z.lazy(() => RoomOrderByWithRelationInputObjectSchema).optional(),
+  votes: z.lazy(() => VoteOrderByRelationAggregateInputObjectSchema).optional(),
   options: z.lazy(() => OptionOrderByRelationAggregateInputObjectSchema).optional(),
   pollHashtags: z.lazy(() => PollHashtagOrderByRelationAggregateInputObjectSchema).optional(),
   pollTemplates: z.lazy(() => PollTemplateOrderByRelationAggregateInputObjectSchema).optional(),

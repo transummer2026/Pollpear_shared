@@ -3,6 +3,7 @@ import type { Prisma } from '../../../../../src/generated/prisma/client';
 import { PollTypeSchema } from '../enums/PollType.schema';
 import { VisibilitySchema } from '../enums/Visibility.schema';
 import { PollStatusSchema } from '../enums/PollStatus.schema';
+import { VoteUncheckedCreateNestedManyWithoutPollInputObjectSchema as VoteUncheckedCreateNestedManyWithoutPollInputObjectSchema } from './VoteUncheckedCreateNestedManyWithoutPollInput.schema';
 import { OptionUncheckedCreateNestedManyWithoutPollInputObjectSchema as OptionUncheckedCreateNestedManyWithoutPollInputObjectSchema } from './OptionUncheckedCreateNestedManyWithoutPollInput.schema';
 import { PollTemplateUncheckedCreateNestedManyWithoutPollInputObjectSchema as PollTemplateUncheckedCreateNestedManyWithoutPollInputObjectSchema } from './PollTemplateUncheckedCreateNestedManyWithoutPollInput.schema';
 import { ReportUncheckedCreateNestedManyWithoutPollInputObjectSchema as ReportUncheckedCreateNestedManyWithoutPollInputObjectSchema } from './ReportUncheckedCreateNestedManyWithoutPollInput.schema';
@@ -23,6 +24,7 @@ const makeSchema = () => z.object({
   status: PollStatusSchema,
   createdById: z.number().int(),
   roomId: z.number().int().optional().nullable(),
+  votes: z.lazy(() => VoteUncheckedCreateNestedManyWithoutPollInputObjectSchema).optional(),
   options: z.lazy(() => OptionUncheckedCreateNestedManyWithoutPollInputObjectSchema).optional(),
   pollTemplates: z.lazy(() => PollTemplateUncheckedCreateNestedManyWithoutPollInputObjectSchema).optional(),
   reports: z.lazy(() => ReportUncheckedCreateNestedManyWithoutPollInputObjectSchema).optional(),

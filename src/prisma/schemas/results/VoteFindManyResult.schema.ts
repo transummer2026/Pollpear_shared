@@ -6,8 +6,10 @@ export const VoteFindManyResultSchema = z.object({
   updatedAt: z.date(),
   label: z.string().optional(),
   createdById: z.number().int(),
-  createdBy: z.unknown(),
-  voteOptions: z.array(z.unknown())
+  pollId: z.number().int(),
+  poll: z.unknown(),
+  voteOptions: z.array(z.unknown()),
+  createdBy: z.unknown()
 })),
   pagination: z.object({
   page: z.number().int().min(1),

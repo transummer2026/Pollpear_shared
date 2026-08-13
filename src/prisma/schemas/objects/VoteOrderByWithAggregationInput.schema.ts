@@ -14,6 +14,7 @@ const makeSchema = () => z.object({
   updatedAt: SortOrderSchema.optional(),
   label: z.union([SortOrderSchema, z.lazy(() => SortOrderInputObjectSchema)]).optional(),
   createdById: SortOrderSchema.optional(),
+  pollId: SortOrderSchema.optional(),
   _count: z.lazy(() => VoteCountOrderByAggregateInputObjectSchema).optional(),
   _avg: z.lazy(() => VoteAvgOrderByAggregateInputObjectSchema).optional(),
   _max: z.lazy(() => VoteMaxOrderByAggregateInputObjectSchema).optional(),
