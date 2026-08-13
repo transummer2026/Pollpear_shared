@@ -3,9 +3,10 @@ import type { Prisma } from '../../../../../src/generated/prisma/client';
 import { RoomCreateNestedOneWithoutRoomMembersInputObjectSchema as RoomCreateNestedOneWithoutRoomMembersInputObjectSchema } from './RoomCreateNestedOneWithoutRoomMembersInput.schema'
 
 const makeSchema = () => z.object({
+  joinedAt: z.coerce.date(),
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional(),
-  joinedAt: z.coerce.date(),
+  deletedAt: z.coerce.date().optional().nullable(),
   room: z.lazy(() => RoomCreateNestedOneWithoutRoomMembersInputObjectSchema)
 }).strict();
 export const RoomMemberCreateWithoutUserInputObjectSchema: z.ZodType<Prisma.RoomMemberCreateWithoutUserInput> = makeSchema() as unknown as z.ZodType<Prisma.RoomMemberCreateWithoutUserInput>;

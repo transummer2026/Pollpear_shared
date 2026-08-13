@@ -9,14 +9,15 @@ const makeSchema = () => z.object({
   title: z.string().max(255),
   description: z.string().optional().nullable(),
   type: PollTypeSchema,
-  createdAt: z.coerce.date().optional(),
-  publishedAt: z.coerce.date().optional().nullable(),
-  updatedAt: z.coerce.date().optional(),
-  endsAt: z.coerce.date(),
-  visibility: VisibilitySchema,
+  visibility: VisibilitySchema.optional(),
   allowChangeVote: z.boolean(),
   isAnonymous: z.boolean(),
   status: PollStatusSchema,
+  publishedAt: z.coerce.date().optional().nullable(),
+  endsAt: z.coerce.date(),
+  createdAt: z.coerce.date().optional(),
+  updatedAt: z.coerce.date().optional(),
+  deletedAt: z.coerce.date().optional().nullable(),
   createdById: z.number().int()
 }).strict();
 export const PollCreateManyRoomInputObjectSchema: z.ZodType<Prisma.PollCreateManyRoomInput> = makeSchema() as unknown as z.ZodType<Prisma.PollCreateManyRoomInput>;

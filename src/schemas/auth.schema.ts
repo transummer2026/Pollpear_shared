@@ -1,11 +1,6 @@
 import { z } from 'zod';
-import { UserLoginSchema, UserRegistrationSchema } from './users.schema';
-
-export const PasswordFormat = z
-  .string()
-  .min(12, 'Min 12 characters')
-  .regex(/[A-Z]/, 'Min one capital letter')
-  .regex(/[0-9]/, 'Min one digit');
+import { UserCreateSchema } from './users.schema';
+import { EmailFormat, PasswordFormat } from './formats.schema';
 
 export const PasswordFieldsSchema = z.object({
   password: PasswordFormat,
@@ -14,7 +9,7 @@ export const PasswordFieldsSchema = z.object({
 
 export const RegisterSchema = z
   .object({
-    ...UserRegistrationSchema.shape,
+    ...UserCreateSchema.shape,
     ...PasswordFieldsSchema.shape,
   })
   .refine((data) => data.password === data.confirmPassword, {
@@ -22,31 +17,13 @@ export const RegisterSchema = z
     path: ['confirmPassword'],
   });
 
-export const OauthRegisterSchema = UserRegistrationSchema.omit({
-  email: true,
-});
-
-export const OauthCompleteSchema = OauthRegisterSchema.extend({
-  token: z.uuid('Invalid or missing signup token'),
-});
-
-export const OauthPendingSchema = z.object({
-  email: z.email('Invalid e-mail'),
-  username: z.string(),
-  name: z.string().nullable(),
-  surname: z.string().nullable(),
-  avatarUrl: z.string().nullable(),
-});
-
 export const LoginSchema = z.object({
-  ...UserLoginSchema.shape,
-  email: z.email('Invalid e-mail'),
+  email: EmailFormat,
   password: z.string().min(1, 'Password required'),
 });
 
 export const PasswordForgotSchema = z.object({
-  ...UserLoginSchema.shape,
-  email: z.email('Invalid e-mail'),
+  email: EmailFormat,
 });
 
 export const PasswordResetSchema = z
@@ -59,15 +36,6 @@ export const PasswordResetSchema = z
     path: ['confirmPassword'],
   });
 
-export const VerifyEmailSchema = z.object({
-  token: z.uuid('Invalid or missing verification token'),
-});
-
-export const ResendVerificationSchema = z.object({
-  ...UserLoginSchema.shape,
-  email: z.email('Invalid e-mail'),
-});
-
 export const UserChangePasswordSchema = z
   .object({
     ...PasswordFieldsSchema.shape,
@@ -78,16 +46,19 @@ export const UserChangePasswordSchema = z
     path: ['confirmPassword'],
   });
 
-export type LoginDTO = z.infer<typeof LoginSchema>;
-export type UserChangePasswordDTO = z.infer<typeof UserChangePasswordSchema>;
+export const VerifyEmailSchema = z.object({
+  token: z.uuid('Invalid or missing verification token'),
+});
+
+export const ResendVerificationSchema = z.object({
+  email: EmailFormat,
+});
+
 export type RegisterInput = z.input<typeof RegisterSchema>;
 export type RegisterDTO = z.output<typeof RegisterSchema>;
+export type LoginDTO = z.infer<typeof LoginSchema>;
 export type PasswordForgotDTO = z.infer<typeof PasswordForgotSchema>;
 export type PasswordResetDTO = z.infer<typeof PasswordResetSchema>;
+export type UserChangePasswordDTO = z.infer<typeof UserChangePasswordSchema>;
 export type VerifyEmailDTO = z.infer<typeof VerifyEmailSchema>;
 export type ResendVerificationDTO = z.infer<typeof ResendVerificationSchema>;
-export type OauthRegisterInput = z.input<typeof OauthRegisterSchema>;
-export type OauthRegisterDTO = z.output<typeof OauthRegisterSchema>;
-export type OauthCompleteInput = z.input<typeof OauthCompleteSchema>;
-export type OauthCompleteDTO = z.output<typeof OauthCompleteSchema>;
-export type OauthPendingDTO = z.infer<typeof OauthPendingSchema>;

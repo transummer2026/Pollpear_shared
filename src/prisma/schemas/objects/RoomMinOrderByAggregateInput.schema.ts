@@ -6,10 +6,11 @@ const makeSchema = () => z.object({
   id: SortOrderSchema.optional(),
   name: SortOrderSchema.optional(),
   description: SortOrderSchema.optional(),
+  bannerUrl: SortOrderSchema.optional(),
+  publishedAt: SortOrderSchema.optional(),
   createdAt: SortOrderSchema.optional(),
   updatedAt: SortOrderSchema.optional(),
-  publishedAt: SortOrderSchema.optional(),
-  bannerUrl: SortOrderSchema.optional(),
+  deletedAt: SortOrderSchema.optional(),
   visibility: SortOrderSchema.optional(),
   status: SortOrderSchema.optional(),
   createdById: SortOrderSchema.optional()

@@ -6,7 +6,7 @@ const makeSchema = () => z.object({
   keyHash: z.string().max(255),
   appName: z.string().max(255).optional(),
   revoked: z.boolean().optional(),
-  expiresAt: z.coerce.date(),
+  expiredAt: z.coerce.date(),
   createdAt: z.coerce.date().optional(),
   user: z.lazy(() => UserCreateNestedOneWithoutApiKeysInputObjectSchema)
 }).strict();

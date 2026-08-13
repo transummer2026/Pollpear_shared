@@ -10,11 +10,11 @@ import { OptionSumOrderByAggregateInputObjectSchema as OptionSumOrderByAggregate
 
 const makeSchema = () => z.object({
   id: SortOrderSchema.optional(),
-  label: SortOrderSchema.optional(),
+  text: SortOrderSchema.optional(),
   sliderLeftLabel: z.union([SortOrderSchema, z.lazy(() => SortOrderInputObjectSchema)]).optional(),
   sliderRightLabel: z.union([SortOrderSchema, z.lazy(() => SortOrderInputObjectSchema)]).optional(),
   order: SortOrderSchema.optional(),
-  isDeleted: SortOrderSchema.optional(),
+  deletedAt: z.union([SortOrderSchema, z.lazy(() => SortOrderInputObjectSchema)]).optional(),
   pollId: SortOrderSchema.optional(),
   _count: z.lazy(() => OptionCountOrderByAggregateInputObjectSchema).optional(),
   _avg: z.lazy(() => OptionAvgOrderByAggregateInputObjectSchema).optional(),

@@ -11,11 +11,11 @@ import { OptionScalarFieldEnumSchema } from './enums/OptionScalarFieldEnum.schem
 
 export const OptionFindFirstSelectSchema: z.ZodType<Prisma.OptionSelect> = z.object({
     id: z.boolean().optional(),
-    label: z.boolean().optional(),
+    text: z.boolean().optional(),
     sliderLeftLabel: z.boolean().optional(),
     sliderRightLabel: z.boolean().optional(),
     order: z.boolean().optional(),
-    isDeleted: z.boolean().optional(),
+    deletedAt: z.boolean().optional(),
     pollId: z.boolean().optional(),
     poll: z.boolean().optional(),
     voteOptions: z.boolean().optional(),
@@ -26,11 +26,11 @@ export const OptionFindFirstSelectSchema: z.ZodType<Prisma.OptionSelect> = z.obj
 
 export const OptionFindFirstSelectZodSchema = z.object({
     id: z.boolean().optional(),
-    label: z.boolean().optional(),
+    text: z.boolean().optional(),
     sliderLeftLabel: z.boolean().optional(),
     sliderRightLabel: z.boolean().optional(),
     order: z.boolean().optional(),
-    isDeleted: z.boolean().optional(),
+    deletedAt: z.boolean().optional(),
     pollId: z.boolean().optional(),
     poll: z.boolean().optional(),
     voteOptions: z.boolean().optional(),

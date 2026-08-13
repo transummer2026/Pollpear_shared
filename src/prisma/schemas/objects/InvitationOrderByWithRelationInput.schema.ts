@@ -8,9 +8,10 @@ import { UserOrderByWithRelationInputObjectSchema as UserOrderByWithRelationInpu
 const makeSchema = () => z.object({
   id: SortOrderSchema.optional(),
   status: SortOrderSchema.optional(),
+  message: z.union([SortOrderSchema, z.lazy(() => SortOrderInputObjectSchema)]).optional(),
   createdAt: SortOrderSchema.optional(),
   updatedAt: SortOrderSchema.optional(),
-  label: z.union([SortOrderSchema, z.lazy(() => SortOrderInputObjectSchema)]).optional(),
+  deletedAt: z.union([SortOrderSchema, z.lazy(() => SortOrderInputObjectSchema)]).optional(),
   roomId: SortOrderSchema.optional(),
   inviterId: SortOrderSchema.optional(),
   inviteeId: SortOrderSchema.optional(),

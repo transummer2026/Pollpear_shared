@@ -5,9 +5,9 @@ import type { Prisma } from '../../../../../src/generated/prisma/client';
 const makeSchema = () => z.object({
   id: z.number().int().optional(),
   banReason: z.string(),
-  bannedAt: z.coerce.date(),
-  unbannedAt: z.coerce.date(),
   unbanReason: z.string().optional().nullable(),
+  startedAt: z.coerce.date(),
+  endedAt: z.coerce.date(),
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional(),
   userId: z.number().int(),

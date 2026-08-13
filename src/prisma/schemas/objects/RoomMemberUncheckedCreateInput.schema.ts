@@ -4,8 +4,9 @@ import type { Prisma } from '../../../../../src/generated/prisma/client';
 
 const makeSchema = () => z.object({
   id: z.number().int().optional(),
-  createdAt: z.coerce.date().optional(),
   joinedAt: z.coerce.date(),
+  createdAt: z.coerce.date().optional(),
+  deletedAt: z.coerce.date().optional().nullable(),
   roomId: z.number().int(),
   userId: z.number().int()
 }).strict();

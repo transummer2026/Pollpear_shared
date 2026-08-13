@@ -5,9 +5,10 @@ import { SortOrderSchema } from '../enums/SortOrder.schema'
 const makeSchema = () => z.object({
   id: SortOrderSchema.optional(),
   status: SortOrderSchema.optional(),
+  message: SortOrderSchema.optional(),
   createdAt: SortOrderSchema.optional(),
   updatedAt: SortOrderSchema.optional(),
-  label: SortOrderSchema.optional(),
+  deletedAt: SortOrderSchema.optional(),
   roomId: SortOrderSchema.optional(),
   inviterId: SortOrderSchema.optional(),
   inviteeId: SortOrderSchema.optional()

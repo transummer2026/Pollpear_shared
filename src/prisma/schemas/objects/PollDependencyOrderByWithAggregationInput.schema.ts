@@ -8,7 +8,6 @@ import { PollDependencyMinOrderByAggregateInputObjectSchema as PollDependencyMin
 import { PollDependencySumOrderByAggregateInputObjectSchema as PollDependencySumOrderByAggregateInputObjectSchema } from './PollDependencySumOrderByAggregateInput.schema'
 
 const makeSchema = () => z.object({
-  id: SortOrderSchema.optional(),
   childPollId: SortOrderSchema.optional(),
   optionId: SortOrderSchema.optional(),
   _count: z.lazy(() => PollDependencyCountOrderByAggregateInputObjectSchema).optional(),

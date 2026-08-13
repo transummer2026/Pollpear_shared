@@ -5,9 +5,10 @@ import { UserArgsObjectSchema as UserArgsObjectSchema } from './UserArgs.schema'
 
 const makeSchema = () => z.object({
   id: z.boolean().optional(),
+  joinedAt: z.boolean().optional(),
   createdAt: z.boolean().optional(),
   updatedAt: z.boolean().optional(),
-  joinedAt: z.boolean().optional(),
+  deletedAt: z.boolean().optional(),
   roomId: z.boolean().optional(),
   userId: z.boolean().optional(),
   room: z.union([z.boolean(), z.lazy(() => RoomArgsObjectSchema)]).optional(),

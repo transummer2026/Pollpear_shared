@@ -5,9 +5,9 @@ import { SortOrderSchema } from '../enums/SortOrder.schema'
 const makeSchema = () => z.object({
   id: SortOrderSchema.optional(),
   banReason: SortOrderSchema.optional(),
-  bannedAt: SortOrderSchema.optional(),
-  unbannedAt: SortOrderSchema.optional(),
   unbanReason: SortOrderSchema.optional(),
+  startedAt: SortOrderSchema.optional(),
+  endedAt: SortOrderSchema.optional(),
   createdAt: SortOrderSchema.optional(),
   updatedAt: SortOrderSchema.optional(),
   userId: SortOrderSchema.optional(),

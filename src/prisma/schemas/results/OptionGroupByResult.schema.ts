@@ -1,19 +1,19 @@
 import * as z from 'zod';
 export const OptionGroupByResultSchema = z.array(z.object({
   id: z.number().int(),
-  label: z.string(),
+  text: z.string(),
   sliderLeftLabel: z.string(),
   sliderRightLabel: z.string(),
   order: z.number().int(),
-  isDeleted: z.boolean(),
+  deletedAt: z.date(),
   pollId: z.number().int(),
   _count: z.object({
     id: z.number(),
-    label: z.number(),
+    text: z.number(),
     sliderLeftLabel: z.number(),
     sliderRightLabel: z.number(),
     order: z.number(),
-    isDeleted: z.number(),
+    deletedAt: z.number(),
     pollId: z.number(),
     poll: z.number(),
     voteOptions: z.number(),
@@ -32,18 +32,20 @@ export const OptionGroupByResultSchema = z.array(z.object({
   }).nullable().optional(),
   _min: z.object({
     id: z.number().int().nullable(),
-    label: z.string().nullable(),
+    text: z.string().nullable(),
     sliderLeftLabel: z.string().nullable(),
     sliderRightLabel: z.string().nullable(),
     order: z.number().int().nullable(),
+    deletedAt: z.date().nullable(),
     pollId: z.number().int().nullable()
   }).nullable().optional(),
   _max: z.object({
     id: z.number().int().nullable(),
-    label: z.string().nullable(),
+    text: z.string().nullable(),
     sliderLeftLabel: z.string().nullable(),
     sliderRightLabel: z.string().nullable(),
     order: z.number().int().nullable(),
+    deletedAt: z.date().nullable(),
     pollId: z.number().int().nullable()
   }).nullable().optional()
 }));

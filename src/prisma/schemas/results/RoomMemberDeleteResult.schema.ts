@@ -1,9 +1,10 @@
 import * as z from 'zod';
 export const RoomMemberDeleteResultSchema = z.nullable(z.object({
   id: z.number().int(),
+  joinedAt: z.date(),
   createdAt: z.date(),
   updatedAt: z.date(),
-  joinedAt: z.date(),
+  deletedAt: z.date().optional(),
   roomId: z.number().int(),
   userId: z.number().int(),
   room: z.unknown(),

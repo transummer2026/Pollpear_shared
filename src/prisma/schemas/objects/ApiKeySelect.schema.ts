@@ -7,7 +7,7 @@ const makeSchema = () => z.object({
   keyHash: z.boolean().optional(),
   appName: z.boolean().optional(),
   revoked: z.boolean().optional(),
-  expiresAt: z.boolean().optional(),
+  expiredAt: z.boolean().optional(),
   createdAt: z.boolean().optional(),
   updatedAt: z.boolean().optional(),
   ownerId: z.boolean().optional(),

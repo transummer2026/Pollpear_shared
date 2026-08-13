@@ -11,27 +11,29 @@ import { VoteScalarFieldEnumSchema } from './enums/VoteScalarFieldEnum.schema';
 
 export const VoteFindFirstOrThrowSelectSchema: z.ZodType<Prisma.VoteSelect> = z.object({
     id: z.boolean().optional(),
+    freeField: z.boolean().optional(),
     createdAt: z.boolean().optional(),
     updatedAt: z.boolean().optional(),
-    label: z.boolean().optional(),
+    deletedAt: z.boolean().optional(),
     createdById: z.boolean().optional(),
     pollId: z.boolean().optional(),
     poll: z.boolean().optional(),
-    voteOptions: z.boolean().optional(),
     createdBy: z.boolean().optional(),
+    voteOptions: z.boolean().optional(),
     _count: z.boolean().optional()
   }).strict() as unknown as z.ZodType<Prisma.VoteSelect>;
 
 export const VoteFindFirstOrThrowSelectZodSchema = z.object({
     id: z.boolean().optional(),
+    freeField: z.boolean().optional(),
     createdAt: z.boolean().optional(),
     updatedAt: z.boolean().optional(),
-    label: z.boolean().optional(),
+    deletedAt: z.boolean().optional(),
     createdById: z.boolean().optional(),
     pollId: z.boolean().optional(),
     poll: z.boolean().optional(),
-    voteOptions: z.boolean().optional(),
     createdBy: z.boolean().optional(),
+    voteOptions: z.boolean().optional(),
     _count: z.boolean().optional()
   }).strict();
 

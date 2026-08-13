@@ -22,16 +22,15 @@ export const UserSchema = z.object({
   bio: z.string().nullish(),
   score: z.number().int(),
   isOnline: z.boolean(),
-  isDeleted: z.boolean(),
   isEmailVerified: z.boolean(),
   visibility: VisibilitySchema.default("public"),
-  deletedAt: z.date().nullish(),
   lastSeenAt: z.date().nullish(),
   avatarUrl: z.string().default("/uploads/avatars/default.svg"),
   bannerUrl: z.string().default("/uploads/banners/default.svg"),
+  userTheme: UserThemeSchema.default("light"),
   createdAt: z.date(),
   updatedAt: z.date(),
-  userTheme: UserThemeSchema,
+  deletedAt: z.date().nullish(),
 });
 
 export type UserType = z.infer<typeof UserSchema>;

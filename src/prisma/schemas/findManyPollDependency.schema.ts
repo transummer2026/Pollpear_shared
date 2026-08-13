@@ -10,7 +10,6 @@ import { PollDependencyScalarFieldEnumSchema } from './enums/PollDependencyScala
 //------------------------------------------------------
 
 export const PollDependencyFindManySelectSchema: z.ZodType<Prisma.PollDependencySelect> = z.object({
-    id: z.boolean().optional(),
     childPollId: z.boolean().optional(),
     optionId: z.boolean().optional(),
     childPoll: z.boolean().optional(),
@@ -18,7 +17,6 @@ export const PollDependencyFindManySelectSchema: z.ZodType<Prisma.PollDependency
   }).strict() as unknown as z.ZodType<Prisma.PollDependencySelect>;
 
 export const PollDependencyFindManySelectZodSchema = z.object({
-    id: z.boolean().optional(),
     childPollId: z.boolean().optional(),
     optionId: z.boolean().optional(),
     childPoll: z.boolean().optional(),

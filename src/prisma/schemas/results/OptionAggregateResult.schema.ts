@@ -1,11 +1,11 @@
 import * as z from 'zod';
 export const OptionAggregateResultSchema = z.object({  _count: z.object({
     id: z.number(),
-    label: z.number(),
+    text: z.number(),
     sliderLeftLabel: z.number(),
     sliderRightLabel: z.number(),
     order: z.number(),
-    isDeleted: z.number(),
+    deletedAt: z.number(),
     pollId: z.number(),
     poll: z.number(),
     voteOptions: z.number(),
@@ -24,17 +24,19 @@ export const OptionAggregateResultSchema = z.object({  _count: z.object({
   }).nullable().optional(),
   _min: z.object({
     id: z.number().int().nullable(),
-    label: z.string().nullable(),
+    text: z.string().nullable(),
     sliderLeftLabel: z.string().nullable(),
     sliderRightLabel: z.string().nullable(),
     order: z.number().int().nullable(),
+    deletedAt: z.date().nullable(),
     pollId: z.number().int().nullable()
   }).nullable().optional(),
   _max: z.object({
     id: z.number().int().nullable(),
-    label: z.string().nullable(),
+    text: z.string().nullable(),
     sliderLeftLabel: z.string().nullable(),
     sliderRightLabel: z.string().nullable(),
     order: z.number().int().nullable(),
+    deletedAt: z.date().nullable(),
     pollId: z.number().int().nullable()
   }).nullable().optional()});

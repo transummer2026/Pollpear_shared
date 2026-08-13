@@ -3,6 +3,7 @@ export const FriendshipGroupByResultSchema = z.array(z.object({
   id: z.number().int(),
   createdAt: z.date(),
   updatedAt: z.date(),
+  deletedAt: z.date(),
   requesterId: z.number().int(),
   addresseeId: z.number().int(),
   _count: z.object({
@@ -10,6 +11,7 @@ export const FriendshipGroupByResultSchema = z.array(z.object({
     status: z.number(),
     createdAt: z.number(),
     updatedAt: z.number(),
+    deletedAt: z.number(),
     requesterId: z.number(),
     addresseeId: z.number(),
     requester: z.number(),
@@ -29,6 +31,7 @@ export const FriendshipGroupByResultSchema = z.array(z.object({
     id: z.number().int().nullable(),
     createdAt: z.date().nullable(),
     updatedAt: z.date().nullable(),
+    deletedAt: z.date().nullable(),
     requesterId: z.number().int().nullable(),
     addresseeId: z.number().int().nullable()
   }).nullable().optional(),
@@ -36,6 +39,7 @@ export const FriendshipGroupByResultSchema = z.array(z.object({
     id: z.number().int().nullable(),
     createdAt: z.date().nullable(),
     updatedAt: z.date().nullable(),
+    deletedAt: z.date().nullable(),
     requesterId: z.number().int().nullable(),
     addresseeId: z.number().int().nullable()
   }).nullable().optional()

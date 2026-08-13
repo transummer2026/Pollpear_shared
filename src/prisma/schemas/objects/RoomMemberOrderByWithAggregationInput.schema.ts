@@ -1,6 +1,7 @@
 import * as z from 'zod';
 import type { Prisma } from '../../../../../src/generated/prisma/client';
 import { SortOrderSchema } from '../enums/SortOrder.schema';
+import { SortOrderInputObjectSchema as SortOrderInputObjectSchema } from './SortOrderInput.schema';
 import { RoomMemberCountOrderByAggregateInputObjectSchema as RoomMemberCountOrderByAggregateInputObjectSchema } from './RoomMemberCountOrderByAggregateInput.schema';
 import { RoomMemberAvgOrderByAggregateInputObjectSchema as RoomMemberAvgOrderByAggregateInputObjectSchema } from './RoomMemberAvgOrderByAggregateInput.schema';
 import { RoomMemberMaxOrderByAggregateInputObjectSchema as RoomMemberMaxOrderByAggregateInputObjectSchema } from './RoomMemberMaxOrderByAggregateInput.schema';
@@ -9,9 +10,10 @@ import { RoomMemberSumOrderByAggregateInputObjectSchema as RoomMemberSumOrderByA
 
 const makeSchema = () => z.object({
   id: SortOrderSchema.optional(),
+  joinedAt: SortOrderSchema.optional(),
   createdAt: SortOrderSchema.optional(),
   updatedAt: SortOrderSchema.optional(),
-  joinedAt: SortOrderSchema.optional(),
+  deletedAt: z.union([SortOrderSchema, z.lazy(() => SortOrderInputObjectSchema)]).optional(),
   roomId: SortOrderSchema.optional(),
   userId: SortOrderSchema.optional(),
   _count: z.lazy(() => RoomMemberCountOrderByAggregateInputObjectSchema).optional(),

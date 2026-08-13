@@ -1,7 +1,6 @@
 import * as z from 'zod';
 export const PollDependencyFindManyResultSchema = z.object({
   data: z.array(z.object({
-  id: z.number().int(),
   childPollId: z.number().int(),
   optionId: z.number().int(),
   childPoll: z.unknown(),

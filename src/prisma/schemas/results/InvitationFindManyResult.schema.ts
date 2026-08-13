@@ -3,9 +3,10 @@ export const InvitationFindManyResultSchema = z.object({
   data: z.array(z.object({
   id: z.number().int(),
   status: z.unknown(),
+  message: z.string().optional(),
   createdAt: z.date(),
   updatedAt: z.date(),
-  label: z.string().optional(),
+  deletedAt: z.date().optional(),
   roomId: z.number().int(),
   inviterId: z.number().int(),
   inviteeId: z.number().int(),

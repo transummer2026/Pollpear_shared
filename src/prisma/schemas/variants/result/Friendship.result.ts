@@ -6,6 +6,7 @@ export const FriendshipResultSchema = z.object({
     status: FriendshipStatusSchema,
     createdAt: z.date(),
     updatedAt: z.date(),
+    deletedAt: z.date().nullable(),
     requesterId: z.number().int(),
     addresseeId: z.number().int(),
     requester: z.unknown(),

@@ -6,6 +6,7 @@ const makeSchema = () => z.object({
   id: z.number().int().optional(),
   status: FriendshipStatusSchema,
   createdAt: z.coerce.date().optional(),
+  deletedAt: z.coerce.date().optional().nullable(),
   requesterId: z.number().int(),
   addresseeId: z.number().int()
 }).strict();

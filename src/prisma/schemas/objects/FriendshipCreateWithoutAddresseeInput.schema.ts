@@ -7,6 +7,7 @@ const makeSchema = () => z.object({
   status: FriendshipStatusSchema,
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional(),
+  deletedAt: z.coerce.date().optional().nullable(),
   requester: z.lazy(() => UserCreateNestedOneWithoutFriendshipsRequestedInputObjectSchema)
 }).strict();
 export const FriendshipCreateWithoutAddresseeInputObjectSchema: z.ZodType<Prisma.FriendshipCreateWithoutAddresseeInput> = makeSchema() as unknown as z.ZodType<Prisma.FriendshipCreateWithoutAddresseeInput>;

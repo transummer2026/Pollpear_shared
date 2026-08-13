@@ -6,7 +6,6 @@ const polldependencyscalarwhereinputSchema = z.object({
   AND: z.union([z.lazy(() => PollDependencyScalarWhereInputObjectSchema), z.lazy(() => PollDependencyScalarWhereInputObjectSchema).array()]).optional(),
   OR: z.lazy(() => PollDependencyScalarWhereInputObjectSchema).array().optional(),
   NOT: z.union([z.lazy(() => PollDependencyScalarWhereInputObjectSchema), z.lazy(() => PollDependencyScalarWhereInputObjectSchema).array()]).optional(),
-  id: z.union([z.lazy(() => IntFilterObjectSchema), z.number().int()]).optional(),
   childPollId: z.union([z.lazy(() => IntFilterObjectSchema), z.number().int()]).optional(),
   optionId: z.union([z.lazy(() => IntFilterObjectSchema), z.number().int()]).optional()
 }).strict();

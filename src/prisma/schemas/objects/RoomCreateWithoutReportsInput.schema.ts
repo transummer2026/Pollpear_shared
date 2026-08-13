@@ -11,10 +11,11 @@ import { RoomMemberCreateNestedManyWithoutRoomInputObjectSchema as RoomMemberCre
 const makeSchema = () => z.object({
   name: z.string().max(255),
   description: z.string().optional().nullable(),
+  bannerUrl: z.string().max(255),
+  publishedAt: z.coerce.date().optional().nullable(),
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional(),
-  publishedAt: z.coerce.date().optional().nullable(),
-  bannerUrl: z.string().max(255),
+  deletedAt: z.coerce.date().optional().nullable(),
   visibility: VisibilitySchema,
   status: RoomStatusSchema,
   createdBy: z.lazy(() => UserCreateNestedOneWithoutRoomsCreatedInputObjectSchema),

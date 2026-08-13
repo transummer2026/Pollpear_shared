@@ -20,16 +20,15 @@ const makeSchema = () => z.object({
   bio: SortOrderSchema.optional(),
   score: SortOrderSchema.optional(),
   isOnline: SortOrderSchema.optional(),
-  isDeleted: SortOrderSchema.optional(),
   isEmailVerified: SortOrderSchema.optional(),
   visibility: SortOrderSchema.optional(),
-  deletedAt: SortOrderSchema.optional(),
   lastSeenAt: SortOrderSchema.optional(),
   avatarUrl: SortOrderSchema.optional(),
   bannerUrl: SortOrderSchema.optional(),
+  userTheme: SortOrderSchema.optional(),
   createdAt: SortOrderSchema.optional(),
   updatedAt: SortOrderSchema.optional(),
-  userTheme: SortOrderSchema.optional()
+  deletedAt: SortOrderSchema.optional()
 }).strict();
 export const UserMinOrderByAggregateInputObjectSchema: z.ZodType<Prisma.UserMinOrderByAggregateInput> = makeSchema() as unknown as z.ZodType<Prisma.UserMinOrderByAggregateInput>;
 export const UserMinOrderByAggregateInputObjectZodSchema = makeSchema();

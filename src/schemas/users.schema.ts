@@ -1,31 +1,26 @@
 import { z } from 'zod';
 import { UserSchema as UserModelSchema } from '../prisma/schemas/models/User.schema';
-import { UserThemeSchema } from '../prisma/schemas/enums/UserTheme.schema';
-
-export const BirthdateFormat = z.coerce
-  .date({ error: 'Enter your birthdate' })
-  .min(new Date('1900-01-01'), { error: 'Too old!' })
-  .refine((date) => {
-    const today = new Date();
-    const minDate = new Date(
-      today.getFullYear() - 13,
-      today.getMonth(),
-      today.getDate(),
-    );
-    return date <= minDate;
-  }, 'User must be at least 13 years old');
+import { unwrapNullish } from './utils';
+import { BirthdateFormat, EmailFormat } from './formats.schema';
 
 export const UserSchema = UserModelSchema.omit({
   passwordHash: true,
   updatedAt: true,
 });
 
-export const UserProfileSchema = UserSchema.omit({
-  id: true,
+export const UserPublicProfileSchema = UserSchema.omit({
+  email: true,
+  birthdate: true,
   role: true,
-  score: true,
+  gender: true,
+  nationality: true,
+  city: true,
+  state: true,
+  country: true,
+  company: true,
+  bio: true,
   isOnline: true,
-  isDeleted: true,
+  isEmailVerified: true,
   visibility: true,
   deletedAt: true,
   lastSeenAt: true,
@@ -37,42 +32,53 @@ export const UserProfileSchema = UserSchema.omit({
 
 export const GenderSchema = UserSchema.shape.gender;
 
-export const UserRegistrationSchema = z.object({
-  username: z
-    .string()
+const ValidatedUserFieldsSchema = z.object({
+  username: UserModelSchema.shape.username
     .min(5, 'Min 5 characters')
     .max(32, 'Max 32 characters')
     .regex(/^[\w.]+$/, 'Only letters, numbers, underscores and dots'),
-  email: z.email('Invalid e-mail'),
-  birthdate: BirthdateFormat,
-  nationality: z
-    .string()
+  email: EmailFormat,
+  nationality: UserModelSchema.shape.nationality
     .min(3, 'Min 3 characters')
     .max(20, 'Max 20 characters')
     .regex(/^[a-zA-Z]{2,15}(-?\s?[a-zA-Z]{1,10})?$/, 'Only letters'),
   gender: z.enum(GenderSchema.options, { error: 'Select a gender' }),
-  name: z.string().max(255, 'Max 255 characters').optional(),
-  surname: z.string().max(255, 'Max 255 characters').optional(),
-  city: z.string().max(255, 'Max 255 characters').optional(),
-  state: z.string().max(255, 'Max 255 characters').optional(),
-  country: z.string().max(255, 'Max 255 characters').optional(),
-  company: z.string().max(255, 'Max 255 characters').optional(),
-  userTheme: UserThemeSchema.default('light'),
+  name: unwrapNullish(UserModelSchema.shape.name)
+    .max(255, 'Max 255 characters')
+    .nullish(),
+  surname: unwrapNullish(UserModelSchema.shape.surname)
+    .max(255, 'Max 255 characters')
+    .nullish(),
+  city: unwrapNullish(UserModelSchema.shape.city)
+    .max(255, 'Max 255 characters')
+    .nullish(),
+  state: unwrapNullish(UserModelSchema.shape.state)
+    .max(255, 'Max 255 characters')
+    .nullish(),
+  country: unwrapNullish(UserModelSchema.shape.country)
+    .max(255, 'Max 255 characters')
+    .nullish(),
+  company: unwrapNullish(UserModelSchema.shape.company)
+    .max(255, 'Max 255 characters')
+    .nullish(),
 });
 
-export const UserProfileUpdateSchema = UserProfileSchema.extend({
+export const UserCreateSchema = ValidatedUserFieldsSchema.extend({
   birthdate: BirthdateFormat,
-  userTheme: UserSchema.shape.userTheme,
+  userTheme: UserModelSchema.shape.userTheme,
+});
+
+export const UserUpdateSchema = ValidatedUserFieldsSchema.extend({
+  birthdate: BirthdateFormat,
+  userTheme: UserModelSchema.shape.userTheme,
+  bio: unwrapNullish(UserModelSchema.shape.bio)
+    .max(255, 'Max 255 characters')
+    .nullish(),
 }).partial();
 
-export const UserLoginSchema = UserSchema.pick({
-  email: true,
-});
-
 export type UserDTO = z.infer<typeof UserSchema>;
-export type UserProfileDTO = z.infer<typeof UserProfileSchema>;
-export type UserLoginDTO = z.infer<typeof UserLoginSchema>;
-export type UserProfileUpdateInput = z.input<typeof UserProfileUpdateSchema>;
-export type UserProfileUpdateDTO = z.output<typeof UserProfileUpdateSchema>;
+export type UserPublicProfileDTO = z.infer<typeof UserPublicProfileSchema>;
+export type UserUpdateInput = z.input<typeof UserUpdateSchema>;
+export type UserUpdateDTO = z.output<typeof UserUpdateSchema>;
 export type GenderDTO = z.infer<typeof GenderSchema>;
-export type UserRegistrationDTO = z.infer<typeof UserRegistrationSchema>;
+export type UserCreateDTO = z.infer<typeof UserCreateSchema>;

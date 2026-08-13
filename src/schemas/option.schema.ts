@@ -1,51 +1,56 @@
 import { z } from 'zod';
-import { OptionSchema } from '../prisma/schemas/models/Option.schema';
+import { OptionSchema as OptionModelSchema } from '../prisma/schemas/models/Option.schema';
+import { unwrapNullish } from './utils';
 
-const OptionBaseSchema = OptionSchema.omit({
-  id: true,
-  isDeleted: true,
-  pollId: true,
-  label: true,
-  sliderLeftLabel: true,
-  sliderRightLabel: true,
-});
+export { OptionModelSchema };
+export type OptionDTO = z.infer<typeof OptionModelSchema>;
 
-const requiredLabel = OptionSchema.shape.label
+const requiredText = OptionModelSchema.shape.text
   .min(1, 'Label required')
   .max(255, 'Max 255 characters');
 
 const emptyToUndefined = <T extends z.ZodTypeAny>(schema: T) =>
-  z.preprocess((val) => (val === '' ? undefined : val), schema.optional());
+  z.preprocess((val) => (val === '' ? undefined : val), schema.nullish());
 
-const sliderLabel = emptyToUndefined(z.string().max(255, 'Max 255 characters'));
+const sliderLabel = emptyToUndefined(
+  unwrapNullish(OptionModelSchema.shape.sliderLeftLabel).max(
+    255,
+    'Max 255 characters',
+  ),
+);
 
-export const MultipleChoiceOptionInputSchema = OptionBaseSchema.extend({
-  label: requiredLabel,
+const optionalId = OptionModelSchema.shape.id.optional();
+
+const OptionSchema = OptionModelSchema.omit({
+  id: true,
+  deletedAt: true,
+  pollId: true,
+  sliderLeftLabel: true,
+  sliderRightLabel: true,
+}).extend({
+  text: requiredText,
 });
 
-export const SliderOptionInputSchema = OptionBaseSchema.extend({
-  label: requiredLabel,
+export const ChoiceOptionSchema = OptionSchema;
+
+export const SliderOptionSchema = OptionSchema.extend({
   sliderLeftLabel: sliderLabel,
   sliderRightLabel: sliderLabel,
 });
 
-export type MultipleChoiceOptionInput = z.infer<
-  typeof MultipleChoiceOptionInputSchema
->;
-export type SliderOptionInput = z.infer<typeof SliderOptionInputSchema>;
-export type PollOptionInput = MultipleChoiceOptionInput | SliderOptionInput;
-
-const optionalId = OptionSchema.shape.id.optional();
-
 export const OptionUpdateSchema = z
   .array(
     z.union([
-      MultipleChoiceOptionInputSchema.extend({ id: optionalId }),
-      SliderOptionInputSchema.extend({ id: optionalId }),
+      ChoiceOptionSchema.extend({ id: optionalId }),
+      SliderOptionSchema.extend({ id: optionalId }),
     ]),
   )
   .min(2, 'Min 2 options');
 
 export const isSliderOption = (
-  option: PollOptionInput,
-): option is SliderOptionInput => 'sliderLeftLabel' in option;
+  option: PollOptionDTO,
+): option is SliderOptionDTO => 'sliderLeftLabel' in option;
+
+export type ChoiceOptionDTO = z.infer<typeof ChoiceOptionSchema>;
+export type SliderOptionDTO = z.infer<typeof SliderOptionSchema>;
+export type PollOptionDTO = ChoiceOptionDTO | SliderOptionDTO;

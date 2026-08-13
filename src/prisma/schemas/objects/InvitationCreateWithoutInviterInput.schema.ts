@@ -6,9 +6,10 @@ import { UserCreateNestedOneWithoutInvitationsReceivedInputObjectSchema as UserC
 
 const makeSchema = () => z.object({
   status: InvitationStatusSchema,
+  message: z.string().max(255).optional().nullable(),
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional(),
-  label: z.string().max(255).optional().nullable(),
+  deletedAt: z.coerce.date().optional().nullable(),
   room: z.lazy(() => RoomCreateNestedOneWithoutInvitationsInputObjectSchema),
   invitee: z.lazy(() => UserCreateNestedOneWithoutInvitationsReceivedInputObjectSchema)
 }).strict();

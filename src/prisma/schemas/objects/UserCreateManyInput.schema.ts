@@ -23,16 +23,15 @@ const makeSchema = () => z.object({
   bio: z.string().max(255).optional().nullable(),
   score: z.number().int().optional(),
   isOnline: z.boolean().optional(),
-  isDeleted: z.boolean().optional(),
   isEmailVerified: z.boolean().optional(),
   visibility: VisibilitySchema.optional(),
-  deletedAt: z.coerce.date().optional().nullable(),
   lastSeenAt: z.coerce.date().optional().nullable(),
   avatarUrl: z.string().max(255).optional(),
   bannerUrl: z.string().max(255).optional(),
+  userTheme: UserThemeSchema.optional(),
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional(),
-  userTheme: UserThemeSchema
+  deletedAt: z.coerce.date().optional().nullable()
 }).strict();
 export const UserCreateManyInputObjectSchema: z.ZodType<Prisma.UserCreateManyInput> = makeSchema() as unknown as z.ZodType<Prisma.UserCreateManyInput>;
 export const UserCreateManyInputObjectZodSchema = makeSchema();

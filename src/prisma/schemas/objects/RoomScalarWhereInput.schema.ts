@@ -3,8 +3,8 @@ import type { Prisma } from '../../../../../src/generated/prisma/client';
 import { IntFilterObjectSchema as IntFilterObjectSchema } from './IntFilter.schema';
 import { StringFilterObjectSchema as StringFilterObjectSchema } from './StringFilter.schema';
 import { StringNullableFilterObjectSchema as StringNullableFilterObjectSchema } from './StringNullableFilter.schema';
-import { DateTimeFilterObjectSchema as DateTimeFilterObjectSchema } from './DateTimeFilter.schema';
 import { DateTimeNullableFilterObjectSchema as DateTimeNullableFilterObjectSchema } from './DateTimeNullableFilter.schema';
+import { DateTimeFilterObjectSchema as DateTimeFilterObjectSchema } from './DateTimeFilter.schema';
 import { EnumVisibilityFilterObjectSchema as EnumVisibilityFilterObjectSchema } from './EnumVisibilityFilter.schema';
 import { VisibilitySchema } from '../enums/Visibility.schema';
 import { EnumRoomStatusFilterObjectSchema as EnumRoomStatusFilterObjectSchema } from './EnumRoomStatusFilter.schema';
@@ -17,10 +17,11 @@ const roomscalarwhereinputSchema = z.object({
   id: z.union([z.lazy(() => IntFilterObjectSchema), z.number().int()]).optional(),
   name: z.union([z.lazy(() => StringFilterObjectSchema), z.string()]).optional(),
   description: z.union([z.lazy(() => StringNullableFilterObjectSchema), z.string()]).optional().nullable(),
+  bannerUrl: z.union([z.lazy(() => StringFilterObjectSchema), z.string()]).optional(),
+  publishedAt: z.union([z.lazy(() => DateTimeNullableFilterObjectSchema), z.coerce.date()]).optional().nullable(),
   createdAt: z.union([z.lazy(() => DateTimeFilterObjectSchema), z.coerce.date()]).optional(),
   updatedAt: z.union([z.lazy(() => DateTimeFilterObjectSchema), z.coerce.date()]).optional(),
-  publishedAt: z.union([z.lazy(() => DateTimeNullableFilterObjectSchema), z.coerce.date()]).optional().nullable(),
-  bannerUrl: z.union([z.lazy(() => StringFilterObjectSchema), z.string()]).optional(),
+  deletedAt: z.union([z.lazy(() => DateTimeNullableFilterObjectSchema), z.coerce.date()]).optional().nullable(),
   visibility: z.union([z.lazy(() => EnumVisibilityFilterObjectSchema), VisibilitySchema]).optional(),
   status: z.union([z.lazy(() => EnumRoomStatusFilterObjectSchema), RoomStatusSchema]).optional(),
   createdById: z.union([z.lazy(() => IntFilterObjectSchema), z.number().int()]).optional()

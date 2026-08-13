@@ -3,7 +3,6 @@ import type { Prisma } from '../../../../../src/generated/prisma/client';
 
 
 const makeSchema = () => z.object({
-  id: z.number().int().optional(),
   childPollId: z.number().int()
 }).strict();
 export const PollDependencyCreateManyOptionInputObjectSchema: z.ZodType<Prisma.PollDependencyCreateManyOptionInput> = makeSchema() as unknown as z.ZodType<Prisma.PollDependencyCreateManyOptionInput>;

@@ -5,7 +5,7 @@ export const ApiKeyInputSchema = z.object({
     keyHash: z.string(),
     appName: z.string(),
     revoked: z.boolean(),
-    expiresAt: z.date(),
+    expiredAt: z.date(),
     createdAt: z.date(),
     updatedAt: z.date(),
     ownerId: z.number().int(),

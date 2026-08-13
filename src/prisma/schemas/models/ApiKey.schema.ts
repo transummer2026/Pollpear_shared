@@ -5,7 +5,7 @@ export const ApiKeySchema = z.object({
   keyHash: z.string(),
   appName: z.string().default("default"),
   revoked: z.boolean(),
-  expiresAt: z.date(),
+  expiredAt: z.date(),
   createdAt: z.date(),
   updatedAt: z.date(),
   ownerId: z.number().int(),

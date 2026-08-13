@@ -4,9 +4,10 @@ import { PollCreateNestedOneWithoutVotesInputObjectSchema as PollCreateNestedOne
 import { UserCreateNestedOneWithoutVotesInputObjectSchema as UserCreateNestedOneWithoutVotesInputObjectSchema } from './UserCreateNestedOneWithoutVotesInput.schema'
 
 const makeSchema = () => z.object({
+  freeField: z.string().max(255).optional().nullable(),
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional(),
-  label: z.string().max(255).optional().nullable(),
+  deletedAt: z.coerce.date().optional().nullable(),
   poll: z.lazy(() => PollCreateNestedOneWithoutVotesInputObjectSchema),
   createdBy: z.lazy(() => UserCreateNestedOneWithoutVotesInputObjectSchema)
 }).strict();

@@ -6,9 +6,10 @@ import { UserArgsObjectSchema as UserArgsObjectSchema } from './UserArgs.schema'
 const makeSchema = () => z.object({
   id: z.boolean().optional(),
   status: z.boolean().optional(),
+  message: z.boolean().optional(),
   createdAt: z.boolean().optional(),
   updatedAt: z.boolean().optional(),
-  label: z.boolean().optional(),
+  deletedAt: z.boolean().optional(),
   roomId: z.boolean().optional(),
   inviterId: z.boolean().optional(),
   inviteeId: z.boolean().optional(),
