@@ -1,11 +1,11 @@
-import { z } from "zod";
-import { UserSchema } from "../prisma/schemas/models/User.schema";
-import { PollSchema } from "../prisma/schemas/models/Poll.schema";
-import { RoomSchema } from "../prisma/schemas/models/Room.schema";
+import { z } from 'zod';
+import { UserSchema } from '../prisma/schemas/models/User.schema';
+import { PollSchema } from '../prisma/schemas/models/Poll.schema';
+import { RoomSchema } from '../prisma/schemas/models/Room.schema';
 
-export const SEARCH_MODELS = ["user", "poll", "room"] as const;
+export const SEARCH_MODELS = ['user', 'poll', 'room'] as const;
 export const SearchModelSchema = z.enum(SEARCH_MODELS);
-export const SearchScopeSchema = z.union([SearchModelSchema, z.literal("all")]);
+export const SearchScopeSchema = z.union([SearchModelSchema, z.literal('all')]);
 
 export const SearchQuerySchema = z.object({
   q: z.string().min(2).max(255),
