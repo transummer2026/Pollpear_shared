@@ -5,7 +5,9 @@ import { ReportUncheckedCreateNestedManyWithoutHashtagInputObjectSchema as Repor
 const makeSchema = () => z.object({
   id: z.number().int().optional(),
   name: z.string(),
-  isVisible: z.boolean(),
+  createdAt: z.coerce.date().optional(),
+  updatedAt: z.coerce.date().optional(),
+  deletedAt: z.coerce.date().optional().nullable(),
   reports: z.lazy(() => ReportUncheckedCreateNestedManyWithoutHashtagInputObjectSchema).optional()
 }).strict();
 export const HashtagUncheckedCreateWithoutPollHashtagsInputObjectSchema: z.ZodType<Prisma.HashtagUncheckedCreateWithoutPollHashtagsInput> = makeSchema() as unknown as z.ZodType<Prisma.HashtagUncheckedCreateWithoutPollHashtagsInput>;

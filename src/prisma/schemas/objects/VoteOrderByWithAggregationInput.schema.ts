@@ -10,9 +10,10 @@ import { VoteSumOrderByAggregateInputObjectSchema as VoteSumOrderByAggregateInpu
 
 const makeSchema = () => z.object({
   id: SortOrderSchema.optional(),
+  freeField: z.union([SortOrderSchema, z.lazy(() => SortOrderInputObjectSchema)]).optional(),
   createdAt: SortOrderSchema.optional(),
   updatedAt: SortOrderSchema.optional(),
-  label: z.union([SortOrderSchema, z.lazy(() => SortOrderInputObjectSchema)]).optional(),
+  deletedAt: z.union([SortOrderSchema, z.lazy(() => SortOrderInputObjectSchema)]).optional(),
   createdById: SortOrderSchema.optional(),
   pollId: SortOrderSchema.optional(),
   _count: z.lazy(() => VoteCountOrderByAggregateInputObjectSchema).optional(),

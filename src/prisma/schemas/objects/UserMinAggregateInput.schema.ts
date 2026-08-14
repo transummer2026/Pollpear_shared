@@ -20,16 +20,15 @@ const makeSchema = () => z.object({
   bio: z.literal(true).optional(),
   score: z.literal(true).optional(),
   isOnline: z.literal(true).optional(),
-  isDeleted: z.literal(true).optional(),
   isEmailVerified: z.literal(true).optional(),
   visibility: z.literal(true).optional(),
-  deletedAt: z.literal(true).optional(),
   lastSeenAt: z.literal(true).optional(),
   avatarUrl: z.literal(true).optional(),
   bannerUrl: z.literal(true).optional(),
+  userTheme: z.literal(true).optional(),
   createdAt: z.literal(true).optional(),
   updatedAt: z.literal(true).optional(),
-  userTheme: z.literal(true).optional()
+  deletedAt: z.literal(true).optional()
 }).strict();
 export const UserMinAggregateInputObjectSchema: z.ZodType<Prisma.UserMinAggregateInputType> = makeSchema() as unknown as z.ZodType<Prisma.UserMinAggregateInputType>;
 export const UserMinAggregateInputObjectZodSchema = makeSchema();

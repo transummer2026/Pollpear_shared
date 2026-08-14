@@ -4,6 +4,7 @@ import { IntFilterObjectSchema as IntFilterObjectSchema } from './IntFilter.sche
 import { EnumFriendshipStatusFilterObjectSchema as EnumFriendshipStatusFilterObjectSchema } from './EnumFriendshipStatusFilter.schema';
 import { FriendshipStatusSchema } from '../enums/FriendshipStatus.schema';
 import { DateTimeFilterObjectSchema as DateTimeFilterObjectSchema } from './DateTimeFilter.schema';
+import { DateTimeNullableFilterObjectSchema as DateTimeNullableFilterObjectSchema } from './DateTimeNullableFilter.schema';
 import { UserScalarRelationFilterObjectSchema as UserScalarRelationFilterObjectSchema } from './UserScalarRelationFilter.schema';
 import { UserWhereInputObjectSchema as UserWhereInputObjectSchema } from './UserWhereInput.schema'
 
@@ -15,6 +16,7 @@ const friendshipwhereinputSchema = z.object({
   status: z.union([z.lazy(() => EnumFriendshipStatusFilterObjectSchema), FriendshipStatusSchema]).optional(),
   createdAt: z.union([z.lazy(() => DateTimeFilterObjectSchema), z.coerce.date()]).optional(),
   updatedAt: z.union([z.lazy(() => DateTimeFilterObjectSchema), z.coerce.date()]).optional(),
+  deletedAt: z.union([z.lazy(() => DateTimeNullableFilterObjectSchema), z.coerce.date()]).optional().nullable(),
   requesterId: z.union([z.lazy(() => IntFilterObjectSchema), z.number().int()]).optional(),
   addresseeId: z.union([z.lazy(() => IntFilterObjectSchema), z.number().int()]).optional(),
   requester: z.union([z.lazy(() => UserScalarRelationFilterObjectSchema), z.lazy(() => UserWhereInputObjectSchema)]).optional(),

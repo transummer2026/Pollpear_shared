@@ -1,13 +1,14 @@
 import * as z from 'zod';
 import type { Prisma } from '../../../../../src/generated/prisma/client';
 import { RoomCreateNestedOneWithoutRoomMembersInputObjectSchema as RoomCreateNestedOneWithoutRoomMembersInputObjectSchema } from './RoomCreateNestedOneWithoutRoomMembersInput.schema';
-import { UserCreateNestedOneWithoutRoomMembersInputObjectSchema as UserCreateNestedOneWithoutRoomMembersInputObjectSchema } from './UserCreateNestedOneWithoutRoomMembersInput.schema'
+import { UserCreateNestedOneWithoutRoomMembershipsInputObjectSchema as UserCreateNestedOneWithoutRoomMembershipsInputObjectSchema } from './UserCreateNestedOneWithoutRoomMembershipsInput.schema'
 
 const makeSchema = () => z.object({
-  createdAt: z.coerce.date().optional(),
   joinedAt: z.coerce.date(),
+  createdAt: z.coerce.date().optional(),
+  deletedAt: z.coerce.date().optional().nullable(),
   room: z.lazy(() => RoomCreateNestedOneWithoutRoomMembersInputObjectSchema),
-  user: z.lazy(() => UserCreateNestedOneWithoutRoomMembersInputObjectSchema)
+  user: z.lazy(() => UserCreateNestedOneWithoutRoomMembershipsInputObjectSchema)
 }).strict();
 export const RoomMemberCreateInputObjectSchema: z.ZodType<Prisma.RoomMemberCreateInput> = makeSchema() as unknown as z.ZodType<Prisma.RoomMemberCreateInput>;
 export const RoomMemberCreateInputObjectZodSchema = makeSchema();

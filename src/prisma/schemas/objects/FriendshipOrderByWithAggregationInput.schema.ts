@@ -1,6 +1,7 @@
 import * as z from 'zod';
 import type { Prisma } from '../../../../../src/generated/prisma/client';
 import { SortOrderSchema } from '../enums/SortOrder.schema';
+import { SortOrderInputObjectSchema as SortOrderInputObjectSchema } from './SortOrderInput.schema';
 import { FriendshipCountOrderByAggregateInputObjectSchema as FriendshipCountOrderByAggregateInputObjectSchema } from './FriendshipCountOrderByAggregateInput.schema';
 import { FriendshipAvgOrderByAggregateInputObjectSchema as FriendshipAvgOrderByAggregateInputObjectSchema } from './FriendshipAvgOrderByAggregateInput.schema';
 import { FriendshipMaxOrderByAggregateInputObjectSchema as FriendshipMaxOrderByAggregateInputObjectSchema } from './FriendshipMaxOrderByAggregateInput.schema';
@@ -12,6 +13,7 @@ const makeSchema = () => z.object({
   status: SortOrderSchema.optional(),
   createdAt: SortOrderSchema.optional(),
   updatedAt: SortOrderSchema.optional(),
+  deletedAt: z.union([SortOrderSchema, z.lazy(() => SortOrderInputObjectSchema)]).optional(),
   requesterId: SortOrderSchema.optional(),
   addresseeId: SortOrderSchema.optional(),
   _count: z.lazy(() => FriendshipCountOrderByAggregateInputObjectSchema).optional(),

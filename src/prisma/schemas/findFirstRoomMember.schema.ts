@@ -11,9 +11,10 @@ import { RoomMemberScalarFieldEnumSchema } from './enums/RoomMemberScalarFieldEn
 
 export const RoomMemberFindFirstSelectSchema: z.ZodType<Prisma.RoomMemberSelect> = z.object({
     id: z.boolean().optional(),
+    joinedAt: z.boolean().optional(),
     createdAt: z.boolean().optional(),
     updatedAt: z.boolean().optional(),
-    joinedAt: z.boolean().optional(),
+    deletedAt: z.boolean().optional(),
     roomId: z.boolean().optional(),
     userId: z.boolean().optional(),
     room: z.boolean().optional(),
@@ -22,9 +23,10 @@ export const RoomMemberFindFirstSelectSchema: z.ZodType<Prisma.RoomMemberSelect>
 
 export const RoomMemberFindFirstSelectZodSchema = z.object({
     id: z.boolean().optional(),
+    joinedAt: z.boolean().optional(),
     createdAt: z.boolean().optional(),
     updatedAt: z.boolean().optional(),
-    joinedAt: z.boolean().optional(),
+    deletedAt: z.boolean().optional(),
     roomId: z.boolean().optional(),
     userId: z.boolean().optional(),
     room: z.boolean().optional(),

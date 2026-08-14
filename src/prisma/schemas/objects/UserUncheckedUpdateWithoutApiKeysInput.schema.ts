@@ -29,10 +29,10 @@ import { InvitationUncheckedUpdateManyWithoutInviterNestedInputObjectSchema as I
 import { InvitationUncheckedUpdateManyWithoutInviteeNestedInputObjectSchema as InvitationUncheckedUpdateManyWithoutInviteeNestedInputObjectSchema } from './InvitationUncheckedUpdateManyWithoutInviteeNestedInput.schema';
 import { FriendshipUncheckedUpdateManyWithoutRequesterNestedInputObjectSchema as FriendshipUncheckedUpdateManyWithoutRequesterNestedInputObjectSchema } from './FriendshipUncheckedUpdateManyWithoutRequesterNestedInput.schema';
 import { FriendshipUncheckedUpdateManyWithoutAddresseeNestedInputObjectSchema as FriendshipUncheckedUpdateManyWithoutAddresseeNestedInputObjectSchema } from './FriendshipUncheckedUpdateManyWithoutAddresseeNestedInput.schema';
-import { BlockUncheckedUpdateManyWithoutBlockerNestedInputObjectSchema as BlockUncheckedUpdateManyWithoutBlockerNestedInputObjectSchema } from './BlockUncheckedUpdateManyWithoutBlockerNestedInput.schema';
 import { BlockUncheckedUpdateManyWithoutBlockedNestedInputObjectSchema as BlockUncheckedUpdateManyWithoutBlockedNestedInputObjectSchema } from './BlockUncheckedUpdateManyWithoutBlockedNestedInput.schema';
-import { ReportUncheckedUpdateManyWithoutReporterNestedInputObjectSchema as ReportUncheckedUpdateManyWithoutReporterNestedInputObjectSchema } from './ReportUncheckedUpdateManyWithoutReporterNestedInput.schema';
-import { ReportUncheckedUpdateManyWithoutReportedNestedInputObjectSchema as ReportUncheckedUpdateManyWithoutReportedNestedInputObjectSchema } from './ReportUncheckedUpdateManyWithoutReportedNestedInput.schema'
+import { BlockUncheckedUpdateManyWithoutBlockerNestedInputObjectSchema as BlockUncheckedUpdateManyWithoutBlockerNestedInputObjectSchema } from './BlockUncheckedUpdateManyWithoutBlockerNestedInput.schema';
+import { ReportUncheckedUpdateManyWithoutReportedNestedInputObjectSchema as ReportUncheckedUpdateManyWithoutReportedNestedInputObjectSchema } from './ReportUncheckedUpdateManyWithoutReportedNestedInput.schema';
+import { ReportUncheckedUpdateManyWithoutReporterNestedInputObjectSchema as ReportUncheckedUpdateManyWithoutReporterNestedInputObjectSchema } from './ReportUncheckedUpdateManyWithoutReporterNestedInput.schema'
 
 const makeSchema = () => z.object({
   id: z.union([z.number().int(), z.lazy(() => IntFieldUpdateOperationsInputObjectSchema)]).optional(),
@@ -52,19 +52,18 @@ const makeSchema = () => z.object({
   bio: z.union([z.string(), z.lazy(() => NullableStringFieldUpdateOperationsInputObjectSchema)]).optional().nullable(),
   score: z.union([z.number().int(), z.lazy(() => IntFieldUpdateOperationsInputObjectSchema)]).optional(),
   isOnline: z.union([z.boolean(), z.lazy(() => BoolFieldUpdateOperationsInputObjectSchema)]).optional(),
-  isDeleted: z.union([z.boolean(), z.lazy(() => BoolFieldUpdateOperationsInputObjectSchema)]).optional(),
   isEmailVerified: z.union([z.boolean(), z.lazy(() => BoolFieldUpdateOperationsInputObjectSchema)]).optional(),
   visibility: z.union([VisibilitySchema, z.lazy(() => EnumVisibilityFieldUpdateOperationsInputObjectSchema)]).optional(),
-  deletedAt: z.union([z.coerce.date(), z.lazy(() => NullableDateTimeFieldUpdateOperationsInputObjectSchema)]).optional().nullable(),
   lastSeenAt: z.union([z.coerce.date(), z.lazy(() => NullableDateTimeFieldUpdateOperationsInputObjectSchema)]).optional().nullable(),
   avatarUrl: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputObjectSchema)]).optional(),
   bannerUrl: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputObjectSchema)]).optional(),
+  userTheme: z.union([UserThemeSchema, z.lazy(() => EnumUserThemeFieldUpdateOperationsInputObjectSchema)]).optional(),
   createdAt: z.union([z.coerce.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputObjectSchema)]).optional(),
   updatedAt: z.union([z.coerce.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputObjectSchema)]).optional(),
-  userTheme: z.union([UserThemeSchema, z.lazy(() => EnumUserThemeFieldUpdateOperationsInputObjectSchema)]).optional(),
+  deletedAt: z.union([z.coerce.date(), z.lazy(() => NullableDateTimeFieldUpdateOperationsInputObjectSchema)]).optional().nullable(),
   oauths: z.lazy(() => OauthUncheckedUpdateManyWithoutUserNestedInputObjectSchema).optional(),
   bansReceived: z.lazy(() => BanUncheckedUpdateManyWithoutUserNestedInputObjectSchema).optional(),
-  bansDone: z.lazy(() => BanUncheckedUpdateManyWithoutBannedByNestedInputObjectSchema).optional(),
+  bansGiven: z.lazy(() => BanUncheckedUpdateManyWithoutBannedByNestedInputObjectSchema).optional(),
   bansLifted: z.lazy(() => BanUncheckedUpdateManyWithoutUnbannedByNestedInputObjectSchema).optional(),
   pollsCreated: z.lazy(() => PollUncheckedUpdateManyWithoutCreatedByNestedInputObjectSchema).optional(),
   roomsCreated: z.lazy(() => RoomUncheckedUpdateManyWithoutCreatedByNestedInputObjectSchema).optional(),
@@ -72,15 +71,15 @@ const makeSchema = () => z.object({
   messages: z.lazy(() => MessageUncheckedUpdateManyWithoutAuthorNestedInputObjectSchema).optional(),
   notifications: z.lazy(() => NotificationUncheckedUpdateManyWithoutUserNestedInputObjectSchema).optional(),
   pollTemplates: z.lazy(() => PollTemplateUncheckedUpdateManyWithoutUserNestedInputObjectSchema).optional(),
-  roomMembers: z.lazy(() => RoomMemberUncheckedUpdateManyWithoutUserNestedInputObjectSchema).optional(),
+  roomMemberships: z.lazy(() => RoomMemberUncheckedUpdateManyWithoutUserNestedInputObjectSchema).optional(),
   invitationsSent: z.lazy(() => InvitationUncheckedUpdateManyWithoutInviterNestedInputObjectSchema).optional(),
   invitationsReceived: z.lazy(() => InvitationUncheckedUpdateManyWithoutInviteeNestedInputObjectSchema).optional(),
   friendshipsRequested: z.lazy(() => FriendshipUncheckedUpdateManyWithoutRequesterNestedInputObjectSchema).optional(),
   friendshipsReceived: z.lazy(() => FriendshipUncheckedUpdateManyWithoutAddresseeNestedInputObjectSchema).optional(),
-  blocksGiven: z.lazy(() => BlockUncheckedUpdateManyWithoutBlockerNestedInputObjectSchema).optional(),
   blocksReceived: z.lazy(() => BlockUncheckedUpdateManyWithoutBlockedNestedInputObjectSchema).optional(),
-  reportsGiven: z.lazy(() => ReportUncheckedUpdateManyWithoutReporterNestedInputObjectSchema).optional(),
-  reportsReceived: z.lazy(() => ReportUncheckedUpdateManyWithoutReportedNestedInputObjectSchema).optional()
+  blocksGiven: z.lazy(() => BlockUncheckedUpdateManyWithoutBlockerNestedInputObjectSchema).optional(),
+  reportsReceived: z.lazy(() => ReportUncheckedUpdateManyWithoutReportedNestedInputObjectSchema).optional(),
+  reportsGiven: z.lazy(() => ReportUncheckedUpdateManyWithoutReporterNestedInputObjectSchema).optional()
 }).strict();
 export const UserUncheckedUpdateWithoutApiKeysInputObjectSchema: z.ZodType<Prisma.UserUncheckedUpdateWithoutApiKeysInput> = makeSchema() as unknown as z.ZodType<Prisma.UserUncheckedUpdateWithoutApiKeysInput>;
 export const UserUncheckedUpdateWithoutApiKeysInputObjectZodSchema = makeSchema();

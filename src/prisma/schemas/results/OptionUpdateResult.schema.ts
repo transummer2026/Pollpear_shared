@@ -1,11 +1,11 @@
 import * as z from 'zod';
 export const OptionUpdateResultSchema = z.nullable(z.object({
   id: z.number().int(),
-  label: z.string(),
+  text: z.string(),
   sliderLeftLabel: z.string().optional(),
   sliderRightLabel: z.string().optional(),
   order: z.number().int(),
-  isDeleted: z.boolean(),
+  deletedAt: z.date().optional(),
   pollId: z.number().int(),
   poll: z.unknown(),
   voteOptions: z.array(z.unknown()),

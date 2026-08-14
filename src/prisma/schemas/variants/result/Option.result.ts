@@ -2,11 +2,11 @@ import * as z from 'zod';
 // prettier-ignore
 export const OptionResultSchema = z.object({
     id: z.number().int(),
-    label: z.string(),
+    text: z.string(),
     sliderLeftLabel: z.string().nullable(),
     sliderRightLabel: z.string().nullable(),
     order: z.number().int(),
-    isDeleted: z.boolean(),
+    deletedAt: z.date().nullable(),
     pollId: z.number().int(),
     poll: z.unknown(),
     voteOptions: z.array(z.unknown()),

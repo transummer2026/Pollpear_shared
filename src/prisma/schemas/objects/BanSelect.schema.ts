@@ -7,9 +7,9 @@ import { BanCountOutputTypeArgsObjectSchema as BanCountOutputTypeArgsObjectSchem
 const makeSchema = () => z.object({
   id: z.boolean().optional(),
   banReason: z.boolean().optional(),
-  bannedAt: z.boolean().optional(),
-  unbannedAt: z.boolean().optional(),
   unbanReason: z.boolean().optional(),
+  startedAt: z.boolean().optional(),
+  endedAt: z.boolean().optional(),
   createdAt: z.boolean().optional(),
   updatedAt: z.boolean().optional(),
   userId: z.boolean().optional(),

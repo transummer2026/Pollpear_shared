@@ -5,11 +5,11 @@ import { PollDependencyCreateNestedManyWithoutOptionInputObjectSchema as PollDep
 import { ReportCreateNestedManyWithoutOptionInputObjectSchema as ReportCreateNestedManyWithoutOptionInputObjectSchema } from './ReportCreateNestedManyWithoutOptionInput.schema'
 
 const makeSchema = () => z.object({
-  label: z.string().max(255),
+  text: z.string().max(255),
   sliderLeftLabel: z.string().max(255).optional().nullable(),
   sliderRightLabel: z.string().max(255).optional().nullable(),
   order: z.number().int(),
-  isDeleted: z.boolean().optional(),
+  deletedAt: z.coerce.date().optional().nullable(),
   voteOptions: z.lazy(() => VoteOptionCreateNestedManyWithoutOptionInputObjectSchema).optional(),
   pollDependencies: z.lazy(() => PollDependencyCreateNestedManyWithoutOptionInputObjectSchema).optional(),
   reports: z.lazy(() => ReportCreateNestedManyWithoutOptionInputObjectSchema).optional()

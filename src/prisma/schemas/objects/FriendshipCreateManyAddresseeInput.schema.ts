@@ -7,6 +7,7 @@ const makeSchema = () => z.object({
   status: FriendshipStatusSchema,
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional(),
+  deletedAt: z.coerce.date().optional().nullable(),
   requesterId: z.number().int()
 }).strict();
 export const FriendshipCreateManyAddresseeInputObjectSchema: z.ZodType<Prisma.FriendshipCreateManyAddresseeInput> = makeSchema() as unknown as z.ZodType<Prisma.FriendshipCreateManyAddresseeInput>;

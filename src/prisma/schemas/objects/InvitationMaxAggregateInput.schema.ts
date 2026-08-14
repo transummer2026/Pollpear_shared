@@ -5,9 +5,10 @@ import type { Prisma } from '../../../../../src/generated/prisma/client';
 const makeSchema = () => z.object({
   id: z.literal(true).optional(),
   status: z.literal(true).optional(),
+  message: z.literal(true).optional(),
   createdAt: z.literal(true).optional(),
   updatedAt: z.literal(true).optional(),
-  label: z.literal(true).optional(),
+  deletedAt: z.literal(true).optional(),
   roomId: z.literal(true).optional(),
   inviterId: z.literal(true).optional(),
   inviteeId: z.literal(true).optional()

@@ -5,7 +5,9 @@ import { SortOrderSchema } from '../enums/SortOrder.schema'
 const makeSchema = () => z.object({
   id: SortOrderSchema.optional(),
   name: SortOrderSchema.optional(),
-  isVisible: SortOrderSchema.optional()
+  createdAt: SortOrderSchema.optional(),
+  updatedAt: SortOrderSchema.optional(),
+  deletedAt: SortOrderSchema.optional()
 }).strict();
 export const HashtagCountOrderByAggregateInputObjectSchema: z.ZodType<Prisma.HashtagCountOrderByAggregateInput> = makeSchema() as unknown as z.ZodType<Prisma.HashtagCountOrderByAggregateInput>;
 export const HashtagCountOrderByAggregateInputObjectZodSchema = makeSchema();

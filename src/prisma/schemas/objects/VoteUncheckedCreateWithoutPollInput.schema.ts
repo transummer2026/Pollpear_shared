@@ -4,9 +4,10 @@ import { VoteOptionUncheckedCreateNestedManyWithoutVoteInputObjectSchema as Vote
 
 const makeSchema = () => z.object({
   id: z.number().int().optional(),
+  freeField: z.string().optional().nullable(),
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional(),
-  label: z.string().optional().nullable(),
+  deletedAt: z.coerce.date().optional().nullable(),
   createdById: z.number().int(),
   voteOptions: z.lazy(() => VoteOptionUncheckedCreateNestedManyWithoutVoteInputObjectSchema).optional()
 }).strict();

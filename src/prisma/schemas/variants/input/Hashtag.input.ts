@@ -3,7 +3,9 @@ import * as z from 'zod';
 export const HashtagInputSchema = z.object({
     id: z.number().int(),
     name: z.string(),
-    isVisible: z.boolean(),
+    createdAt: z.date(),
+    updatedAt: z.date(),
+    deletedAt: z.date().optional().nullable(),
     pollHashtags: z.array(z.unknown()),
     reports: z.array(z.unknown())
 }).strict();

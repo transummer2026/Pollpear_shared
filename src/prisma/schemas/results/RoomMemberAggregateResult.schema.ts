@@ -1,9 +1,10 @@
 import * as z from 'zod';
 export const RoomMemberAggregateResultSchema = z.object({  _count: z.object({
     id: z.number(),
+    joinedAt: z.number(),
     createdAt: z.number(),
     updatedAt: z.number(),
-    joinedAt: z.number(),
+    deletedAt: z.number(),
     roomId: z.number(),
     userId: z.number(),
     room: z.number(),
@@ -21,17 +22,19 @@ export const RoomMemberAggregateResultSchema = z.object({  _count: z.object({
   }).nullable().optional(),
   _min: z.object({
     id: z.number().int().nullable(),
+    joinedAt: z.date().nullable(),
     createdAt: z.date().nullable(),
     updatedAt: z.date().nullable(),
-    joinedAt: z.date().nullable(),
+    deletedAt: z.date().nullable(),
     roomId: z.number().int().nullable(),
     userId: z.number().int().nullable()
   }).nullable().optional(),
   _max: z.object({
     id: z.number().int().nullable(),
+    joinedAt: z.date().nullable(),
     createdAt: z.date().nullable(),
     updatedAt: z.date().nullable(),
-    joinedAt: z.date().nullable(),
+    deletedAt: z.date().nullable(),
     roomId: z.number().int().nullable(),
     userId: z.number().int().nullable()
   }).nullable().optional()});

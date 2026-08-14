@@ -12,9 +12,10 @@ import { InvitationScalarFieldEnumSchema } from './enums/InvitationScalarFieldEn
 export const InvitationFindManySelectSchema: z.ZodType<Prisma.InvitationSelect> = z.object({
     id: z.boolean().optional(),
     status: z.boolean().optional(),
+    message: z.boolean().optional(),
     createdAt: z.boolean().optional(),
     updatedAt: z.boolean().optional(),
-    label: z.boolean().optional(),
+    deletedAt: z.boolean().optional(),
     roomId: z.boolean().optional(),
     inviterId: z.boolean().optional(),
     inviteeId: z.boolean().optional(),
@@ -26,9 +27,10 @@ export const InvitationFindManySelectSchema: z.ZodType<Prisma.InvitationSelect> 
 export const InvitationFindManySelectZodSchema = z.object({
     id: z.boolean().optional(),
     status: z.boolean().optional(),
+    message: z.boolean().optional(),
     createdAt: z.boolean().optional(),
     updatedAt: z.boolean().optional(),
-    label: z.boolean().optional(),
+    deletedAt: z.boolean().optional(),
     roomId: z.boolean().optional(),
     inviterId: z.boolean().optional(),
     inviteeId: z.boolean().optional(),

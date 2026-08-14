@@ -20,8 +20,8 @@ import { InvitationUncheckedCreateNestedManyWithoutInviteeInputObjectSchema as I
 import { FriendshipUncheckedCreateNestedManyWithoutRequesterInputObjectSchema as FriendshipUncheckedCreateNestedManyWithoutRequesterInputObjectSchema } from './FriendshipUncheckedCreateNestedManyWithoutRequesterInput.schema';
 import { FriendshipUncheckedCreateNestedManyWithoutAddresseeInputObjectSchema as FriendshipUncheckedCreateNestedManyWithoutAddresseeInputObjectSchema } from './FriendshipUncheckedCreateNestedManyWithoutAddresseeInput.schema';
 import { BlockUncheckedCreateNestedManyWithoutBlockerInputObjectSchema as BlockUncheckedCreateNestedManyWithoutBlockerInputObjectSchema } from './BlockUncheckedCreateNestedManyWithoutBlockerInput.schema';
-import { ReportUncheckedCreateNestedManyWithoutReporterInputObjectSchema as ReportUncheckedCreateNestedManyWithoutReporterInputObjectSchema } from './ReportUncheckedCreateNestedManyWithoutReporterInput.schema';
 import { ReportUncheckedCreateNestedManyWithoutReportedInputObjectSchema as ReportUncheckedCreateNestedManyWithoutReportedInputObjectSchema } from './ReportUncheckedCreateNestedManyWithoutReportedInput.schema';
+import { ReportUncheckedCreateNestedManyWithoutReporterInputObjectSchema as ReportUncheckedCreateNestedManyWithoutReporterInputObjectSchema } from './ReportUncheckedCreateNestedManyWithoutReporterInput.schema';
 import { ApiKeyUncheckedCreateNestedManyWithoutUserInputObjectSchema as ApiKeyUncheckedCreateNestedManyWithoutUserInputObjectSchema } from './ApiKeyUncheckedCreateNestedManyWithoutUserInput.schema'
 
 const makeSchema = () => z.object({
@@ -42,19 +42,18 @@ const makeSchema = () => z.object({
   bio: z.string().optional().nullable(),
   score: z.number().int().optional(),
   isOnline: z.boolean().optional(),
-  isDeleted: z.boolean().optional(),
   isEmailVerified: z.boolean().optional(),
   visibility: VisibilitySchema.optional(),
-  deletedAt: z.coerce.date().optional().nullable(),
   lastSeenAt: z.coerce.date().optional().nullable(),
   avatarUrl: z.string().optional(),
   bannerUrl: z.string().optional(),
+  userTheme: UserThemeSchema.optional(),
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional(),
-  userTheme: UserThemeSchema,
+  deletedAt: z.coerce.date().optional().nullable(),
   oauths: z.lazy(() => OauthUncheckedCreateNestedManyWithoutUserInputObjectSchema).optional(),
   bansReceived: z.lazy(() => BanUncheckedCreateNestedManyWithoutUserInputObjectSchema).optional(),
-  bansDone: z.lazy(() => BanUncheckedCreateNestedManyWithoutBannedByInputObjectSchema).optional(),
+  bansGiven: z.lazy(() => BanUncheckedCreateNestedManyWithoutBannedByInputObjectSchema).optional(),
   bansLifted: z.lazy(() => BanUncheckedCreateNestedManyWithoutUnbannedByInputObjectSchema).optional(),
   pollsCreated: z.lazy(() => PollUncheckedCreateNestedManyWithoutCreatedByInputObjectSchema).optional(),
   roomsCreated: z.lazy(() => RoomUncheckedCreateNestedManyWithoutCreatedByInputObjectSchema).optional(),
@@ -62,14 +61,14 @@ const makeSchema = () => z.object({
   messages: z.lazy(() => MessageUncheckedCreateNestedManyWithoutAuthorInputObjectSchema).optional(),
   notifications: z.lazy(() => NotificationUncheckedCreateNestedManyWithoutUserInputObjectSchema).optional(),
   pollTemplates: z.lazy(() => PollTemplateUncheckedCreateNestedManyWithoutUserInputObjectSchema).optional(),
-  roomMembers: z.lazy(() => RoomMemberUncheckedCreateNestedManyWithoutUserInputObjectSchema).optional(),
+  roomMemberships: z.lazy(() => RoomMemberUncheckedCreateNestedManyWithoutUserInputObjectSchema).optional(),
   invitationsSent: z.lazy(() => InvitationUncheckedCreateNestedManyWithoutInviterInputObjectSchema).optional(),
   invitationsReceived: z.lazy(() => InvitationUncheckedCreateNestedManyWithoutInviteeInputObjectSchema).optional(),
   friendshipsRequested: z.lazy(() => FriendshipUncheckedCreateNestedManyWithoutRequesterInputObjectSchema).optional(),
   friendshipsReceived: z.lazy(() => FriendshipUncheckedCreateNestedManyWithoutAddresseeInputObjectSchema).optional(),
   blocksGiven: z.lazy(() => BlockUncheckedCreateNestedManyWithoutBlockerInputObjectSchema).optional(),
-  reportsGiven: z.lazy(() => ReportUncheckedCreateNestedManyWithoutReporterInputObjectSchema).optional(),
   reportsReceived: z.lazy(() => ReportUncheckedCreateNestedManyWithoutReportedInputObjectSchema).optional(),
+  reportsGiven: z.lazy(() => ReportUncheckedCreateNestedManyWithoutReporterInputObjectSchema).optional(),
   apiKeys: z.lazy(() => ApiKeyUncheckedCreateNestedManyWithoutUserInputObjectSchema).optional()
 }).strict();
 export const UserUncheckedCreateWithoutBlocksReceivedInputObjectSchema: z.ZodType<Prisma.UserUncheckedCreateWithoutBlocksReceivedInput> = makeSchema() as unknown as z.ZodType<Prisma.UserUncheckedCreateWithoutBlocksReceivedInput>;

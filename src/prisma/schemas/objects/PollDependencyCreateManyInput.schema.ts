@@ -3,7 +3,6 @@ import type { Prisma } from '../../../../../src/generated/prisma/client';
 
 
 const makeSchema = () => z.object({
-  id: z.number().int().optional(),
   childPollId: z.number().int(),
   optionId: z.number().int()
 }).strict();

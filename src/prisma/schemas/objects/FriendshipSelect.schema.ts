@@ -7,6 +7,7 @@ const makeSchema = () => z.object({
   status: z.boolean().optional(),
   createdAt: z.boolean().optional(),
   updatedAt: z.boolean().optional(),
+  deletedAt: z.boolean().optional(),
   requesterId: z.boolean().optional(),
   addresseeId: z.boolean().optional(),
   requester: z.union([z.boolean(), z.lazy(() => UserArgsObjectSchema)]).optional(),

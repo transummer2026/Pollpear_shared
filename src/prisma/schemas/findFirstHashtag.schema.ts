@@ -12,7 +12,9 @@ import { HashtagScalarFieldEnumSchema } from './enums/HashtagScalarFieldEnum.sch
 export const HashtagFindFirstSelectSchema: z.ZodType<Prisma.HashtagSelect> = z.object({
     id: z.boolean().optional(),
     name: z.boolean().optional(),
-    isVisible: z.boolean().optional(),
+    createdAt: z.boolean().optional(),
+    updatedAt: z.boolean().optional(),
+    deletedAt: z.boolean().optional(),
     pollHashtags: z.boolean().optional(),
     reports: z.boolean().optional(),
     _count: z.boolean().optional()
@@ -21,7 +23,9 @@ export const HashtagFindFirstSelectSchema: z.ZodType<Prisma.HashtagSelect> = z.o
 export const HashtagFindFirstSelectZodSchema = z.object({
     id: z.boolean().optional(),
     name: z.boolean().optional(),
-    isVisible: z.boolean().optional(),
+    createdAt: z.boolean().optional(),
+    updatedAt: z.boolean().optional(),
+    deletedAt: z.boolean().optional(),
     pollHashtags: z.boolean().optional(),
     reports: z.boolean().optional(),
     _count: z.boolean().optional()

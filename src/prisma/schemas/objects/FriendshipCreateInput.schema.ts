@@ -7,6 +7,7 @@ import { UserCreateNestedOneWithoutFriendshipsReceivedInputObjectSchema as UserC
 const makeSchema = () => z.object({
   status: FriendshipStatusSchema,
   createdAt: z.coerce.date().optional(),
+  deletedAt: z.coerce.date().optional().nullable(),
   requester: z.lazy(() => UserCreateNestedOneWithoutFriendshipsRequestedInputObjectSchema),
   addressee: z.lazy(() => UserCreateNestedOneWithoutFriendshipsReceivedInputObjectSchema)
 }).strict();

@@ -7,7 +7,7 @@ const makeSchema = () => z.object({
   keyHash: SortOrderSchema.optional(),
   appName: SortOrderSchema.optional(),
   revoked: SortOrderSchema.optional(),
-  expiresAt: SortOrderSchema.optional(),
+  expiredAt: SortOrderSchema.optional(),
   createdAt: SortOrderSchema.optional(),
   updatedAt: SortOrderSchema.optional(),
   ownerId: SortOrderSchema.optional()

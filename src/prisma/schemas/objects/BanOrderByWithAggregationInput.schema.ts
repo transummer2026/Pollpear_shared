@@ -11,9 +11,9 @@ import { BanSumOrderByAggregateInputObjectSchema as BanSumOrderByAggregateInputO
 const makeSchema = () => z.object({
   id: SortOrderSchema.optional(),
   banReason: SortOrderSchema.optional(),
-  bannedAt: SortOrderSchema.optional(),
-  unbannedAt: SortOrderSchema.optional(),
   unbanReason: z.union([SortOrderSchema, z.lazy(() => SortOrderInputObjectSchema)]).optional(),
+  startedAt: SortOrderSchema.optional(),
+  endedAt: SortOrderSchema.optional(),
   createdAt: SortOrderSchema.optional(),
   updatedAt: SortOrderSchema.optional(),
   userId: SortOrderSchema.optional(),

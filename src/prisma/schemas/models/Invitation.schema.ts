@@ -4,9 +4,10 @@ import { InvitationStatusSchema } from '../enums/InvitationStatus.schema';
 export const InvitationSchema = z.object({
   id: z.number().int(),
   status: InvitationStatusSchema,
+  message: z.string().nullish(),
   createdAt: z.date(),
   updatedAt: z.date(),
-  label: z.string().nullish(),
+  deletedAt: z.date().nullish(),
   roomId: z.number().int(),
   inviterId: z.number().int(),
   inviteeId: z.number().int(),

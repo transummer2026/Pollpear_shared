@@ -4,7 +4,7 @@ export const ApiKeyAggregateResultSchema = z.object({  _count: z.object({
     keyHash: z.number(),
     appName: z.number(),
     revoked: z.number(),
-    expiresAt: z.number(),
+    expiredAt: z.number(),
     createdAt: z.number(),
     updatedAt: z.number(),
     ownerId: z.number(),
@@ -22,7 +22,7 @@ export const ApiKeyAggregateResultSchema = z.object({  _count: z.object({
     id: z.number().int().nullable(),
     keyHash: z.string().nullable(),
     appName: z.string().nullable(),
-    expiresAt: z.date().nullable(),
+    expiredAt: z.date().nullable(),
     createdAt: z.date().nullable(),
     updatedAt: z.date().nullable(),
     ownerId: z.number().int().nullable()
@@ -31,7 +31,7 @@ export const ApiKeyAggregateResultSchema = z.object({  _count: z.object({
     id: z.number().int().nullable(),
     keyHash: z.string().nullable(),
     appName: z.string().nullable(),
-    expiresAt: z.date().nullable(),
+    expiredAt: z.date().nullable(),
     createdAt: z.date().nullable(),
     updatedAt: z.date().nullable(),
     ownerId: z.number().int().nullable()

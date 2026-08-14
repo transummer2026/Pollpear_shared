@@ -6,9 +6,9 @@ import { BanAttachmentCreateNestedManyWithoutBanInputObjectSchema as BanAttachme
 
 const makeSchema = () => z.object({
   banReason: z.string(),
-  bannedAt: z.coerce.date(),
-  unbannedAt: z.coerce.date(),
   unbanReason: z.string().optional().nullable(),
+  startedAt: z.coerce.date(),
+  endedAt: z.coerce.date(),
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional(),
   user: z.lazy(() => UserCreateNestedOneWithoutBansReceivedInputObjectSchema),

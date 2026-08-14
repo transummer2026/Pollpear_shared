@@ -4,7 +4,6 @@ import { PollArgsObjectSchema as PollArgsObjectSchema } from './PollArgs.schema'
 import { OptionArgsObjectSchema as OptionArgsObjectSchema } from './OptionArgs.schema'
 
 const makeSchema = () => z.object({
-  id: z.boolean().optional(),
   childPollId: z.boolean().optional(),
   optionId: z.boolean().optional(),
   childPoll: z.union([z.boolean(), z.lazy(() => PollArgsObjectSchema)]).optional(),

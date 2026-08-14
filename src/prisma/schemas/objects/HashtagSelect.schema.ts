@@ -7,7 +7,9 @@ import { HashtagCountOutputTypeArgsObjectSchema as HashtagCountOutputTypeArgsObj
 const makeSchema = () => z.object({
   id: z.boolean().optional(),
   name: z.boolean().optional(),
-  isVisible: z.boolean().optional(),
+  createdAt: z.boolean().optional(),
+  updatedAt: z.boolean().optional(),
+  deletedAt: z.boolean().optional(),
   pollHashtags: z.union([z.boolean(), z.lazy(() => PollHashtagFindManySchema)]).optional(),
   reports: z.union([z.boolean(), z.lazy(() => ReportFindManySchema)]).optional(),
   _count: z.union([z.boolean(), z.lazy(() => HashtagCountOutputTypeArgsObjectSchema)]).optional()

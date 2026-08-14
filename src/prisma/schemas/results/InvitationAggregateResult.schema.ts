@@ -2,9 +2,10 @@ import * as z from 'zod';
 export const InvitationAggregateResultSchema = z.object({  _count: z.object({
     id: z.number(),
     status: z.number(),
+    message: z.number(),
     createdAt: z.number(),
     updatedAt: z.number(),
-    label: z.number(),
+    deletedAt: z.number(),
     roomId: z.number(),
     inviterId: z.number(),
     inviteeId: z.number(),
@@ -26,18 +27,20 @@ export const InvitationAggregateResultSchema = z.object({  _count: z.object({
   }).nullable().optional(),
   _min: z.object({
     id: z.number().int().nullable(),
+    message: z.string().nullable(),
     createdAt: z.date().nullable(),
     updatedAt: z.date().nullable(),
-    label: z.string().nullable(),
+    deletedAt: z.date().nullable(),
     roomId: z.number().int().nullable(),
     inviterId: z.number().int().nullable(),
     inviteeId: z.number().int().nullable()
   }).nullable().optional(),
   _max: z.object({
     id: z.number().int().nullable(),
+    message: z.string().nullable(),
     createdAt: z.date().nullable(),
     updatedAt: z.date().nullable(),
-    label: z.string().nullable(),
+    deletedAt: z.date().nullable(),
     roomId: z.number().int().nullable(),
     inviterId: z.number().int().nullable(),
     inviteeId: z.number().int().nullable()

@@ -3,7 +3,9 @@ export const HashtagFindManyResultSchema = z.object({
   data: z.array(z.object({
   id: z.number().int(),
   name: z.string(),
-  isVisible: z.boolean(),
+  createdAt: z.date(),
+  updatedAt: z.date(),
+  deletedAt: z.date().optional(),
   pollHashtags: z.array(z.unknown()),
   reports: z.array(z.unknown())
 })),

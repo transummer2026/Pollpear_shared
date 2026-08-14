@@ -12,9 +12,9 @@ import { BanScalarFieldEnumSchema } from './enums/BanScalarFieldEnum.schema';
 export const BanFindManySelectSchema: z.ZodType<Prisma.BanSelect> = z.object({
     id: z.boolean().optional(),
     banReason: z.boolean().optional(),
-    bannedAt: z.boolean().optional(),
-    unbannedAt: z.boolean().optional(),
     unbanReason: z.boolean().optional(),
+    startedAt: z.boolean().optional(),
+    endedAt: z.boolean().optional(),
     createdAt: z.boolean().optional(),
     updatedAt: z.boolean().optional(),
     userId: z.boolean().optional(),
@@ -30,9 +30,9 @@ export const BanFindManySelectSchema: z.ZodType<Prisma.BanSelect> = z.object({
 export const BanFindManySelectZodSchema = z.object({
     id: z.boolean().optional(),
     banReason: z.boolean().optional(),
-    bannedAt: z.boolean().optional(),
-    unbannedAt: z.boolean().optional(),
     unbanReason: z.boolean().optional(),
+    startedAt: z.boolean().optional(),
+    endedAt: z.boolean().optional(),
     createdAt: z.boolean().optional(),
     updatedAt: z.boolean().optional(),
     userId: z.boolean().optional(),

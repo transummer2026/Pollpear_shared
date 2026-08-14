@@ -5,7 +5,8 @@ import { ReportCreateNestedManyWithoutHashtagInputObjectSchema as ReportCreateNe
 
 const makeSchema = () => z.object({
   name: z.string().max(255),
-  isVisible: z.boolean(),
+  createdAt: z.coerce.date().optional(),
+  deletedAt: z.coerce.date().optional().nullable(),
   pollHashtags: z.lazy(() => PollHashtagCreateNestedManyWithoutHashtagInputObjectSchema).optional(),
   reports: z.lazy(() => ReportCreateNestedManyWithoutHashtagInputObjectSchema).optional()
 }).strict();

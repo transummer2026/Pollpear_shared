@@ -5,7 +5,6 @@ import { PollOrderByWithRelationInputObjectSchema as PollOrderByWithRelationInpu
 import { OptionOrderByWithRelationInputObjectSchema as OptionOrderByWithRelationInputObjectSchema } from './OptionOrderByWithRelationInput.schema'
 
 const makeSchema = () => z.object({
-  id: SortOrderSchema.optional(),
   childPollId: SortOrderSchema.optional(),
   optionId: SortOrderSchema.optional(),
   childPoll: z.lazy(() => PollOrderByWithRelationInputObjectSchema).optional(),

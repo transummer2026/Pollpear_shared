@@ -19,7 +19,7 @@ import { UserCountOutputTypeArgsObjectSchema as UserCountOutputTypeArgsObjectSch
 const makeSchema = () => z.object({
   oauths: z.union([z.boolean(), z.lazy(() => OauthFindManySchema)]).optional(),
   bansReceived: z.union([z.boolean(), z.lazy(() => BanFindManySchema)]).optional(),
-  bansDone: z.union([z.boolean(), z.lazy(() => BanFindManySchema)]).optional(),
+  bansGiven: z.union([z.boolean(), z.lazy(() => BanFindManySchema)]).optional(),
   bansLifted: z.union([z.boolean(), z.lazy(() => BanFindManySchema)]).optional(),
   pollsCreated: z.union([z.boolean(), z.lazy(() => PollFindManySchema)]).optional(),
   roomsCreated: z.union([z.boolean(), z.lazy(() => RoomFindManySchema)]).optional(),
@@ -27,15 +27,15 @@ const makeSchema = () => z.object({
   messages: z.union([z.boolean(), z.lazy(() => MessageFindManySchema)]).optional(),
   notifications: z.union([z.boolean(), z.lazy(() => NotificationFindManySchema)]).optional(),
   pollTemplates: z.union([z.boolean(), z.lazy(() => PollTemplateFindManySchema)]).optional(),
-  roomMembers: z.union([z.boolean(), z.lazy(() => RoomMemberFindManySchema)]).optional(),
+  roomMemberships: z.union([z.boolean(), z.lazy(() => RoomMemberFindManySchema)]).optional(),
   invitationsSent: z.union([z.boolean(), z.lazy(() => InvitationFindManySchema)]).optional(),
   invitationsReceived: z.union([z.boolean(), z.lazy(() => InvitationFindManySchema)]).optional(),
   friendshipsRequested: z.union([z.boolean(), z.lazy(() => FriendshipFindManySchema)]).optional(),
   friendshipsReceived: z.union([z.boolean(), z.lazy(() => FriendshipFindManySchema)]).optional(),
-  blocksGiven: z.union([z.boolean(), z.lazy(() => BlockFindManySchema)]).optional(),
   blocksReceived: z.union([z.boolean(), z.lazy(() => BlockFindManySchema)]).optional(),
-  reportsGiven: z.union([z.boolean(), z.lazy(() => ReportFindManySchema)]).optional(),
+  blocksGiven: z.union([z.boolean(), z.lazy(() => BlockFindManySchema)]).optional(),
   reportsReceived: z.union([z.boolean(), z.lazy(() => ReportFindManySchema)]).optional(),
+  reportsGiven: z.union([z.boolean(), z.lazy(() => ReportFindManySchema)]).optional(),
   apiKeys: z.union([z.boolean(), z.lazy(() => ApiKeyFindManySchema)]).optional(),
   _count: z.union([z.boolean(), z.lazy(() => UserCountOutputTypeArgsObjectSchema)]).optional()
 }).strict();

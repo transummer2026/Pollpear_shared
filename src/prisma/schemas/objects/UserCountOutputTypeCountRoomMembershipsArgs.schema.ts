@@ -5,5 +5,5 @@ import { RoomMemberWhereInputObjectSchema as RoomMemberWhereInputObjectSchema } 
 const makeSchema = () => z.object({
   where: z.lazy(() => RoomMemberWhereInputObjectSchema).optional()
 }).strict();
-export const UserCountOutputTypeCountRoomMembersArgsObjectSchema = makeSchema();
-export const UserCountOutputTypeCountRoomMembersArgsObjectZodSchema = makeSchema();
+export const UserCountOutputTypeCountRoomMembershipsArgsObjectSchema = makeSchema();
+export const UserCountOutputTypeCountRoomMembershipsArgsObjectZodSchema = makeSchema();

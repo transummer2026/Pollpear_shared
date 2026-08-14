@@ -7,6 +7,7 @@ const makeSchema = () => z.object({
   status: z.literal(true).optional(),
   createdAt: z.literal(true).optional(),
   updatedAt: z.literal(true).optional(),
+  deletedAt: z.literal(true).optional(),
   requesterId: z.literal(true).optional(),
   addresseeId: z.literal(true).optional(),
   _all: z.literal(true).optional()

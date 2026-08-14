@@ -9,11 +9,11 @@ import { ReportOrderByRelationAggregateInputObjectSchema as ReportOrderByRelatio
 
 const makeSchema = () => z.object({
   id: SortOrderSchema.optional(),
-  label: SortOrderSchema.optional(),
+  text: SortOrderSchema.optional(),
   sliderLeftLabel: z.union([SortOrderSchema, z.lazy(() => SortOrderInputObjectSchema)]).optional(),
   sliderRightLabel: z.union([SortOrderSchema, z.lazy(() => SortOrderInputObjectSchema)]).optional(),
   order: SortOrderSchema.optional(),
-  isDeleted: SortOrderSchema.optional(),
+  deletedAt: z.union([SortOrderSchema, z.lazy(() => SortOrderInputObjectSchema)]).optional(),
   pollId: SortOrderSchema.optional(),
   poll: z.lazy(() => PollOrderByWithRelationInputObjectSchema).optional(),
   voteOptions: z.lazy(() => VoteOptionOrderByRelationAggregateInputObjectSchema).optional(),

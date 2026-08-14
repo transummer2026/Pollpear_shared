@@ -5,5 +5,5 @@ import { BanWhereInputObjectSchema as BanWhereInputObjectSchema } from './BanWhe
 const makeSchema = () => z.object({
   where: z.lazy(() => BanWhereInputObjectSchema).optional()
 }).strict();
-export const UserCountOutputTypeCountBansDoneArgsObjectSchema = makeSchema();
-export const UserCountOutputTypeCountBansDoneArgsObjectZodSchema = makeSchema();
+export const UserCountOutputTypeCountBansGivenArgsObjectSchema = makeSchema();
+export const UserCountOutputTypeCountBansGivenArgsObjectZodSchema = makeSchema();

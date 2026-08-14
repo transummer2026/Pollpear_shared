@@ -3,7 +3,8 @@ import type { Prisma } from '../../../../../src/generated/prisma/client';
 import { IntWithAggregatesFilterObjectSchema as IntWithAggregatesFilterObjectSchema } from './IntWithAggregatesFilter.schema';
 import { EnumFriendshipStatusWithAggregatesFilterObjectSchema as EnumFriendshipStatusWithAggregatesFilterObjectSchema } from './EnumFriendshipStatusWithAggregatesFilter.schema';
 import { FriendshipStatusSchema } from '../enums/FriendshipStatus.schema';
-import { DateTimeWithAggregatesFilterObjectSchema as DateTimeWithAggregatesFilterObjectSchema } from './DateTimeWithAggregatesFilter.schema'
+import { DateTimeWithAggregatesFilterObjectSchema as DateTimeWithAggregatesFilterObjectSchema } from './DateTimeWithAggregatesFilter.schema';
+import { DateTimeNullableWithAggregatesFilterObjectSchema as DateTimeNullableWithAggregatesFilterObjectSchema } from './DateTimeNullableWithAggregatesFilter.schema'
 
 const friendshipscalarwherewithaggregatesinputSchema = z.object({
   AND: z.union([z.lazy(() => FriendshipScalarWhereWithAggregatesInputObjectSchema), z.lazy(() => FriendshipScalarWhereWithAggregatesInputObjectSchema).array()]).optional(),
@@ -13,6 +14,7 @@ const friendshipscalarwherewithaggregatesinputSchema = z.object({
   status: z.union([z.lazy(() => EnumFriendshipStatusWithAggregatesFilterObjectSchema), FriendshipStatusSchema]).optional(),
   createdAt: z.union([z.lazy(() => DateTimeWithAggregatesFilterObjectSchema), z.coerce.date()]).optional(),
   updatedAt: z.union([z.lazy(() => DateTimeWithAggregatesFilterObjectSchema), z.coerce.date()]).optional(),
+  deletedAt: z.union([z.lazy(() => DateTimeNullableWithAggregatesFilterObjectSchema), z.coerce.date()]).optional().nullable(),
   requesterId: z.union([z.lazy(() => IntWithAggregatesFilterObjectSchema), z.number().int()]).optional(),
   addresseeId: z.union([z.lazy(() => IntWithAggregatesFilterObjectSchema), z.number().int()]).optional()
 }).strict();
