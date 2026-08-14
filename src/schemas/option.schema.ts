@@ -38,14 +38,13 @@ export const SliderOptionSchema = OptionSchema.extend({
   sliderRightLabel: sliderLabel,
 });
 
-export const OptionUpdateSchema = z
-  .array(
-    z.union([
-      ChoiceOptionSchema.extend({ id: optionalId }),
-      SliderOptionSchema.extend({ id: optionalId }),
-    ]),
-  )
+export const ChoiceOptionUpdateSchema = z
+  .array(ChoiceOptionSchema.extend({ id: optionalId }))
   .min(2, 'Min 2 options');
+
+export const SliderOptionUpdateSchema = z
+  .array(SliderOptionSchema.extend({ id: optionalId }))
+  .length(1, 'A slider poll needs exactly 1 option');
 
 export const isSliderOption = (
   option: PollOptionDTO,
@@ -54,3 +53,11 @@ export const isSliderOption = (
 export type ChoiceOptionDTO = z.infer<typeof ChoiceOptionSchema>;
 export type SliderOptionDTO = z.infer<typeof SliderOptionSchema>;
 export type PollOptionDTO = ChoiceOptionDTO | SliderOptionDTO;
+
+export type ChoiceOptionUpdateDTO = z.infer<
+  typeof ChoiceOptionUpdateSchema
+>[number];
+export type SliderOptionUpdateDTO = z.infer<
+  typeof SliderOptionUpdateSchema
+>[number];
+export type PollOptionUpdateDTO = ChoiceOptionUpdateDTO | SliderOptionUpdateDTO;

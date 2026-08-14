@@ -6,9 +6,10 @@ import { PollStatusSchema } from '../prisma/schemas/enums/PollStatus.schema';
 import { unwrapNullish } from './utils';
 import {
   ChoiceOptionSchema,
+  ChoiceOptionUpdateSchema,
   OptionModelSchema,
-  OptionUpdateSchema,
   SliderOptionSchema,
+  SliderOptionUpdateSchema,
 } from './option.schema';
 import { UserPublicProfileSchema } from './users.schema';
 import { HashtagSchema } from './hashtag.schema';
@@ -61,7 +62,7 @@ export const PollCreateSchema = z.discriminatedUnion('type', [
     type: z.literal('slider'),
     options: z
       .array(SliderOptionSchema)
-      .length(2, 'A slider poll needs exactly 2 options'),
+      .length(1, 'A slider poll needs exactly 1 option'),
   }),
 ]);
 
@@ -75,10 +76,11 @@ export const PollReadSchema = PollModelSchema.extend({
 
 /**
  * We decided the type of a poll cannot be updated (once someone creates as multiple choice
- * it stays that way else it would be complicated). Since the discriminated union is based
- * on type, the "parse according to the option type" will live in poll.service.ts (TODO).
+ * it stays that way else it would be complicated). type is only present here to discriminate
+ * which options constraint applies (min 2 for choice, exactly 1 for slider) - the service
+ * strips it back out before writing to the db.
  */
-export const PollUpdateSchema = z
+const PollUpdateBaseSchema = z
   .object({
     title: PollModelSchema.shape.title.max(255, 'Max 255 characters'),
     description: unwrapNullish(PollModelSchema.shape.description)
@@ -91,10 +93,24 @@ export const PollUpdateSchema = z
     allowChangeVote: PollModelSchema.shape.allowChangeVote,
     isAnonymous: PollModelSchema.shape.isAnonymous,
     roomId: unwrapNullish(PollModelSchema.shape.roomId),
-    options: OptionUpdateSchema,
     hashtags: z.array(HashtagSchema.pick({ name: true })),
   })
   .partial();
+
+export const PollUpdateSchema = z.discriminatedUnion('type', [
+  PollUpdateBaseSchema.extend({
+    type: z.literal('multiple_choice'),
+    options: ChoiceOptionUpdateSchema.optional(),
+  }),
+  PollUpdateBaseSchema.extend({
+    type: z.literal('single_choice'),
+    options: ChoiceOptionUpdateSchema.optional(),
+  }),
+  PollUpdateBaseSchema.extend({
+    type: z.literal('slider'),
+    options: SliderOptionUpdateSchema.optional(),
+  }),
+]);
 
 /**
  * These are the search query options to find a poll.
