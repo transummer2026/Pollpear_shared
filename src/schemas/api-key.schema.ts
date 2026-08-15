@@ -18,10 +18,17 @@ export const ApiKeySchema = ApiKeyModelSchema.omit({
   createdAt: z.coerce.date(),
 });
 
-export const ApiKeyCreateSchema = ApiKeySchema.pick({ appName: true }).partial();
+const ApiKeyAppNameSchema = ApiKeySchema.pick({ appName: true });
+
+/** Naming is optional on creation, the server falls back to a default name */
+export const ApiKeyCreateSchema = ApiKeyAppNameSchema.partial();
+
+/** Renaming carries nothing but the new name, which is then required */
+export const ApiKeyRenameSchema = ApiKeyAppNameSchema;
 
 export const ApiKeyCreatedSchema = ApiKeySchema.extend({ key: z.string() });
 
 export type ApiKeyDTO = z.infer<typeof ApiKeySchema>;
 export type ApiKeyCreateDTO = z.infer<typeof ApiKeyCreateSchema>;
+export type ApiKeyRenameDTO = z.infer<typeof ApiKeyRenameSchema>;
 export type ApiKeyCreatedDTO = z.infer<typeof ApiKeyCreatedSchema>;
