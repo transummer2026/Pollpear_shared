@@ -72,6 +72,7 @@ export const PollReadSchema = PollModelSchema.extend({
   pollHashtags: z.array(PollHashtagSchema.extend({ hashtag: HashtagSchema })),
   room: RoomSchema.nullable(),
   votes: z.array(VoteModelSchema),
+  hasVoted: z.boolean(),
 });
 
 /**
