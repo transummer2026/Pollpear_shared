@@ -24,11 +24,11 @@ const ApiKeyAppNameSchema = ApiKeySchema.pick({ appName: true });
 export const ApiKeyCreateSchema = ApiKeyAppNameSchema.partial();
 
 /** Renaming carries nothing but the new name, which is then required */
-export const ApiKeyRenameSchema = ApiKeyAppNameSchema;
+export const ApiKeyUpdateSchema = ApiKeyAppNameSchema;
 
 export const ApiKeyCreatedSchema = ApiKeySchema.extend({ key: z.string() });
 
 export type ApiKeyDTO = z.infer<typeof ApiKeySchema>;
 export type ApiKeyCreateDTO = z.infer<typeof ApiKeyCreateSchema>;
-export type ApiKeyRenameDTO = z.infer<typeof ApiKeyRenameSchema>;
+export type ApiKeyUpdateDTO = z.infer<typeof ApiKeyUpdateSchema>;
 export type ApiKeyCreatedDTO = z.infer<typeof ApiKeyCreatedSchema>;
