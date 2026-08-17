@@ -7,7 +7,7 @@ import { unwrapNullish } from './utils';
 import {
   ChoiceOptionSchema,
   ChoiceOptionUpdateSchema,
-  OptionModelSchema,
+  OptionCountVoteSchema,
   SliderOptionSchema,
   SliderOptionUpdateSchema,
 } from './option.schema';
@@ -15,8 +15,6 @@ import { UserPublicProfileSchema } from './users.schema';
 import { HashtagSchema } from './hashtag.schema';
 import { PollHashtagSchema } from './poll-hashtag.schema';
 import { RoomSchema } from './rooms.schema';
-import { VoteSchema as VoteModelSchema } from '../prisma/schemas/models/Vote.schema';
-import { VoteOptionSchema } from './vote-option.schema';
 
 /**
  * hashtags (if present) must be an array of objects each containing a hashtag name.
@@ -69,19 +67,10 @@ export const PollCreateSchema = z.discriminatedUnion('type', [
 
 export const PollReadSchema = PollModelSchema.extend({
   createdBy: UserPublicProfileSchema,
-  options: z.array(OptionModelSchema),
+  options: z.array(OptionCountVoteSchema),
   pollHashtags: z.array(PollHashtagSchema.extend({ hashtag: HashtagSchema })),
   room: RoomSchema.nullable(),
   hasVoted: z.boolean(),
-  votes: z.array(
-    VoteModelSchema.extend({
-      voteOptions: z.array(VoteOptionSchema),
-    }),
-  ),
-});
-
-export const PollListSchema = PollReadSchema.omit({ votes: true }).extend({
-  voteCount: z.number(),
 });
 
 /**
