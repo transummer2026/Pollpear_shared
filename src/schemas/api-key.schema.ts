@@ -1,6 +1,5 @@
 import { z } from 'zod';
 import { ApiKeySchema as ApiKeyModelSchema } from '../prisma/schemas/models/ApiKey.schema';
-import { ApiKeySchema as ApiKeyModelSchema } from '../prisma/schemas/models/ApiKey.schema';
 
 export const ApiKeySchema = ApiKeyModelSchema.omit({
   keyHash: true,
