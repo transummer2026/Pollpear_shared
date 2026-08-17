@@ -16,6 +16,7 @@ import { HashtagSchema } from './hashtag.schema';
 import { PollHashtagSchema } from './poll-hashtag.schema';
 import { RoomSchema } from './rooms.schema';
 import { VoteSchema as VoteModelSchema } from '../prisma/schemas/models/Vote.schema';
+import { VoteOptionSchema } from './vote-option.schema';
 
 /**
  * hashtags (if present) must be an array of objects each containing a hashtag name.
@@ -71,8 +72,16 @@ export const PollReadSchema = PollModelSchema.extend({
   options: z.array(OptionModelSchema),
   pollHashtags: z.array(PollHashtagSchema.extend({ hashtag: HashtagSchema })),
   room: RoomSchema.nullable(),
-  votes: z.array(VoteModelSchema),
   hasVoted: z.boolean(),
+  votes: z.array(
+    VoteModelSchema.extend({
+      voteOptions: z.array(VoteOptionSchema),
+    }),
+  ),
+});
+
+export const PollListSchema = PollReadSchema.omit({ votes: true }).extend({
+  voteCount: z.number(),
 });
 
 /**
