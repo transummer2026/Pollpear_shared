@@ -46,6 +46,14 @@ export const UserChangePasswordSchema = z
     path: ['confirmPassword'],
   });
 
+export const DELETE_ACCOUNT_CONFIRMATION_PHRASE = 'CONFIRMED';
+
+export const UserDeleteSchema = z.object({
+  confirmation: z.literal(DELETE_ACCOUNT_CONFIRMATION_PHRASE, {
+    error: `Type ${DELETE_ACCOUNT_CONFIRMATION_PHRASE} to confirm`,
+  }),
+});
+
 export const VerifyEmailSchema = z.object({
   token: z.uuid('Invalid or missing verification token'),
 });
@@ -60,5 +68,6 @@ export type LoginDTO = z.infer<typeof LoginSchema>;
 export type PasswordForgotDTO = z.infer<typeof PasswordForgotSchema>;
 export type PasswordResetDTO = z.infer<typeof PasswordResetSchema>;
 export type UserChangePasswordDTO = z.infer<typeof UserChangePasswordSchema>;
+export type UserDeleteDTO = z.infer<typeof UserDeleteSchema>;
 export type VerifyEmailDTO = z.infer<typeof VerifyEmailSchema>;
 export type ResendVerificationDTO = z.infer<typeof ResendVerificationSchema>;
