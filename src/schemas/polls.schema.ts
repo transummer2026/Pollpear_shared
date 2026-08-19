@@ -74,6 +74,7 @@ export const PollReadSchema = PollModelSchema.extend({
   hasVoted: z.boolean(),
   votes: z.array(VoteModelSchema),
   sliderResult: z.number(),
+  voterCount: z.number(),
 });
 
 /**
