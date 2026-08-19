@@ -6,3 +6,5 @@ export * from "./polls.schema";
 export * from "./rooms.schema";
 export * from "./uploads.schema";
 export * from "./search.schema";
+export * from "./friendship.schema";
+export * from "./block.schema";
