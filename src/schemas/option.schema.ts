@@ -50,6 +50,10 @@ export const isSliderOption = (
   option: PollOptionDTO,
 ): option is SliderOptionDTO => 'sliderLeftLabel' in option;
 
+export const OptionCountVoteSchema = OptionModelSchema.extend({
+  _count: z.object({ voteOptions: z.number() }),
+});
+
 export type ChoiceOptionDTO = z.infer<typeof ChoiceOptionSchema>;
 export type SliderOptionDTO = z.infer<typeof SliderOptionSchema>;
 export type PollOptionDTO = ChoiceOptionDTO | SliderOptionDTO;

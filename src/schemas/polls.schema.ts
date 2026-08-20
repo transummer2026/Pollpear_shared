@@ -7,7 +7,7 @@ import { unwrapNullish } from './utils';
 import {
   ChoiceOptionSchema,
   ChoiceOptionUpdateSchema,
-  OptionModelSchema,
+  OptionCountVoteSchema,
   SliderOptionSchema,
   SliderOptionUpdateSchema,
 } from './option.schema';
@@ -67,11 +67,14 @@ export const PollCreateSchema = z.discriminatedUnion('type', [
 ]);
 
 export const PollReadSchema = PollModelSchema.extend({
-  createdBy: UserPublicProfileSchema,
-  options: z.array(OptionModelSchema),
+  createdBy: UserPublicProfileSchema.nullable(),
+  options: z.array(OptionCountVoteSchema),
   pollHashtags: z.array(PollHashtagSchema.extend({ hashtag: HashtagSchema })),
   room: RoomSchema.nullable(),
+  hasVoted: z.boolean(),
   votes: z.array(VoteModelSchema),
+  sliderResult: z.number(),
+  voterCount: z.number(),
 });
 
 /**
