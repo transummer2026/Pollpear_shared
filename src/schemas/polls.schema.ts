@@ -67,7 +67,7 @@ export const PollCreateSchema = z.discriminatedUnion('type', [
 ]);
 
 export const PollReadSchema = PollModelSchema.extend({
-  createdBy: UserPublicProfileSchema,
+  createdBy: UserPublicProfileSchema.nullable(),
   options: z.array(OptionCountVoteSchema),
   pollHashtags: z.array(PollHashtagSchema.extend({ hashtag: HashtagSchema })),
   room: RoomSchema.nullable(),
