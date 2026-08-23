@@ -4,7 +4,8 @@ import type { Prisma } from '../../../../../src/generated/prisma/client';
 
 const makeSchema = () => z.object({
   id: z.literal(true).optional(),
-  userId: z.literal(true).optional()
+  userId: z.literal(true).optional(),
+  actorId: z.literal(true).optional()
 }).strict();
 export const NotificationAvgAggregateInputObjectSchema: z.ZodType<Prisma.NotificationAvgAggregateInputType> = makeSchema() as unknown as z.ZodType<Prisma.NotificationAvgAggregateInputType>;
 export const NotificationAvgAggregateInputObjectZodSchema = makeSchema();

@@ -1,5 +1,5 @@
 import * as z from 'zod';
 
-export const NotificationScalarFieldEnumSchema = z.enum(['id', 'type', 'content', 'isRead', 'createdAt', 'updatedAt', 'userId'])
+export const NotificationScalarFieldEnumSchema = z.enum(['id', 'type', 'content', 'isRead', 'createdAt', 'updatedAt', 'userId', 'actorId'])
 
 export type NotificationScalarFieldEnum = z.infer<typeof NotificationScalarFieldEnumSchema>;
