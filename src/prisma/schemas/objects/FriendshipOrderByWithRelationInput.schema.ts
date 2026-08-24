@@ -10,10 +10,11 @@ const makeSchema = () => z.object({
   createdAt: SortOrderSchema.optional(),
   updatedAt: SortOrderSchema.optional(),
   deletedAt: z.union([SortOrderSchema, z.lazy(() => SortOrderInputObjectSchema)]).optional(),
-  requesterId: SortOrderSchema.optional(),
+  userAId: SortOrderSchema.optional(),
+  userBId: SortOrderSchema.optional(),
   addresseeId: SortOrderSchema.optional(),
-  requester: z.lazy(() => UserOrderByWithRelationInputObjectSchema).optional(),
-  addressee: z.lazy(() => UserOrderByWithRelationInputObjectSchema).optional()
+  userA: z.lazy(() => UserOrderByWithRelationInputObjectSchema).optional(),
+  userB: z.lazy(() => UserOrderByWithRelationInputObjectSchema).optional()
 }).strict();
 export const FriendshipOrderByWithRelationInputObjectSchema: z.ZodType<Prisma.FriendshipOrderByWithRelationInput> = makeSchema() as unknown as z.ZodType<Prisma.FriendshipOrderByWithRelationInput>;
 export const FriendshipOrderByWithRelationInputObjectZodSchema = makeSchema();

@@ -13,8 +13,8 @@ import { UserCountOutputTypeCountPollTemplatesArgsObjectSchema as UserCountOutpu
 import { UserCountOutputTypeCountRoomMembershipsArgsObjectSchema as UserCountOutputTypeCountRoomMembershipsArgsObjectSchema } from './UserCountOutputTypeCountRoomMembershipsArgs.schema';
 import { UserCountOutputTypeCountInvitationsSentArgsObjectSchema as UserCountOutputTypeCountInvitationsSentArgsObjectSchema } from './UserCountOutputTypeCountInvitationsSentArgs.schema';
 import { UserCountOutputTypeCountInvitationsReceivedArgsObjectSchema as UserCountOutputTypeCountInvitationsReceivedArgsObjectSchema } from './UserCountOutputTypeCountInvitationsReceivedArgs.schema';
-import { UserCountOutputTypeCountFriendshipsRequestedArgsObjectSchema as UserCountOutputTypeCountFriendshipsRequestedArgsObjectSchema } from './UserCountOutputTypeCountFriendshipsRequestedArgs.schema';
-import { UserCountOutputTypeCountFriendshipsReceivedArgsObjectSchema as UserCountOutputTypeCountFriendshipsReceivedArgsObjectSchema } from './UserCountOutputTypeCountFriendshipsReceivedArgs.schema';
+import { UserCountOutputTypeCountFriendshipsAsUserAArgsObjectSchema as UserCountOutputTypeCountFriendshipsAsUserAArgsObjectSchema } from './UserCountOutputTypeCountFriendshipsAsUserAArgs.schema';
+import { UserCountOutputTypeCountFriendshipsAsUserBArgsObjectSchema as UserCountOutputTypeCountFriendshipsAsUserBArgsObjectSchema } from './UserCountOutputTypeCountFriendshipsAsUserBArgs.schema';
 import { UserCountOutputTypeCountBlocksReceivedArgsObjectSchema as UserCountOutputTypeCountBlocksReceivedArgsObjectSchema } from './UserCountOutputTypeCountBlocksReceivedArgs.schema';
 import { UserCountOutputTypeCountBlocksGivenArgsObjectSchema as UserCountOutputTypeCountBlocksGivenArgsObjectSchema } from './UserCountOutputTypeCountBlocksGivenArgs.schema';
 import { UserCountOutputTypeCountReportsReceivedArgsObjectSchema as UserCountOutputTypeCountReportsReceivedArgsObjectSchema } from './UserCountOutputTypeCountReportsReceivedArgs.schema';
@@ -35,8 +35,8 @@ const makeSchema = () => z.object({
   roomMemberships: z.union([z.boolean(), z.lazy(() => UserCountOutputTypeCountRoomMembershipsArgsObjectSchema)]).optional(),
   invitationsSent: z.union([z.boolean(), z.lazy(() => UserCountOutputTypeCountInvitationsSentArgsObjectSchema)]).optional(),
   invitationsReceived: z.union([z.boolean(), z.lazy(() => UserCountOutputTypeCountInvitationsReceivedArgsObjectSchema)]).optional(),
-  friendshipsRequested: z.union([z.boolean(), z.lazy(() => UserCountOutputTypeCountFriendshipsRequestedArgsObjectSchema)]).optional(),
-  friendshipsReceived: z.union([z.boolean(), z.lazy(() => UserCountOutputTypeCountFriendshipsReceivedArgsObjectSchema)]).optional(),
+  friendshipsAsUserA: z.union([z.boolean(), z.lazy(() => UserCountOutputTypeCountFriendshipsAsUserAArgsObjectSchema)]).optional(),
+  friendshipsAsUserB: z.union([z.boolean(), z.lazy(() => UserCountOutputTypeCountFriendshipsAsUserBArgsObjectSchema)]).optional(),
   blocksReceived: z.union([z.boolean(), z.lazy(() => UserCountOutputTypeCountBlocksReceivedArgsObjectSchema)]).optional(),
   blocksGiven: z.union([z.boolean(), z.lazy(() => UserCountOutputTypeCountBlocksGivenArgsObjectSchema)]).optional(),
   reportsReceived: z.union([z.boolean(), z.lazy(() => UserCountOutputTypeCountReportsReceivedArgsObjectSchema)]).optional(),

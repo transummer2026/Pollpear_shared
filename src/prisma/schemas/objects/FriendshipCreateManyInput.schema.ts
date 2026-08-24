@@ -8,7 +8,8 @@ const makeSchema = () => z.object({
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional(),
   deletedAt: z.coerce.date().optional().nullable(),
-  requesterId: z.number().int(),
+  userAId: z.number().int(),
+  userBId: z.number().int(),
   addresseeId: z.number().int()
 }).strict();
 export const FriendshipCreateManyInputObjectSchema: z.ZodType<Prisma.FriendshipCreateManyInput> = makeSchema() as unknown as z.ZodType<Prisma.FriendshipCreateManyInput>;
