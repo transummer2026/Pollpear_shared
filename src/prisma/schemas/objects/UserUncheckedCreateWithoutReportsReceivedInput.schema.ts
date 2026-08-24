@@ -17,8 +17,8 @@ import { PollTemplateUncheckedCreateNestedManyWithoutUserInputObjectSchema as Po
 import { RoomMemberUncheckedCreateNestedManyWithoutUserInputObjectSchema as RoomMemberUncheckedCreateNestedManyWithoutUserInputObjectSchema } from './RoomMemberUncheckedCreateNestedManyWithoutUserInput.schema';
 import { InvitationUncheckedCreateNestedManyWithoutInviterInputObjectSchema as InvitationUncheckedCreateNestedManyWithoutInviterInputObjectSchema } from './InvitationUncheckedCreateNestedManyWithoutInviterInput.schema';
 import { InvitationUncheckedCreateNestedManyWithoutInviteeInputObjectSchema as InvitationUncheckedCreateNestedManyWithoutInviteeInputObjectSchema } from './InvitationUncheckedCreateNestedManyWithoutInviteeInput.schema';
-import { FriendshipUncheckedCreateNestedManyWithoutRequesterInputObjectSchema as FriendshipUncheckedCreateNestedManyWithoutRequesterInputObjectSchema } from './FriendshipUncheckedCreateNestedManyWithoutRequesterInput.schema';
-import { FriendshipUncheckedCreateNestedManyWithoutAddresseeInputObjectSchema as FriendshipUncheckedCreateNestedManyWithoutAddresseeInputObjectSchema } from './FriendshipUncheckedCreateNestedManyWithoutAddresseeInput.schema';
+import { FriendshipUncheckedCreateNestedManyWithoutUserAInputObjectSchema as FriendshipUncheckedCreateNestedManyWithoutUserAInputObjectSchema } from './FriendshipUncheckedCreateNestedManyWithoutUserAInput.schema';
+import { FriendshipUncheckedCreateNestedManyWithoutUserBInputObjectSchema as FriendshipUncheckedCreateNestedManyWithoutUserBInputObjectSchema } from './FriendshipUncheckedCreateNestedManyWithoutUserBInput.schema';
 import { BlockUncheckedCreateNestedManyWithoutBlockedInputObjectSchema as BlockUncheckedCreateNestedManyWithoutBlockedInputObjectSchema } from './BlockUncheckedCreateNestedManyWithoutBlockedInput.schema';
 import { BlockUncheckedCreateNestedManyWithoutBlockerInputObjectSchema as BlockUncheckedCreateNestedManyWithoutBlockerInputObjectSchema } from './BlockUncheckedCreateNestedManyWithoutBlockerInput.schema';
 import { ReportUncheckedCreateNestedManyWithoutReporterInputObjectSchema as ReportUncheckedCreateNestedManyWithoutReporterInputObjectSchema } from './ReportUncheckedCreateNestedManyWithoutReporterInput.schema';
@@ -64,8 +64,8 @@ const makeSchema = () => z.object({
   roomMemberships: z.lazy(() => RoomMemberUncheckedCreateNestedManyWithoutUserInputObjectSchema).optional(),
   invitationsSent: z.lazy(() => InvitationUncheckedCreateNestedManyWithoutInviterInputObjectSchema).optional(),
   invitationsReceived: z.lazy(() => InvitationUncheckedCreateNestedManyWithoutInviteeInputObjectSchema).optional(),
-  friendshipsRequested: z.lazy(() => FriendshipUncheckedCreateNestedManyWithoutRequesterInputObjectSchema).optional(),
-  friendshipsReceived: z.lazy(() => FriendshipUncheckedCreateNestedManyWithoutAddresseeInputObjectSchema).optional(),
+  friendshipsAsUserA: z.lazy(() => FriendshipUncheckedCreateNestedManyWithoutUserAInputObjectSchema).optional(),
+  friendshipsAsUserB: z.lazy(() => FriendshipUncheckedCreateNestedManyWithoutUserBInputObjectSchema).optional(),
   blocksReceived: z.lazy(() => BlockUncheckedCreateNestedManyWithoutBlockedInputObjectSchema).optional(),
   blocksGiven: z.lazy(() => BlockUncheckedCreateNestedManyWithoutBlockerInputObjectSchema).optional(),
   reportsGiven: z.lazy(() => ReportUncheckedCreateNestedManyWithoutReporterInputObjectSchema).optional(),
