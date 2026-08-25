@@ -4,7 +4,8 @@ export const FriendshipGroupByResultSchema = z.array(z.object({
   createdAt: z.date(),
   updatedAt: z.date(),
   deletedAt: z.date(),
-  requesterId: z.number().int(),
+  userAId: z.number().int(),
+  userBId: z.number().int(),
   addresseeId: z.number().int(),
   _count: z.object({
     id: z.number(),
@@ -12,19 +13,22 @@ export const FriendshipGroupByResultSchema = z.array(z.object({
     createdAt: z.number(),
     updatedAt: z.number(),
     deletedAt: z.number(),
-    requesterId: z.number(),
+    userAId: z.number(),
+    userBId: z.number(),
     addresseeId: z.number(),
-    requester: z.number(),
-    addressee: z.number()
+    userA: z.number(),
+    userB: z.number()
   }).optional(),
   _sum: z.object({
     id: z.number().nullable(),
-    requesterId: z.number().nullable(),
+    userAId: z.number().nullable(),
+    userBId: z.number().nullable(),
     addresseeId: z.number().nullable()
   }).nullable().optional(),
   _avg: z.object({
     id: z.number().nullable(),
-    requesterId: z.number().nullable(),
+    userAId: z.number().nullable(),
+    userBId: z.number().nullable(),
     addresseeId: z.number().nullable()
   }).nullable().optional(),
   _min: z.object({
@@ -32,7 +36,8 @@ export const FriendshipGroupByResultSchema = z.array(z.object({
     createdAt: z.date().nullable(),
     updatedAt: z.date().nullable(),
     deletedAt: z.date().nullable(),
-    requesterId: z.number().int().nullable(),
+    userAId: z.number().int().nullable(),
+    userBId: z.number().int().nullable(),
     addresseeId: z.number().int().nullable()
   }).nullable().optional(),
   _max: z.object({
@@ -40,7 +45,8 @@ export const FriendshipGroupByResultSchema = z.array(z.object({
     createdAt: z.date().nullable(),
     updatedAt: z.date().nullable(),
     deletedAt: z.date().nullable(),
-    requesterId: z.number().int().nullable(),
+    userAId: z.number().int().nullable(),
+    userBId: z.number().int().nullable(),
     addresseeId: z.number().int().nullable()
   }).nullable().optional()
 }));

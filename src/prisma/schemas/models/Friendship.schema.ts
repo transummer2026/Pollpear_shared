@@ -7,7 +7,8 @@ export const FriendshipSchema = z.object({
   createdAt: z.date(),
   updatedAt: z.date(),
   deletedAt: z.date().nullish(),
-  requesterId: z.number().int(),
+  userAId: z.number().int(),
+  userBId: z.number().int(),
   addresseeId: z.number().int(),
 });
 

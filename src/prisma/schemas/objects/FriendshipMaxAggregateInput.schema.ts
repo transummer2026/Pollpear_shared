@@ -8,7 +8,8 @@ const makeSchema = () => z.object({
   createdAt: z.literal(true).optional(),
   updatedAt: z.literal(true).optional(),
   deletedAt: z.literal(true).optional(),
-  requesterId: z.literal(true).optional(),
+  userAId: z.literal(true).optional(),
+  userBId: z.literal(true).optional(),
   addresseeId: z.literal(true).optional()
 }).strict();
 export const FriendshipMaxAggregateInputObjectSchema: z.ZodType<Prisma.FriendshipMaxAggregateInputType> = makeSchema() as unknown as z.ZodType<Prisma.FriendshipMaxAggregateInputType>;

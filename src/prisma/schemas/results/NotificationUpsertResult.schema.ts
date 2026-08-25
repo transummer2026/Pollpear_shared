@@ -7,5 +7,6 @@ export const NotificationUpsertResultSchema = z.object({
   createdAt: z.date(),
   updatedAt: z.date(),
   userId: z.number().int(),
-  user: z.unknown()
+  user: z.unknown(),
+  actorId: z.number().int().optional()
 });

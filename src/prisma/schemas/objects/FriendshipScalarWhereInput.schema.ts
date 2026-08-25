@@ -15,7 +15,8 @@ const friendshipscalarwhereinputSchema = z.object({
   createdAt: z.union([z.lazy(() => DateTimeFilterObjectSchema), z.coerce.date()]).optional(),
   updatedAt: z.union([z.lazy(() => DateTimeFilterObjectSchema), z.coerce.date()]).optional(),
   deletedAt: z.union([z.lazy(() => DateTimeNullableFilterObjectSchema), z.coerce.date()]).optional().nullable(),
-  requesterId: z.union([z.lazy(() => IntFilterObjectSchema), z.number().int()]).optional(),
+  userAId: z.union([z.lazy(() => IntFilterObjectSchema), z.number().int()]).optional(),
+  userBId: z.union([z.lazy(() => IntFilterObjectSchema), z.number().int()]).optional(),
   addresseeId: z.union([z.lazy(() => IntFilterObjectSchema), z.number().int()]).optional()
 }).strict();
 export const FriendshipScalarWhereInputObjectSchema: z.ZodType<Prisma.FriendshipScalarWhereInput> = friendshipscalarwhereinputSchema as unknown as z.ZodType<Prisma.FriendshipScalarWhereInput>;
