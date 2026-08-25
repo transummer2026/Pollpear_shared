@@ -17,11 +17,10 @@ const friendshipwhereinputSchema = z.object({
   createdAt: z.union([z.lazy(() => DateTimeFilterObjectSchema), z.coerce.date()]).optional(),
   updatedAt: z.union([z.lazy(() => DateTimeFilterObjectSchema), z.coerce.date()]).optional(),
   deletedAt: z.union([z.lazy(() => DateTimeNullableFilterObjectSchema), z.coerce.date()]).optional().nullable(),
-  userAId: z.union([z.lazy(() => IntFilterObjectSchema), z.number().int()]).optional(),
-  userBId: z.union([z.lazy(() => IntFilterObjectSchema), z.number().int()]).optional(),
+  requesterId: z.union([z.lazy(() => IntFilterObjectSchema), z.number().int()]).optional(),
   addresseeId: z.union([z.lazy(() => IntFilterObjectSchema), z.number().int()]).optional(),
-  userA: z.union([z.lazy(() => UserScalarRelationFilterObjectSchema), z.lazy(() => UserWhereInputObjectSchema)]).optional(),
-  userB: z.union([z.lazy(() => UserScalarRelationFilterObjectSchema), z.lazy(() => UserWhereInputObjectSchema)]).optional()
+  requester: z.union([z.lazy(() => UserScalarRelationFilterObjectSchema), z.lazy(() => UserWhereInputObjectSchema)]).optional(),
+  addressee: z.union([z.lazy(() => UserScalarRelationFilterObjectSchema), z.lazy(() => UserWhereInputObjectSchema)]).optional()
 }).strict();
 export const FriendshipWhereInputObjectSchema: z.ZodType<Prisma.FriendshipWhereInput> = friendshipwhereinputSchema as unknown as z.ZodType<Prisma.FriendshipWhereInput>;
 export const FriendshipWhereInputObjectZodSchema = friendshipwhereinputSchema;

@@ -8,7 +8,6 @@ const makeSchema = () => z.object({
   content: z.string(),
   isRead: z.boolean().optional(),
   createdAt: z.coerce.date().optional(),
-  actorId: z.number().int().optional().nullable(),
   user: z.lazy(() => UserCreateNestedOneWithoutNotificationsInputObjectSchema)
 }).strict();
 export const NotificationCreateInputObjectSchema: z.ZodType<Prisma.NotificationCreateInput> = makeSchema() as unknown as z.ZodType<Prisma.NotificationCreateInput>;

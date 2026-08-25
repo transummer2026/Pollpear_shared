@@ -8,8 +8,7 @@ const makeSchema = () => z.object({
   createdAt: SortOrderSchema.optional(),
   updatedAt: SortOrderSchema.optional(),
   deletedAt: SortOrderSchema.optional(),
-  userAId: SortOrderSchema.optional(),
-  userBId: SortOrderSchema.optional(),
+  requesterId: SortOrderSchema.optional(),
   addresseeId: SortOrderSchema.optional()
 }).strict();
 export const FriendshipCountOrderByAggregateInputObjectSchema: z.ZodType<Prisma.FriendshipCountOrderByAggregateInput> = makeSchema() as unknown as z.ZodType<Prisma.FriendshipCountOrderByAggregateInput>;

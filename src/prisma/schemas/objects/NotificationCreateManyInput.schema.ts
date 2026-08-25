@@ -9,8 +9,7 @@ const makeSchema = () => z.object({
   isRead: z.boolean().optional(),
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional(),
-  userId: z.number().int(),
-  actorId: z.number().int().optional().nullable()
+  userId: z.number().int()
 }).strict();
 export const NotificationCreateManyInputObjectSchema: z.ZodType<Prisma.NotificationCreateManyInput> = makeSchema() as unknown as z.ZodType<Prisma.NotificationCreateManyInput>;
 export const NotificationCreateManyInputObjectZodSchema = makeSchema();

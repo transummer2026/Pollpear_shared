@@ -8,8 +8,7 @@ const makeSchema = () => z.object({
   content: z.string(),
   isRead: z.boolean().optional(),
   createdAt: z.coerce.date().optional(),
-  userId: z.number().int(),
-  actorId: z.number().int().optional().nullable()
+  userId: z.number().int()
 }).strict();
 export const NotificationUncheckedCreateInputObjectSchema: z.ZodType<Prisma.NotificationUncheckedCreateInput> = makeSchema() as unknown as z.ZodType<Prisma.NotificationUncheckedCreateInput>;
 export const NotificationUncheckedCreateInputObjectZodSchema = makeSchema();

@@ -8,4 +8,3 @@ export * from "./uploads.schema";
 export * from "./search.schema";
 export * from "./friendship.schema";
 export * from "./block.schema";
-export * from "./notification.schema";

@@ -9,8 +9,7 @@ const makeSchema = () => z.object({
   isRead: SortOrderSchema.optional(),
   createdAt: SortOrderSchema.optional(),
   updatedAt: SortOrderSchema.optional(),
-  userId: SortOrderSchema.optional(),
-  actorId: SortOrderSchema.optional()
+  userId: SortOrderSchema.optional()
 }).strict();
 export const NotificationMaxOrderByAggregateInputObjectSchema: z.ZodType<Prisma.NotificationMaxOrderByAggregateInput> = makeSchema() as unknown as z.ZodType<Prisma.NotificationMaxOrderByAggregateInput>;
 export const NotificationMaxOrderByAggregateInputObjectZodSchema = makeSchema();
