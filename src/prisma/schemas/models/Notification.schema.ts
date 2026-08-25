@@ -9,7 +9,6 @@ export const NotificationSchema = z.object({
   createdAt: z.date(),
   updatedAt: z.date(),
   userId: z.number().int(),
-  actorId: z.number().int().nullish(),
 });
 
 export type NotificationType = z.infer<typeof NotificationSchema>;

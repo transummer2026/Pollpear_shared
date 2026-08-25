@@ -7,11 +7,10 @@ export const FriendshipResultSchema = z.object({
     createdAt: z.date(),
     updatedAt: z.date(),
     deletedAt: z.date().nullable(),
-    userAId: z.number().int(),
-    userBId: z.number().int(),
+    requesterId: z.number().int(),
     addresseeId: z.number().int(),
-    userA: z.unknown(),
-    userB: z.unknown()
+    requester: z.unknown(),
+    addressee: z.unknown()
 }).strict();
 
 export type FriendshipResultType = z.infer<typeof FriendshipResultSchema>;

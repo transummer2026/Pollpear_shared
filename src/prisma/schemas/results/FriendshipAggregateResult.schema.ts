@@ -5,22 +5,19 @@ export const FriendshipAggregateResultSchema = z.object({  _count: z.object({
     createdAt: z.number(),
     updatedAt: z.number(),
     deletedAt: z.number(),
-    userAId: z.number(),
-    userBId: z.number(),
+    requesterId: z.number(),
     addresseeId: z.number(),
-    userA: z.number(),
-    userB: z.number()
+    requester: z.number(),
+    addressee: z.number()
   }).optional(),
   _sum: z.object({
     id: z.number().nullable(),
-    userAId: z.number().nullable(),
-    userBId: z.number().nullable(),
+    requesterId: z.number().nullable(),
     addresseeId: z.number().nullable()
   }).nullable().optional(),
   _avg: z.object({
     id: z.number().nullable(),
-    userAId: z.number().nullable(),
-    userBId: z.number().nullable(),
+    requesterId: z.number().nullable(),
     addresseeId: z.number().nullable()
   }).nullable().optional(),
   _min: z.object({
@@ -28,8 +25,7 @@ export const FriendshipAggregateResultSchema = z.object({  _count: z.object({
     createdAt: z.date().nullable(),
     updatedAt: z.date().nullable(),
     deletedAt: z.date().nullable(),
-    userAId: z.number().int().nullable(),
-    userBId: z.number().int().nullable(),
+    requesterId: z.number().int().nullable(),
     addresseeId: z.number().int().nullable()
   }).nullable().optional(),
   _max: z.object({
@@ -37,7 +33,6 @@ export const FriendshipAggregateResultSchema = z.object({  _count: z.object({
     createdAt: z.date().nullable(),
     updatedAt: z.date().nullable(),
     deletedAt: z.date().nullable(),
-    userAId: z.number().int().nullable(),
-    userBId: z.number().int().nullable(),
+    requesterId: z.number().int().nullable(),
     addresseeId: z.number().int().nullable()
   }).nullable().optional()});

@@ -2,21 +2,11 @@ import { z } from 'zod';
 import { FriendshipSchema as FriendshipModelSchema } from '../prisma/schemas/models/Friendship.schema';
 import { UserSchema as UserModelSchema } from '../prisma/schemas/models/User.schema';
 
-const FriendshipBaseSchema = FriendshipModelSchema.omit({
+export const FriendshipSchema = FriendshipModelSchema.omit({
   deletedAt: true,
 });
 
-export const FriendshipSchema = FriendshipBaseSchema.transform(
-  (friendship) => ({
-    ...friendship,
-    requesterId:
-      friendship.addresseeId === friendship.userAId
-        ? friendship.userBId
-        : friendship.userAId,
-  }),
-);
-
-export const FriendshipStatusSchema = FriendshipBaseSchema.shape.status;
+export const FriendshipStatusSchema = FriendshipSchema.shape.status;
 
 export const FriendshipStatusUpdateSchema = z.object({
   status: FriendshipStatusSchema.exclude(['pending']),
@@ -30,9 +20,9 @@ export const FriendUserSchema = UserModelSchema.pick({
 });
 
 export const FriendListItemSchema = z.object({
-  friendshipId: FriendshipBaseSchema.shape.id,
-  status: FriendshipBaseSchema.shape.status,
-  createdAt: FriendshipBaseSchema.shape.createdAt,
+  friendshipId: FriendshipSchema.shape.id,
+  status: FriendshipSchema.shape.status,
+  createdAt: FriendshipSchema.shape.createdAt,
   user: FriendUserSchema,
 });
 

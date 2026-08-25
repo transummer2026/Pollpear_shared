@@ -15,11 +15,10 @@ export const FriendshipFindFirstOrThrowSelectSchema: z.ZodType<Prisma.Friendship
     createdAt: z.boolean().optional(),
     updatedAt: z.boolean().optional(),
     deletedAt: z.boolean().optional(),
-    userAId: z.boolean().optional(),
-    userBId: z.boolean().optional(),
+    requesterId: z.boolean().optional(),
     addresseeId: z.boolean().optional(),
-    userA: z.boolean().optional(),
-    userB: z.boolean().optional()
+    requester: z.boolean().optional(),
+    addressee: z.boolean().optional()
   }).strict() as unknown as z.ZodType<Prisma.FriendshipSelect>;
 
 export const FriendshipFindFirstOrThrowSelectZodSchema = z.object({
@@ -28,11 +27,10 @@ export const FriendshipFindFirstOrThrowSelectZodSchema = z.object({
     createdAt: z.boolean().optional(),
     updatedAt: z.boolean().optional(),
     deletedAt: z.boolean().optional(),
-    userAId: z.boolean().optional(),
-    userBId: z.boolean().optional(),
+    requesterId: z.boolean().optional(),
     addresseeId: z.boolean().optional(),
-    userA: z.boolean().optional(),
-    userB: z.boolean().optional()
+    requester: z.boolean().optional(),
+    addressee: z.boolean().optional()
   }).strict();
 
 export const FriendshipFindFirstOrThrowSchema: z.ZodType<Prisma.FriendshipFindFirstOrThrowArgs> = z.object({ select: FriendshipFindFirstOrThrowSelectSchema.optional(), include: z.lazy(() => FriendshipIncludeObjectSchema.optional()), orderBy: z.union([FriendshipOrderByWithRelationInputObjectSchema, FriendshipOrderByWithRelationInputObjectSchema.array()]).optional(), where: FriendshipWhereInputObjectSchema.optional(), cursor: FriendshipWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), distinct: z.union([FriendshipScalarFieldEnumSchema, FriendshipScalarFieldEnumSchema.array()]).optional() }).strict() as unknown as z.ZodType<Prisma.FriendshipFindFirstOrThrowArgs>;

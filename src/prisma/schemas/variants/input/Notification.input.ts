@@ -9,8 +9,7 @@ export const NotificationInputSchema = z.object({
     createdAt: z.date(),
     updatedAt: z.date(),
     userId: z.number().int(),
-    user: z.unknown(),
-    actorId: z.number().int().optional().nullable()
+    user: z.unknown()
 }).strict();
 
 export type NotificationInputType = z.infer<typeof NotificationInputSchema>;
