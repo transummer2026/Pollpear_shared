@@ -4,7 +4,8 @@ import { SortOrderSchema } from '../enums/SortOrder.schema'
 
 const makeSchema = () => z.object({
   id: SortOrderSchema.optional(),
-  requesterId: SortOrderSchema.optional(),
+  userAId: SortOrderSchema.optional(),
+  userBId: SortOrderSchema.optional(),
   addresseeId: SortOrderSchema.optional()
 }).strict();
 export const FriendshipSumOrderByAggregateInputObjectSchema: z.ZodType<Prisma.FriendshipSumOrderByAggregateInput> = makeSchema() as unknown as z.ZodType<Prisma.FriendshipSumOrderByAggregateInput>;

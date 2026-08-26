@@ -17,7 +17,8 @@ export const NotificationFindFirstSelectSchema: z.ZodType<Prisma.NotificationSel
     createdAt: z.boolean().optional(),
     updatedAt: z.boolean().optional(),
     userId: z.boolean().optional(),
-    user: z.boolean().optional()
+    user: z.boolean().optional(),
+    actorId: z.boolean().optional()
   }).strict() as unknown as z.ZodType<Prisma.NotificationSelect>;
 
 export const NotificationFindFirstSelectZodSchema = z.object({
@@ -28,7 +29,8 @@ export const NotificationFindFirstSelectZodSchema = z.object({
     createdAt: z.boolean().optional(),
     updatedAt: z.boolean().optional(),
     userId: z.boolean().optional(),
-    user: z.boolean().optional()
+    user: z.boolean().optional(),
+    actorId: z.boolean().optional()
   }).strict();
 
 export const NotificationFindFirstSchema: z.ZodType<Prisma.NotificationFindFirstArgs> = z.object({ select: NotificationFindFirstSelectSchema.optional(), include: z.lazy(() => NotificationIncludeObjectSchema.optional()), orderBy: z.union([NotificationOrderByWithRelationInputObjectSchema, NotificationOrderByWithRelationInputObjectSchema.array()]).optional(), where: NotificationWhereInputObjectSchema.optional(), cursor: NotificationWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), distinct: z.union([NotificationScalarFieldEnumSchema, NotificationScalarFieldEnumSchema.array()]).optional() }).strict() as unknown as z.ZodType<Prisma.NotificationFindFirstArgs>;

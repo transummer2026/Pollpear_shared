@@ -26,8 +26,8 @@ import { NotificationUpdateManyWithoutUserNestedInputObjectSchema as Notificatio
 import { PollTemplateUpdateManyWithoutUserNestedInputObjectSchema as PollTemplateUpdateManyWithoutUserNestedInputObjectSchema } from './PollTemplateUpdateManyWithoutUserNestedInput.schema';
 import { RoomMemberUpdateManyWithoutUserNestedInputObjectSchema as RoomMemberUpdateManyWithoutUserNestedInputObjectSchema } from './RoomMemberUpdateManyWithoutUserNestedInput.schema';
 import { InvitationUpdateManyWithoutInviterNestedInputObjectSchema as InvitationUpdateManyWithoutInviterNestedInputObjectSchema } from './InvitationUpdateManyWithoutInviterNestedInput.schema';
-import { FriendshipUpdateManyWithoutRequesterNestedInputObjectSchema as FriendshipUpdateManyWithoutRequesterNestedInputObjectSchema } from './FriendshipUpdateManyWithoutRequesterNestedInput.schema';
-import { FriendshipUpdateManyWithoutAddresseeNestedInputObjectSchema as FriendshipUpdateManyWithoutAddresseeNestedInputObjectSchema } from './FriendshipUpdateManyWithoutAddresseeNestedInput.schema';
+import { FriendshipUpdateManyWithoutUserANestedInputObjectSchema as FriendshipUpdateManyWithoutUserANestedInputObjectSchema } from './FriendshipUpdateManyWithoutUserANestedInput.schema';
+import { FriendshipUpdateManyWithoutUserBNestedInputObjectSchema as FriendshipUpdateManyWithoutUserBNestedInputObjectSchema } from './FriendshipUpdateManyWithoutUserBNestedInput.schema';
 import { BlockUpdateManyWithoutBlockedNestedInputObjectSchema as BlockUpdateManyWithoutBlockedNestedInputObjectSchema } from './BlockUpdateManyWithoutBlockedNestedInput.schema';
 import { BlockUpdateManyWithoutBlockerNestedInputObjectSchema as BlockUpdateManyWithoutBlockerNestedInputObjectSchema } from './BlockUpdateManyWithoutBlockerNestedInput.schema';
 import { ReportUpdateManyWithoutReportedNestedInputObjectSchema as ReportUpdateManyWithoutReportedNestedInputObjectSchema } from './ReportUpdateManyWithoutReportedNestedInput.schema';
@@ -72,8 +72,8 @@ const makeSchema = () => z.object({
   pollTemplates: z.lazy(() => PollTemplateUpdateManyWithoutUserNestedInputObjectSchema).optional(),
   roomMemberships: z.lazy(() => RoomMemberUpdateManyWithoutUserNestedInputObjectSchema).optional(),
   invitationsSent: z.lazy(() => InvitationUpdateManyWithoutInviterNestedInputObjectSchema).optional(),
-  friendshipsRequested: z.lazy(() => FriendshipUpdateManyWithoutRequesterNestedInputObjectSchema).optional(),
-  friendshipsReceived: z.lazy(() => FriendshipUpdateManyWithoutAddresseeNestedInputObjectSchema).optional(),
+  friendshipsAsUserA: z.lazy(() => FriendshipUpdateManyWithoutUserANestedInputObjectSchema).optional(),
+  friendshipsAsUserB: z.lazy(() => FriendshipUpdateManyWithoutUserBNestedInputObjectSchema).optional(),
   blocksReceived: z.lazy(() => BlockUpdateManyWithoutBlockedNestedInputObjectSchema).optional(),
   blocksGiven: z.lazy(() => BlockUpdateManyWithoutBlockerNestedInputObjectSchema).optional(),
   reportsReceived: z.lazy(() => ReportUpdateManyWithoutReportedNestedInputObjectSchema).optional(),

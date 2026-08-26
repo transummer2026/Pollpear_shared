@@ -7,10 +7,11 @@ export const FriendshipInputSchema = z.object({
     createdAt: z.date(),
     updatedAt: z.date(),
     deletedAt: z.date().optional().nullable(),
-    requesterId: z.number().int(),
+    userAId: z.number().int(),
+    userBId: z.number().int(),
     addresseeId: z.number().int(),
-    requester: z.unknown(),
-    addressee: z.unknown()
+    userA: z.unknown(),
+    userB: z.unknown()
 }).strict();
 
 export type FriendshipInputType = z.infer<typeof FriendshipInputSchema>;
