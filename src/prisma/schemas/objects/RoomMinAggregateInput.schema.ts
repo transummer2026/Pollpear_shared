@@ -7,7 +7,7 @@ const makeSchema = () => z.object({
   name: z.literal(true).optional(),
   description: z.literal(true).optional(),
   bannerUrl: z.literal(true).optional(),
-  publishedAt: z.literal(true).optional(),
+  endsAt: z.literal(true).optional(),
   createdAt: z.literal(true).optional(),
   updatedAt: z.literal(true).optional(),
   deletedAt: z.literal(true).optional(),

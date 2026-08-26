@@ -13,7 +13,7 @@ const makeSchema = () => z.object({
   name: z.boolean().optional(),
   description: z.boolean().optional(),
   bannerUrl: z.boolean().optional(),
-  publishedAt: z.boolean().optional(),
+  endsAt: z.boolean().optional(),
   createdAt: z.boolean().optional(),
   updatedAt: z.boolean().optional(),
   deletedAt: z.boolean().optional(),
