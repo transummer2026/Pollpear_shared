@@ -32,10 +32,17 @@ export const RoomPublicSchema = RoomModelSchema.pick({
   endsAt: true,
 });
 
+export const RoomInvitationSchema = RoomModelSchema.pick({
+  id: true,
+  name: true,
+  description: true,
+});
+
 export const RoomReadSchema = RoomModelSchema.extend({
   createdBy: UserPublicProfileSchema.nullable(),
   polls: z.array(z.lazy(() => PollReadSchema)),
-  invitations: z.array(InvitationSchema),
+  messages: z.array(MessageSchema),
+  invitations: z.array(z.lazy(() => InvitationSchema)),
   roomMembers: z.array(RoomMemberSchema),
   status: RoomModelSchema.shape.status,
 });
