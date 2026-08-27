@@ -14,7 +14,7 @@ import {
 import { UserPublicProfileSchema } from './users.schema';
 import { HashtagSchema } from './hashtag.schema';
 import { PollHashtagSchema } from './poll-hashtag.schema';
-import { RoomSchema } from './rooms.schema';
+import { RoomPublicSchema } from './rooms.schema';
 import { VoteSchema as VoteModelSchema } from '../prisma/schemas/models/Vote.schema';
 
 /**
@@ -70,9 +70,9 @@ export const PollReadSchema = PollModelSchema.extend({
   createdBy: UserPublicProfileSchema.nullable(),
   options: z.array(OptionCountVoteSchema),
   pollHashtags: z.array(PollHashtagSchema.extend({ hashtag: HashtagSchema })),
-  room: RoomSchema.nullable(),
+  room: z.lazy(() => RoomPublicSchema).nullable(),
   hasVoted: z.boolean(),
-  votes: z.array(VoteModelSchema),
+  votes: z.array(VoteModelSchema.omit({ createdById: true })),
   sliderResult: z.number(),
   voterCount: z.number(),
 });
@@ -83,22 +83,7 @@ export const PollReadSchema = PollModelSchema.extend({
  * which options constraint applies (min 2 for choice, exactly 1 for slider) - the service
  * strips it back out before writing to the db.
  */
-const PollUpdateBaseSchema = z
-  .object({
-    title: PollModelSchema.shape.title.max(255, 'Max 255 characters'),
-    description: unwrapNullish(PollModelSchema.shape.description)
-      .max(3000, 'Max 3000 characters')
-      .nullable(),
-    endsAt: z.coerce.date().refine((val) => val >= new Date(), {
-      message: 'Date cannot be in the past',
-    }),
-    visibility: PollModelSchema.shape.visibility.unwrap(),
-    allowChangeVote: PollModelSchema.shape.allowChangeVote,
-    isAnonymous: PollModelSchema.shape.isAnonymous,
-    roomId: unwrapNullish(PollModelSchema.shape.roomId),
-    hashtags: z.array(HashtagSchema.pick({ name: true })),
-  })
-  .partial();
+const PollUpdateBaseSchema = PollSchema.partial();
 
 export const PollUpdateSchema = z.discriminatedUnion('type', [
   PollUpdateBaseSchema.extend({

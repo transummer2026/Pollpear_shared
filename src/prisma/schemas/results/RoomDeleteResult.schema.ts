@@ -4,7 +4,7 @@ export const RoomDeleteResultSchema = z.nullable(z.object({
   name: z.string(),
   description: z.string().optional(),
   bannerUrl: z.string(),
-  publishedAt: z.date().optional(),
+  endsAt: z.date().optional(),
   createdAt: z.date(),
   updatedAt: z.date(),
   deletedAt: z.date().optional(),

@@ -7,7 +7,7 @@ export const RoomResultSchema = z.object({
     name: z.string(),
     description: z.string().nullable(),
     bannerUrl: z.string(),
-    publishedAt: z.date().nullable(),
+    endsAt: z.date().nullable(),
     createdAt: z.date(),
     updatedAt: z.date(),
     deletedAt: z.date().nullable(),

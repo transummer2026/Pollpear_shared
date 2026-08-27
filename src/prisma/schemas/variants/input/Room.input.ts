@@ -7,7 +7,7 @@ export const RoomInputSchema = z.object({
     name: z.string(),
     description: z.string().optional().nullable(),
     bannerUrl: z.string(),
-    publishedAt: z.date().optional().nullable(),
+    endsAt: z.date().optional().nullable(),
     createdAt: z.date(),
     updatedAt: z.date(),
     deletedAt: z.date().optional().nullable(),
