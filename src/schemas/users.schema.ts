@@ -24,7 +24,6 @@ export const UserPublicProfileSchema = UserSchema.omit({
   visibility: true,
   deletedAt: true,
   lastSeenAt: true,
-  avatarUrl: true,
   bannerUrl: true,
   createdAt: true,
   userTheme: true,
