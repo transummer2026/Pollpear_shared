@@ -1,8 +1,8 @@
 import { z } from 'zod';
 import { InvitationSchema as InvitationModelSchema } from '../prisma/schemas/models/Invitation.schema';
+import { RoomPublicSchema } from './rooms.schema';
 import { unwrapNullish } from './utils';
 import { UserPublicProfileSchema } from './users.schema';
-import { RoomInvitationSchema } from './rooms.schema';
 
 export const InvitationSchema = z.object({
   message: unwrapNullish(InvitationModelSchema.shape.message)
@@ -13,14 +13,14 @@ export const InvitationSchema = z.object({
   inviteeId: InvitationModelSchema.shape.inviteeId,
 });
 
-export const InvitationCreateSchema = InvitationSchema;
+export const InvitationCreateSchema = InvitationSchema.pick({
+  message: true,
+});
 
 export const InvitationReadSchema = InvitationModelSchema.extend({
-  inviterId: UserPublicProfileSchema,
-  inviteeId: UserPublicProfileSchema,
-  roomId: z.lazy(() => RoomInvitationSchema),
-  message: InvitationModelSchema.shape.message,
-  status: InvitationModelSchema.shape.status,
+  inviter: UserPublicProfileSchema,
+  invitee: UserPublicProfileSchema,
+  room: z.lazy(() => RoomPublicSchema),
 });
 
 export const InvitationListSchema = z.object({
@@ -30,5 +30,17 @@ export const InvitationListSchema = z.object({
 
 export const InvitationUpdateSchema = InvitationSchema.partial();
 
+export const InvitationStatusSchema = InvitationModelSchema.shape.status;
+
+export const InvitationStatusUpdateSchema = z.object({
+  status: InvitationStatusSchema.exclude(['pending']),
+});
+
+export type InvitationDTO = z.infer<typeof InvitationSchema>;
+export type InvitationReadDTO = z.infer<typeof InvitationReadSchema>;
 export type InvitationCreateDTO = z.infer<typeof InvitationCreateSchema>;
 export type InvitationUpdateDTO = z.infer<typeof InvitationUpdateSchema>;
+export type InvitationListDTO = z.infer<typeof InvitationListSchema>;
+export type InvitationStatusUpdateDTO = z.infer<
+  typeof InvitationStatusUpdateSchema
+>;

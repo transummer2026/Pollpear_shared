@@ -1,8 +1,8 @@
 {
   "version": "1.0",
   "generatorVersion": "0.0.1",
-  "generatedAt": "2026-08-24T17:55:34.996Z",
-  "outputPath": "/Users/blucken/Documents/transcandance/Pollpear/Pollpear_backend/Pollpear_shared/src/prisma",
+  "generatedAt": "2026-08-30T12:14:43.012Z",
+  "outputPath": "/Users/josephinerandet/42/Pollpear/Pollpear_backend/Pollpear_shared/src/prisma",
   "files": [
     "schemas/enums/TransactionIsolationLevel.schema.ts",
     "schemas/enums/UserScalarFieldEnum.schema.ts",
@@ -484,6 +484,7 @@
     "schemas/objects/MessageMinOrderByAggregateInput.schema.ts",
     "schemas/objects/MessageSumOrderByAggregateInput.schema.ts",
     "schemas/objects/EnumInvitationStatusFilter.schema.ts",
+    "schemas/objects/InvitationInviteeIdRoomIdCompoundUniqueInput.schema.ts",
     "schemas/objects/InvitationCountOrderByAggregateInput.schema.ts",
     "schemas/objects/InvitationAvgOrderByAggregateInput.schema.ts",
     "schemas/objects/InvitationMaxOrderByAggregateInput.schema.ts",
