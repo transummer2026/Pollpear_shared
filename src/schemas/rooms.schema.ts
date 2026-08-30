@@ -4,7 +4,7 @@ import { RoomSchema as RoomModelSchema } from '../prisma/schemas/models/Room.sch
 import { UserPublicProfileSchema } from './users.schema';
 import { PollReadSchema } from './polls.schema';
 import { MessageReadSchema } from './messages.schema';
-import { InvitationSchema } from './invitations.schema';
+import { InvitationReadSchema } from './invitations.schema';
 import { RoomMemberSchema } from './room-member.schema';
 
 export const RoomSchema = z.object({
@@ -33,17 +33,11 @@ export const RoomPublicSchema = RoomModelSchema.pick({
   endsAt: true,
 });
 
-export const RoomInvitationSchema = RoomModelSchema.pick({
-  id: true,
-  name: true,
-  description: true,
-});
-
 export const RoomReadSchema = RoomModelSchema.extend({
   createdBy: UserPublicProfileSchema.nullable(),
   polls: z.array(z.lazy(() => PollReadSchema)),
   messages: z.array(MessageReadSchema),
-  invitations: z.array(z.lazy(() => InvitationSchema)),
+  invitations: z.array(z.lazy(() => InvitationReadSchema)),
   roomMembers: z.array(RoomMemberSchema),
   status: RoomModelSchema.shape.status,
 });

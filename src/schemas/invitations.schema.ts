@@ -28,18 +28,14 @@ export const InvitationListSchema = z.object({
   status: InvitationModelSchema.shape.status,
 });
 
-export const InvitationUpdateSchema = InvitationSchema.partial();
-
-export const InvitationStatusSchema = InvitationModelSchema.shape.status;
+const InvitationStatusSchema = InvitationModelSchema.shape.status;
 
 export const InvitationStatusUpdateSchema = z.object({
   status: InvitationStatusSchema.exclude(['pending']),
 });
 
-export type InvitationDTO = z.infer<typeof InvitationSchema>;
 export type InvitationReadDTO = z.infer<typeof InvitationReadSchema>;
 export type InvitationCreateDTO = z.infer<typeof InvitationCreateSchema>;
-export type InvitationUpdateDTO = z.infer<typeof InvitationUpdateSchema>;
 export type InvitationListDTO = z.infer<typeof InvitationListSchema>;
 export type InvitationStatusUpdateDTO = z.infer<
   typeof InvitationStatusUpdateSchema
