@@ -3,7 +3,6 @@ import { unwrapNullish } from './utils';
 import { RoomSchema as RoomModelSchema } from '../prisma/schemas/models/Room.schema';
 import { UserPublicProfileSchema } from './users.schema';
 import { PollReadSchema } from './polls.schema';
-import { MessageSchema } from './messages.schema';
 import { InvitationSchema } from './invitations.schema';
 import { RoomMemberSchema } from './room-member.schema';
 
@@ -32,7 +31,6 @@ export const RoomPublicSchema = RoomSchema.extend({
 export const RoomReadSchema = RoomModelSchema.extend({
   createdBy: UserPublicProfileSchema.nullable(),
   polls: z.array(z.lazy(() => PollReadSchema)),
-  messages: z.array(MessageSchema),
   invitations: z.array(InvitationSchema),
   roomMembers: z.array(RoomMemberSchema),
   status: RoomModelSchema.shape.status,
@@ -40,7 +38,12 @@ export const RoomReadSchema = RoomModelSchema.extend({
 
 export const RoomUpdateSchema = RoomSchema.partial();
 
+export const RoomChannelSchema = z.object({
+  roomId: RoomModelSchema.shape.id,
+});
+
 export type RoomCreateDTO = z.infer<typeof RoomCreateSchema>;
 export type RoomUpdateDTO = z.infer<typeof RoomUpdateSchema>;
 export type RoomReadDTO = z.infer<typeof RoomReadSchema>;
 export type RoomPublicDTO = z.infer<typeof RoomPublicSchema>;
+export type RoomChannelDTO = z.infer<typeof RoomChannelSchema>;
