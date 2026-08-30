@@ -24,8 +24,12 @@ export const RoomSchema = z.object({
 
 export const RoomCreateSchema = RoomSchema;
 
-export const RoomPublicSchema = RoomSchema.extend({
-  id: RoomModelSchema.shape.id,
+export const RoomPublicSchema = RoomModelSchema.pick({
+  id: true,
+  name: true,
+  description: true,
+  visibility: true,
+  endsAt: true,
 });
 
 export const RoomReadSchema = RoomModelSchema.extend({
