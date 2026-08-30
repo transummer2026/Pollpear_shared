@@ -417,6 +417,7 @@ export * from './InvitationCreateWithoutInviteeInput.schema';
 export * from './InvitationCreateWithoutInviterInput.schema';
 export * from './InvitationCreateWithoutRoomInput.schema';
 export * from './InvitationInclude.schema';
+export * from './InvitationInviteeIdRoomIdCompoundUniqueInput.schema';
 export * from './InvitationListRelationFilter.schema';
 export * from './InvitationMaxAggregateInput.schema';
 export * from './InvitationMaxOrderByAggregateInput.schema';
