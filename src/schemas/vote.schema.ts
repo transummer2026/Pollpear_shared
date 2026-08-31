@@ -24,10 +24,14 @@ const sliderFreeField = z
   .transform((value) => String(value));
 
 /**
- * same logic as PollCreateSchema, we have a discrimated union on the type, but this time
- * it's on what the user "choses" or picks. So for multiple choice at least one
- * option has to be selected; a slider vote carries its value in `freeField`
- * (see `sliderFreeField` above).
+ * Same idea as PollCreateSchema, but discriminating on what the voter submits
+ * rather than on how the poll was built: a single-choice ballot carries
+ * exactly one option, multiple choice at least one, and a slider targets its
+ * single option and carries the value in `freeField` (see `sliderFreeField`
+ * above).
+ *
+ * `type` is not stored on the vote - it is only here to select the rule, and
+ * the caller is expected to echo back the type of the poll being voted on.
  */
 export const VoteCreateSchema = z.discriminatedUnion('type', [
   z.object({
@@ -53,7 +57,10 @@ export const VoteCreateSchema = z.discriminatedUnion('type', [
 
 /**
  * Same shape as VoteCreateSchema but every field beyond the discriminant is optional,
- * so a caller can resubmit only what changed about their vote.
+ * so a caller can resubmit only what changed about their vote. Where a field
+ * is present the count rules still apply, which is why they are repeated
+ * rather than the whole union being run through `.partial()` - `.partial()`
+ * would also make `type` optional and leave nothing to discriminate on.
  */
 export const VoteUpdateSchema = z.discriminatedUnion('type', [
   z.object({

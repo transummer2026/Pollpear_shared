@@ -7,6 +7,10 @@ import { MessageReadSchema } from './messages.schema';
 import { InvitationReadSchema } from './invitations.schema';
 import { RoomMemberSchema } from './room-member.schema';
 
+/**
+ * What a client sends to create a room. Unlike a poll, `endsAt` is nullish: a
+ * room can stay open indefinitely, whereas a poll must always close.
+ */
 export const RoomSchema = z.object({
   name: RoomModelSchema.shape.name
     .min(1, 'Title required')
@@ -25,6 +29,12 @@ export const RoomSchema = z.object({
 
 export const RoomCreateSchema = RoomSchema;
 
+/**
+ * The slice of a room that is safe and cheap to embed in another payload - a
+ * poll carries the room it belongs to. Deliberately shallow: it holds no
+ * relations, so embedding a room never drags its polls, messages and members
+ * along with it.
+ */
 export const RoomPublicSchema = RoomModelSchema.pick({
   id: true,
   name: true,
@@ -33,17 +43,23 @@ export const RoomPublicSchema = RoomModelSchema.pick({
   endsAt: true,
 });
 
+/**
+ * The full room the detail view needs. Rooms and polls (and rooms and
+ * invitations) import each other, so those members go through `z.lazy` to
+ * defer resolution past module evaluation and break the cycle.
+ */
 export const RoomReadSchema = RoomModelSchema.extend({
   createdBy: UserPublicProfileSchema.nullable(),
   polls: z.array(z.lazy(() => PollReadSchema)),
   messages: z.array(MessageReadSchema),
   invitations: z.array(z.lazy(() => InvitationReadSchema)),
   roomMembers: z.array(RoomMemberSchema),
-  status: RoomModelSchema.shape.status,
 });
 
+/** PATCH: any subset of the creation fields. */
 export const RoomUpdateSchema = RoomSchema.partial();
 
+/** Identifies the room a realtime client is subscribing to or leaving. */
 export const RoomChannelSchema = z.object({
   roomId: RoomModelSchema.shape.id,
 });
