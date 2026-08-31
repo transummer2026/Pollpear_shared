@@ -11,7 +11,7 @@ export const RoomSchema = z.object({
   createdAt: z.date(),
   updatedAt: z.date(),
   deletedAt: z.date().nullish(),
-  visibility: VisibilitySchema,
+  visibility: VisibilitySchema.default("public"),
   status: RoomStatusSchema,
   createdById: z.number().int(),
 });

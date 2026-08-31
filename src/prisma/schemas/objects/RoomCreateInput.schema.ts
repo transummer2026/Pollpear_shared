@@ -16,7 +16,7 @@ const makeSchema = () => z.object({
   endsAt: z.coerce.date().optional().nullable(),
   createdAt: z.coerce.date().optional(),
   deletedAt: z.coerce.date().optional().nullable(),
-  visibility: VisibilitySchema,
+  visibility: VisibilitySchema.optional(),
   status: RoomStatusSchema,
   createdBy: z.lazy(() => UserCreateNestedOneWithoutRoomsCreatedInputObjectSchema),
   polls: z.lazy(() => PollCreateNestedManyWithoutRoomInputObjectSchema).optional(),

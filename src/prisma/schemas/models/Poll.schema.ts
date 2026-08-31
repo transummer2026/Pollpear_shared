@@ -8,7 +8,7 @@ export const PollSchema = z.object({
   title: z.string(),
   description: z.string().nullish(),
   type: PollTypeSchema,
-  visibility: VisibilitySchema.default("private"),
+  visibility: VisibilitySchema.default("public"),
   allowChangeVote: z.boolean(),
   isAnonymous: z.boolean(),
   status: PollStatusSchema,
