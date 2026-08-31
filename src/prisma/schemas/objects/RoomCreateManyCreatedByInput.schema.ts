@@ -12,7 +12,7 @@ const makeSchema = () => z.object({
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional(),
   deletedAt: z.coerce.date().optional().nullable(),
-  visibility: VisibilitySchema,
+  visibility: VisibilitySchema.optional(),
   status: RoomStatusSchema
 }).strict();
 export const RoomCreateManyCreatedByInputObjectSchema: z.ZodType<Prisma.RoomCreateManyCreatedByInput> = makeSchema() as unknown as z.ZodType<Prisma.RoomCreateManyCreatedByInput>;
