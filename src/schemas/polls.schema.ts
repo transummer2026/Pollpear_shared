@@ -18,9 +18,14 @@ import { RoomPublicSchema } from './rooms.schema';
 import { VoteSchema as VoteModelSchema } from '../prisma/schemas/models/Vote.schema';
 
 /**
- * hashtags (if present) must be an array of objects each containing a hashtag name.
- * The service resolves each name to an existing Hashtag row or creates a new one
- * (connectOrCreate) - the client never sends a hashtagId directly.
+ * Fields common to creating and updating a poll. Not exported: callers go
+ * through PollCreateSchema or PollUpdateSchema, which add the `options` rule
+ * that depends on the poll type.
+ *
+ * `hashtags` carries names, never ids - the service resolves each name to an
+ * existing Hashtag row or creates one (connectOrCreate), so the client does
+ * not have to look anything up first. `roomId` being absent means a
+ * standalone poll.
  */
 const PollSchema = z.object({
   title: PollModelSchema.shape.title
@@ -40,14 +45,15 @@ const PollSchema = z.object({
 });
 
 /**
- * Here we use a discriminated
+ * How many options a poll may carry depends entirely on its type, so this is a
+ * discriminated union on `type` rather than one object with a cross-field
+ * `.refine()`. Two things fall out of that: the error is reported on
+ * `options`, where the user can act on it, instead of at the root of the form,
+ * and `PollCreateDTO` narrows to the matching option shape as soon as `type`
+ * is checked.
  *
- *  union where all the options in the union are object
- * schemas that share a particular key (in this case type). Based on the value of the
- * discriminator key, typescript is able to "narrow" the type signature.
- * The discriminator corresponds to a literal value.
- * ...PollSchema means that it takes the schema above as base and then it adds
- * the option as per the type as seen below.
+ * The two choice variants enforce the same rule but stay separate members so
+ * each literal survives into the inferred type.
  */
 export const PollCreateSchema = z.discriminatedUnion('type', [
   PollSchema.extend({
@@ -66,6 +72,12 @@ export const PollCreateSchema = z.discriminatedUnion('type', [
   }),
 ]);
 
+/**
+ * A poll as the API hands it back: the full row, the relations the read
+ * endpoint joins in, and four values the server computes rather than stores -
+ * `hasVoted` (for the caller), `sliderResult` (average of the slider votes),
+ * `voterCount`, and the per-option tallies inside `options`.
+ */
 export const PollReadSchema = PollModelSchema.extend({
   createdBy: UserPublicProfileSchema.nullable(),
   options: z.array(OptionCountVoteSchema),
@@ -78,10 +90,13 @@ export const PollReadSchema = PollModelSchema.extend({
 });
 
 /**
- * We decided the type of a poll cannot be updated (once someone creates as multiple choice
- * it stays that way else it would be complicated). type is only present here to discriminate
- * which options constraint applies (min 2 for choice, exactly 1 for slider) - the service
- * strips it back out before writing to the db.
+ * A poll's type is fixed at creation: votes are already counted against a
+ * shape, and switching it would leave them meaningless. `type` is still
+ * required here purely as the discriminant - it tells the union which
+ * `options` rule to apply (at least 2 for a choice poll, exactly 1 for a
+ * slider) and the service strips it back out before writing.
+ *
+ * Everything inherited from the base is `.partial()` since this is a PATCH.
  */
 const PollUpdateBaseSchema = PollSchema.partial();
 
@@ -101,7 +116,12 @@ export const PollUpdateSchema = z.discriminatedUnion('type', [
 ]);
 
 /**
- * These are the search query options to find a poll.
+ * Filters accepted by the poll listing endpoint; every field is optional and
+ * an absent one means "no filter on this".
+ *
+ * Note the asymmetry with create: here hashtags are given as resolved
+ * `hashtagIds`, because filtering matches rows that already exist and must
+ * never create one as a side effect of a search.
  */
 export const PollQuerySchema = z.object({
   title: PollModelSchema.shape.title.max(255, 'Max 255 characters').optional(),
