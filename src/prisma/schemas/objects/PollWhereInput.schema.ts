@@ -19,10 +19,7 @@ import { RoomNullableScalarRelationFilterObjectSchema as RoomNullableScalarRelat
 import { RoomWhereInputObjectSchema as RoomWhereInputObjectSchema } from './RoomWhereInput.schema';
 import { VoteListRelationFilterObjectSchema as VoteListRelationFilterObjectSchema } from './VoteListRelationFilter.schema';
 import { OptionListRelationFilterObjectSchema as OptionListRelationFilterObjectSchema } from './OptionListRelationFilter.schema';
-import { PollHashtagListRelationFilterObjectSchema as PollHashtagListRelationFilterObjectSchema } from './PollHashtagListRelationFilter.schema';
-import { PollTemplateListRelationFilterObjectSchema as PollTemplateListRelationFilterObjectSchema } from './PollTemplateListRelationFilter.schema';
-import { ReportListRelationFilterObjectSchema as ReportListRelationFilterObjectSchema } from './ReportListRelationFilter.schema';
-import { PollDependencyListRelationFilterObjectSchema as PollDependencyListRelationFilterObjectSchema } from './PollDependencyListRelationFilter.schema'
+import { PollHashtagListRelationFilterObjectSchema as PollHashtagListRelationFilterObjectSchema } from './PollHashtagListRelationFilter.schema'
 
 const pollwhereinputSchema = z.object({
   AND: z.union([z.lazy(() => PollWhereInputObjectSchema), z.lazy(() => PollWhereInputObjectSchema).array()]).optional(),
@@ -47,10 +44,7 @@ const pollwhereinputSchema = z.object({
   room: z.union([z.lazy(() => RoomNullableScalarRelationFilterObjectSchema), z.lazy(() => RoomWhereInputObjectSchema)]).optional(),
   votes: z.lazy(() => VoteListRelationFilterObjectSchema).optional(),
   options: z.lazy(() => OptionListRelationFilterObjectSchema).optional(),
-  pollHashtags: z.lazy(() => PollHashtagListRelationFilterObjectSchema).optional(),
-  pollTemplates: z.lazy(() => PollTemplateListRelationFilterObjectSchema).optional(),
-  reports: z.lazy(() => ReportListRelationFilterObjectSchema).optional(),
-  childDependencies: z.lazy(() => PollDependencyListRelationFilterObjectSchema).optional()
+  pollHashtags: z.lazy(() => PollHashtagListRelationFilterObjectSchema).optional()
 }).strict();
 export const PollWhereInputObjectSchema: z.ZodType<Prisma.PollWhereInput> = pollwhereinputSchema as unknown as z.ZodType<Prisma.PollWhereInput>;
 export const PollWhereInputObjectZodSchema = pollwhereinputSchema;

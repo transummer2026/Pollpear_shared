@@ -3,8 +3,7 @@ import type { Prisma } from '../../../../../src/generated/prisma/client';
 import { SortOrderSchema } from '../enums/SortOrder.schema';
 import { SortOrderInputObjectSchema as SortOrderInputObjectSchema } from './SortOrderInput.schema';
 import { UserOrderByWithRelationInputObjectSchema as UserOrderByWithRelationInputObjectSchema } from './UserOrderByWithRelationInput.schema';
-import { RoomOrderByWithRelationInputObjectSchema as RoomOrderByWithRelationInputObjectSchema } from './RoomOrderByWithRelationInput.schema';
-import { ReportOrderByRelationAggregateInputObjectSchema as ReportOrderByRelationAggregateInputObjectSchema } from './ReportOrderByRelationAggregateInput.schema'
+import { RoomOrderByWithRelationInputObjectSchema as RoomOrderByWithRelationInputObjectSchema } from './RoomOrderByWithRelationInput.schema'
 
 const makeSchema = () => z.object({
   id: SortOrderSchema.optional(),
@@ -15,8 +14,7 @@ const makeSchema = () => z.object({
   authorId: SortOrderSchema.optional(),
   roomId: SortOrderSchema.optional(),
   author: z.lazy(() => UserOrderByWithRelationInputObjectSchema).optional(),
-  room: z.lazy(() => RoomOrderByWithRelationInputObjectSchema).optional(),
-  reports: z.lazy(() => ReportOrderByRelationAggregateInputObjectSchema).optional()
+  room: z.lazy(() => RoomOrderByWithRelationInputObjectSchema).optional()
 }).strict();
 export const MessageOrderByWithRelationInputObjectSchema: z.ZodType<Prisma.MessageOrderByWithRelationInput> = makeSchema() as unknown as z.ZodType<Prisma.MessageOrderByWithRelationInput>;
 export const MessageOrderByWithRelationInputObjectZodSchema = makeSchema();

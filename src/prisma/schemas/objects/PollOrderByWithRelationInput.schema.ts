@@ -6,10 +6,7 @@ import { UserOrderByWithRelationInputObjectSchema as UserOrderByWithRelationInpu
 import { RoomOrderByWithRelationInputObjectSchema as RoomOrderByWithRelationInputObjectSchema } from './RoomOrderByWithRelationInput.schema';
 import { VoteOrderByRelationAggregateInputObjectSchema as VoteOrderByRelationAggregateInputObjectSchema } from './VoteOrderByRelationAggregateInput.schema';
 import { OptionOrderByRelationAggregateInputObjectSchema as OptionOrderByRelationAggregateInputObjectSchema } from './OptionOrderByRelationAggregateInput.schema';
-import { PollHashtagOrderByRelationAggregateInputObjectSchema as PollHashtagOrderByRelationAggregateInputObjectSchema } from './PollHashtagOrderByRelationAggregateInput.schema';
-import { PollTemplateOrderByRelationAggregateInputObjectSchema as PollTemplateOrderByRelationAggregateInputObjectSchema } from './PollTemplateOrderByRelationAggregateInput.schema';
-import { ReportOrderByRelationAggregateInputObjectSchema as ReportOrderByRelationAggregateInputObjectSchema } from './ReportOrderByRelationAggregateInput.schema';
-import { PollDependencyOrderByRelationAggregateInputObjectSchema as PollDependencyOrderByRelationAggregateInputObjectSchema } from './PollDependencyOrderByRelationAggregateInput.schema'
+import { PollHashtagOrderByRelationAggregateInputObjectSchema as PollHashtagOrderByRelationAggregateInputObjectSchema } from './PollHashtagOrderByRelationAggregateInput.schema'
 
 const makeSchema = () => z.object({
   id: SortOrderSchema.optional(),
@@ -31,10 +28,7 @@ const makeSchema = () => z.object({
   room: z.lazy(() => RoomOrderByWithRelationInputObjectSchema).optional(),
   votes: z.lazy(() => VoteOrderByRelationAggregateInputObjectSchema).optional(),
   options: z.lazy(() => OptionOrderByRelationAggregateInputObjectSchema).optional(),
-  pollHashtags: z.lazy(() => PollHashtagOrderByRelationAggregateInputObjectSchema).optional(),
-  pollTemplates: z.lazy(() => PollTemplateOrderByRelationAggregateInputObjectSchema).optional(),
-  reports: z.lazy(() => ReportOrderByRelationAggregateInputObjectSchema).optional(),
-  childDependencies: z.lazy(() => PollDependencyOrderByRelationAggregateInputObjectSchema).optional()
+  pollHashtags: z.lazy(() => PollHashtagOrderByRelationAggregateInputObjectSchema).optional()
 }).strict();
 export const PollOrderByWithRelationInputObjectSchema: z.ZodType<Prisma.PollOrderByWithRelationInput> = makeSchema() as unknown as z.ZodType<Prisma.PollOrderByWithRelationInput>;
 export const PollOrderByWithRelationInputObjectZodSchema = makeSchema();

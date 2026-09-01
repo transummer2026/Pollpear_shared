@@ -25,8 +25,7 @@ export const RoomGroupByResultSchema = z.array(z.object({
     polls: z.number(),
     messages: z.number(),
     invitations: z.number(),
-    roomMembers: z.number(),
-    reports: z.number()
+    roomMembers: z.number()
   }).optional(),
   _sum: z.object({
     id: z.number().nullable(),

@@ -19,8 +19,6 @@ export const OptionFindManySelectSchema: z.ZodType<Prisma.OptionSelect> = z.obje
     pollId: z.boolean().optional(),
     poll: z.boolean().optional(),
     voteOptions: z.boolean().optional(),
-    pollDependencies: z.boolean().optional(),
-    reports: z.boolean().optional(),
     _count: z.boolean().optional()
   }).strict() as unknown as z.ZodType<Prisma.OptionSelect>;
 
@@ -34,8 +32,6 @@ export const OptionFindManySelectZodSchema = z.object({
     pollId: z.boolean().optional(),
     poll: z.boolean().optional(),
     voteOptions: z.boolean().optional(),
-    pollDependencies: z.boolean().optional(),
-    reports: z.boolean().optional(),
     _count: z.boolean().optional()
   }).strict();
 

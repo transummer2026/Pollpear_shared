@@ -5,8 +5,7 @@ import { RoomStatusSchema } from '../enums/RoomStatus.schema';
 import { UserCreateNestedOneWithoutRoomsCreatedInputObjectSchema as UserCreateNestedOneWithoutRoomsCreatedInputObjectSchema } from './UserCreateNestedOneWithoutRoomsCreatedInput.schema';
 import { PollCreateNestedManyWithoutRoomInputObjectSchema as PollCreateNestedManyWithoutRoomInputObjectSchema } from './PollCreateNestedManyWithoutRoomInput.schema';
 import { InvitationCreateNestedManyWithoutRoomInputObjectSchema as InvitationCreateNestedManyWithoutRoomInputObjectSchema } from './InvitationCreateNestedManyWithoutRoomInput.schema';
-import { RoomMemberCreateNestedManyWithoutRoomInputObjectSchema as RoomMemberCreateNestedManyWithoutRoomInputObjectSchema } from './RoomMemberCreateNestedManyWithoutRoomInput.schema';
-import { ReportCreateNestedManyWithoutRoomInputObjectSchema as ReportCreateNestedManyWithoutRoomInputObjectSchema } from './ReportCreateNestedManyWithoutRoomInput.schema'
+import { RoomMemberCreateNestedManyWithoutRoomInputObjectSchema as RoomMemberCreateNestedManyWithoutRoomInputObjectSchema } from './RoomMemberCreateNestedManyWithoutRoomInput.schema'
 
 const makeSchema = () => z.object({
   name: z.string().max(255),
@@ -21,8 +20,7 @@ const makeSchema = () => z.object({
   createdBy: z.lazy(() => UserCreateNestedOneWithoutRoomsCreatedInputObjectSchema),
   polls: z.lazy(() => PollCreateNestedManyWithoutRoomInputObjectSchema).optional(),
   invitations: z.lazy(() => InvitationCreateNestedManyWithoutRoomInputObjectSchema).optional(),
-  roomMembers: z.lazy(() => RoomMemberCreateNestedManyWithoutRoomInputObjectSchema).optional(),
-  reports: z.lazy(() => ReportCreateNestedManyWithoutRoomInputObjectSchema).optional()
+  roomMembers: z.lazy(() => RoomMemberCreateNestedManyWithoutRoomInputObjectSchema).optional()
 }).strict();
 export const RoomCreateWithoutMessagesInputObjectSchema: z.ZodType<Prisma.RoomCreateWithoutMessagesInput> = makeSchema() as unknown as z.ZodType<Prisma.RoomCreateWithoutMessagesInput>;
 export const RoomCreateWithoutMessagesInputObjectZodSchema = makeSchema();

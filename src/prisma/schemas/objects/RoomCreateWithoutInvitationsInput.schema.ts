@@ -5,8 +5,7 @@ import { RoomStatusSchema } from '../enums/RoomStatus.schema';
 import { UserCreateNestedOneWithoutRoomsCreatedInputObjectSchema as UserCreateNestedOneWithoutRoomsCreatedInputObjectSchema } from './UserCreateNestedOneWithoutRoomsCreatedInput.schema';
 import { PollCreateNestedManyWithoutRoomInputObjectSchema as PollCreateNestedManyWithoutRoomInputObjectSchema } from './PollCreateNestedManyWithoutRoomInput.schema';
 import { MessageCreateNestedManyWithoutRoomInputObjectSchema as MessageCreateNestedManyWithoutRoomInputObjectSchema } from './MessageCreateNestedManyWithoutRoomInput.schema';
-import { RoomMemberCreateNestedManyWithoutRoomInputObjectSchema as RoomMemberCreateNestedManyWithoutRoomInputObjectSchema } from './RoomMemberCreateNestedManyWithoutRoomInput.schema';
-import { ReportCreateNestedManyWithoutRoomInputObjectSchema as ReportCreateNestedManyWithoutRoomInputObjectSchema } from './ReportCreateNestedManyWithoutRoomInput.schema'
+import { RoomMemberCreateNestedManyWithoutRoomInputObjectSchema as RoomMemberCreateNestedManyWithoutRoomInputObjectSchema } from './RoomMemberCreateNestedManyWithoutRoomInput.schema'
 
 const makeSchema = () => z.object({
   name: z.string().max(255),
@@ -21,8 +20,7 @@ const makeSchema = () => z.object({
   createdBy: z.lazy(() => UserCreateNestedOneWithoutRoomsCreatedInputObjectSchema),
   polls: z.lazy(() => PollCreateNestedManyWithoutRoomInputObjectSchema).optional(),
   messages: z.lazy(() => MessageCreateNestedManyWithoutRoomInputObjectSchema).optional(),
-  roomMembers: z.lazy(() => RoomMemberCreateNestedManyWithoutRoomInputObjectSchema).optional(),
-  reports: z.lazy(() => ReportCreateNestedManyWithoutRoomInputObjectSchema).optional()
+  roomMembers: z.lazy(() => RoomMemberCreateNestedManyWithoutRoomInputObjectSchema).optional()
 }).strict();
 export const RoomCreateWithoutInvitationsInputObjectSchema: z.ZodType<Prisma.RoomCreateWithoutInvitationsInput> = makeSchema() as unknown as z.ZodType<Prisma.RoomCreateWithoutInvitationsInput>;
 export const RoomCreateWithoutInvitationsInputObjectZodSchema = makeSchema();

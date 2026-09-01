@@ -8,6 +8,5 @@ export const MessageUpsertResultSchema = z.object({
   authorId: z.number().int(),
   roomId: z.number().int(),
   author: z.unknown(),
-  room: z.unknown(),
-  reports: z.array(z.unknown())
+  room: z.unknown()
 });

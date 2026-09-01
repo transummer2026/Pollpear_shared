@@ -18,8 +18,7 @@ export const RoomResultSchema = z.object({
     polls: z.array(z.unknown()),
     messages: z.array(z.unknown()),
     invitations: z.array(z.unknown()),
-    roomMembers: z.array(z.unknown()),
-    reports: z.array(z.unknown())
+    roomMembers: z.array(z.unknown())
 }).strict();
 
 export type RoomResultType = z.infer<typeof RoomResultSchema>;
