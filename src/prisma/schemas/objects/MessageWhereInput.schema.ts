@@ -7,8 +7,7 @@ import { DateTimeNullableFilterObjectSchema as DateTimeNullableFilterObjectSchem
 import { UserScalarRelationFilterObjectSchema as UserScalarRelationFilterObjectSchema } from './UserScalarRelationFilter.schema';
 import { UserWhereInputObjectSchema as UserWhereInputObjectSchema } from './UserWhereInput.schema';
 import { RoomScalarRelationFilterObjectSchema as RoomScalarRelationFilterObjectSchema } from './RoomScalarRelationFilter.schema';
-import { RoomWhereInputObjectSchema as RoomWhereInputObjectSchema } from './RoomWhereInput.schema';
-import { ReportListRelationFilterObjectSchema as ReportListRelationFilterObjectSchema } from './ReportListRelationFilter.schema'
+import { RoomWhereInputObjectSchema as RoomWhereInputObjectSchema } from './RoomWhereInput.schema'
 
 const messagewhereinputSchema = z.object({
   AND: z.union([z.lazy(() => MessageWhereInputObjectSchema), z.lazy(() => MessageWhereInputObjectSchema).array()]).optional(),
@@ -22,8 +21,7 @@ const messagewhereinputSchema = z.object({
   authorId: z.union([z.lazy(() => IntFilterObjectSchema), z.number().int()]).optional(),
   roomId: z.union([z.lazy(() => IntFilterObjectSchema), z.number().int()]).optional(),
   author: z.union([z.lazy(() => UserScalarRelationFilterObjectSchema), z.lazy(() => UserWhereInputObjectSchema)]).optional(),
-  room: z.union([z.lazy(() => RoomScalarRelationFilterObjectSchema), z.lazy(() => RoomWhereInputObjectSchema)]).optional(),
-  reports: z.lazy(() => ReportListRelationFilterObjectSchema).optional()
+  room: z.union([z.lazy(() => RoomScalarRelationFilterObjectSchema), z.lazy(() => RoomWhereInputObjectSchema)]).optional()
 }).strict();
 export const MessageWhereInputObjectSchema: z.ZodType<Prisma.MessageWhereInput> = messagewhereinputSchema as unknown as z.ZodType<Prisma.MessageWhereInput>;
 export const MessageWhereInputObjectZodSchema = messagewhereinputSchema;

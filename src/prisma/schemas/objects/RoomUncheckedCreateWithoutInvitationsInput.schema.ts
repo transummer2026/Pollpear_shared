@@ -4,8 +4,7 @@ import { VisibilitySchema } from '../enums/Visibility.schema';
 import { RoomStatusSchema } from '../enums/RoomStatus.schema';
 import { PollUncheckedCreateNestedManyWithoutRoomInputObjectSchema as PollUncheckedCreateNestedManyWithoutRoomInputObjectSchema } from './PollUncheckedCreateNestedManyWithoutRoomInput.schema';
 import { MessageUncheckedCreateNestedManyWithoutRoomInputObjectSchema as MessageUncheckedCreateNestedManyWithoutRoomInputObjectSchema } from './MessageUncheckedCreateNestedManyWithoutRoomInput.schema';
-import { RoomMemberUncheckedCreateNestedManyWithoutRoomInputObjectSchema as RoomMemberUncheckedCreateNestedManyWithoutRoomInputObjectSchema } from './RoomMemberUncheckedCreateNestedManyWithoutRoomInput.schema';
-import { ReportUncheckedCreateNestedManyWithoutRoomInputObjectSchema as ReportUncheckedCreateNestedManyWithoutRoomInputObjectSchema } from './ReportUncheckedCreateNestedManyWithoutRoomInput.schema'
+import { RoomMemberUncheckedCreateNestedManyWithoutRoomInputObjectSchema as RoomMemberUncheckedCreateNestedManyWithoutRoomInputObjectSchema } from './RoomMemberUncheckedCreateNestedManyWithoutRoomInput.schema'
 
 const makeSchema = () => z.object({
   id: z.number().int().optional(),
@@ -21,8 +20,7 @@ const makeSchema = () => z.object({
   createdById: z.number().int(),
   polls: z.lazy(() => PollUncheckedCreateNestedManyWithoutRoomInputObjectSchema).optional(),
   messages: z.lazy(() => MessageUncheckedCreateNestedManyWithoutRoomInputObjectSchema).optional(),
-  roomMembers: z.lazy(() => RoomMemberUncheckedCreateNestedManyWithoutRoomInputObjectSchema).optional(),
-  reports: z.lazy(() => ReportUncheckedCreateNestedManyWithoutRoomInputObjectSchema).optional()
+  roomMembers: z.lazy(() => RoomMemberUncheckedCreateNestedManyWithoutRoomInputObjectSchema).optional()
 }).strict();
 export const RoomUncheckedCreateWithoutInvitationsInputObjectSchema: z.ZodType<Prisma.RoomUncheckedCreateWithoutInvitationsInput> = makeSchema() as unknown as z.ZodType<Prisma.RoomUncheckedCreateWithoutInvitationsInput>;
 export const RoomUncheckedCreateWithoutInvitationsInputObjectZodSchema = makeSchema();

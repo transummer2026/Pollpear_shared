@@ -8,8 +8,7 @@ export const MessageAggregateResultSchema = z.object({  _count: z.object({
     authorId: z.number(),
     roomId: z.number(),
     author: z.number(),
-    room: z.number(),
-    reports: z.number()
+    room: z.number()
   }).optional(),
   _sum: z.object({
     id: z.number().nullable(),

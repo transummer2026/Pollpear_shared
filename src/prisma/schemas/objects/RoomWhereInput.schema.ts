@@ -14,8 +14,7 @@ import { UserWhereInputObjectSchema as UserWhereInputObjectSchema } from './User
 import { PollListRelationFilterObjectSchema as PollListRelationFilterObjectSchema } from './PollListRelationFilter.schema';
 import { MessageListRelationFilterObjectSchema as MessageListRelationFilterObjectSchema } from './MessageListRelationFilter.schema';
 import { InvitationListRelationFilterObjectSchema as InvitationListRelationFilterObjectSchema } from './InvitationListRelationFilter.schema';
-import { RoomMemberListRelationFilterObjectSchema as RoomMemberListRelationFilterObjectSchema } from './RoomMemberListRelationFilter.schema';
-import { ReportListRelationFilterObjectSchema as ReportListRelationFilterObjectSchema } from './ReportListRelationFilter.schema'
+import { RoomMemberListRelationFilterObjectSchema as RoomMemberListRelationFilterObjectSchema } from './RoomMemberListRelationFilter.schema'
 
 const roomwhereinputSchema = z.object({
   AND: z.union([z.lazy(() => RoomWhereInputObjectSchema), z.lazy(() => RoomWhereInputObjectSchema).array()]).optional(),
@@ -36,8 +35,7 @@ const roomwhereinputSchema = z.object({
   polls: z.lazy(() => PollListRelationFilterObjectSchema).optional(),
   messages: z.lazy(() => MessageListRelationFilterObjectSchema).optional(),
   invitations: z.lazy(() => InvitationListRelationFilterObjectSchema).optional(),
-  roomMembers: z.lazy(() => RoomMemberListRelationFilterObjectSchema).optional(),
-  reports: z.lazy(() => ReportListRelationFilterObjectSchema).optional()
+  roomMembers: z.lazy(() => RoomMemberListRelationFilterObjectSchema).optional()
 }).strict();
 export const RoomWhereInputObjectSchema: z.ZodType<Prisma.RoomWhereInput> = roomwhereinputSchema as unknown as z.ZodType<Prisma.RoomWhereInput>;
 export const RoomWhereInputObjectZodSchema = roomwhereinputSchema;

@@ -14,15 +14,11 @@ import { EnumVisibilityFieldUpdateOperationsInputObjectSchema as EnumVisibilityF
 import { NullableDateTimeFieldUpdateOperationsInputObjectSchema as NullableDateTimeFieldUpdateOperationsInputObjectSchema } from './NullableDateTimeFieldUpdateOperationsInput.schema';
 import { UserThemeSchema } from '../enums/UserTheme.schema';
 import { EnumUserThemeFieldUpdateOperationsInputObjectSchema as EnumUserThemeFieldUpdateOperationsInputObjectSchema } from './EnumUserThemeFieldUpdateOperationsInput.schema';
-import { BanUncheckedUpdateManyWithoutUserNestedInputObjectSchema as BanUncheckedUpdateManyWithoutUserNestedInputObjectSchema } from './BanUncheckedUpdateManyWithoutUserNestedInput.schema';
-import { BanUncheckedUpdateManyWithoutBannedByNestedInputObjectSchema as BanUncheckedUpdateManyWithoutBannedByNestedInputObjectSchema } from './BanUncheckedUpdateManyWithoutBannedByNestedInput.schema';
-import { BanUncheckedUpdateManyWithoutUnbannedByNestedInputObjectSchema as BanUncheckedUpdateManyWithoutUnbannedByNestedInputObjectSchema } from './BanUncheckedUpdateManyWithoutUnbannedByNestedInput.schema';
 import { PollUncheckedUpdateManyWithoutCreatedByNestedInputObjectSchema as PollUncheckedUpdateManyWithoutCreatedByNestedInputObjectSchema } from './PollUncheckedUpdateManyWithoutCreatedByNestedInput.schema';
 import { RoomUncheckedUpdateManyWithoutCreatedByNestedInputObjectSchema as RoomUncheckedUpdateManyWithoutCreatedByNestedInputObjectSchema } from './RoomUncheckedUpdateManyWithoutCreatedByNestedInput.schema';
 import { VoteUncheckedUpdateManyWithoutCreatedByNestedInputObjectSchema as VoteUncheckedUpdateManyWithoutCreatedByNestedInputObjectSchema } from './VoteUncheckedUpdateManyWithoutCreatedByNestedInput.schema';
 import { MessageUncheckedUpdateManyWithoutAuthorNestedInputObjectSchema as MessageUncheckedUpdateManyWithoutAuthorNestedInputObjectSchema } from './MessageUncheckedUpdateManyWithoutAuthorNestedInput.schema';
 import { NotificationUncheckedUpdateManyWithoutUserNestedInputObjectSchema as NotificationUncheckedUpdateManyWithoutUserNestedInputObjectSchema } from './NotificationUncheckedUpdateManyWithoutUserNestedInput.schema';
-import { PollTemplateUncheckedUpdateManyWithoutUserNestedInputObjectSchema as PollTemplateUncheckedUpdateManyWithoutUserNestedInputObjectSchema } from './PollTemplateUncheckedUpdateManyWithoutUserNestedInput.schema';
 import { RoomMemberUncheckedUpdateManyWithoutUserNestedInputObjectSchema as RoomMemberUncheckedUpdateManyWithoutUserNestedInputObjectSchema } from './RoomMemberUncheckedUpdateManyWithoutUserNestedInput.schema';
 import { InvitationUncheckedUpdateManyWithoutInviterNestedInputObjectSchema as InvitationUncheckedUpdateManyWithoutInviterNestedInputObjectSchema } from './InvitationUncheckedUpdateManyWithoutInviterNestedInput.schema';
 import { InvitationUncheckedUpdateManyWithoutInviteeNestedInputObjectSchema as InvitationUncheckedUpdateManyWithoutInviteeNestedInputObjectSchema } from './InvitationUncheckedUpdateManyWithoutInviteeNestedInput.schema';
@@ -30,8 +26,6 @@ import { FriendshipUncheckedUpdateManyWithoutUserANestedInputObjectSchema as Fri
 import { FriendshipUncheckedUpdateManyWithoutUserBNestedInputObjectSchema as FriendshipUncheckedUpdateManyWithoutUserBNestedInputObjectSchema } from './FriendshipUncheckedUpdateManyWithoutUserBNestedInput.schema';
 import { BlockUncheckedUpdateManyWithoutBlockedNestedInputObjectSchema as BlockUncheckedUpdateManyWithoutBlockedNestedInputObjectSchema } from './BlockUncheckedUpdateManyWithoutBlockedNestedInput.schema';
 import { BlockUncheckedUpdateManyWithoutBlockerNestedInputObjectSchema as BlockUncheckedUpdateManyWithoutBlockerNestedInputObjectSchema } from './BlockUncheckedUpdateManyWithoutBlockerNestedInput.schema';
-import { ReportUncheckedUpdateManyWithoutReportedNestedInputObjectSchema as ReportUncheckedUpdateManyWithoutReportedNestedInputObjectSchema } from './ReportUncheckedUpdateManyWithoutReportedNestedInput.schema';
-import { ReportUncheckedUpdateManyWithoutReporterNestedInputObjectSchema as ReportUncheckedUpdateManyWithoutReporterNestedInputObjectSchema } from './ReportUncheckedUpdateManyWithoutReporterNestedInput.schema';
 import { ApiKeyUncheckedUpdateManyWithoutUserNestedInputObjectSchema as ApiKeyUncheckedUpdateManyWithoutUserNestedInputObjectSchema } from './ApiKeyUncheckedUpdateManyWithoutUserNestedInput.schema'
 
 const makeSchema = () => z.object({
@@ -61,15 +55,11 @@ const makeSchema = () => z.object({
   createdAt: z.union([z.coerce.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputObjectSchema)]).optional(),
   updatedAt: z.union([z.coerce.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputObjectSchema)]).optional(),
   deletedAt: z.union([z.coerce.date(), z.lazy(() => NullableDateTimeFieldUpdateOperationsInputObjectSchema)]).optional().nullable(),
-  bansReceived: z.lazy(() => BanUncheckedUpdateManyWithoutUserNestedInputObjectSchema).optional(),
-  bansGiven: z.lazy(() => BanUncheckedUpdateManyWithoutBannedByNestedInputObjectSchema).optional(),
-  bansLifted: z.lazy(() => BanUncheckedUpdateManyWithoutUnbannedByNestedInputObjectSchema).optional(),
   pollsCreated: z.lazy(() => PollUncheckedUpdateManyWithoutCreatedByNestedInputObjectSchema).optional(),
   roomsCreated: z.lazy(() => RoomUncheckedUpdateManyWithoutCreatedByNestedInputObjectSchema).optional(),
   votes: z.lazy(() => VoteUncheckedUpdateManyWithoutCreatedByNestedInputObjectSchema).optional(),
   messages: z.lazy(() => MessageUncheckedUpdateManyWithoutAuthorNestedInputObjectSchema).optional(),
   notifications: z.lazy(() => NotificationUncheckedUpdateManyWithoutUserNestedInputObjectSchema).optional(),
-  pollTemplates: z.lazy(() => PollTemplateUncheckedUpdateManyWithoutUserNestedInputObjectSchema).optional(),
   roomMemberships: z.lazy(() => RoomMemberUncheckedUpdateManyWithoutUserNestedInputObjectSchema).optional(),
   invitationsSent: z.lazy(() => InvitationUncheckedUpdateManyWithoutInviterNestedInputObjectSchema).optional(),
   invitationsReceived: z.lazy(() => InvitationUncheckedUpdateManyWithoutInviteeNestedInputObjectSchema).optional(),
@@ -77,8 +67,6 @@ const makeSchema = () => z.object({
   friendshipsAsUserB: z.lazy(() => FriendshipUncheckedUpdateManyWithoutUserBNestedInputObjectSchema).optional(),
   blocksReceived: z.lazy(() => BlockUncheckedUpdateManyWithoutBlockedNestedInputObjectSchema).optional(),
   blocksGiven: z.lazy(() => BlockUncheckedUpdateManyWithoutBlockerNestedInputObjectSchema).optional(),
-  reportsReceived: z.lazy(() => ReportUncheckedUpdateManyWithoutReportedNestedInputObjectSchema).optional(),
-  reportsGiven: z.lazy(() => ReportUncheckedUpdateManyWithoutReporterNestedInputObjectSchema).optional(),
   apiKeys: z.lazy(() => ApiKeyUncheckedUpdateManyWithoutUserNestedInputObjectSchema).optional()
 }).strict();
 export const UserUncheckedUpdateWithoutOauthsInputObjectSchema: z.ZodType<Prisma.UserUncheckedUpdateWithoutOauthsInput> = makeSchema() as unknown as z.ZodType<Prisma.UserUncheckedUpdateWithoutOauthsInput>;

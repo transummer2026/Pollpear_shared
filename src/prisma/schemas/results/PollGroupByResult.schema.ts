@@ -32,10 +32,7 @@ export const PollGroupByResultSchema = z.array(z.object({
     room: z.number(),
     votes: z.number(),
     options: z.number(),
-    pollHashtags: z.number(),
-    pollTemplates: z.number(),
-    reports: z.number(),
-    childDependencies: z.number()
+    pollHashtags: z.number()
   }).optional(),
   _sum: z.object({
     id: z.number().nullable(),

@@ -5,6 +5,5 @@ export const HashtagCreateResultSchema = z.object({
   createdAt: z.date(),
   updatedAt: z.date(),
   deletedAt: z.date().optional(),
-  pollHashtags: z.array(z.unknown()),
-  reports: z.array(z.unknown())
+  pollHashtags: z.array(z.unknown())
 });

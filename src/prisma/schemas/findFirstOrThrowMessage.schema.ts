@@ -18,9 +18,7 @@ export const MessageFindFirstOrThrowSelectSchema: z.ZodType<Prisma.MessageSelect
     authorId: z.boolean().optional(),
     roomId: z.boolean().optional(),
     author: z.boolean().optional(),
-    room: z.boolean().optional(),
-    reports: z.boolean().optional(),
-    _count: z.boolean().optional()
+    room: z.boolean().optional()
   }).strict() as unknown as z.ZodType<Prisma.MessageSelect>;
 
 export const MessageFindFirstOrThrowSelectZodSchema = z.object({
@@ -32,9 +30,7 @@ export const MessageFindFirstOrThrowSelectZodSchema = z.object({
     authorId: z.boolean().optional(),
     roomId: z.boolean().optional(),
     author: z.boolean().optional(),
-    room: z.boolean().optional(),
-    reports: z.boolean().optional(),
-    _count: z.boolean().optional()
+    room: z.boolean().optional()
   }).strict();
 
 export const MessageFindFirstOrThrowSchema: z.ZodType<Prisma.MessageFindFirstOrThrowArgs> = z.object({ select: MessageFindFirstOrThrowSelectSchema.optional(), include: z.lazy(() => MessageIncludeObjectSchema.optional()), orderBy: z.union([MessageOrderByWithRelationInputObjectSchema, MessageOrderByWithRelationInputObjectSchema.array()]).optional(), where: MessageWhereInputObjectSchema.optional(), cursor: MessageWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), distinct: z.union([MessageScalarFieldEnumSchema, MessageScalarFieldEnumSchema.array()]).optional() }).strict() as unknown as z.ZodType<Prisma.MessageFindFirstOrThrowArgs>;

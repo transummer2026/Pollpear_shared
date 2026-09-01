@@ -6,8 +6,7 @@ export const HashtagModelSchema = z.object({
     createdAt: z.date(),
     updatedAt: z.date(),
     deletedAt: z.date().nullable(),
-    pollHashtags: z.array(z.unknown()),
-    reports: z.array(z.unknown())
+    pollHashtags: z.array(z.unknown())
 }).strict();
 
 export type HashtagPureType = z.infer<typeof HashtagModelSchema>;

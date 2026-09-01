@@ -26,7 +26,6 @@ export const RoomFindFirstOrThrowSelectSchema: z.ZodType<Prisma.RoomSelect> = z.
     messages: z.boolean().optional(),
     invitations: z.boolean().optional(),
     roomMembers: z.boolean().optional(),
-    reports: z.boolean().optional(),
     _count: z.boolean().optional()
   }).strict() as unknown as z.ZodType<Prisma.RoomSelect>;
 
@@ -47,7 +46,6 @@ export const RoomFindFirstOrThrowSelectZodSchema = z.object({
     messages: z.boolean().optional(),
     invitations: z.boolean().optional(),
     roomMembers: z.boolean().optional(),
-    reports: z.boolean().optional(),
     _count: z.boolean().optional()
   }).strict();
 

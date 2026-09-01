@@ -1,8 +1,6 @@
 import * as z from 'zod';
 import type { Prisma } from '../../../../../src/generated/prisma/client';
-import { VoteOptionUncheckedCreateNestedManyWithoutOptionInputObjectSchema as VoteOptionUncheckedCreateNestedManyWithoutOptionInputObjectSchema } from './VoteOptionUncheckedCreateNestedManyWithoutOptionInput.schema';
-import { PollDependencyUncheckedCreateNestedManyWithoutOptionInputObjectSchema as PollDependencyUncheckedCreateNestedManyWithoutOptionInputObjectSchema } from './PollDependencyUncheckedCreateNestedManyWithoutOptionInput.schema';
-import { ReportUncheckedCreateNestedManyWithoutOptionInputObjectSchema as ReportUncheckedCreateNestedManyWithoutOptionInputObjectSchema } from './ReportUncheckedCreateNestedManyWithoutOptionInput.schema'
+import { VoteOptionUncheckedCreateNestedManyWithoutOptionInputObjectSchema as VoteOptionUncheckedCreateNestedManyWithoutOptionInputObjectSchema } from './VoteOptionUncheckedCreateNestedManyWithoutOptionInput.schema'
 
 const makeSchema = () => z.object({
   id: z.number().int().optional(),
@@ -11,9 +9,7 @@ const makeSchema = () => z.object({
   sliderRightLabel: z.string().optional().nullable(),
   order: z.number().int(),
   deletedAt: z.coerce.date().optional().nullable(),
-  voteOptions: z.lazy(() => VoteOptionUncheckedCreateNestedManyWithoutOptionInputObjectSchema).optional(),
-  pollDependencies: z.lazy(() => PollDependencyUncheckedCreateNestedManyWithoutOptionInputObjectSchema).optional(),
-  reports: z.lazy(() => ReportUncheckedCreateNestedManyWithoutOptionInputObjectSchema).optional()
+  voteOptions: z.lazy(() => VoteOptionUncheckedCreateNestedManyWithoutOptionInputObjectSchema).optional()
 }).strict();
 export const OptionUncheckedCreateWithoutPollInputObjectSchema: z.ZodType<Prisma.OptionUncheckedCreateWithoutPollInput> = makeSchema() as unknown as z.ZodType<Prisma.OptionUncheckedCreateWithoutPollInput>;
 export const OptionUncheckedCreateWithoutPollInputObjectZodSchema = makeSchema();

@@ -8,9 +8,7 @@ export const OptionAggregateResultSchema = z.object({  _count: z.object({
     deletedAt: z.number(),
     pollId: z.number(),
     poll: z.number(),
-    voteOptions: z.number(),
-    pollDependencies: z.number(),
-    reports: z.number()
+    voteOptions: z.number()
   }).optional(),
   _sum: z.object({
     id: z.number().nullable(),

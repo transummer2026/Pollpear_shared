@@ -16,7 +16,6 @@ export const HashtagFindFirstSelectSchema: z.ZodType<Prisma.HashtagSelect> = z.o
     updatedAt: z.boolean().optional(),
     deletedAt: z.boolean().optional(),
     pollHashtags: z.boolean().optional(),
-    reports: z.boolean().optional(),
     _count: z.boolean().optional()
   }).strict() as unknown as z.ZodType<Prisma.HashtagSelect>;
 
@@ -27,7 +26,6 @@ export const HashtagFindFirstSelectZodSchema = z.object({
     updatedAt: z.boolean().optional(),
     deletedAt: z.boolean().optional(),
     pollHashtags: z.boolean().optional(),
-    reports: z.boolean().optional(),
     _count: z.boolean().optional()
   }).strict();
 

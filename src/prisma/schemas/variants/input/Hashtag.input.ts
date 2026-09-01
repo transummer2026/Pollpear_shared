@@ -6,8 +6,7 @@ export const HashtagInputSchema = z.object({
     createdAt: z.date(),
     updatedAt: z.date(),
     deletedAt: z.date().optional().nullable(),
-    pollHashtags: z.array(z.unknown()),
-    reports: z.array(z.unknown())
+    pollHashtags: z.array(z.unknown())
 }).strict();
 
 export type HashtagInputType = z.infer<typeof HashtagInputSchema>;
