@@ -14,7 +14,7 @@ export const UserSchema = UserModelSchema.omit({
 
 /**
  * What anyone may see of another user - id, username, name, surname,
- * avatarUrl. Built by listing what to hide rather than what to show, so a
+ * avatarUrl, bio. Built by listing what to hide rather than what to show, so a
  * column added to the User model is exposed by default: add it to this omit
  * list too unless it is genuinely public.
  */
@@ -28,7 +28,6 @@ export const UserPublicProfileSchema = UserSchema.omit({
   state: true,
   country: true,
   company: true,
-  bio: true,
   isOnline: true,
   isEmailVerified: true,
   visibility: true,
