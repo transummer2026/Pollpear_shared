@@ -11,7 +11,8 @@ import { RoomStatusSchema } from '../enums/RoomStatus.schema';
 import { EnumRoomStatusFieldUpdateOperationsInputObjectSchema as EnumRoomStatusFieldUpdateOperationsInputObjectSchema } from './EnumRoomStatusFieldUpdateOperationsInput.schema';
 import { MessageUncheckedUpdateManyWithoutRoomNestedInputObjectSchema as MessageUncheckedUpdateManyWithoutRoomNestedInputObjectSchema } from './MessageUncheckedUpdateManyWithoutRoomNestedInput.schema';
 import { InvitationUncheckedUpdateManyWithoutRoomNestedInputObjectSchema as InvitationUncheckedUpdateManyWithoutRoomNestedInputObjectSchema } from './InvitationUncheckedUpdateManyWithoutRoomNestedInput.schema';
-import { RoomMemberUncheckedUpdateManyWithoutRoomNestedInputObjectSchema as RoomMemberUncheckedUpdateManyWithoutRoomNestedInputObjectSchema } from './RoomMemberUncheckedUpdateManyWithoutRoomNestedInput.schema'
+import { RoomMemberUncheckedUpdateManyWithoutRoomNestedInputObjectSchema as RoomMemberUncheckedUpdateManyWithoutRoomNestedInputObjectSchema } from './RoomMemberUncheckedUpdateManyWithoutRoomNestedInput.schema';
+import { ReportUncheckedUpdateManyWithoutRoomNestedInputObjectSchema as ReportUncheckedUpdateManyWithoutRoomNestedInputObjectSchema } from './ReportUncheckedUpdateManyWithoutRoomNestedInput.schema'
 
 const makeSchema = () => z.object({
   id: z.union([z.number().int(), z.lazy(() => IntFieldUpdateOperationsInputObjectSchema)]).optional(),
@@ -27,7 +28,8 @@ const makeSchema = () => z.object({
   createdById: z.union([z.number().int(), z.lazy(() => IntFieldUpdateOperationsInputObjectSchema)]).optional(),
   messages: z.lazy(() => MessageUncheckedUpdateManyWithoutRoomNestedInputObjectSchema).optional(),
   invitations: z.lazy(() => InvitationUncheckedUpdateManyWithoutRoomNestedInputObjectSchema).optional(),
-  roomMembers: z.lazy(() => RoomMemberUncheckedUpdateManyWithoutRoomNestedInputObjectSchema).optional()
+  roomMembers: z.lazy(() => RoomMemberUncheckedUpdateManyWithoutRoomNestedInputObjectSchema).optional(),
+  reports: z.lazy(() => ReportUncheckedUpdateManyWithoutRoomNestedInputObjectSchema).optional()
 }).strict();
 export const RoomUncheckedUpdateWithoutPollsInputObjectSchema: z.ZodType<Prisma.RoomUncheckedUpdateWithoutPollsInput> = makeSchema() as unknown as z.ZodType<Prisma.RoomUncheckedUpdateWithoutPollsInput>;
 export const RoomUncheckedUpdateWithoutPollsInputObjectZodSchema = makeSchema();

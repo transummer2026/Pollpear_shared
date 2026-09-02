@@ -1,0 +1,14 @@
+import type { Prisma } from '../../../../src/generated/prisma/client';
+import * as z from 'zod';
+import { PollDependencyOrderByWithRelationInputObjectSchema as PollDependencyOrderByWithRelationInputObjectSchema } from './objects/PollDependencyOrderByWithRelationInput.schema';
+import { PollDependencyWhereInputObjectSchema as PollDependencyWhereInputObjectSchema } from './objects/PollDependencyWhereInput.schema';
+import { PollDependencyWhereUniqueInputObjectSchema as PollDependencyWhereUniqueInputObjectSchema } from './objects/PollDependencyWhereUniqueInput.schema';
+import { PollDependencyCountAggregateInputObjectSchema as PollDependencyCountAggregateInputObjectSchema } from './objects/PollDependencyCountAggregateInput.schema';
+import { PollDependencyMinAggregateInputObjectSchema as PollDependencyMinAggregateInputObjectSchema } from './objects/PollDependencyMinAggregateInput.schema';
+import { PollDependencyMaxAggregateInputObjectSchema as PollDependencyMaxAggregateInputObjectSchema } from './objects/PollDependencyMaxAggregateInput.schema';
+import { PollDependencyAvgAggregateInputObjectSchema as PollDependencyAvgAggregateInputObjectSchema } from './objects/PollDependencyAvgAggregateInput.schema';
+import { PollDependencySumAggregateInputObjectSchema as PollDependencySumAggregateInputObjectSchema } from './objects/PollDependencySumAggregateInput.schema';
+
+export const PollDependencyAggregateSchema: z.ZodType<Prisma.PollDependencyAggregateArgs> = z.object({ orderBy: z.union([PollDependencyOrderByWithRelationInputObjectSchema, PollDependencyOrderByWithRelationInputObjectSchema.array()]).optional(), where: PollDependencyWhereInputObjectSchema.optional(), cursor: PollDependencyWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), _count: z.union([ z.literal(true), PollDependencyCountAggregateInputObjectSchema ]).optional(), _min: PollDependencyMinAggregateInputObjectSchema.optional(), _max: PollDependencyMaxAggregateInputObjectSchema.optional(), _avg: PollDependencyAvgAggregateInputObjectSchema.optional(), _sum: PollDependencySumAggregateInputObjectSchema.optional() }).strict() as unknown as z.ZodType<Prisma.PollDependencyAggregateArgs>;
+
+export const PollDependencyAggregateZodSchema = z.object({ orderBy: z.union([PollDependencyOrderByWithRelationInputObjectSchema, PollDependencyOrderByWithRelationInputObjectSchema.array()]).optional(), where: PollDependencyWhereInputObjectSchema.optional(), cursor: PollDependencyWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), _count: z.union([ z.literal(true), PollDependencyCountAggregateInputObjectSchema ]).optional(), _min: PollDependencyMinAggregateInputObjectSchema.optional(), _max: PollDependencyMaxAggregateInputObjectSchema.optional(), _avg: PollDependencyAvgAggregateInputObjectSchema.optional(), _sum: PollDependencySumAggregateInputObjectSchema.optional() }).strict();

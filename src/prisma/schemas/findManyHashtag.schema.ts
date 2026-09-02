@@ -16,6 +16,7 @@ export const HashtagFindManySelectSchema: z.ZodType<Prisma.HashtagSelect> = z.ob
     updatedAt: z.boolean().optional(),
     deletedAt: z.boolean().optional(),
     pollHashtags: z.boolean().optional(),
+    reports: z.boolean().optional(),
     _count: z.boolean().optional()
   }).strict() as unknown as z.ZodType<Prisma.HashtagSelect>;
 
@@ -26,6 +27,7 @@ export const HashtagFindManySelectZodSchema = z.object({
     updatedAt: z.boolean().optional(),
     deletedAt: z.boolean().optional(),
     pollHashtags: z.boolean().optional(),
+    reports: z.boolean().optional(),
     _count: z.boolean().optional()
   }).strict();
 

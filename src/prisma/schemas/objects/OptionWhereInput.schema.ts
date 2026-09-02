@@ -6,7 +6,9 @@ import { StringNullableFilterObjectSchema as StringNullableFilterObjectSchema } 
 import { DateTimeNullableFilterObjectSchema as DateTimeNullableFilterObjectSchema } from './DateTimeNullableFilter.schema';
 import { PollScalarRelationFilterObjectSchema as PollScalarRelationFilterObjectSchema } from './PollScalarRelationFilter.schema';
 import { PollWhereInputObjectSchema as PollWhereInputObjectSchema } from './PollWhereInput.schema';
-import { VoteOptionListRelationFilterObjectSchema as VoteOptionListRelationFilterObjectSchema } from './VoteOptionListRelationFilter.schema'
+import { VoteOptionListRelationFilterObjectSchema as VoteOptionListRelationFilterObjectSchema } from './VoteOptionListRelationFilter.schema';
+import { PollDependencyListRelationFilterObjectSchema as PollDependencyListRelationFilterObjectSchema } from './PollDependencyListRelationFilter.schema';
+import { ReportListRelationFilterObjectSchema as ReportListRelationFilterObjectSchema } from './ReportListRelationFilter.schema'
 
 const optionwhereinputSchema = z.object({
   AND: z.union([z.lazy(() => OptionWhereInputObjectSchema), z.lazy(() => OptionWhereInputObjectSchema).array()]).optional(),
@@ -20,7 +22,9 @@ const optionwhereinputSchema = z.object({
   deletedAt: z.union([z.lazy(() => DateTimeNullableFilterObjectSchema), z.coerce.date()]).optional().nullable(),
   pollId: z.union([z.lazy(() => IntFilterObjectSchema), z.number().int()]).optional(),
   poll: z.union([z.lazy(() => PollScalarRelationFilterObjectSchema), z.lazy(() => PollWhereInputObjectSchema)]).optional(),
-  voteOptions: z.lazy(() => VoteOptionListRelationFilterObjectSchema).optional()
+  voteOptions: z.lazy(() => VoteOptionListRelationFilterObjectSchema).optional(),
+  pollDependencies: z.lazy(() => PollDependencyListRelationFilterObjectSchema).optional(),
+  reports: z.lazy(() => ReportListRelationFilterObjectSchema).optional()
 }).strict();
 export const OptionWhereInputObjectSchema: z.ZodType<Prisma.OptionWhereInput> = optionwhereinputSchema as unknown as z.ZodType<Prisma.OptionWhereInput>;
 export const OptionWhereInputObjectZodSchema = optionwhereinputSchema;

@@ -19,7 +19,10 @@ export const PollAggregateResultSchema = z.object({  _count: z.object({
     room: z.number(),
     votes: z.number(),
     options: z.number(),
-    pollHashtags: z.number()
+    pollHashtags: z.number(),
+    pollTemplates: z.number(),
+    reports: z.number(),
+    childDependencies: z.number()
   }).optional(),
   _sum: z.object({
     id: z.number().nullable(),

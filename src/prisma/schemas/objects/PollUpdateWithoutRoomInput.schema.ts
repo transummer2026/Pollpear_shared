@@ -14,7 +14,10 @@ import { DateTimeFieldUpdateOperationsInputObjectSchema as DateTimeFieldUpdateOp
 import { UserUpdateOneRequiredWithoutPollsCreatedNestedInputObjectSchema as UserUpdateOneRequiredWithoutPollsCreatedNestedInputObjectSchema } from './UserUpdateOneRequiredWithoutPollsCreatedNestedInput.schema';
 import { VoteUpdateManyWithoutPollNestedInputObjectSchema as VoteUpdateManyWithoutPollNestedInputObjectSchema } from './VoteUpdateManyWithoutPollNestedInput.schema';
 import { OptionUpdateManyWithoutPollNestedInputObjectSchema as OptionUpdateManyWithoutPollNestedInputObjectSchema } from './OptionUpdateManyWithoutPollNestedInput.schema';
-import { PollHashtagUpdateManyWithoutPollNestedInputObjectSchema as PollHashtagUpdateManyWithoutPollNestedInputObjectSchema } from './PollHashtagUpdateManyWithoutPollNestedInput.schema'
+import { PollHashtagUpdateManyWithoutPollNestedInputObjectSchema as PollHashtagUpdateManyWithoutPollNestedInputObjectSchema } from './PollHashtagUpdateManyWithoutPollNestedInput.schema';
+import { PollTemplateUpdateManyWithoutPollNestedInputObjectSchema as PollTemplateUpdateManyWithoutPollNestedInputObjectSchema } from './PollTemplateUpdateManyWithoutPollNestedInput.schema';
+import { ReportUpdateManyWithoutPollNestedInputObjectSchema as ReportUpdateManyWithoutPollNestedInputObjectSchema } from './ReportUpdateManyWithoutPollNestedInput.schema';
+import { PollDependencyUpdateManyWithoutChildPollNestedInputObjectSchema as PollDependencyUpdateManyWithoutChildPollNestedInputObjectSchema } from './PollDependencyUpdateManyWithoutChildPollNestedInput.schema'
 
 const makeSchema = () => z.object({
   title: z.union([z.string().max(255), z.lazy(() => StringFieldUpdateOperationsInputObjectSchema)]).optional(),
@@ -32,7 +35,10 @@ const makeSchema = () => z.object({
   createdBy: z.lazy(() => UserUpdateOneRequiredWithoutPollsCreatedNestedInputObjectSchema).optional(),
   votes: z.lazy(() => VoteUpdateManyWithoutPollNestedInputObjectSchema).optional(),
   options: z.lazy(() => OptionUpdateManyWithoutPollNestedInputObjectSchema).optional(),
-  pollHashtags: z.lazy(() => PollHashtagUpdateManyWithoutPollNestedInputObjectSchema).optional()
+  pollHashtags: z.lazy(() => PollHashtagUpdateManyWithoutPollNestedInputObjectSchema).optional(),
+  pollTemplates: z.lazy(() => PollTemplateUpdateManyWithoutPollNestedInputObjectSchema).optional(),
+  reports: z.lazy(() => ReportUpdateManyWithoutPollNestedInputObjectSchema).optional(),
+  childDependencies: z.lazy(() => PollDependencyUpdateManyWithoutChildPollNestedInputObjectSchema).optional()
 }).strict();
 export const PollUpdateWithoutRoomInputObjectSchema: z.ZodType<Prisma.PollUpdateWithoutRoomInput> = makeSchema() as unknown as z.ZodType<Prisma.PollUpdateWithoutRoomInput>;
 export const PollUpdateWithoutRoomInputObjectZodSchema = makeSchema();

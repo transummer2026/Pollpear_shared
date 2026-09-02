@@ -15,15 +15,18 @@ import { DateTimeNullableFilterObjectSchema as DateTimeNullableFilterObjectSchem
 import { EnumUserThemeFilterObjectSchema as EnumUserThemeFilterObjectSchema } from './EnumUserThemeFilter.schema';
 import { UserThemeSchema } from '../enums/UserTheme.schema';
 import { OauthListRelationFilterObjectSchema as OauthListRelationFilterObjectSchema } from './OauthListRelationFilter.schema';
+import { BanListRelationFilterObjectSchema as BanListRelationFilterObjectSchema } from './BanListRelationFilter.schema';
 import { PollListRelationFilterObjectSchema as PollListRelationFilterObjectSchema } from './PollListRelationFilter.schema';
 import { RoomListRelationFilterObjectSchema as RoomListRelationFilterObjectSchema } from './RoomListRelationFilter.schema';
 import { VoteListRelationFilterObjectSchema as VoteListRelationFilterObjectSchema } from './VoteListRelationFilter.schema';
 import { MessageListRelationFilterObjectSchema as MessageListRelationFilterObjectSchema } from './MessageListRelationFilter.schema';
 import { NotificationListRelationFilterObjectSchema as NotificationListRelationFilterObjectSchema } from './NotificationListRelationFilter.schema';
+import { PollTemplateListRelationFilterObjectSchema as PollTemplateListRelationFilterObjectSchema } from './PollTemplateListRelationFilter.schema';
 import { RoomMemberListRelationFilterObjectSchema as RoomMemberListRelationFilterObjectSchema } from './RoomMemberListRelationFilter.schema';
 import { InvitationListRelationFilterObjectSchema as InvitationListRelationFilterObjectSchema } from './InvitationListRelationFilter.schema';
 import { FriendshipListRelationFilterObjectSchema as FriendshipListRelationFilterObjectSchema } from './FriendshipListRelationFilter.schema';
 import { BlockListRelationFilterObjectSchema as BlockListRelationFilterObjectSchema } from './BlockListRelationFilter.schema';
+import { ReportListRelationFilterObjectSchema as ReportListRelationFilterObjectSchema } from './ReportListRelationFilter.schema';
 import { ApiKeyListRelationFilterObjectSchema as ApiKeyListRelationFilterObjectSchema } from './ApiKeyListRelationFilter.schema'
 
 const userwhereinputSchema = z.object({
@@ -57,11 +60,15 @@ const userwhereinputSchema = z.object({
   updatedAt: z.union([z.lazy(() => DateTimeFilterObjectSchema), z.coerce.date()]).optional(),
   deletedAt: z.union([z.lazy(() => DateTimeNullableFilterObjectSchema), z.coerce.date()]).optional().nullable(),
   oauths: z.lazy(() => OauthListRelationFilterObjectSchema).optional(),
+  bansReceived: z.lazy(() => BanListRelationFilterObjectSchema).optional(),
+  bansGiven: z.lazy(() => BanListRelationFilterObjectSchema).optional(),
+  bansLifted: z.lazy(() => BanListRelationFilterObjectSchema).optional(),
   pollsCreated: z.lazy(() => PollListRelationFilterObjectSchema).optional(),
   roomsCreated: z.lazy(() => RoomListRelationFilterObjectSchema).optional(),
   votes: z.lazy(() => VoteListRelationFilterObjectSchema).optional(),
   messages: z.lazy(() => MessageListRelationFilterObjectSchema).optional(),
   notifications: z.lazy(() => NotificationListRelationFilterObjectSchema).optional(),
+  pollTemplates: z.lazy(() => PollTemplateListRelationFilterObjectSchema).optional(),
   roomMemberships: z.lazy(() => RoomMemberListRelationFilterObjectSchema).optional(),
   invitationsSent: z.lazy(() => InvitationListRelationFilterObjectSchema).optional(),
   invitationsReceived: z.lazy(() => InvitationListRelationFilterObjectSchema).optional(),
@@ -69,6 +76,8 @@ const userwhereinputSchema = z.object({
   friendshipsAsUserB: z.lazy(() => FriendshipListRelationFilterObjectSchema).optional(),
   blocksReceived: z.lazy(() => BlockListRelationFilterObjectSchema).optional(),
   blocksGiven: z.lazy(() => BlockListRelationFilterObjectSchema).optional(),
+  reportsReceived: z.lazy(() => ReportListRelationFilterObjectSchema).optional(),
+  reportsGiven: z.lazy(() => ReportListRelationFilterObjectSchema).optional(),
   apiKeys: z.lazy(() => ApiKeyListRelationFilterObjectSchema).optional()
 }).strict();
 export const UserWhereInputObjectSchema: z.ZodType<Prisma.UserWhereInput> = userwhereinputSchema as unknown as z.ZodType<Prisma.UserWhereInput>;

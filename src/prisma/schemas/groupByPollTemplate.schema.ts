@@ -1,0 +1,15 @@
+import type { Prisma } from '../../../../src/generated/prisma/client';
+import * as z from 'zod';
+import { PollTemplateWhereInputObjectSchema as PollTemplateWhereInputObjectSchema } from './objects/PollTemplateWhereInput.schema';
+import { PollTemplateOrderByWithAggregationInputObjectSchema as PollTemplateOrderByWithAggregationInputObjectSchema } from './objects/PollTemplateOrderByWithAggregationInput.schema';
+import { PollTemplateScalarWhereWithAggregatesInputObjectSchema as PollTemplateScalarWhereWithAggregatesInputObjectSchema } from './objects/PollTemplateScalarWhereWithAggregatesInput.schema';
+import { PollTemplateScalarFieldEnumSchema } from './enums/PollTemplateScalarFieldEnum.schema';
+import { PollTemplateCountAggregateInputObjectSchema as PollTemplateCountAggregateInputObjectSchema } from './objects/PollTemplateCountAggregateInput.schema';
+import { PollTemplateMinAggregateInputObjectSchema as PollTemplateMinAggregateInputObjectSchema } from './objects/PollTemplateMinAggregateInput.schema';
+import { PollTemplateMaxAggregateInputObjectSchema as PollTemplateMaxAggregateInputObjectSchema } from './objects/PollTemplateMaxAggregateInput.schema';
+import { PollTemplateAvgAggregateInputObjectSchema as PollTemplateAvgAggregateInputObjectSchema } from './objects/PollTemplateAvgAggregateInput.schema';
+import { PollTemplateSumAggregateInputObjectSchema as PollTemplateSumAggregateInputObjectSchema } from './objects/PollTemplateSumAggregateInput.schema';
+
+export const PollTemplateGroupBySchema: z.ZodType<Prisma.PollTemplateGroupByArgs> = z.object({ where: PollTemplateWhereInputObjectSchema.optional(), orderBy: z.union([PollTemplateOrderByWithAggregationInputObjectSchema, PollTemplateOrderByWithAggregationInputObjectSchema.array()]).optional(), having: PollTemplateScalarWhereWithAggregatesInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), by: z.array(PollTemplateScalarFieldEnumSchema), _count: z.union([ z.literal(true), PollTemplateCountAggregateInputObjectSchema ]).optional(), _min: PollTemplateMinAggregateInputObjectSchema.optional(), _max: PollTemplateMaxAggregateInputObjectSchema.optional(), _avg: PollTemplateAvgAggregateInputObjectSchema.optional(), _sum: PollTemplateSumAggregateInputObjectSchema.optional() }).strict() as unknown as z.ZodType<Prisma.PollTemplateGroupByArgs>;
+
+export const PollTemplateGroupByZodSchema = z.object({ where: PollTemplateWhereInputObjectSchema.optional(), orderBy: z.union([PollTemplateOrderByWithAggregationInputObjectSchema, PollTemplateOrderByWithAggregationInputObjectSchema.array()]).optional(), having: PollTemplateScalarWhereWithAggregatesInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), by: z.array(PollTemplateScalarFieldEnumSchema), _count: z.union([ z.literal(true), PollTemplateCountAggregateInputObjectSchema ]).optional(), _min: PollTemplateMinAggregateInputObjectSchema.optional(), _max: PollTemplateMaxAggregateInputObjectSchema.optional(), _avg: PollTemplateAvgAggregateInputObjectSchema.optional(), _sum: PollTemplateSumAggregateInputObjectSchema.optional() }).strict();

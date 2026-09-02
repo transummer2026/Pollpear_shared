@@ -27,11 +27,15 @@ export const UserDeleteResultSchema = z.nullable(z.object({
   updatedAt: z.date(),
   deletedAt: z.date().optional(),
   oauths: z.array(z.unknown()),
+  bansReceived: z.array(z.unknown()),
+  bansGiven: z.array(z.unknown()),
+  bansLifted: z.array(z.unknown()),
   pollsCreated: z.array(z.unknown()),
   roomsCreated: z.array(z.unknown()),
   votes: z.array(z.unknown()),
   messages: z.array(z.unknown()),
   notifications: z.array(z.unknown()),
+  pollTemplates: z.array(z.unknown()),
   roomMemberships: z.array(z.unknown()),
   invitationsSent: z.array(z.unknown()),
   invitationsReceived: z.array(z.unknown()),
@@ -39,5 +43,7 @@ export const UserDeleteResultSchema = z.nullable(z.object({
   friendshipsAsUserB: z.array(z.unknown()),
   blocksReceived: z.array(z.unknown()),
   blocksGiven: z.array(z.unknown()),
+  reportsReceived: z.array(z.unknown()),
+  reportsGiven: z.array(z.unknown()),
   apiKeys: z.array(z.unknown())
 }));

@@ -16,7 +16,9 @@ export const OptionGroupByResultSchema = z.array(z.object({
     deletedAt: z.number(),
     pollId: z.number(),
     poll: z.number(),
-    voteOptions: z.number()
+    voteOptions: z.number(),
+    pollDependencies: z.number(),
+    reports: z.number()
   }).optional(),
   _sum: z.object({
     id: z.number().nullable(),

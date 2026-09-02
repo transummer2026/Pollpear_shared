@@ -16,7 +16,8 @@ export const RoomFindManyResultSchema = z.object({
   polls: z.array(z.unknown()),
   messages: z.array(z.unknown()),
   invitations: z.array(z.unknown()),
-  roomMembers: z.array(z.unknown())
+  roomMembers: z.array(z.unknown()),
+  reports: z.array(z.unknown())
 })),
   pagination: z.object({
   page: z.number().int().min(1),

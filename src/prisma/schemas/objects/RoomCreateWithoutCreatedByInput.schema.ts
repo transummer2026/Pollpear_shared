@@ -5,7 +5,8 @@ import { RoomStatusSchema } from '../enums/RoomStatus.schema';
 import { PollCreateNestedManyWithoutRoomInputObjectSchema as PollCreateNestedManyWithoutRoomInputObjectSchema } from './PollCreateNestedManyWithoutRoomInput.schema';
 import { MessageCreateNestedManyWithoutRoomInputObjectSchema as MessageCreateNestedManyWithoutRoomInputObjectSchema } from './MessageCreateNestedManyWithoutRoomInput.schema';
 import { InvitationCreateNestedManyWithoutRoomInputObjectSchema as InvitationCreateNestedManyWithoutRoomInputObjectSchema } from './InvitationCreateNestedManyWithoutRoomInput.schema';
-import { RoomMemberCreateNestedManyWithoutRoomInputObjectSchema as RoomMemberCreateNestedManyWithoutRoomInputObjectSchema } from './RoomMemberCreateNestedManyWithoutRoomInput.schema'
+import { RoomMemberCreateNestedManyWithoutRoomInputObjectSchema as RoomMemberCreateNestedManyWithoutRoomInputObjectSchema } from './RoomMemberCreateNestedManyWithoutRoomInput.schema';
+import { ReportCreateNestedManyWithoutRoomInputObjectSchema as ReportCreateNestedManyWithoutRoomInputObjectSchema } from './ReportCreateNestedManyWithoutRoomInput.schema'
 
 const makeSchema = () => z.object({
   name: z.string().max(255),
@@ -20,7 +21,8 @@ const makeSchema = () => z.object({
   polls: z.lazy(() => PollCreateNestedManyWithoutRoomInputObjectSchema).optional(),
   messages: z.lazy(() => MessageCreateNestedManyWithoutRoomInputObjectSchema).optional(),
   invitations: z.lazy(() => InvitationCreateNestedManyWithoutRoomInputObjectSchema).optional(),
-  roomMembers: z.lazy(() => RoomMemberCreateNestedManyWithoutRoomInputObjectSchema).optional()
+  roomMembers: z.lazy(() => RoomMemberCreateNestedManyWithoutRoomInputObjectSchema).optional(),
+  reports: z.lazy(() => ReportCreateNestedManyWithoutRoomInputObjectSchema).optional()
 }).strict();
 export const RoomCreateWithoutCreatedByInputObjectSchema: z.ZodType<Prisma.RoomCreateWithoutCreatedByInput> = makeSchema() as unknown as z.ZodType<Prisma.RoomCreateWithoutCreatedByInput>;
 export const RoomCreateWithoutCreatedByInputObjectZodSchema = makeSchema();
