@@ -8,5 +8,7 @@ export const OptionDeleteResultSchema = z.nullable(z.object({
   deletedAt: z.date().optional(),
   pollId: z.number().int(),
   poll: z.unknown(),
-  voteOptions: z.array(z.unknown())
+  voteOptions: z.array(z.unknown()),
+  pollDependencies: z.array(z.unknown()),
+  reports: z.array(z.unknown())
 }));

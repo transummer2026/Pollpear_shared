@@ -1,0 +1,68 @@
+import * as z from 'zod';
+export const ReportAggregateResultSchema = z.object({  _count: z.object({
+    id: z.number(),
+    reason: z.number(),
+    content: z.number(),
+    createdAt: z.number(),
+    updatedAt: z.number(),
+    reporterId: z.number(),
+    reportedId: z.number(),
+    roomId: z.number(),
+    messageId: z.number(),
+    pollId: z.number(),
+    optionId: z.number(),
+    hashtagId: z.number(),
+    reporter: z.number(),
+    reported: z.number(),
+    room: z.number(),
+    message: z.number(),
+    poll: z.number(),
+    option: z.number(),
+    hashtag: z.number()
+  }).optional(),
+  _sum: z.object({
+    id: z.number().nullable(),
+    reporterId: z.number().nullable(),
+    reportedId: z.number().nullable(),
+    roomId: z.number().nullable(),
+    messageId: z.number().nullable(),
+    pollId: z.number().nullable(),
+    optionId: z.number().nullable(),
+    hashtagId: z.number().nullable()
+  }).nullable().optional(),
+  _avg: z.object({
+    id: z.number().nullable(),
+    reporterId: z.number().nullable(),
+    reportedId: z.number().nullable(),
+    roomId: z.number().nullable(),
+    messageId: z.number().nullable(),
+    pollId: z.number().nullable(),
+    optionId: z.number().nullable(),
+    hashtagId: z.number().nullable()
+  }).nullable().optional(),
+  _min: z.object({
+    id: z.number().int().nullable(),
+    content: z.string().nullable(),
+    createdAt: z.date().nullable(),
+    updatedAt: z.date().nullable(),
+    reporterId: z.number().int().nullable(),
+    reportedId: z.number().int().nullable(),
+    roomId: z.number().int().nullable(),
+    messageId: z.number().int().nullable(),
+    pollId: z.number().int().nullable(),
+    optionId: z.number().int().nullable(),
+    hashtagId: z.number().int().nullable()
+  }).nullable().optional(),
+  _max: z.object({
+    id: z.number().int().nullable(),
+    content: z.string().nullable(),
+    createdAt: z.date().nullable(),
+    updatedAt: z.date().nullable(),
+    reporterId: z.number().int().nullable(),
+    reportedId: z.number().int().nullable(),
+    roomId: z.number().int().nullable(),
+    messageId: z.number().int().nullable(),
+    pollId: z.number().int().nullable(),
+    optionId: z.number().int().nullable(),
+    hashtagId: z.number().int().nullable()
+  }).nullable().optional()});

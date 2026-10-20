@@ -5,7 +5,8 @@ export const HashtagAggregateResultSchema = z.object({  _count: z.object({
     createdAt: z.number(),
     updatedAt: z.number(),
     deletedAt: z.number(),
-    pollHashtags: z.number()
+    pollHashtags: z.number(),
+    reports: z.number()
   }).optional(),
   _sum: z.object({
     id: z.number().nullable()

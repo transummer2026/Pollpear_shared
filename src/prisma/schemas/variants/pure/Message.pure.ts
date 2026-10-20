@@ -9,7 +9,8 @@ export const MessageModelSchema = z.object({
     authorId: z.number().int(),
     roomId: z.number().int(),
     author: z.unknown(),
-    room: z.unknown()
+    room: z.unknown(),
+    reports: z.array(z.unknown())
 }).strict();
 
 export type MessagePureType = z.infer<typeof MessageModelSchema>;

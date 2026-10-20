@@ -6,7 +6,10 @@ import { PollStatusSchema } from '../enums/PollStatus.schema';
 import { UserCreateNestedOneWithoutPollsCreatedInputObjectSchema as UserCreateNestedOneWithoutPollsCreatedInputObjectSchema } from './UserCreateNestedOneWithoutPollsCreatedInput.schema';
 import { VoteCreateNestedManyWithoutPollInputObjectSchema as VoteCreateNestedManyWithoutPollInputObjectSchema } from './VoteCreateNestedManyWithoutPollInput.schema';
 import { OptionCreateNestedManyWithoutPollInputObjectSchema as OptionCreateNestedManyWithoutPollInputObjectSchema } from './OptionCreateNestedManyWithoutPollInput.schema';
-import { PollHashtagCreateNestedManyWithoutPollInputObjectSchema as PollHashtagCreateNestedManyWithoutPollInputObjectSchema } from './PollHashtagCreateNestedManyWithoutPollInput.schema'
+import { PollHashtagCreateNestedManyWithoutPollInputObjectSchema as PollHashtagCreateNestedManyWithoutPollInputObjectSchema } from './PollHashtagCreateNestedManyWithoutPollInput.schema';
+import { PollTemplateCreateNestedManyWithoutPollInputObjectSchema as PollTemplateCreateNestedManyWithoutPollInputObjectSchema } from './PollTemplateCreateNestedManyWithoutPollInput.schema';
+import { ReportCreateNestedManyWithoutPollInputObjectSchema as ReportCreateNestedManyWithoutPollInputObjectSchema } from './ReportCreateNestedManyWithoutPollInput.schema';
+import { PollDependencyCreateNestedManyWithoutChildPollInputObjectSchema as PollDependencyCreateNestedManyWithoutChildPollInputObjectSchema } from './PollDependencyCreateNestedManyWithoutChildPollInput.schema'
 
 const makeSchema = () => z.object({
   title: z.string().max(255),
@@ -24,7 +27,10 @@ const makeSchema = () => z.object({
   createdBy: z.lazy(() => UserCreateNestedOneWithoutPollsCreatedInputObjectSchema),
   votes: z.lazy(() => VoteCreateNestedManyWithoutPollInputObjectSchema).optional(),
   options: z.lazy(() => OptionCreateNestedManyWithoutPollInputObjectSchema).optional(),
-  pollHashtags: z.lazy(() => PollHashtagCreateNestedManyWithoutPollInputObjectSchema).optional()
+  pollHashtags: z.lazy(() => PollHashtagCreateNestedManyWithoutPollInputObjectSchema).optional(),
+  pollTemplates: z.lazy(() => PollTemplateCreateNestedManyWithoutPollInputObjectSchema).optional(),
+  reports: z.lazy(() => ReportCreateNestedManyWithoutPollInputObjectSchema).optional(),
+  childDependencies: z.lazy(() => PollDependencyCreateNestedManyWithoutChildPollInputObjectSchema).optional()
 }).strict();
 export const PollCreateWithoutRoomInputObjectSchema: z.ZodType<Prisma.PollCreateWithoutRoomInput> = makeSchema() as unknown as z.ZodType<Prisma.PollCreateWithoutRoomInput>;
 export const PollCreateWithoutRoomInputObjectZodSchema = makeSchema();

@@ -3,7 +3,9 @@ import type { Prisma } from '../../../../../src/generated/prisma/client';
 import { SortOrderSchema } from '../enums/SortOrder.schema';
 import { SortOrderInputObjectSchema as SortOrderInputObjectSchema } from './SortOrderInput.schema';
 import { PollOrderByWithRelationInputObjectSchema as PollOrderByWithRelationInputObjectSchema } from './PollOrderByWithRelationInput.schema';
-import { VoteOptionOrderByRelationAggregateInputObjectSchema as VoteOptionOrderByRelationAggregateInputObjectSchema } from './VoteOptionOrderByRelationAggregateInput.schema'
+import { VoteOptionOrderByRelationAggregateInputObjectSchema as VoteOptionOrderByRelationAggregateInputObjectSchema } from './VoteOptionOrderByRelationAggregateInput.schema';
+import { PollDependencyOrderByRelationAggregateInputObjectSchema as PollDependencyOrderByRelationAggregateInputObjectSchema } from './PollDependencyOrderByRelationAggregateInput.schema';
+import { ReportOrderByRelationAggregateInputObjectSchema as ReportOrderByRelationAggregateInputObjectSchema } from './ReportOrderByRelationAggregateInput.schema'
 
 const makeSchema = () => z.object({
   id: SortOrderSchema.optional(),
@@ -14,7 +16,9 @@ const makeSchema = () => z.object({
   deletedAt: z.union([SortOrderSchema, z.lazy(() => SortOrderInputObjectSchema)]).optional(),
   pollId: SortOrderSchema.optional(),
   poll: z.lazy(() => PollOrderByWithRelationInputObjectSchema).optional(),
-  voteOptions: z.lazy(() => VoteOptionOrderByRelationAggregateInputObjectSchema).optional()
+  voteOptions: z.lazy(() => VoteOptionOrderByRelationAggregateInputObjectSchema).optional(),
+  pollDependencies: z.lazy(() => PollDependencyOrderByRelationAggregateInputObjectSchema).optional(),
+  reports: z.lazy(() => ReportOrderByRelationAggregateInputObjectSchema).optional()
 }).strict();
 export const OptionOrderByWithRelationInputObjectSchema: z.ZodType<Prisma.OptionOrderByWithRelationInput> = makeSchema() as unknown as z.ZodType<Prisma.OptionOrderByWithRelationInput>;
 export const OptionOrderByWithRelationInputObjectZodSchema = makeSchema();

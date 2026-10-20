@@ -6,7 +6,8 @@ import { UserOrderByWithRelationInputObjectSchema as UserOrderByWithRelationInpu
 import { PollOrderByRelationAggregateInputObjectSchema as PollOrderByRelationAggregateInputObjectSchema } from './PollOrderByRelationAggregateInput.schema';
 import { MessageOrderByRelationAggregateInputObjectSchema as MessageOrderByRelationAggregateInputObjectSchema } from './MessageOrderByRelationAggregateInput.schema';
 import { InvitationOrderByRelationAggregateInputObjectSchema as InvitationOrderByRelationAggregateInputObjectSchema } from './InvitationOrderByRelationAggregateInput.schema';
-import { RoomMemberOrderByRelationAggregateInputObjectSchema as RoomMemberOrderByRelationAggregateInputObjectSchema } from './RoomMemberOrderByRelationAggregateInput.schema'
+import { RoomMemberOrderByRelationAggregateInputObjectSchema as RoomMemberOrderByRelationAggregateInputObjectSchema } from './RoomMemberOrderByRelationAggregateInput.schema';
+import { ReportOrderByRelationAggregateInputObjectSchema as ReportOrderByRelationAggregateInputObjectSchema } from './ReportOrderByRelationAggregateInput.schema'
 
 const makeSchema = () => z.object({
   id: SortOrderSchema.optional(),
@@ -24,7 +25,8 @@ const makeSchema = () => z.object({
   polls: z.lazy(() => PollOrderByRelationAggregateInputObjectSchema).optional(),
   messages: z.lazy(() => MessageOrderByRelationAggregateInputObjectSchema).optional(),
   invitations: z.lazy(() => InvitationOrderByRelationAggregateInputObjectSchema).optional(),
-  roomMembers: z.lazy(() => RoomMemberOrderByRelationAggregateInputObjectSchema).optional()
+  roomMembers: z.lazy(() => RoomMemberOrderByRelationAggregateInputObjectSchema).optional(),
+  reports: z.lazy(() => ReportOrderByRelationAggregateInputObjectSchema).optional()
 }).strict();
 export const RoomOrderByWithRelationInputObjectSchema: z.ZodType<Prisma.RoomOrderByWithRelationInput> = makeSchema() as unknown as z.ZodType<Prisma.RoomOrderByWithRelationInput>;
 export const RoomOrderByWithRelationInputObjectZodSchema = makeSchema();

@@ -19,6 +19,8 @@ export const OptionFindFirstSelectSchema: z.ZodType<Prisma.OptionSelect> = z.obj
     pollId: z.boolean().optional(),
     poll: z.boolean().optional(),
     voteOptions: z.boolean().optional(),
+    pollDependencies: z.boolean().optional(),
+    reports: z.boolean().optional(),
     _count: z.boolean().optional()
   }).strict() as unknown as z.ZodType<Prisma.OptionSelect>;
 
@@ -32,6 +34,8 @@ export const OptionFindFirstSelectZodSchema = z.object({
     pollId: z.boolean().optional(),
     poll: z.boolean().optional(),
     voteOptions: z.boolean().optional(),
+    pollDependencies: z.boolean().optional(),
+    reports: z.boolean().optional(),
     _count: z.boolean().optional()
   }).strict();
 

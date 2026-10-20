@@ -1,0 +1,18 @@
+import * as z from 'zod';
+import type { Prisma } from '../../../../../src/generated/prisma/client';
+import { BanAttachmentUncheckedCreateNestedManyWithoutBanInputObjectSchema as BanAttachmentUncheckedCreateNestedManyWithoutBanInputObjectSchema } from './BanAttachmentUncheckedCreateNestedManyWithoutBanInput.schema'
+
+const makeSchema = () => z.object({
+  id: z.number().int().optional(),
+  banReason: z.string(),
+  unbanReason: z.string().optional().nullable(),
+  startedAt: z.coerce.date(),
+  endedAt: z.coerce.date(),
+  createdAt: z.coerce.date().optional(),
+  userId: z.number().int(),
+  bannedById: z.number().int(),
+  unbannedById: z.number().int().optional().nullable(),
+  attachments: z.lazy(() => BanAttachmentUncheckedCreateNestedManyWithoutBanInputObjectSchema).optional()
+}).strict();
+export const BanUncheckedCreateInputObjectSchema: z.ZodType<Prisma.BanUncheckedCreateInput> = makeSchema() as unknown as z.ZodType<Prisma.BanUncheckedCreateInput>;
+export const BanUncheckedCreateInputObjectZodSchema = makeSchema();
